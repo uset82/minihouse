@@ -1,0 +1,8 @@
+# Exclude temporary, heavy reference, and build folders when running `canner deploy`
+.tmp/
+.workbuddy-ai/
+dist/
+documents/
+images/
+knowledge/
+*.log
