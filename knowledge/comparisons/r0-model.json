@@ -1,0 +1,106 @@
+{
+  "revision": "R0",
+  "state": "CONCEPTUAL — NOT FOR FABRICATION",
+  "units": "mm",
+  "frame": {
+    "origin": "exterior chassis corner, top face of floor stringer",
+    "axes": "+x longitudinal 0..6000, +y transverse 0..3000, +z up"
+  },
+  "dimensions": {
+    "length_mm": 6000,
+    "width_mm": 3000,
+    "height_total_mm": 3200,
+    "clear_height_mm": 2400,
+    "roof_rise_mm": 200,
+    "roof_ridge_y_mm": 0,
+    "max_salient_mm_per_side": 50
+  },
+  "chassis_axes": {
+    "stringers_y_mm": [
+      150,
+      2850
+    ],
+    "cross_members_x_mm": [
+      0,
+      1200,
+      2400,
+      3600,
+      4800,
+      6000
+    ],
+    "section": "UNDEFINED — EI in report does not identify a profile"
+  },
+  "openings": [
+    {
+      "id": "P-01",
+      "facade": "y=3000",
+      "x_center": 4500,
+      "sill_z": 0,
+      "width": 900,
+      "height": 2050
+    },
+    {
+      "id": "V-01",
+      "facade": "y=3000",
+      "x_center": 2400,
+      "sill_z": 900,
+      "width": 1200,
+      "height": 1100
+    },
+    {
+      "id": "V-02",
+      "facade": "y=0",
+      "x_center": 2400,
+      "sill_z": 1100,
+      "width": 1000,
+      "height": 900
+    },
+    {
+      "id": "V-03",
+      "facade": "y=0",
+      "x_center": 600,
+      "sill_z": 1500,
+      "width": 500,
+      "height": 500
+    }
+  ],
+  "bathroom_zone": {
+    "x_min": 0,
+    "x_max": 1200
+  },
+  "lift_candidates": {
+    "high": {
+      "z_mm": 3000,
+      "x_mm": [
+        0,
+        6000
+      ],
+      "y_mm": [
+        0,
+        3000
+      ],
+      "note": "corner nodes; SCI P272 suggests 20% inset (~1200) as more stable"
+    },
+    "low": {
+      "z_mm": 0,
+      "x_mm": [
+        0,
+        6000
+      ],
+      "y_mm": [
+        0,
+        3000
+      ]
+    },
+    "status": "candidates only — decision from Fase 2 analysis"
+  },
+  "excluded": [
+    "steel sections",
+    "plate thicknesses",
+    "welds",
+    "lifting ears",
+    "anchors",
+    "timber details",
+    "services"
+  ]
+}

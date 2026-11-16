@@ -1,0 +1,13 @@
+id,revision,componente,material,masa_kg,x_m,y_m,z_m,procedencia,condicion,notas
+EJ-001,EJ,chasis larguero izq,acero,180,3.0,0.15,-0.10,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-002,EJ,chasis larguero der,acero,180,3.0,2.85,-0.10,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-003,EJ,travesanos y piso,acero+madera,350,3.0,1.5,0.05,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-004,EJ,estructura paredes y techo,acero,400,3.0,1.5,1.6,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-005,EJ,envolvente madera recuperada,madera,300,3.0,1.5,1.5,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-006,EJ,modulo bano completo,varios,250,0.6,1.5,1.0,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-007,EJ,cocina,varios,150,2.0,0.4,0.5,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-008,EJ,deposito agua limpia LLENO,agua+PE,120,0.6,2.6,0.3,estimado,deposito_lleno,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-009,EJ,deposito agua limpia VACIO,PE,20,0.6,2.6,0.3,estimado,deposito_vacio,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-010,EJ,baterias,varios,60,0.3,0.4,0.3,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-011,EJ,mobiliario fijo,madera,120,4.5,1.5,0.6,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO
+EJ-012,EJ,puerta y ventanas,varios,90,3.2,1.9,1.2,estimado,fijo,EJEMPLO SOLO PRUEBA DE HERRAMIENTA - NO ES DATO DEL PROYECTO

@@ -1,0 +1,7 @@
+caso,descripcion,flecha_mm,torsion_mm,Mmax_kNm,reacciones_kN,W_kN
+A,apoyos 4 esquinas chasis (instalado),19.155,0.0,8.093,C0_0:5.396;C0_1:5.396;C60_0:5.395;C60_1:5.396,21.582
+B,"apoyos retranqueados x=1.2/4.8 (nudos exactos, malla canonica @1200)",1.158,-0.0,1.619,C12_0:5.396;C12_1:5.396;C48_0:5.396;C48_1:5.396,21.582
+C,"izaje bajo, 4 esquinas chasis",19.155,0.0,8.093,C0_0:5.396;C0_1:5.396;C60_0:5.395;C60_1:5.396,21.582
+D,"izaje alto, 4 nudos z=3.0 por columnas",19.195,-0.0,8.093,H0_0:5.396;H0_1:5.395;H60_0:5.395;H60_1:5.395,21.582
+E,izaje alto + bano 250 kg redistribuido (excentrico),18.049,-0.0,7.541,H0_0:5.886;H0_1:5.886;H60_0:4.905;H60_1:4.905,21.582
+F,izaje bajo 2 puntos diagonales + 1 (torsion),115.749,57.875,9.008,C0_0:10.791;C60_1:10.791,21.582

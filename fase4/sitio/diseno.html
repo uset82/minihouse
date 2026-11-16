@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diseño · MiniHouse</title>
+<meta name="description" content="Geometría de referencia R0 de MiniHouse: planta, alzados, supuestos y aberturas. Estado conceptual.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <p class="marca">MiniHouse</p>
+  <nav aria-label="Secciones">
+    <a href="index.html">Inicio</a>
+    <a href="diseno.html" aria-current="page">Diseño</a>
+    <a href="ingenieria.html">Ingeniería</a>
+    <a href="diario.html">Diario</a>
+  </nav>
+</header>
+<main id="contenido">
+  <h1>Diseño · geometría de referencia R0</h1>
+  <p class="aviso" role="note"><span class="etiqueta conceptual">CONCEPTUAL</span> Revisión R0 del 2026-11-16. Las cotas salen de supuestos de trabajo declarados, no de un diseño aprobado. Cambiarán cuando el propietario responda las preguntas abiertas.</p>
+
+  <h2>Volumen</h2>
+  <table>
+    <caption>Cotas R0 y su origen</caption>
+    <thead><tr><th scope="col">Magnitud</th><th scope="col">Valor R0</th><th scope="col">Origen</th></tr></thead>
+    <tbody>
+      <tr><td>Planta exterior</td><td class="num">6000 × 3000 mm</td><td>Encargo del proyecto (aproximado, por confirmar)</td></tr>
+      <tr><td>Altura total sobre chasis</td><td class="num">3200 mm (por revisar)</td><td>Supuesto S-01; la nueva forma de techo obliga a revisarlo</td></tr>
+      <tr><td>Altura libre interior</td><td class="num">2400 mm</td><td>Supuesto S-02</td></tr>
+      <tr><td>Techo</td><td><strong>A dos aguas</strong>, chapa metálica oscura; pendiente sin acotar</td><td>Intención declarada por el propietario el 2026-11-16 (sustituye al monopendiente S-03)</td></tr>
+      <tr><td>Salientes de envolvente</td><td class="num">≤ 50 mm/lado</td><td>Supuesto S-06 → ancho de transporte ≤ 3100 mm</td></tr>
+    </tbody>
+  </table>
+  <p class="fuente">Fuente: registro de decisiones y geometría R0 del proyecto, 2026-11-16. Origen de coordenadas: esquina exterior del chasis, cara superior; +x longitudinal, +y transversal, +z arriba.</p>
+
+  <h2>Planos</h2>
+  <figure class="figura">
+    <img src="planos/planta-R0.svg" alt="Planta conceptual R0: rectángulo de 6000 por 3000 milímetros con ejes de chasis, siete travesaños, zona de baño en un extremo, puerta P-01 y ventanas V-01 a V-03, y candidatos de izaje en las cuatro esquinas.">
+    <figcaption><span class="etiqueta conceptual">CONCEPTUAL</span> Planta R0 · 2026-11-16 · sección de acero sin definir; las líneas de chasis son ejes de referencia, no perfiles elegidos.</figcaption>
+  </figure>
+  <figure class="figura">
+    <img src="planos/alzado-long-R0.svg" alt="Alzado longitudinal conceptual R0: fachada de 6000 milímetros de largo y 3200 de altura total, con puerta de 900 por 2050 y ventana de 1200 por 1100.">
+    <figcaption><span class="etiqueta conceptual">CONCEPTUAL</span> Alzado longitudinal R0 · fachada y=3000. La línea de cumbrera proyectada es del techo monopendiente inicial (superado); con dos aguas esta fachada muestra el alero, pendiente de acotar. Aberturas y longitud vigentes.</figcaption>
+  </figure>
+  <figure class="figura">
+    <img src="planos/alzado-trans-R1.svg" alt="Alzado transversal conceptual R1: sección de 3000 milímetros de ancho con tejado a dos aguas de cumbrera centrada, dibujado esquemáticamente porque la pendiente y las alturas están pendientes de acotar; altura libre interior de 2400 milímetros.">
+    <figcaption><span class="etiqueta conceptual">CONCEPTUAL</span> Alzado transversal R1-intención · 2026-11-16 · dos aguas según la intención del propietario; pendiente, aleros y cumbrera sin acotar. El alzado R0 monopendiente queda como histórico.</figcaption>
+  </figure>
+
+  <h2>Aberturas</h2>
+  <table>
+    <caption>Aberturas R0 — todas gobiernan deformación de diagonal hasta que el cálculo fije límites</caption>
+    <thead><tr><th scope="col">Id</th><th scope="col">Descripción</th><th scope="col">Ancho × alto (mm)</th><th scope="col">Fachada</th></tr></thead>
+    <tbody>
+      <tr><td>P-01</td><td>Puerta de entrada</td><td class="num">900 × 2050</td><td>y=3000</td></tr>
+      <tr><td>V-01</td><td>Ventana del estar</td><td class="num">1200 × 1100</td><td>y=3000</td></tr>
+      <tr><td>V-02</td><td>Ventana de cocina</td><td class="num">1000 × 900</td><td>y=0</td></tr>
+      <tr><td>V-03</td><td>Ventana de baño</td><td class="num">500 × 500</td><td>y=0</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Madera recuperada</h2>
+  <p>Uso previsto: revestimiento y acabado desmontable, nunca estructura sin documentación (especie, humedad, defectos, grado, conexiones). Cada lote llevará ficha de trazabilidad antes de instalarse. La envolvente se plantea como pantalla ventilada con barrera de vapor en el lado caliente, coherente con los requisitos TEK17 recuperados de la fuente oficial.</p>
+  <p class="fuente">Fuente: brief arquitectónico del proyecto y fichas TEK17 §13-13/§14 (DIBK), consultadas 2026-11-16.</p>
+</main>
+<footer>
+  <p>MiniHouse · documentación conceptual · <a href="index.html">inicio</a></p>
+  <p class="nota">Prototipo de Fase 4 sin publicar.</p>
+</footer>
+</body>
+</html>

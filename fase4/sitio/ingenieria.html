@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ingeniería · MiniHouse</title>
+<meta name="description" content="Método de verificación de MiniHouse, casos de carga y preguntas abiertas. Todo conceptual hasta ensayo y liberación.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <p class="marca">MiniHouse</p>
+  <nav aria-label="Secciones">
+    <a href="index.html">Inicio</a>
+    <a href="diseno.html">Diseño</a>
+    <a href="ingenieria.html" aria-current="page">Ingeniería</a>
+    <a href="diario.html">Diario</a>
+  </nav>
+</header>
+<main id="contenido">
+  <h1>Ingeniería</h1>
+  <p class="aviso" role="note"><span class="etiqueta conceptual">CONCEPTUAL</span> Aún no hay cálculo del módulo real: faltan masas verificadas, destino y responsables. Lo publicado aquí es método y demostraciones de herramienta, siempre etiquetadas.</p>
+
+  <h2>El problema</h2>
+  <p>La casita cambia de función tres veces: apoyada en su destino, suspendida de una grúa y rodando sobre un remolque. Cada estado tiene cargas, apoyos y modos de fallo distintos. Cuatro puntos de apoyo o cuatro eslingas <strong>no reparten el peso a partes iguales</strong>: el reparto depende de la rigidez, las tolerancias y la posición del centro de gravedad. Por eso el proyecto compara izaje por nudos altos y desde la base con las mismas masas, y exige un caso excéntrico además del simétrico.</p>
+
+  <h2>Método de tres niveles</h2>
+  <ol>
+    <li><strong>Cálculo manual reproducible</strong> — equilibrio, fórmulas cerradas de viga, geometría de eslingas. Verificado: las fórmulas del informe de referencia se reprodujeron simbólica y numéricamente.</li>
+    <li><strong>Modelo numérico + solver independiente</strong> — un solver propio de barras 3D reproduce los casos de referencia (flechas de 24,634 mm y 1,490 mm del ejemplo de viga ideal) y comprueba equilibrio en todos los casos. <span class="etiqueta conceptual">CONCEPTUAL</span> Esos números pertenecen a un ejemplo hipotético de 3000 kg, no al módulo.</li>
+    <li><strong>Ensayo físico</strong> — probeta de nudo hasta rotura, chasis instrumentado, pesaje con células, izaje y recorrido piloto. Protocolo redactado con criterios <em>antes</em> de medir. <span class="etiqueta conceptual">PENDIENTE</span></li>
+  </ol>
+
+  <h2>Demostración de herramienta (no es el módulo)</h2>
+  <table>
+    <caption>Comparativa conceptual A–F · masa de EJEMPLO 2200 kg · sección provisional inventada · ramales verticales ideales, sin dinámica</caption>
+    <thead><tr><th scope="col">Caso</th><th scope="col">Flecha máx. (mm)</th><th scope="col">Torsión diferencial (mm)</th><th scope="col">Lectura</th></tr></thead>
+    <tbody>
+      <tr><td>A · apoyado en esquinas</td><td class="num">19,2</td><td class="num">0,0</td><td rowspan="2">Con ramales verticales ideales, izaje alto y bajo cargan el chasis casi igual; la diferencia real vendrá de la inclinación de eslingas y las uniones.</td></tr>
+      <tr><td>D · izado por nudos altos</td><td class="num">19,2</td><td class="num">0,0</td></tr>
+      <tr><td>F · izado en 2 puntos diagonales</td><td class="num">115,7</td><td class="num">57,9</td><td>Sin diafragmas el bastidor es torsionalmente blando: el ensayo excéntrico es obligatorio.</td></tr>
+    </tbody>
+  </table>
+  <p class="fuente"><span class="etiqueta conceptual">CONCEPTUAL</span> Fuente: comparativa-izaje-R0-resultados.csv del proyecto, 2026-11-16. Equilibrio de reacciones verificado en los 6 casos. Ningún valor sirve para dimensionar.</p>
+
+  <h2>Transporte en Noruega</h2>
+  <p>Con ≈3 m de ancho, el módulo viaja como <strong>carga indivisible</strong> en la banda 2,55–3,25 m: posible en carreteras aptas sin permiso individual, pero la ruta debe comprobarse contra la lista de carreteras y el grupo de vía; las dispensaciones se tramitan por VegSak. El amarre se calcula según EN 12195-1 con el vehículo real.</p>
+  <p class="fuente">Fuente: Statens vegvesen (VegSak) y documentación de pesos y dimensiones, consultadas 2026-11-16; confirmar vigencia en la fecha del transporte.</p>
+
+  <h2 id="preguntas">Las nueve preguntas abiertas</h2>
+  <table>
+    <caption>Decisiones del propietario que desbloquean el cálculo real</caption>
+    <thead><tr><th scope="col">Id</th><th scope="col">Pregunta</th><th scope="col">Qué bloquea</th></tr></thead>
+    <tbody>
+      <tr><td>C-01</td><td>Destino y uso</td><td>Nieve, viento, clase TEK17, aislamiento</td></tr>
+      <tr><td>C-02</td><td>Cotas definitivas y salientes</td><td>Ancho legal, geometría congelada</td></tr>
+      <tr><td>C-03</td><td>Ruta y frecuencia de traslados</td><td>Lista de carreteras, fatiga, amarre</td></tr>
+      <tr><td>C-04</td><td>Grúa / empresa de izaje</td><td>Variante de izaje, plan de maniobra</td></tr>
+      <tr><td>C-05</td><td>Apoyo final y suelo</td><td>Reacciones, asentamientos, anclajes</td></tr>
+      <tr><td>C-06</td><td>Remolque previsto</td><td>Apoyos de transporte, dinámica</td></tr>
+      <tr><td>C-07</td><td>Equipos, depósitos, baterías</td><td>Masas puntuales y centro de gravedad</td></tr>
+      <tr><td>C-08</td><td>Madera disponible</td><td>Masa de envolvente, trazabilidad</td></tr>
+      <tr><td>C-09</td><td>Croquis originales</td><td>Intención de diseño</td></tr>
+    </tbody>
+  </table>
+</main>
+<footer>
+  <p>MiniHouse · documentación conceptual · <a href="index.html">inicio</a></p>
+  <p class="nota">Prototipo de Fase 4 sin publicar.</p>
+</footer>
+</body>
+</html>

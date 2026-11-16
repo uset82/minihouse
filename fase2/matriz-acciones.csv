@@ -1,0 +1,17 @@
+caso,situacion_en1990,configuracion_masas,accion,tipo,formula_o_fuente,coeficiente,valor_na,estado_valor,notas
+U-1,persistente,fijo+depositos_segun_uso,Peso propio G,G,q=m·g del inventario verificado,g=9.81,9.81 m/s2,FIJADO,físico; masa pendiente C-07
+U-1,persistente,fijo+depositos_segun_uso,Carga de uso Q_k,Q,EN 1991-1-1 tabla 6.1/6.2 según clase de uso (C-01),—,PENDING,PENDIENTE_NA,clase legal de "casita de emergencia" por precisar
+U-1,persistente,fijo,Nieve s_k,Q,EN 1991-1-3 + NA noruego; forma de techo DOS AGUAS (S016); μ1 según pendiente,μ1; γ_Q,PENDING,PENDIENTE_NA,emplazamiento Bergen pendiente C-01; pendiente de techo sin acotar
+U-1,persistente,fijo,Viento w_k,Q,EN 1991-1-4 + NA noruego; zona costera Bergen,c_pe; γ_Q,PENDING,PENDIENTE_NA,viento básico del emplazamiento pendiente; anclajes C-05
+U-1,persistente,fijo,Asentamiento diferencial,E,EN 1990 §; según apoyo final (C-05),—,PENDING,PENDIENTE_DATO,tipo de apoyo y suelo sin decidir
+U-2,transitoria,fijo+depositos_vacios,Nivelación con gatos,T,apoyos provisionales; excentricidad y vuelco,γ_G,PENDING,PENDIENTE_NA,procedimiento por definir con el ingeniero
+T-1,transitoria,config_viaje (C-06),Vertical dinámica transporte,Q_t,EN 12195-1 + medición piloto E-5; NO aceleración arbitraria,c_z,PENDING,PENDIENTE_MEDICION,envolvente real del vehículo/ruta (C-03/C-06)
+T-2,transitoria/accidental,config_viaje,Frenado longitudinal,Q_t,EN 12195-1: c_x según vehículo,c_x,PENDING,PENDIENTE_NA,amarre y bloqueo; distinguir vuelco
+T-2,transitoria/accidental,config_viaje,Lateral/curva,Q_t,EN 12195-1: c_y,c_y,PENDING,PENDIENTE_NA,ídem
+I-1,transitoria,config_izaje (sin desmontables sueltos),Izaje nudos altos,T,V por punto con desigualdad de ramales; T=V/senα; H=V·cotα,φ_din; patrón 2 ramales,PENDING,PENDIENTE_INGENIERO,factor dinámico y patrón los fija el especialista de izaje; NUNCA W/4 estático
+I-2,transitoria,config_izaje,Izaje desde base,T,ídem + posible spreader (EN 13155 si accesorio fabricado),φ_din,PENDING,PENDIENTE_INGENIERO,H sobre largueros; excentricidad oreja M_e=F·e
+I-3,transitoria (ensayo),config_izaje,Izaje excéntrico 2 puntos,T,caso de sensibilidad torsional obligatorio (E-2),—,a definir,PENDIENTE_INGENIERO,justificado por caso F de la demostración R0
+I-1/I-2,transitoria,config_izaje,Viento durante maniobra,Q,EN 1991-1-4; límite de viento de maniobra del lift plan,—,PENDING,PENDIENTE_IZAJE,la empresa de izaje fija el límite operativo
+COMB,persistente,—,ULS persistente E_d,comb,EN 1990 6.10: Σγ_G·G + γ_Q·Q_k1 + Σγ_Q·ψ0·Q_ki,γ_G; γ_Q; ψ0,PENDING,PENDIENTE_NA,coeficientes del NA noruego (S014: de pago)
+COMB,transitoria,—,ULS transitoria E_d,comb,EN 1990 situación transitoria explícita para izaje/montaje,γ según NA,PENDING,PENDIENTE_NA,izaje NUNCA dentro del caso permanente
+COMB,SLS,—,ELS deformación funcional,comb,EN 1990 6.14/6.15; límites funcionales §4 hoja condiciones,ψ1; ψ2,PENDING,PENDIENTE_INGENIERO,límites de diagonal/torsión/flecha a fijar ANTES del cálculo

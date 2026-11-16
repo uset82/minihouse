@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="560" viewBox="0 0 840 560" font-family="Consolas, monospace">
+  <rect width="840" height="560" fill="#fdfaf4"/>
+  <text x="420" y="30" text-anchor="middle" font-size="17" fill="#7a2e1d">MiniHouse · PLANTA R0 — CONCEPTUAL — NOT FOR FABRICATION</text>
+  <text x="420" y="50" text-anchor="middle" font-size="11" fill="#555">2026-11-16 · cotas en mm · origen (0,0) esquina inferior izquierda · +x → · +y ↑ · supuestos S-01…S-08</text>
+
+  <!-- outline: 6000x3000 at 0.1 px/mm => 600x300, offset (120,120); y flipped -->
+  <g stroke="#333" fill="none" stroke-width="2">
+    <rect x="120" y="120" width="600" height="300"/>
+  </g>
+  <!-- chassis longitudinal axes y=150 -> py 405 ; y=2850 -> py 135 -->
+  <g stroke="#8a6d3b" stroke-width="3" stroke-dasharray="12 5">
+    <line x1="120" y1="405" x2="720" y2="405"/>
+    <line x1="120" y1="135" x2="720" y2="135"/>
+  </g>
+  <!-- cross members every 1200: x=1200..4800 -->
+  <g stroke="#8a6d3b" stroke-width="2" stroke-dasharray="6 4">
+    <line x1="240" y1="135" x2="240" y2="405"/>
+    <line x1="360" y1="135" x2="360" y2="405"/>
+    <line x1="480" y1="135" x2="480" y2="405"/>
+    <line x1="600" y1="135" x2="600" y2="405"/>
+    <line x1="120" y1="135" x2="120" y2="405"/>
+    <line x1="720" y1="135" x2="720" y2="405"/>
+  </g>
+  <text x="420" y="425" text-anchor="middle" font-size="10" fill="#8a6d3b">ejes de chasis (referencia, sección SIN DEFINIR) · travesaños @1200</text>
+
+  <!-- bathroom zone x 0..1200 -->
+  <rect x="120" y="120" width="120" height="300" fill="#dfe9f3" opacity="0.6"/>
+  <line x1="240" y1="120" x2="240" y2="420" stroke="#333" stroke-width="1.5"/>
+  <text x="180" y="270" text-anchor="middle" font-size="11" fill="#2c4a6e" transform="rotate(-90 180 270)">BAÑO (S-04)</text>
+  <text x="480" y="270" text-anchor="middle" font-size="12" fill="#555">ESTAR / COCINA (S-04)</text>
+
+  <!-- openings on y=3000 (top edge py=120): P-01 center x4500 w900 ; V-01 center 2400 w1200 -->
+  <g stroke="#1d6fa5" stroke-width="5">
+    <line x1="525" y1="120" x2="615" y2="120"/>  <!-- P-01: 4050..4950 -->
+    <line x1="300" y1="120" x2="420" y2="120"/>  <!-- V-01: 1800..3000 -->
+  </g>
+  <text x="570" y="108" text-anchor="middle" font-size="10" fill="#1d6fa5">P-01 900</text>
+  <text x="360" y="108" text-anchor="middle" font-size="10" fill="#1d6fa5">V-01 1200</text>
+  <!-- openings on y=0 (bottom edge py=420): V-02 center 2400 w1000; V-03 center 600 w500 -->
+  <g stroke="#1d6fa5" stroke-width="5">
+    <line x1="310" y1="420" x2="410" y2="420"/>
+    <line x1="155" y1="420" x2="205" y2="420"/>
+  </g>
+  <text x="360" y="440" text-anchor="middle" font-size="10" fill="#1d6fa5">V-02 1000</text>
+  <text x="180" y="440" text-anchor="middle" font-size="10" fill="#1d6fa5">V-03 500</text>
+
+  <!-- lifting candidates: corners high (circle) low (square) -->
+  <g fill="none" stroke="#a33" stroke-width="2">
+    <circle cx="120" cy="120" r="9"/><circle cx="720" cy="120" r="9"/>
+    <circle cx="120" cy="420" r="9"/><circle cx="720" cy="420" r="9"/>
+    <rect x="112" y="112" width="16" height="16"/><rect x="712" y="112" width="16" height="16"/>
+    <rect x="112" y="412" width="16" height="16"/><rect x="712" y="412" width="16" height="16"/>
+  </g>
+  <text x="770" y="125" font-size="10" fill="#a33">○ izaje alto</text>
+  <text x="770" y="140" font-size="10" fill="#a33">□ izaje bajo</text>
+  <text x="770" y="155" font-size="9" fill="#a33">(candidatos)</text>
+
+  <!-- dimensions -->
+  <g stroke="#333" stroke-width="1" fill="#333" font-size="11">
+    <line x1="120" y1="480" x2="720" y2="480"/>
+    <line x1="120" y1="474" x2="120" y2="486"/><line x1="720" y1="474" x2="720" y2="486"/>
+    <text x="420" y="497" text-anchor="middle">6000 (exterior, S-06 salientes ≤50/lado)</text>
+    <line x1="80" y1="120" x2="80" y2="420"/>
+    <line x1="74" y1="120" x2="86" y2="120"/><line x1="74" y1="420" x2="86" y2="420"/>
+    <text x="66" y="270" text-anchor="middle" transform="rotate(-90 66 270)">3000</text>
+    <line x1="120" y1="510" x2="240" y2="510"/>
+    <line x1="120" y1="504" x2="120" y2="516"/><line x1="240" y1="504" x2="240" y2="516"/>
+    <text x="180" y="528" text-anchor="middle">1200</text>
+    <line x1="240" y1="510" x2="360" y2="510"/>
+    <line x1="360" y1="504" x2="360" y2="516"/>
+    <text x="300" y="528" text-anchor="middle">1200</text>
+  </g>
+  <!-- axes marker -->
+  <g stroke="#2c7a2c" stroke-width="2" fill="#2c7a2c" font-size="11">
+    <line x1="120" y1="420" x2="170" y2="420"/><path d="M170 420 l-8 -4 v8 z"/>
+    <line x1="120" y1="420" x2="120" y2="370"/><path d="M120 370 l-4 8 h8 z"/>
+    <text x="176" y="424">+x</text><text x="112" y="362">+y</text>
+    <text x="96" y="437">(0,0)</text>
+  </g>
+</svg>

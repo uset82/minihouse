@@ -1,0 +1,27 @@
+{
+  "name": "@minihouse/dsh-llm-openrouter-free",
+  "version": "0.1.0",
+  "description": "OpenRouter Free-Tier LLM Provider Plugin for DeepSeek Harness (powered by @openrouter/sdk) tailored for the MiniHouse 6x3m project.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@openrouter/sdk": "^1.5.107"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

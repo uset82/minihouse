@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diario · MiniHouse</title>
+<meta name="description" content="Hitos de MiniHouse con fecha y evidencia verificable.">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <p class="marca">MiniHouse</p>
+  <nav aria-label="Secciones">
+    <a href="index.html">Inicio</a>
+    <a href="diseno.html">Diseño</a>
+    <a href="ingenieria.html">Ingeniería</a>
+    <a href="diario.html" aria-current="page">Diario</a>
+  </nav>
+</header>
+<main id="contenido">
+  <h1>Diario del proyecto</h1>
+  <p>Cada hito con fecha y evidencia. Los archivos citados viven en el repositorio del proyecto; en la versión publicada se enlazarán copias autorizadas.</p>
+
+  <article id="fase0">
+    <h2>2026-11-16 · Fase 0 cerrada</h2>
+    <p>Comprobación de carga del contexto en DeepSeek Harness: los seis especialistas y las seis habilidades del proyecto se descubren automáticamente; 87 enlaces internos verificados. La estructura de agentes y habilidades se reconstruyó porque el paquete original llegó incompleto.</p>
+    <p class="fuente">Evidencia: docs/verificacion-fase-0.md · <span class="etiqueta liberado">VERIFICADO</span> (cierre de contexto, no estructural)</p>
+  </article>
+
+  <article>
+    <h2>2026-11-16 · Geometría de referencia R0</h2>
+    <p>Planta y alzados conceptuales acotados, tabla de aberturas, plantillas de inventario de masas y calculadora de centro de gravedad con autoverificación. Nueve preguntas abiertas registradas para el propietario.</p>
+    <p class="fuente">Evidencia: fase1/ (registro, geometría, planos, CSV) y scripts/masas_cg.py --selftest OK · <span class="etiqueta conceptual">CONCEPTUAL</span></p>
+  </article>
+
+  <article>
+    <h2>2026-11-16 · Hallazgo: el ancho de 3 m es transportable</h2>
+    <p>Un módulo de ≤3,25 m de ancho puede viajar como carga indivisible en Noruega según el grupo de vía de la ruta; dispensaciones por VegSak. Fuentes oficiales citadas y fechadas.</p>
+    <p class="fuente">Evidencia: fase1/registro-decisiones.md §D · <span class="etiqueta calculado">VERIFICADO EN FUENTE</span> (normativa, no cálculo)</p>
+  </article>
+
+  <article>
+    <h2>2026-11-16 · Herramientas de cálculo probadas</h2>
+    <p>Solver independiente de barras 3D: reproduce los casos del informe de referencia y pasa pruebas exactas de voladizo y torsión. Comparativa conceptual de izaje alto/bajo/excéntrico ejecutada con masa de ejemplo. IFC de coordinación generado y reimportado: 13 miembros verificados.</p>
+    <p class="fuente">Evidencia: scripts/barras3d.py --selftest OK; fase2/ (resultados, IFC, registro de intercambio) · <span class="etiqueta conceptual">CONCEPTUAL</span></p>
+  </article>
+
+  <article>
+    <h2>2026-11-16 · Protocolo de ensayos redactado a priori</h2>
+    <p>Cinco ensayos (probeta de nudo, chasis, pesaje, izaje instrumentado, recorrido piloto) con estructura de aceptación y parada fijada antes de medir. Valores pendientes del ingeniero responsable.</p>
+    <p class="fuente">Evidencia: fase3/protocolo-ensayos-R0.md · <span class="etiqueta conceptual">BORRADOR</span></p>
+  </article>
+
+  <article>
+    <h2>2026-11-16 · El propietario fija la intención: Bergen, dos aguas</h2>
+    <p>Carlos confirma el mercado (Noruega, principalmente Bergen) y el uso (casita de emergencia, clasificación legal por precisar) y aporta dos imágenes conceptuales como referencia. Consecuencia inmediata: el techo pasa de monopendiente a <strong>dos aguas</strong> de chapa oscura; la pendiente no se acota todavía y no se toman medidas de los renders. El alzado transversal se redibujó como R1-intención.</p>
+    <p class="fuente">Evidencia: fase1/registro-decisiones.md §F, knowledge/sources/S016.md, fase1/planos/alzado-trans-R1.svg · <span class="etiqueta conceptual">INTENCIÓN DOCUMENTADA</span></p>
+  </article>
+
+  <article>
+    <h2>2026-11-16 · Prototipo web (esta página)</h2>
+    <p>Sitio estático sin dependencias con tokens de diseño documentados, etiquetas de estado en cada cifra y planos con texto alternativo. Pendiente: aprobación del encargo, autorización de imágenes y revisión visual humana.</p>
+    <p class="fuente">Evidencia: fase4/brief-web.md y fase4/sitio/ · <span class="etiqueta conceptual">BORRADOR</span></p>
+  </article>
+</main>
+<footer>
+  <p>MiniHouse · documentación conceptual · <a href="index.html">inicio</a></p>
+  <p class="nota">Prototipo de Fase 4 sin publicar.</p>
+</footer>
+</body>
+</html>

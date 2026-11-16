@@ -1,0 +1,5 @@
+id,descripcion,fachada,x_centro_mm,z_antepecho_mm,ancho_mm,alto_mm,goberna_diagonal,revision,estado
+P-01,Puerta entrada,y=3000,4500,0,900,2050,si,R0,conceptual
+V-01,Ventana estar,y=3000,2400,900,1200,1100,si,R0,conceptual
+V-02,Ventana cocina,y=0,2400,1100,1000,900,si,R0,conceptual
+V-03,Ventana bano,y=0,600,1500,500,500,si,R0,conceptual

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="520" viewBox="0 0 640 520" font-family="Consolas, monospace">
+  <rect width="640" height="520" fill="#fdfaf4"/>
+  <text x="320" y="30" text-anchor="middle" font-size="16" fill="#7a2e1d">MiniHouse · ALZADO TRANSVERSAL (x=3000) R0 — CONCEPTUAL — NOT FOR FABRICATION</text>
+  <text x="320" y="50" text-anchor="middle" font-size="11" fill="#555">2026-11-16 · mm · z=0 cara superior del chasis · vista desde +x · +y hacia la izquierda</text>
+
+  <!-- scale 0.12 px/mm => 3000->360 wide; origin y=0 at px=480 (right), y=3000 at px=120 (left); z=0 py=430 -->
+  <!-- walls: low side y=3000 z=3000 -> py=70 ; high side y=0 z=3200 -> py=46 -->
+  <g stroke="#333" fill="none" stroke-width="2">
+    <line x1="120" y1="430" x2="480" y2="430" stroke-width="4"/>
+    <line x1="120" y1="430" x2="120" y2="70"/>
+    <line x1="480" y1="430" x2="480" y2="46"/>
+    <line x1="120" y1="70" x2="480" y2="46"/>
+  </g>
+  <text x="300" y="448" text-anchor="middle" font-size="10" fill="#8a6d3b">chasis (sección SIN DEFINIR) — z=0 · ejes largueros y≈150 / y≈2850</text>
+  <!-- chassis axis marks: y=150 -> px 462 ; y=2850 -> px 138 -->
+  <g stroke="#8a6d3b" stroke-width="3">
+    <line x1="456" y1="430" x2="468" y2="430"/>
+    <line x1="132" y1="430" x2="144" y2="430"/>
+  </g>
+
+  <!-- interior clear 2400 -> py=142 -->
+  <line x1="120" y1="142" x2="480" y2="142" stroke="#999" stroke-dasharray="6 4"/>
+  <text x="488" y="146" font-size="10" fill="#777">libre 2400 (S-02)</text>
+
+  <!-- roof slope annotation -->
+  <text x="300" y="36" text-anchor="middle" font-size="10" fill="#8a6d3b">techo monopendiente (S-03): cumbrera +200 sobre 3000 → ≈3,8°; pendiente final pendiente de nieve/emplazamiento</text>
+
+  <!-- lifting candidates -->
+  <g fill="none" stroke="#a33" stroke-width="2">
+    <circle cx="120" cy="70" r="9"/><circle cx="480" cy="46" r="9"/>
+    <rect x="112" y="422" width="16" height="16"/><rect x="472" y="422" width="16" height="16"/>
+  </g>
+  <text x="500" y="50" font-size="10" fill="#a33">○ alto</text>
+  <text x="500" y="434" font-size="10" fill="#a33">□ bajo</text>
+
+  <!-- dims -->
+  <g stroke="#333" stroke-width="1" fill="#333" font-size="11">
+    <line x1="120" y1="480" x2="480" y2="480"/>
+    <line x1="120" y1="474" x2="120" y2="486"/><line x1="480" y1="474" x2="480" y2="486"/>
+    <text x="300" y="497" text-anchor="middle">3000</text>
+    <line x1="80" y1="70" x2="80" y2="430"/>
+    <line x1="74" y1="70" x2="86" y2="70"/><line x1="74" y1="430" x2="86" y2="430"/>
+    <text x="66" y="250" text-anchor="middle" transform="rotate(-90 66 250)">3000 (borde bajo)</text>
+    <line x1="540" y1="46" x2="540" y2="430"/>
+    <line x1="534" y1="46" x2="546" y2="46"/><line x1="534" y1="430" x2="546" y2="430"/>
+    <text x="556" y="240" text-anchor="middle" transform="rotate(-90 556 240)">3200 (cumbrera, S-01)</text>
+  </g>
+  <!-- y axis -->
+  <g stroke="#2c7a2c" stroke-width="2" fill="#2c7a2c" font-size="11">
+    <line x1="480" y1="430" x2="430" y2="430"/><path d="M430 430 l8 -4 v8 z"/>
+    <text x="418" y="434">+y</text>
+    <text x="486" y="445">(y=0)</text>
+  </g>
+</svg>

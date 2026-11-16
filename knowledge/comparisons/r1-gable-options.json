@@ -1,0 +1,170 @@
+{
+  "revision": "R1-OPTIONS",
+  "state": "CONCEPTUAL — NOT FOR FABRICATION — PITCH NOT SELECTED",
+  "units": "mm, m2, tonnes",
+  "basis": {
+    "length_mm": 6000.0,
+    "width_mm": 3000.0,
+    "ridge_position": "centred at y=1500 mm",
+    "eave_z_mm_screening_datum": 3000.0,
+    "R0_total_height_mm_reference": 3200.0,
+    "esta_wind_ratio_m2_per_t": 1.2
+  },
+  "options": [
+    {
+      "pitch_deg": 5.0,
+      "rise_mm": 131.2,
+      "eave_z_mm": 3000.0,
+      "ridge_z_mm": 3131.2,
+      "delta_vs_R0_height_mm": -68.8,
+      "slope_length_mm": 1505.7,
+      "roof_surface_one_slope_m2": 9.034,
+      "roof_surface_two_slopes_m2": 18.069,
+      "gable_end_area_one_m2": 0.197,
+      "gable_end_area_two_m2": 0.394,
+      "projected_wind_area_long_m2": 18.787,
+      "projected_wind_area_end_m2": 9.197,
+      "projected_wind_area_max_m2": 18.787,
+      "min_mass_for_1p2_m2_per_t_t": 15.66,
+      "max_deck_plus_support_for_4m_mm": 868.8,
+      "loaded_height_examples_mm": [
+        {
+          "deck_plus_support_mm": 900.0,
+          "loaded_height_mm": 4031.2,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1100.0,
+          "loaded_height_mm": 4231.2,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1300.0,
+          "loaded_height_mm": 4431.2,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        }
+      ]
+    },
+    {
+      "pitch_deg": 10.0,
+      "rise_mm": 264.5,
+      "eave_z_mm": 3000.0,
+      "ridge_z_mm": 3264.5,
+      "delta_vs_R0_height_mm": 64.5,
+      "slope_length_mm": 1523.1,
+      "roof_surface_one_slope_m2": 9.139,
+      "roof_surface_two_slopes_m2": 18.278,
+      "gable_end_area_one_m2": 0.397,
+      "gable_end_area_two_m2": 0.793,
+      "projected_wind_area_long_m2": 19.587,
+      "projected_wind_area_end_m2": 9.397,
+      "projected_wind_area_max_m2": 19.587,
+      "min_mass_for_1p2_m2_per_t_t": 16.32,
+      "max_deck_plus_support_for_4m_mm": 735.5,
+      "loaded_height_examples_mm": [
+        {
+          "deck_plus_support_mm": 900.0,
+          "loaded_height_mm": 4164.5,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1100.0,
+          "loaded_height_mm": 4364.5,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1300.0,
+          "loaded_height_mm": 4564.5,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        }
+      ]
+    },
+    {
+      "pitch_deg": 15.0,
+      "rise_mm": 401.9,
+      "eave_z_mm": 3000.0,
+      "ridge_z_mm": 3401.9,
+      "delta_vs_R0_height_mm": 201.9,
+      "slope_length_mm": 1552.9,
+      "roof_surface_one_slope_m2": 9.317,
+      "roof_surface_two_slopes_m2": 18.635,
+      "gable_end_area_one_m2": 0.603,
+      "gable_end_area_two_m2": 1.206,
+      "projected_wind_area_long_m2": 20.412,
+      "projected_wind_area_end_m2": 9.603,
+      "projected_wind_area_max_m2": 20.412,
+      "min_mass_for_1p2_m2_per_t_t": 17.01,
+      "max_deck_plus_support_for_4m_mm": 598.1,
+      "loaded_height_examples_mm": [
+        {
+          "deck_plus_support_mm": 900.0,
+          "loaded_height_mm": 4301.9,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1100.0,
+          "loaded_height_mm": 4501.9,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1300.0,
+          "loaded_height_mm": 4701.9,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        }
+      ]
+    },
+    {
+      "pitch_deg": 20.0,
+      "rise_mm": 546.0,
+      "eave_z_mm": 3000.0,
+      "ridge_z_mm": 3546.0,
+      "delta_vs_R0_height_mm": 346.0,
+      "slope_length_mm": 1596.3,
+      "roof_surface_one_slope_m2": 9.578,
+      "roof_surface_two_slopes_m2": 19.155,
+      "gable_end_area_one_m2": 0.819,
+      "gable_end_area_two_m2": 1.638,
+      "projected_wind_area_long_m2": 21.276,
+      "projected_wind_area_end_m2": 9.819,
+      "projected_wind_area_max_m2": 21.276,
+      "min_mass_for_1p2_m2_per_t_t": 17.73,
+      "max_deck_plus_support_for_4m_mm": 454.0,
+      "loaded_height_examples_mm": [
+        {
+          "deck_plus_support_mm": 900.0,
+          "loaded_height_mm": 4446.0,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1100.0,
+          "loaded_height_mm": 4646.0,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        },
+        {
+          "deck_plus_support_mm": 1300.0,
+          "loaded_height_mm": 4846.0,
+          "status": "ILLUSTRATIVE — carrier to confirm"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Gable roof intent is declared by Carlos's reference images (S016); pitch is NOT dimensioned.",
+    "No pitch is selected here. R1 remains open until C-02 gives pitch/eave/ridge dimensions.",
+    "Eave height 3000 mm is inherited from R0 as a screening datum only; it is not a wall spec.",
+    "Roof area is geometric surface only: no build-up, overlap, waste, purlins or cladding mass.",
+    "Loaded height = module ridge height + deck/support stack. Stack values are illustrative; carrier must confirm.",
+    "4.00 m height screening comes from Statens vegvesen's summary of Directive 96/53/EC; national rules and route still control.",
+    "ESTA wind area is a screening check using projected bounding areas; the crane company must set allowable wind."
+  ],
+  "excluded": [
+    "steel sections",
+    "roof build-up",
+    "overhangs",
+    "purlins",
+    "cladding mass",
+    "trailer deck specification",
+    "legal height limit",
+    "fabrication release"
+  ]
+}

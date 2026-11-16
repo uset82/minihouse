@@ -1,0 +1,44 @@
+# MiniHouse · DeepSeek Harness Profile (OpenRouter Free API via @openrouter/sdk)
+# Usage: dsh --profile web/deepseek-harness/profiles/minihouse-openrouter.yaml
+name: dsh-minihouse-openrouter-free
+extends: dsh-base
+
+workspace:
+  root: ../../..
+  agentInstructions:
+    - AGENTS.md
+    - CLAUDE.md
+    - PROJECT.md
+    - rules.md
+    - skills.md
+  skillsDir:
+    - .agents/skills
+  agentsDir:
+    - .agents/agents
+
+plugins:
+  # Disable direct paid api.deepseek.com adapter
+  "@deepseek-ai/dsh-llm-deepseek": false
+
+  # Enable custom OpenRouter Free SDK adapter (@openrouter/sdk)
+  "@minihouse/dsh-llm-openrouter-free":
+    apiKeyEnv: OPENROUTER_API_KEY
+    defaultModel: openrouter/free
+    httpReferer: https://minihouse.local
+    appTitle: MiniHouse 6x3m Engineering & Web Harness
+    enforceMiniHouseRules: true
+
+  # Optional multi-provider fallback in dsh-llm-pi-ai restricted strictly to :free models
+  "@deepseek-ai/dsh-llm-pi-ai":
+    providers:
+      openrouter:
+        apiKeyEnv: OPENROUTER_API_KEY
+        baseUrl: https://openrouter.ai/api/v1
+        allowPaidModels: false
+        defaultModel: openrouter/free
+        models:
+          - openrouter/free
+          - deepseek/deepseek-r1:free
+          - deepseek/deepseek-chat-v3-0324:free
+          - meta-llama/llama-3.3-70b-instruct:free
+          - qwen/qwen3-235b-a22b:free
