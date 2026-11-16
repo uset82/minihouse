@@ -101,7 +101,9 @@ export function computePeakDeflectionMm(insetMeters: number): {
   let maxAbs = Math.max(Math.abs(midspanMm), Math.abs(tipMm))
   for (let i = 0; i <= 60; i++) {
     const d = Math.abs(computeBeamDeflectionMm((i / 60) * 6.0, insetMeters))
-    if (d > maxAbs) maxAbs = d
+    if (d > maxAbs) {
+      maxAbs = d
+    }
   }
   return { midspanMm, tipMm, maxAbsMm: maxAbs }
 }
@@ -142,6 +144,7 @@ export const MiniHouse3DSimulator = ({
   const [yaw, setYaw] = useState<number>(-0.62)
   const [pitch, setPitch] = useState<number>(0.42)
   const [zoom, setZoom] = useState<number>(1.0)
+  const [viewportTick, setViewportTick] = useState<number>(0)
   const [selectedLayer, setSelectedLayer] = useState<BomLayerItem>(MINIHOUSE_BOM_LAYERS[3])
   const dragRef = useRef<{ active: boolean; x: number; y: number }>({
     active: false,
@@ -152,6 +155,19 @@ export const MiniHouse3DSimulator = ({
   const effectiveInset = mode === 'top-lift' ? 0.0 : mode === 'inset-support' ? insetMeters : 1.2
   const stats = computePeakDeflectionMm(effectiveInset)
 
+  // Re-render canvas sharply on container resize (e.g. when opening the AI drawer)
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas || typeof ResizeObserver === 'undefined') {
+      return
+    }
+    const observer = new ResizeObserver(() => {
+      setViewportTick((t) => t + 1)
+    })
+    observer.observe(canvas)
+    return () => observer.disconnect()
+  }, [])
+
   // Smoothly animate explodeFactor when mode changes
   useEffect(() => {
     const target = mode === 'exploded' ? 1 : 0
@@ -159,7 +175,9 @@ export const MiniHouse3DSimulator = ({
     const step = () => {
       setExplodeFactor((prev) => {
         const diff = target - prev
-        if (Math.abs(diff) < 0.01) return target
+        if (Math.abs(diff) < 0.01) {
+          return target
+        }
         raf = requestAnimationFrame(step)
         return prev + diff * 0.14
       })
@@ -171,9 +189,13 @@ export const MiniHouse3DSimulator = ({
   // Render interactive 3D viewport
   useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return
+    if (!canvas) {
+      return
+    }
     const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    if (!ctx) {
+      return
+    }
 
     const dpr = window.devicePixelRatio || 1
     const width = canvas.clientWidth || 720
@@ -411,7 +433,7 @@ export const MiniHouse3DSimulator = ({
     ctx.font = '11px ui-monospace, SFMono-Regular, Consolas, monospace'
     ctx.fillStyle = '#94A3B8'
     ctx.fillText('6000 × 3000 mm · Drag to rotate 3D · Scroll/buttons to zoom', 16, height - 14)
-  }, [mode, effectiveInset, explodeFactor, yaw, pitch, zoom])
+  }, [mode, effectiveInset, explodeFactor, yaw, pitch, zoom, viewportTick])
 
   return (
     <div
@@ -496,7 +518,9 @@ export const MiniHouse3DSimulator = ({
             dragRef.current = { active: true, x: e.clientX, y: e.clientY }
           }}
           onMouseMove={(e) => {
-            if (!dragRef.current.active) return
+            if (!dragRef.current.active) {
+              return
+            }
             const dx = e.clientX - dragRef.current.x
             const dy = e.clientY - dragRef.current.y
             dragRef.current = { active: true, x: e.clientX, y: e.clientY }

@@ -1,0 +1,19 @@
+{
+  "name": "minihouse",
+  "version": "0.1.0",
+  "description": "MiniHouse 6x3m modular steel & reclaimed wood project, 3D lifting simulator, and OpenRouter Free AI assistant.",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.13.1",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "pnpm --filter chat-demo dev",
+    "build": "node scripts/build-web.mjs",
+    "start": "node server.mjs",
+    "test": "pnpm --filter chat-demo test && pnpm --filter @minihouse/dsh-llm-openrouter-free test",
+    "type": "pnpm --filter chat-demo type && pnpm --filter @minihouse/dsh-llm-openrouter-free build",
+    "lint": "pnpm --filter chat-demo lint"
+  }
+}

@@ -1,3 +1,0 @@
-packages:
-  - "chat-demo"
-  - "deepseek-harness/packages/llm/*"

@@ -4,16 +4,11 @@
  * 声明 deepseek_web_search / deepseek_read_url 或设置 safety_check.level 为 high 时进入扩展模式。
  */
 
-export type ChatModel =
-  | 'openrouter/free'
-  | 'deepseek/deepseek-r1:free'
-  | 'deepseek/deepseek-chat-v3-0324:free'
-  | 'deepseek/deepseek-chat:free'
-  | 'meta-llama/llama-3.3-70b-instruct:free'
-  | 'qwen/qwen3-235b-a22b:free'
-  | 'deepseek-flash'
-  | 'deepseek-v4-pro'
-  | (string & {})
+/**
+ * OpenRouter zero-cost model slug (e.g. 'openrouter/free', 'deepseek/deepseek-r1:free',
+ * 'deepseek/deepseek-chat-v3-0324:free', or legacy 'deepseek-flash').
+ */
+export type ChatModel = string
 
 // ---------- 响应：内容块 ----------
 
