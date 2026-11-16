@@ -36,8 +36,6 @@ const hasRspackRoot = fs.existsSync(
 if (!hasRspackLocal && !hasRspackRoot) {
   if (hasCommand('pnpm')) {
     run('pnpm install --prod=false --frozen-lockfile', rootDir, 'development')
-  } else if (hasCommand('corepack')) {
-    run('corepack pnpm install --prod=false --frozen-lockfile', rootDir, 'development')
   } else {
     run('npm install --include=dev --no-audit --no-fund', chatDemoDir, 'development')
   }
