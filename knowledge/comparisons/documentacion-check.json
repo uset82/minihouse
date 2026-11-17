@@ -1,0 +1,247 @@
+{
+  "revision": "DOCUMENTACION-CHECK",
+  "state": "AUDIT — NOT A COMPLIANCE STATEMENT, NOT A HANDBOOK",
+  "basis": {
+    "sources": [
+      "S029"
+    ],
+    "state_marker": "**State:**"
+  },
+  "audits": [
+    {
+      "file": "fase1/verificacion-luz-diurna.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "daylight §13-7"
+    },
+    {
+      "file": "fase1/verificacion-incendio.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "fire chapter 11"
+    },
+    {
+      "file": "fase1/verificacion-ventanas.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "escape windows §11-13 vs daylight §13-7"
+    },
+    {
+      "file": "fase1/verificacion-altura-libre.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": "200 mm",
+      "label": "room height §12-7"
+    },
+    {
+      "file": "fase1/cribado-riesgos-naturales.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": "300 mm",
+      "label": "natural hazards chapter 7"
+    },
+    {
+      "file": "fase1/verificacion-envolvente.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "envelope §14-3 / §13-13"
+    },
+    {
+      "file": "fase1/verificacion-seccion.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "integrated section"
+    },
+    {
+      "file": "fase1/opciones-seccion-R2.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": "100 mm",
+      "label": "R2 section options"
+    },
+    {
+      "file": "fase1/verificacion-instalaciones.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "installations chapters 9/15/16/17"
+    },
+    {
+      "file": "fase1/verificacion-condensacion-union.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "condensation at the junction"
+    },
+    {
+      "file": "fase1/verificacion-puente-2d.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "2D conduction at the floor-edge junction"
+    },
+    {
+      "file": "knowledge/comparisons/lift-geometry-screen.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "lift geometry"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement": "§14-3 U wall 0.22 / roof 0.18 / floor 0.18 / 1.5 h-1",
+      "kind": "given number",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§11-4(3) no. 4 R 15",
+      "kind": "given number",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§12-7(2)(c) 2.2 m room height",
+      "kind": "given number",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§11-14 0.86 m free width",
+      "kind": "given number",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§15-6(2) 0.90 m backflow head",
+      "kind": "given number",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§9-6 10 tonnes waste",
+      "kind": "given number",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§7-2 F2 = 1/200",
+      "kind": "given class",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§7-3 S2 = 1/1000",
+      "kind": "given class",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§15-8(1) 100-year climate-adjusted stormwater",
+      "kind": "given basis",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§13-7 Ag >= 0.07*ABRA/LT",
+      "kind": "given formula",
+      "instrument": "meet it"
+    },
+    {
+      "requirement": "§12-7(2)(d) parts of a room may be lower",
+      "kind": "function, no fraction",
+      "instrument": "analysis"
+    },
+    {
+      "requirement": "§13-1(1) satisfactory air quality",
+      "kind": "function, no quantity",
+      "instrument": "analysis"
+    },
+    {
+      "requirement": "§11-4(3) no. 6 whether the roof is decisive for stability",
+      "kind": "function",
+      "instrument": "analysis"
+    },
+    {
+      "requirement": "§11-13(4) whether one escape window suffices",
+      "kind": "scope interpretation",
+      "instrument": "determination"
+    },
+    {
+      "requirement": "§11-9 whether the cabin is an escape route",
+      "kind": "scope interpretation",
+      "instrument": "determination"
+    }
+  ],
+  "counts": {
+    "given": 10,
+    "analysis": 3,
+    "determination": 2
+  },
+  "fdv": {
+    "categories": [
+      "building products and surfaces to clean and maintain",
+      "sanitary installations",
+      "heating installations",
+      "ventilation installations",
+      "electrical installations",
+      "fire alarm and extinguishing installations"
+    ],
+    "present": 6,
+    "exemption_examples": [
+      "smaller garage",
+      "boathouse (naust)",
+      "outhouse (uthus)"
+    ],
+    "exemption_applies": false
+  },
+  "declaration": {
+    "file": "fase1/declaracion-de-margenes.md",
+    "exists": true,
+    "covers_all": true,
+    "missing": [],
+    "markers": {
+      "definition": true,
+      "undefined_allowed": true,
+      "double_counting": true,
+      "r2_as_requirement": true,
+      "tally": true
+    },
+    "tally": {
+      "rows": 13,
+      "positive": 2,
+      "negative": 6,
+      "undefined": 3,
+      "zero": 2,
+      "unclassified": []
+    }
+  },
+  "excluded": [
+    "compliance statement",
+    "produksjonsunderlag",
+    "execution documentation",
+    "FDV file",
+    "legal opinion on which ytelse applies"
+  ]
+}

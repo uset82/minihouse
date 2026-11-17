@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "WebDesigner",
+    "description": "Pide un sitio web o una app en el chat y el agente la construye con el pipeline de WebDesigner: inicio y selección de stack mediante herramientas MCP (wd_*), y después habilidades de diseño para tokens, elevación con sombras suaves, motion vectorial 2D, GSAP, Three.js, auditorías anti-slop y pulido de accesibilidad. La salida del motor va a una carpeta fija webdesigner/ dentro del espacio de trabajo MiniHouse; un proyecto activo a la vez.",
+    "detail": "docs/DETAIL.md"
+  }
+}

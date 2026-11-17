@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniHouse · Retning B, Hytte '74 (Style Tile)</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 24px;
+      background: #D8C8B5;
+      color: #241A13;
+      font: 400 1rem / 1.55 "Segoe UI", system-ui, sans-serif;
+    }
+    .header-bar {
+      max-width: 1680px;
+      margin: 0 auto 40px;
+      background: #F6EBD9;
+      padding: 24px;
+      border: 1px solid #B8A28C;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-bar h1 {
+      font-family: "Caprasimo", "Cooper Black", Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin: 0 0 4px;
+      color: #241A13;
+    }
+    .header-bar p { margin: 0; color: #5A4535; font-size: 0.875rem; }
+    .badge {
+      background: #B3410E;
+      color: #FFFFFF;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+    .frames {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 40px;
+      justify-content: center;
+      max-width: 1720px;
+      margin: 0 auto;
+    }
+    .frame p { margin: 0 0 8px; font-weight: 600; font-size: 0.875rem; }
+    iframe { display: block; border: 1px solid #B8A28C; background: #F6EBD9; }
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <div>
+      <h1>Retning B · Hytte '74</h1>
+      <p>Varm furubunn (#F6EBD9), dyp nøttebrun tekst (#241A13), rya-oransje (#B3410E, 5.71:1) knapper, Caprasimo + Jost. Responsive visninger testet i ekte 360 px og 1280 px viewports.</p>
+    </div>
+    <div class="badge">Retning B</div>
+  </div>
+  <div class="frames">
+    <div class="frame">
+      <p>Mobilvisning (360 px)</p>
+      <iframe src="tile-b.html" width="360" height="2300" title="Retning B mobilvisning"></iframe>
+    </div>
+    <div class="frame">
+      <p>Desktopvisning (1280 px)</p>
+      <iframe src="tile-b.html" width="1280" height="1650" title="Retning B desktopvisning"></iframe>
+    </div>
+  </div>
+</body>
+</html>

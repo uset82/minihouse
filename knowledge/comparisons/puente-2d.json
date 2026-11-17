@@ -1,0 +1,288 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01",
+  "conditions": {
+    "t_in": 20.0,
+    "t_out": -10.0,
+    "r_si": 0.13,
+    "r_se": 0.04,
+    "cell_mm": 2.0,
+    "l_mm": 400.0,
+    "h_mm": 400.0
+  },
+  "one_d": {
+    "f_rsi_bare_steel": 0.236,
+    "required_added_r": 0.358,
+    "f_crit_mould": 0.754
+  },
+  "wall_u": 0.1594,
+  "floor_u": 0.1363,
+  "variants": [
+    {
+      "tag": "A",
+      "name": "bare corner, no steel",
+      "steel_mm": 0.0,
+      "q_w_per_m": 4.370663907415488,
+      "l_2d_w_per_mk": 0.1456887969138496,
+      "t_surface_min_c": 17.622494946737458,
+      "f_rsi": 0.9207498315579152,
+      "psi_w_per_mk": 0.027382129075526312,
+      "pad_mm": 0.0,
+      "wrapped": false,
+      "joist_mm": 0.0,
+      "joist_x0_mm": -48.0,
+      "cell_mm": 2.0,
+      "l_mm": 400.0,
+      "h_mm": 400.0,
+      "coldest": {
+        "t_surface_c": 17.622494946737458,
+        "x_mm": 1.0,
+        "z_mm": 1.0,
+        "lam": 0.13
+      }
+    },
+    {
+      "tag": "B",
+      "name": "steel plate at the corner",
+      "steel_mm": 10.0,
+      "q_w_per_m": 9.390892345158456,
+      "l_2d_w_per_mk": 0.3130297448386152,
+      "t_surface_min_c": 1.3184112436098587,
+      "f_rsi": 0.3772803747869953,
+      "psi_w_per_mk": 0.1947230770002919,
+      "pad_mm": 0.0,
+      "wrapped": false,
+      "joist_mm": 0.0,
+      "joist_x0_mm": -48.0,
+      "cell_mm": 2.0,
+      "l_mm": 400.0,
+      "h_mm": 400.0,
+      "coldest": {
+        "t_surface_c": 1.3184112436098587,
+        "x_mm": -5.0,
+        "z_mm": -1.0,
+        "lam": 50.0
+      }
+    },
+    {
+      "tag": "C",
+      "name": "steel plate + 9 mm PU pad",
+      "steel_mm": 10.0,
+      "pad_mm": 9.0,
+      "q_w_per_m": 7.900084045495171,
+      "l_2d_w_per_mk": 0.26333613484983903,
+      "t_surface_min_c": 10.799658600759269,
+      "f_rsi": 0.6933219533586423,
+      "psi_w_per_mk": 0.14502946701151576,
+      "wrapped": false,
+      "joist_mm": 0.0,
+      "joist_x0_mm": -48.0,
+      "cell_mm": 2.0,
+      "l_mm": 400.0,
+      "h_mm": 400.0,
+      "coldest": {
+        "t_surface_c": 10.799658600759269,
+        "x_mm": 1.0,
+        "z_mm": 1.0,
+        "lam": 0.13
+      }
+    },
+    {
+      "tag": "D",
+      "name": "steel plate + 20 mm PU pad",
+      "steel_mm": 10.0,
+      "pad_mm": 20.0,
+      "q_w_per_m": 6.980645560157407,
+      "l_2d_w_per_mk": 0.2326881853385802,
+      "t_surface_min_c": 12.633343524326989,
+      "f_rsi": 0.754444784144233,
+      "psi_w_per_mk": 0.11438151750025694,
+      "wrapped": false,
+      "joist_mm": 0.0,
+      "joist_x0_mm": -48.0,
+      "cell_mm": 2.0,
+      "l_mm": 400.0,
+      "h_mm": 400.0,
+      "coldest": {
+        "t_surface_c": 12.633343524326989,
+        "x_mm": 1.0,
+        "z_mm": 1.0,
+        "lam": 0.13
+      }
+    },
+    {
+      "tag": "E",
+      "name": "steel wrapped below the floor",
+      "steel_mm": 10.0,
+      "wrapped": true,
+      "q_w_per_m": 4.371165822256213,
+      "l_2d_w_per_mk": 0.14570552740854043,
+      "t_surface_min_c": 17.62244146269832,
+      "f_rsi": 0.9207480487566106,
+      "psi_w_per_mk": 0.02739885957021715,
+      "pad_mm": 0.0,
+      "joist_mm": 0.0,
+      "joist_x0_mm": -48.0,
+      "cell_mm": 2.0,
+      "l_mm": 400.0,
+      "h_mm": 400.0,
+      "coldest": {
+        "t_surface_c": 17.62244146269832,
+        "x_mm": 1.0,
+        "z_mm": 1.0,
+        "lam": 0.13
+      }
+    },
+    {
+      "tag": "F",
+      "name": "20 mm steel plate at the corner",
+      "steel_mm": 20.0,
+      "q_w_per_m": 11.23010807293415,
+      "l_2d_w_per_mk": 0.3743369357644717,
+      "t_surface_min_c": 0.2069424220147198,
+      "f_rsi": 0.34023141406715735,
+      "psi_w_per_mk": 0.25603026792614847,
+      "pad_mm": 0.0,
+      "wrapped": false,
+      "joist_mm": 0.0,
+      "joist_x0_mm": -48.0,
+      "cell_mm": 2.0,
+      "l_mm": 400.0,
+      "h_mm": 400.0,
+      "coldest": {
+        "t_surface_c": 0.2069424220147198,
+        "x_mm": -9.0,
+        "z_mm": -1.0,
+        "lam": 50.0
+      }
+    }
+  ],
+  "pad_sweep": [
+    {
+      "pad_mm": 0.0,
+      "f_rsi": 0.3772803747869953,
+      "psi": 0.1947230770002919,
+      "governing": "steel"
+    },
+    {
+      "pad_mm": 3.0,
+      "f_rsi": 0.5895690810341208,
+      "psi": 0.16689569906692625,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 6.0,
+      "f_rsi": 0.6363101018548918,
+      "psi": 0.1585825271446633,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 9.0,
+      "f_rsi": 0.6933219533586423,
+      "psi": 0.14502946701151576,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 12.0,
+      "f_rsi": 0.7065779477207508,
+      "psi": 0.13898761661018727,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 15.0,
+      "f_rsi": 0.7301799744677472,
+      "psi": 0.12731037209874538,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 20.0,
+      "f_rsi": 0.754444784144233,
+      "psi": 0.11438151750025694,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 30.0,
+      "f_rsi": 0.8133404919175361,
+      "psi": 0.08416259196103748,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 45.0,
+      "f_rsi": 0.8477345992883212,
+      "psi": 0.06626086864906569,
+      "governing": "timber corner"
+    },
+    {
+      "pad_mm": 60.0,
+      "f_rsi": 0.8634935111664704,
+      "psi": 0.05714278138459067,
+      "governing": "timber corner"
+    }
+  ],
+  "joist": {
+    "joist_mm": 48.0,
+    "fraction": 0.12,
+    "u_clear": 0.1363,
+    "u_joisted": 0.1716,
+    "shift_w_per_mk": 0.0141,
+    "rows": [
+      {
+        "x0_mm": -48.0,
+        "distance_mm": 48.0,
+        "f_rsi": 0.9058,
+        "psi_raw": 0.0416,
+        "psi_junction": 0.0274,
+        "coldest": {
+          "t_surface_c": 17.17324504266816,
+          "x_mm": -1.0,
+          "z_mm": -1.0,
+          "lam": 0.13
+        }
+      },
+      {
+        "x0_mm": -148.0,
+        "distance_mm": 148.0,
+        "f_rsi": 0.9203,
+        "psi_raw": 0.0424,
+        "psi_junction": 0.0282,
+        "coldest": {
+          "t_surface_c": 17.610232530230576,
+          "x_mm": 1.0,
+          "z_mm": 1.0,
+          "lam": 0.13
+        }
+      },
+      {
+        "x0_mm": -248.0,
+        "distance_mm": 248.0,
+        "f_rsi": 0.9207,
+        "psi_raw": 0.0424,
+        "psi_junction": 0.0283,
+        "coldest": {
+          "t_surface_c": 17.620612860611622,
+          "x_mm": 1.0,
+          "z_mm": 1.0,
+          "lam": 0.13
+        }
+      },
+      {
+        "x0_mm": -348.0,
+        "distance_mm": 348.0,
+        "f_rsi": 0.9207,
+        "psi_raw": 0.0424,
+        "psi_junction": 0.0283,
+        "coldest": {
+          "t_surface_c": 17.62193791566286,
+          "x_mm": 1.0,
+          "z_mm": 1.0,
+          "lam": 0.13
+        }
+      }
+    ]
+  },
+  "heat": {
+    "floor_perimeter_m": 18.0,
+    "plate_w_per_k": 3.505,
+    "wrapped_w_per_k": 0.493,
+    "difference_w_per_k": 3.012
+  }
+}

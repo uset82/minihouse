@@ -1,0 +1,1081 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01/C-02",
+  "width_mm": 3000.0,
+  "half_width_mm": 1500.0,
+  "target_free_mm": 2200.0,
+  "transport_limit_mm": 4000.0,
+  "rows": [
+    {
+      "pitch_deg": 5.0,
+      "rise_mm": 131.2,
+      "stack_mm": 900.0,
+      "max_eave_for_4m_mm": 2968.8,
+      "max_pitch_full_coverage_deg": {
+        "100": 28.07,
+        "150": 26.57,
+        "200": 25.02,
+        "250": 23.43
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2431.2,
+          "transport_mm": 3331.2,
+          "margin_mm": 668.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2267.2,
+          "ridge_mm": 2398.4,
+          "transport_mm": 3298.4,
+          "margin_mm": 701.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2247.5,
+          "ridge_mm": 2378.7,
+          "transport_mm": 3278.7,
+          "margin_mm": 721.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2481.2,
+          "transport_mm": 3381.2,
+          "margin_mm": 618.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2317.2,
+          "ridge_mm": 2448.4,
+          "transport_mm": 3348.4,
+          "margin_mm": 651.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2297.5,
+          "ridge_mm": 2428.7,
+          "transport_mm": 3328.7,
+          "margin_mm": 671.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2531.2,
+          "transport_mm": 3431.2,
+          "margin_mm": 568.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2367.2,
+          "ridge_mm": 2498.4,
+          "transport_mm": 3398.4,
+          "margin_mm": 601.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2347.5,
+          "ridge_mm": 2478.7,
+          "transport_mm": 3378.7,
+          "margin_mm": 621.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2581.2,
+          "transport_mm": 3481.2,
+          "margin_mm": 518.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2417.2,
+          "ridge_mm": 2548.4,
+          "transport_mm": 3448.4,
+          "margin_mm": 551.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2397.5,
+          "ridge_mm": 2528.7,
+          "transport_mm": 3428.7,
+          "margin_mm": 571.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 5.0,
+      "rise_mm": 131.2,
+      "stack_mm": 1100.0,
+      "max_eave_for_4m_mm": 2768.8,
+      "max_pitch_full_coverage_deg": {
+        "100": 21.8,
+        "150": 20.14,
+        "200": 18.43,
+        "250": 16.7
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2431.2,
+          "transport_mm": 3531.2,
+          "margin_mm": 468.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2267.2,
+          "ridge_mm": 2398.4,
+          "transport_mm": 3498.4,
+          "margin_mm": 501.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2247.5,
+          "ridge_mm": 2378.7,
+          "transport_mm": 3478.7,
+          "margin_mm": 521.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2481.2,
+          "transport_mm": 3581.2,
+          "margin_mm": 418.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2317.2,
+          "ridge_mm": 2448.4,
+          "transport_mm": 3548.4,
+          "margin_mm": 451.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2297.5,
+          "ridge_mm": 2428.7,
+          "transport_mm": 3528.7,
+          "margin_mm": 471.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2531.2,
+          "transport_mm": 3631.2,
+          "margin_mm": 368.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2367.2,
+          "ridge_mm": 2498.4,
+          "transport_mm": 3598.4,
+          "margin_mm": 401.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2347.5,
+          "ridge_mm": 2478.7,
+          "transport_mm": 3578.7,
+          "margin_mm": 421.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2581.2,
+          "transport_mm": 3681.2,
+          "margin_mm": 318.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2417.2,
+          "ridge_mm": 2548.4,
+          "transport_mm": 3648.4,
+          "margin_mm": 351.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2397.5,
+          "ridge_mm": 2528.7,
+          "transport_mm": 3628.7,
+          "margin_mm": 371.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 10.0,
+      "rise_mm": 264.5,
+      "stack_mm": 900.0,
+      "max_eave_for_4m_mm": 2835.5,
+      "max_pitch_full_coverage_deg": {
+        "100": 28.07,
+        "150": 26.57,
+        "200": 25.02,
+        "250": 23.43
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2564.5,
+          "transport_mm": 3464.5,
+          "margin_mm": 535.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2233.9,
+          "ridge_mm": 2498.4,
+          "transport_mm": 3398.4,
+          "margin_mm": 601.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2194.2,
+          "ridge_mm": 2458.7,
+          "transport_mm": 3358.7,
+          "margin_mm": 641.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2614.5,
+          "transport_mm": 3514.5,
+          "margin_mm": 485.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2283.9,
+          "ridge_mm": 2548.4,
+          "transport_mm": 3448.4,
+          "margin_mm": 551.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2244.2,
+          "ridge_mm": 2508.7,
+          "transport_mm": 3408.7,
+          "margin_mm": 591.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2664.5,
+          "transport_mm": 3564.5,
+          "margin_mm": 435.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2333.9,
+          "ridge_mm": 2598.4,
+          "transport_mm": 3498.4,
+          "margin_mm": 501.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2294.2,
+          "ridge_mm": 2558.7,
+          "transport_mm": 3458.7,
+          "margin_mm": 541.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2714.5,
+          "transport_mm": 3614.5,
+          "margin_mm": 385.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2383.9,
+          "ridge_mm": 2648.4,
+          "transport_mm": 3548.4,
+          "margin_mm": 451.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2344.2,
+          "ridge_mm": 2608.7,
+          "transport_mm": 3508.7,
+          "margin_mm": 491.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 10.0,
+      "rise_mm": 264.5,
+      "stack_mm": 1100.0,
+      "max_eave_for_4m_mm": 2635.5,
+      "max_pitch_full_coverage_deg": {
+        "100": 21.8,
+        "150": 20.14,
+        "200": 18.43,
+        "250": 16.7
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2564.5,
+          "transport_mm": 3664.5,
+          "margin_mm": 335.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2233.9,
+          "ridge_mm": 2498.4,
+          "transport_mm": 3598.4,
+          "margin_mm": 401.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2194.2,
+          "ridge_mm": 2458.7,
+          "transport_mm": 3558.7,
+          "margin_mm": 441.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2614.5,
+          "transport_mm": 3714.5,
+          "margin_mm": 285.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2283.9,
+          "ridge_mm": 2548.4,
+          "transport_mm": 3648.4,
+          "margin_mm": 351.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2244.2,
+          "ridge_mm": 2508.7,
+          "transport_mm": 3608.7,
+          "margin_mm": 391.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2664.5,
+          "transport_mm": 3764.5,
+          "margin_mm": 235.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2333.9,
+          "ridge_mm": 2598.4,
+          "transport_mm": 3698.4,
+          "margin_mm": 301.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2294.2,
+          "ridge_mm": 2558.7,
+          "transport_mm": 3658.7,
+          "margin_mm": 341.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2714.5,
+          "transport_mm": 3814.5,
+          "margin_mm": 185.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2383.9,
+          "ridge_mm": 2648.4,
+          "transport_mm": 3748.4,
+          "margin_mm": 251.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2344.2,
+          "ridge_mm": 2608.7,
+          "transport_mm": 3708.7,
+          "margin_mm": 291.3,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 15.0,
+      "rise_mm": 401.9,
+      "stack_mm": 900.0,
+      "max_eave_for_4m_mm": 2698.1,
+      "max_pitch_full_coverage_deg": {
+        "100": 28.07,
+        "150": 26.57,
+        "200": 25.02,
+        "250": 23.43
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2701.9,
+          "transport_mm": 3601.9,
+          "margin_mm": 398.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2199.5,
+          "ridge_mm": 2601.4,
+          "transport_mm": 3501.4,
+          "margin_mm": 498.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2139.2,
+          "ridge_mm": 2541.2,
+          "transport_mm": 3441.2,
+          "margin_mm": 558.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2751.9,
+          "transport_mm": 3651.9,
+          "margin_mm": 348.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2249.5,
+          "ridge_mm": 2651.4,
+          "transport_mm": 3551.4,
+          "margin_mm": 448.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2189.2,
+          "ridge_mm": 2591.2,
+          "transport_mm": 3491.2,
+          "margin_mm": 508.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2801.9,
+          "transport_mm": 3701.9,
+          "margin_mm": 298.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2299.5,
+          "ridge_mm": 2701.4,
+          "transport_mm": 3601.4,
+          "margin_mm": 398.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2239.2,
+          "ridge_mm": 2641.2,
+          "transport_mm": 3541.2,
+          "margin_mm": 458.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2851.9,
+          "transport_mm": 3751.9,
+          "margin_mm": 248.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2349.5,
+          "ridge_mm": 2751.4,
+          "transport_mm": 3651.4,
+          "margin_mm": 348.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2289.2,
+          "ridge_mm": 2691.2,
+          "transport_mm": 3591.2,
+          "margin_mm": 408.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 15.0,
+      "rise_mm": 401.9,
+      "stack_mm": 1100.0,
+      "max_eave_for_4m_mm": 2498.1,
+      "max_pitch_full_coverage_deg": {
+        "100": 21.8,
+        "150": 20.14,
+        "200": 18.43,
+        "250": 16.7
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2701.9,
+          "transport_mm": 3801.9,
+          "margin_mm": 198.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2199.5,
+          "ridge_mm": 2601.4,
+          "transport_mm": 3701.4,
+          "margin_mm": 298.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2139.2,
+          "ridge_mm": 2541.2,
+          "transport_mm": 3641.2,
+          "margin_mm": 358.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2751.9,
+          "transport_mm": 3851.9,
+          "margin_mm": 148.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2249.5,
+          "ridge_mm": 2651.4,
+          "transport_mm": 3751.4,
+          "margin_mm": 248.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2189.2,
+          "ridge_mm": 2591.2,
+          "transport_mm": 3691.2,
+          "margin_mm": 308.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2801.9,
+          "transport_mm": 3901.9,
+          "margin_mm": 98.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2299.5,
+          "ridge_mm": 2701.4,
+          "transport_mm": 3801.4,
+          "margin_mm": 198.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2239.2,
+          "ridge_mm": 2641.2,
+          "transport_mm": 3741.2,
+          "margin_mm": 258.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2851.9,
+          "transport_mm": 3951.9,
+          "margin_mm": 48.1,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2349.5,
+          "ridge_mm": 2751.4,
+          "transport_mm": 3851.4,
+          "margin_mm": 148.6,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2289.2,
+          "ridge_mm": 2691.2,
+          "transport_mm": 3791.2,
+          "margin_mm": 208.8,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 20.0,
+      "rise_mm": 546.0,
+      "stack_mm": 900.0,
+      "max_eave_for_4m_mm": 2554.0,
+      "max_pitch_full_coverage_deg": {
+        "100": 28.07,
+        "150": 26.57,
+        "200": 25.02,
+        "250": 23.43
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2846.0,
+          "transport_mm": 3746.0,
+          "margin_mm": 254.0,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2163.5,
+          "ridge_mm": 2709.5,
+          "transport_mm": 3609.5,
+          "margin_mm": 390.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2081.6,
+          "ridge_mm": 2627.6,
+          "transport_mm": 3527.6,
+          "margin_mm": 472.4,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2896.0,
+          "transport_mm": 3796.0,
+          "margin_mm": 204.0,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2213.5,
+          "ridge_mm": 2759.5,
+          "transport_mm": 3659.5,
+          "margin_mm": 340.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2131.6,
+          "ridge_mm": 2677.6,
+          "transport_mm": 3577.6,
+          "margin_mm": 422.4,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2946.0,
+          "transport_mm": 3846.0,
+          "margin_mm": 154.0,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2263.5,
+          "ridge_mm": 2809.5,
+          "transport_mm": 3709.5,
+          "margin_mm": 290.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2181.6,
+          "ridge_mm": 2727.6,
+          "transport_mm": 3627.6,
+          "margin_mm": 372.4,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2996.0,
+          "transport_mm": 3896.0,
+          "margin_mm": 104.0,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2313.5,
+          "ridge_mm": 2859.5,
+          "transport_mm": 3759.5,
+          "margin_mm": 240.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2231.6,
+          "ridge_mm": 2777.6,
+          "transport_mm": 3677.6,
+          "margin_mm": 322.4,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        }
+      ]
+    },
+    {
+      "pitch_deg": 20.0,
+      "rise_mm": 546.0,
+      "stack_mm": 1100.0,
+      "max_eave_for_4m_mm": 2354.0,
+      "max_pitch_full_coverage_deg": {
+        "100": 21.8,
+        "150": 20.14,
+        "200": 18.43,
+        "250": 16.7
+      },
+      "cases": [
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2300.0,
+          "ridge_mm": 2846.0,
+          "transport_mm": 3946.0,
+          "margin_mm": 54.0,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2163.5,
+          "ridge_mm": 2709.5,
+          "transport_mm": 3809.5,
+          "margin_mm": 190.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 100.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2081.6,
+          "ridge_mm": 2627.6,
+          "transport_mm": 3727.6,
+          "margin_mm": 272.4,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2350.0,
+          "ridge_mm": 2896.0,
+          "transport_mm": 3996.0,
+          "margin_mm": 4.0,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2213.5,
+          "ridge_mm": 2759.5,
+          "transport_mm": 3859.5,
+          "margin_mm": 140.5,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 150.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2131.6,
+          "ridge_mm": 2677.6,
+          "transport_mm": 3777.6,
+          "margin_mm": 222.4,
+          "fits": true,
+          "coverage_at_eave_cap": 1.0
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2400.0,
+          "ridge_mm": 2946.0,
+          "transport_mm": 4046.0,
+          "margin_mm": -46.0,
+          "fits": false,
+          "coverage_at_eave_cap": 0.916
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2263.5,
+          "ridge_mm": 2809.5,
+          "transport_mm": 3909.5,
+          "margin_mm": 90.5,
+          "fits": true,
+          "coverage_at_eave_cap": 0.916
+        },
+        {
+          "floor_z_mm": 200.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2181.6,
+          "ridge_mm": 2727.6,
+          "transport_mm": 3827.6,
+          "margin_mm": 172.4,
+          "fits": true,
+          "coverage_at_eave_cap": 0.916
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 1.0,
+          "required_eave_mm": 2450.0,
+          "ridge_mm": 2996.0,
+          "transport_mm": 4096.0,
+          "margin_mm": -96.0,
+          "fits": false,
+          "coverage_at_eave_cap": 0.824
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.75,
+          "required_eave_mm": 2313.5,
+          "ridge_mm": 2859.5,
+          "transport_mm": 3959.5,
+          "margin_mm": 40.5,
+          "fits": true,
+          "coverage_at_eave_cap": 0.824
+        },
+        {
+          "floor_z_mm": 250.0,
+          "coverage": 0.6,
+          "required_eave_mm": 2231.6,
+          "ridge_mm": 2777.6,
+          "transport_mm": 3877.6,
+          "margin_mm": 122.4,
+          "fits": true,
+          "coverage_at_eave_cap": 0.824
+        }
+      ]
+    }
+  ]
+}

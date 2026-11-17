@@ -1,0 +1,126 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01. Not a ventilation design, not a compliance statement, not a mould-risk analysis.",
+  "basis": {
+    "sources": [
+      "S011",
+      "S012",
+      "S023"
+    ],
+    "floor_area_m2": 18.0
+  },
+  "balance": {
+    "volume": {
+      "eave_mm": 1778.0,
+      "rise_mm": 546.0,
+      "mean_height_mm": 2051.0,
+      "volume_m3": 36.92
+    },
+    "rates": {
+      "whole_dwelling_m3h": 21.6,
+      "bed_places_m3h": 52.0,
+      "governing_m3h": 52.0,
+      "extract_basic_m3h": 90.0,
+      "extract_boosted_one_m3h": 108.0,
+      "extract_boosted_all_m3h": 216.0,
+      "basis": "§13-2 rates adopted voluntarily; they do not bind on this route",
+      "note": "supply must equal extract in boosted mode (S012); the source does not say whether both wet rooms boost at once, so both readings are carried"
+    },
+    "rows": [
+      {
+        "mode": "basic",
+        "extract_m3h": 90.0,
+        "leakage_at_50pa_m3h": 55.4,
+        "pressure_pa": 105.5,
+        "deliverable": true,
+        "supplied_by": "envelope leakage"
+      },
+      {
+        "mode": "boosted, one room",
+        "extract_m3h": 108.0,
+        "leakage_at_50pa_m3h": 55.4,
+        "pressure_pa": 139.7,
+        "deliverable": true,
+        "supplied_by": "envelope leakage"
+      },
+      {
+        "mode": "boosted, both rooms",
+        "extract_m3h": 216.0,
+        "leakage_at_50pa_m3h": 55.4,
+        "pressure_pa": 405.8,
+        "deliverable": false,
+        "supplied_by": "envelope leakage"
+      }
+    ],
+    "n50": 1.5,
+    "exponent": 0.65,
+    "fan_available_pa": [
+      50.0,
+      100.0,
+      150.0
+    ],
+    "max_deliverable_m3h": 113.1
+  },
+  "stove": {
+    "cases": [
+      {
+        "combustion_air_m3h": 8.0,
+        "share_of_basic_extract": 0.089
+      },
+      {
+        "combustion_air_m3h": 15.0,
+        "share_of_basic_extract": 0.167
+      },
+      {
+        "combustion_air_m3h": 25.0,
+        "share_of_basic_extract": 0.278
+      }
+    ],
+    "worst_pressure_pa": 139.7,
+    "worst_mode": "boosted, one room",
+    "flue_draught_pa": [
+      10.0,
+      20.0
+    ],
+    "reverses": true,
+    "margin_pa": -129.7
+  },
+  "penetrations": [
+    {
+      "item": "cooker-hood extract",
+      "requirement": "§11-10: own duct, grease filter, EI 15 A2-s1,d0 if not in a shaft"
+    },
+    {
+      "item": "bathroom extract",
+      "requirement": "wet-room extract, ducted outside the barrier"
+    },
+    {
+      "item": "make-up air intake",
+      "requirement": "the one that decides the pressure balance"
+    },
+    {
+      "item": "stove combustion air",
+      "requirement": "direct from outside, below the firebox"
+    },
+    {
+      "item": "stove flue",
+      "requirement": "through the roof; the barrier is interrupted at the ceiling"
+    },
+    {
+      "item": "pressure-equalising vent",
+      "requirement": "only if the design chooses a passive route"
+    }
+  ],
+  "rh_loop": {
+    "assumed_by": "verificacion-condensacion-union.md, 50 % RH indoor",
+    "direction": "lower indoor RH reduces the required break, so 50 % is conservative",
+    "closed": false,
+    "why": "closing it needs a dynamic moisture model with the timber buffering, which this screen does not attempt"
+  },
+  "excluded": [
+    "ventilation design",
+    "duct sizing",
+    "mould-risk analysis",
+    "radon measurement",
+    "compliance statement"
+  ]
+}

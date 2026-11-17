@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "title": "MiniHouse for Western Norway",
+    "description": "A house concept for Bergen, about 6 × 3 m. See the interior and the plans for reclaimed pine, European oak and copper.",
+    "ogAlt": "Concept image of MiniHouse, a small house with a black metal gable roof and reclaimed timber cladding, on a Western Norwegian slope."
+  },
+  "nav": {
+    "skip": "Skip to content",
+    "house": "The house",
+    "materials": "Materials",
+    "moving": "Moving",
+    "questions": "Questions",
+    "cta": "Follow the project",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Norsk"
+  },
+  "hero": {
+    "title": "A small house, made to be moved.",
+    "lead": "We’re designing a house for Bergen with reclaimed pine on the outside, oak underfoot at the doorway and copper around the bathroom mirror.",
+    "cta": "Follow the project",
+    "gallery": "Explore the house",
+    "caption": "Concept image"
+  },
+  "facts": {
+    "items": [
+      { "label": "Size", "value": "about 6 × 3 m" },
+      { "label": "Construction", "value": "steel frame and reclaimed timber" },
+      { "label": "Roof", "value": "metal gable roof (concept)" },
+      { "label": "Moving", "value": "goal of moving in one piece" },
+      { "label": "Status", "value": "under development" }
+    ]
+  },
+  "gallery": {
+    "title": "The house in pictures",
+    "count": "{current} of {total}",
+    "prev": "Previous",
+    "next": "Next",
+    "close": "Close"
+  },
+  "build": {
+    "title": "Beneath the cladding",
+    "lead": "In the drawings, weathered boards meet a black metal roof. A low steel frame sits beneath the house.",
+    "tabExterior": "Exterior",
+    "tabStructure": "Structure",
+    "exterior": "We’re planning an air gap behind the cladding so the boards can dry between rain showers. The door and window frames are shown in black.",
+    "structure": "The drawings show two long steel beams joined by shorter crossbeams beneath the floor. Their dimensions are still open."
+  },
+  "materials": {
+    "title": "Old timber, new house",
+    "lead": "We want to give old boards a second life as cladding. Once we find the timber, its material passport will record where it came from and how it was used.",
+    "passportTitle": "Material passport",
+    "rows": {
+      "material": "Material",
+      "origin": "Origin",
+      "previousUse": "Previous use",
+      "usedFor": "Used for",
+      "treatment": "Treatment",
+      "status": "Status"
+    },
+    "items": [
+      {
+        "id": "malmfuru",
+        "name": "Malmfuru (heartwood pine)",
+        "lead": "Norwegian builders have long used the reddish-brown heartwood of pine for cladding. We’re looking for old boards cut from slow-grown trees.",
+        "passport": {
+          "material": "pine, heartwood",
+          "origin": "to be documented per lot",
+          "previousUse": "to be documented per lot",
+          "usedFor": "cladding",
+          "treatment": "not decided",
+          "status": "planned"
+        }
+      },
+      {
+        "id": "eik",
+        "name": "European oak",
+        "lead": "We’re planning oak where a hand rests on a window sill and a foot crosses the threshold.",
+        "passport": {
+          "material": "European oak",
+          "origin": "to be documented per lot",
+          "previousUse": "to be documented per lot",
+          "usedFor": "thresholds and interior window sills",
+          "treatment": "not decided",
+          "status": "planned"
+        }
+      },
+      {
+        "id": "kobber",
+        "name": "Copper",
+        "lead": "In the bathroom concept, a copper edge traces the mirror against deep teal tiles.",
+        "passport": {
+          "material": "copper",
+          "origin": "to be documented",
+          "previousUse": "not decided",
+          "usedFor": "details, including in the bathroom",
+          "treatment": "not decided",
+          "status": "concept"
+        }
+      },
+      {
+        "id": "stal",
+        "name": "Steel",
+        "lead": "In the drawings, a steel frame ties the base together beneath the house.",
+        "passport": {
+          "material": "steel",
+          "origin": "to be documented",
+          "previousUse": "not decided",
+          "usedFor": "frame and chassis",
+          "treatment": "not decided",
+          "status": "concept"
+        }
+      }
+    ]
+  },
+  "living": {
+    "title": "Inside MiniHouse",
+    "lead": "The kitchen and window seat share one room in the drawings. Drawers tuck beneath the seat, with a bathroom at one end of the house.",
+    "rooms": [
+      { "id": "kitchen", "title": "Kitchen", "body": "A small kitchen along the wall." },
+      { "id": "bench", "title": "Bench seat", "body": "A built-in bench under the window." },
+      { "id": "storage", "title": "Storage", "body": "Drawers under the bench." },
+      { "id": "bath", "title": "Bathroom", "body": "The bathroom study pairs deep teal tiles with timber and copper." }
+    ]
+  },
+  "journey": {
+    "title": "From workshop to plot",
+    "steps": [
+      { "title": "Workshop", "body": "We plan to finish building the house in the workshop." },
+      { "title": "Transport", "body": "The aim is to carry the house in one piece by truck. The route needs to be checked first." },
+      { "title": "Plot", "body": "On site, a crane would lower the house onto its supports." }
+    ]
+  },
+  "status": {
+    "title": "Where the project stands",
+    "body": "MiniHouse is still on the drawing board. We’re working on the steel frame and looking for timber for the cladding.",
+    "phases": [
+      { "name": "Drawings and plan", "state": "first draft ready" },
+      { "name": "Calculations", "state": "in progress" },
+      { "name": "Prototype", "state": "not built" }
+    ]
+  },
+  "faq": {
+    "title": "Questions and answers",
+    "items": [
+      {
+        "q": "Does the house need a building permit?",
+        "a": "It depends on how the house will be used, and the municipality decides."
+      },
+      {
+        "q": "Is the house for sale?",
+        "a": "MiniHouse is a house concept still in development. There’s no finished model for sale."
+      },
+      {
+        "q": "When will the prototype be ready?",
+        "a": "We don’t have a date for a prototype yet."
+      },
+      {
+        "q": "How is the house moved?",
+        "a": "The goal is to move it in one piece by truck. Every route has to be checked before it is used."
+      },
+      {
+        "q": "What is a concept image?",
+        "a": "A concept image shows how we imagine the house. The bathroom images explore colours and materials while its layout is still open."
+      },
+      {
+        "q": "Which timber do you hope to reuse?",
+        "a": "We’re looking for old pine boards for the cladding. Once we find a suitable batch, we plan to record where the boards came from and how they were used."
+      }
+    ]
+  },
+  "interest": {
+    "title": "Follow the project",
+    "lead": "Leave your e-mail address and get a message when something happens in the project.",
+    "fields": {
+      "email": "E-mail",
+      "name": "Name",
+      "optional": "(optional)"
+    },
+    "consent": "Yes, send me updates about MiniHouse by e-mail.",
+    "submit": "Follow the project",
+    "success": "Thank you! You are now following the project.",
+    "errors": {
+      "required": "Error: enter your e-mail address.",
+      "email": "Error: enter an e-mail address, for example name@example.com.",
+      "network": "Error: something went wrong. Try again in a moment."
+    }
+  },
+  "footer": {
+    "contact": "",
+    "privacy": "Privacy",
+    "pro": "For professionals",
+    "docs": "Documentation",
+    "lab": "3D lab",
+    "imagesNote": "Every image is a concept image. The house is under development."
+  },
+  "privacy": {
+    "title": "Privacy",
+    "body": "You can look around the house without registering. This site has no sign-up form and does not ask for your name or email address."
+  },
+  "notFound": {
+    "title": "This page is not here",
+    "body": "That address does not match a page.",
+    "home": "To the front page"
+  }
+}

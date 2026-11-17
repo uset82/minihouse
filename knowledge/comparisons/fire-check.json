@@ -1,0 +1,155 @@
+{
+  "windows": [
+    {
+      "id": "V-01",
+      "description": "Ventana estar",
+      "width_mm": 1200.0,
+      "height_mm": 1100.0,
+      "sill_mm": 900.0,
+      "sum_mm": 2300.0,
+      "checks": {
+        "height_ok": true,
+        "width_ok": true,
+        "sum_ok": true,
+        "sill_ok": true
+      },
+      "qualifies": true,
+      "fails": []
+    },
+    {
+      "id": "V-02",
+      "description": "Ventana cocina",
+      "width_mm": 1000.0,
+      "height_mm": 900.0,
+      "sill_mm": 1100.0,
+      "sum_mm": 1900.0,
+      "checks": {
+        "height_ok": true,
+        "width_ok": true,
+        "sum_ok": true,
+        "sill_ok": false
+      },
+      "qualifies": false,
+      "fails": [
+        "sill"
+      ]
+    },
+    {
+      "id": "V-03",
+      "description": "Ventana bano",
+      "width_mm": 500.0,
+      "height_mm": 500.0,
+      "sill_mm": 1500.0,
+      "sum_mm": 1000.0,
+      "checks": {
+        "height_ok": false,
+        "width_ok": true,
+        "sum_ok": false,
+        "sill_ok": false
+      },
+      "qualifies": false,
+      "fails": [
+        "height",
+        "sum",
+        "sill"
+      ]
+    }
+  ],
+  "doors": [
+    {
+      "id": "P-01",
+      "description": "Puerta entrada",
+      "width_mm": 900.0,
+      "height_mm": 2050.0,
+      "sill_mm": 0.0
+    }
+  ],
+  "state": "SCREENING — CONDITIONAL ON C-01",
+  "classification": {
+    "risikoklasse": 4,
+    "brannklasse": 1,
+    "storeys": 1,
+    "note": "bolig and fritidsbolig share risk class 4 / BKL 1 in one storey"
+  },
+  "load_bearing": {
+    "required_R_minutes": 15,
+    "table_value_bkl1_minutes": 30,
+    "governing_clause": "§11-4(3) no. 4",
+    "applies_to": "main and secondary load-bearing system"
+  },
+  "fire_cell": {
+    "boenhet_is_own_cell": true,
+    "general_EI_minutes_bkl1": 30,
+    "cell_area_m2": 18.0,
+    "small_cell_threshold_m2": 200.0,
+    "note": "single boenhet with no adjoining unit; no area-based exemption exists"
+  },
+  "materials": {
+    "wall_ceiling": "D-s2,d0",
+    "wall_ceiling_if_escape_route": "B-s1,d0",
+    "external_cladding": "D-s3,d0",
+    "cladding": "K210 D-s2,d0",
+    "roof_covering": "BROOF(t2)",
+    "insulation_main_rule": "A2-s1,d0",
+    "timber_interior_admissible": true,
+    "caveat": "only if the cabin is not treated as an escape route; B-s1,d0 would apply otherwise"
+  },
+  "installations": {
+    "kitchen_extract": "EI 15 A2-s1,d0",
+    "own_duct_with_grease_filter": true,
+    "cable_function_minutes": 30,
+    "cable_low_energy_mj_per_m": 50.0
+  },
+  "separation": {
+    "distance_m": 8.0,
+    "required_m": 8.0,
+    "pass": true,
+    "camping_alternative_m": 4.0
+  },
+  "escape": {
+    "qualifying_windows": [
+      "V-01"
+    ],
+    "qualifying_count": 1,
+    "single_direction_ok": true,
+    "plural_wording_note": "§11-13(4) says 'vinduer' (plural) per fire cell; confirm whether one window satisfies a one-room cabin",
+    "travel_m": 6.0,
+    "travel_limit_m": null,
+    "travel_note": "§11-13 Table 1 as retrieved does not list risk class 4",
+    "min_free_width_mm": 860.0,
+    "door_leaf_min_mm": 900.0,
+    "door_free_width_margin_mm": 40.0
+  },
+  "detection": {
+    "system": "interconnected mains-powered smoke alarms with battery backup",
+    "full_alarm_system_required": false,
+    "min_per_storey": 1,
+    "zones": [
+      "kjøkken (kitchen)",
+      "stue (living room)",
+      "sone utenfor soverom (zone outside bedrooms)",
+      "tekniske rom (technical rooms)"
+    ],
+    "min_db": 60
+  },
+  "manual_extinguishing": {
+    "options": [
+      "hand-held extinguisher",
+      "fire hose reaching all rooms"
+    ],
+    "hose_min_diameter_mm": 10.0,
+    "hose_max_length_m": 30.0,
+    "powder_kg": 6.0,
+    "foam_l": 9.0,
+    "alt_l_21A": 6.0,
+    "marking_required": false
+  },
+  "fire_service": {
+    "max_access_distance_m": 50.0,
+    "water_smallhouse_lpm": 1200,
+    "hydrant_min_m": 25.0,
+    "hydrant_max_m": 50.0,
+    "max_hose_lay_m": 50.0,
+    "orientation_plan_required": false
+  }
+}

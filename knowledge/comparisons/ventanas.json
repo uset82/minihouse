@@ -1,0 +1,1143 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01",
+  "current": {
+    "openings": [
+      {
+        "id": "V-01",
+        "room": "MAIN",
+        "facade": "y=3000",
+        "x_centre_mm": 2400.0,
+        "width_mm": 1200.0,
+        "height_mm": 1100.0,
+        "sill_mm": 900.0,
+        "gross_m2": 1.32,
+        "qualifying_m2": 1.32,
+        "escape_qualifies": true,
+        "escape_fails": []
+      },
+      {
+        "id": "V-02",
+        "room": "MAIN",
+        "facade": "y=0",
+        "x_centre_mm": 2400.0,
+        "width_mm": 1000.0,
+        "height_mm": 900.0,
+        "sill_mm": 1100.0,
+        "gross_m2": 0.9,
+        "qualifying_m2": 0.9,
+        "escape_qualifies": false,
+        "escape_fails": [
+          "sill"
+        ]
+      },
+      {
+        "id": "V-03",
+        "room": "BATH",
+        "facade": "y=0",
+        "x_centre_mm": 600.0,
+        "width_mm": 500.0,
+        "height_mm": 500.0,
+        "sill_mm": 1500.0,
+        "gross_m2": 0.25,
+        "qualifying_m2": 0.25,
+        "escape_qualifies": false,
+        "escape_fails": [
+          "height",
+          "sum",
+          "sill"
+        ]
+      }
+    ],
+    "qualifying_windows": [
+      "V-01"
+    ],
+    "qualifying_count": 1,
+    "daylight": {
+      "gross_m2": 2.47,
+      "qualifying_m2": 2.47,
+      "minimum_lt": {
+        "1.00": 0.5101,
+        "0.90": 0.5668,
+        "0.85": 0.6001,
+        "0.80": 0.6377
+      },
+      "grid": [
+        {
+          "LT": 0.4,
+          "required_m2": 3.15,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.47,
+              "pass": false,
+              "margin_m2": -0.68
+            },
+            "0.90": {
+              "effective_m2": 2.223,
+              "pass": false,
+              "margin_m2": -0.927
+            },
+            "0.85": {
+              "effective_m2": 2.0995,
+              "pass": false,
+              "margin_m2": -1.0505
+            },
+            "0.80": {
+              "effective_m2": 1.976,
+              "pass": false,
+              "margin_m2": -1.174
+            }
+          }
+        },
+        {
+          "LT": 0.5,
+          "required_m2": 2.52,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.47,
+              "pass": false,
+              "margin_m2": -0.05
+            },
+            "0.90": {
+              "effective_m2": 2.223,
+              "pass": false,
+              "margin_m2": -0.297
+            },
+            "0.85": {
+              "effective_m2": 2.0995,
+              "pass": false,
+              "margin_m2": -0.4205
+            },
+            "0.80": {
+              "effective_m2": 1.976,
+              "pass": false,
+              "margin_m2": -0.544
+            }
+          }
+        },
+        {
+          "LT": 0.6,
+          "required_m2": 2.1,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.47,
+              "pass": true,
+              "margin_m2": 0.37
+            },
+            "0.90": {
+              "effective_m2": 2.223,
+              "pass": true,
+              "margin_m2": 0.123
+            },
+            "0.85": {
+              "effective_m2": 2.0995,
+              "pass": false,
+              "margin_m2": -0.0005
+            },
+            "0.80": {
+              "effective_m2": 1.976,
+              "pass": false,
+              "margin_m2": -0.124
+            }
+          }
+        },
+        {
+          "LT": 0.7,
+          "required_m2": 1.8,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.47,
+              "pass": true,
+              "margin_m2": 0.67
+            },
+            "0.90": {
+              "effective_m2": 2.223,
+              "pass": true,
+              "margin_m2": 0.423
+            },
+            "0.85": {
+              "effective_m2": 2.0995,
+              "pass": true,
+              "margin_m2": 0.2995
+            },
+            "0.80": {
+              "effective_m2": 1.976,
+              "pass": true,
+              "margin_m2": 0.176
+            }
+          }
+        },
+        {
+          "LT": 0.8,
+          "required_m2": 1.575,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.47,
+              "pass": true,
+              "margin_m2": 0.895
+            },
+            "0.90": {
+              "effective_m2": 2.223,
+              "pass": true,
+              "margin_m2": 0.648
+            },
+            "0.85": {
+              "effective_m2": 2.0995,
+              "pass": true,
+              "margin_m2": 0.5245
+            },
+            "0.80": {
+              "effective_m2": 1.976,
+              "pass": true,
+              "margin_m2": 0.401
+            }
+          }
+        }
+      ]
+    }
+  },
+  "readings": [
+    {
+      "id": "R-A",
+      "name": "minimal",
+      "short": "the door to grade is a safe place; (4) not engaged",
+      "basis": "§11-13(1) needs one exit to a safe place, and the door discharges to grade. §11-13(4) relaxes the two-direction rule; if the exit already reaches a safe place, (4) is not engaged.",
+      "weakness": "the safe place is a site condition, not a property of the module. A transportable cabin cannot carry its escape strategy in its siting.",
+      "changes": [],
+      "qualifying_windows": [
+        "V-01"
+      ],
+      "qualifying_count": 1,
+      "added_glass_m2": 0,
+      "daylight": {
+        "gross_m2": 2.47,
+        "qualifying_m2": 2.47,
+        "minimum_lt": {
+          "1.00": 0.5101,
+          "0.90": 0.5668,
+          "0.85": 0.6001,
+          "0.80": 0.6377
+        },
+        "grid": [
+          {
+            "LT": 0.4,
+            "required_m2": 3.15,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": false,
+                "margin_m2": -0.68
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": false,
+                "margin_m2": -0.927
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": false,
+                "margin_m2": -1.0505
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": false,
+                "margin_m2": -1.174
+              }
+            }
+          },
+          {
+            "LT": 0.5,
+            "required_m2": 2.52,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": false,
+                "margin_m2": -0.05
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": false,
+                "margin_m2": -0.297
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": false,
+                "margin_m2": -0.4205
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": false,
+                "margin_m2": -0.544
+              }
+            }
+          },
+          {
+            "LT": 0.6,
+            "required_m2": 2.1,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": true,
+                "margin_m2": 0.37
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": true,
+                "margin_m2": 0.123
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": false,
+                "margin_m2": -0.0005
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": false,
+                "margin_m2": -0.124
+              }
+            }
+          },
+          {
+            "LT": 0.7,
+            "required_m2": 1.8,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": true,
+                "margin_m2": 0.67
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": true,
+                "margin_m2": 0.423
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": true,
+                "margin_m2": 0.2995
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": true,
+                "margin_m2": 0.176
+              }
+            }
+          },
+          {
+            "LT": 0.8,
+            "required_m2": 1.575,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": true,
+                "margin_m2": 0.895
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": true,
+                "margin_m2": 0.648
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": true,
+                "margin_m2": 0.5245
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": true,
+                "margin_m2": 0.401
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-B",
+      "name": "fire cell",
+      "short": "the cell needs «vinduer», plural",
+      "basis": "§11-13(4) engaged: «hver branncelle har vinduer» — the cell needs at least two qualifying windows.",
+      "weakness": "turns on whether the plural in «vinduer» binds for a one-room cell.",
+      "changes": [
+        {
+          "id": "V-02",
+          "room": "MAIN",
+          "from_mm": "1000 × 900 @ sill 1100",
+          "to_mm": "1000 × 900 @ sill 1000",
+          "added_glass_m2": 0.0,
+          "added_qualifying_m2": 0.0
+        }
+      ],
+      "qualifying_windows": [
+        "V-01",
+        "V-02"
+      ],
+      "qualifying_count": 2,
+      "added_glass_m2": 0.0,
+      "daylight": {
+        "gross_m2": 2.47,
+        "qualifying_m2": 2.47,
+        "minimum_lt": {
+          "1.00": 0.5101,
+          "0.90": 0.5668,
+          "0.85": 0.6001,
+          "0.80": 0.6377
+        },
+        "grid": [
+          {
+            "LT": 0.4,
+            "required_m2": 3.15,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": false,
+                "margin_m2": -0.68
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": false,
+                "margin_m2": -0.927
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": false,
+                "margin_m2": -1.0505
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": false,
+                "margin_m2": -1.174
+              }
+            }
+          },
+          {
+            "LT": 0.5,
+            "required_m2": 2.52,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": false,
+                "margin_m2": -0.05
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": false,
+                "margin_m2": -0.297
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": false,
+                "margin_m2": -0.4205
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": false,
+                "margin_m2": -0.544
+              }
+            }
+          },
+          {
+            "LT": 0.6,
+            "required_m2": 2.1,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": true,
+                "margin_m2": 0.37
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": true,
+                "margin_m2": 0.123
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": false,
+                "margin_m2": -0.0005
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": false,
+                "margin_m2": -0.124
+              }
+            }
+          },
+          {
+            "LT": 0.7,
+            "required_m2": 1.8,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": true,
+                "margin_m2": 0.67
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": true,
+                "margin_m2": 0.423
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": true,
+                "margin_m2": 0.2995
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": true,
+                "margin_m2": 0.176
+              }
+            }
+          },
+          {
+            "LT": 0.8,
+            "required_m2": 1.575,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.47,
+                "pass": true,
+                "margin_m2": 0.895
+              },
+              "0.90": {
+                "effective_m2": 2.223,
+                "pass": true,
+                "margin_m2": 0.648
+              },
+              "0.85": {
+                "effective_m2": 2.0995,
+                "pass": true,
+                "margin_m2": 0.5245
+              },
+              "0.80": {
+                "effective_m2": 1.976,
+                "pass": true,
+                "margin_m2": 0.401
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "R-C",
+      "name": "room by room",
+      "short": "the bathroom has no direct exit",
+      "basis": "every room without a direct exit needs its own qualifying window; here that is the bathroom, whose only opening is V-03.",
+      "weakness": "not stated in §11-13 as retrieved; it is guidance practice.",
+      "changes": [
+        {
+          "id": "V-03",
+          "room": "BATH",
+          "from_mm": "500 × 500 @ sill 1500",
+          "to_mm": "500 × 1000 @ sill 1000",
+          "added_glass_m2": 0.25,
+          "added_qualifying_m2": 0.25
+        }
+      ],
+      "qualifying_windows": [
+        "V-01",
+        "V-03"
+      ],
+      "qualifying_count": 2,
+      "added_glass_m2": 0.25,
+      "daylight": {
+        "gross_m2": 2.72,
+        "qualifying_m2": 2.72,
+        "minimum_lt": {
+          "1.00": 0.4632,
+          "0.90": 0.5147,
+          "0.85": 0.545,
+          "0.80": 0.579
+        },
+        "grid": [
+          {
+            "LT": 0.4,
+            "required_m2": 3.15,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.72,
+                "pass": false,
+                "margin_m2": -0.43
+              },
+              "0.90": {
+                "effective_m2": 2.448,
+                "pass": false,
+                "margin_m2": -0.702
+              },
+              "0.85": {
+                "effective_m2": 2.312,
+                "pass": false,
+                "margin_m2": -0.838
+              },
+              "0.80": {
+                "effective_m2": 2.176,
+                "pass": false,
+                "margin_m2": -0.974
+              }
+            }
+          },
+          {
+            "LT": 0.5,
+            "required_m2": 2.52,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.72,
+                "pass": true,
+                "margin_m2": 0.2
+              },
+              "0.90": {
+                "effective_m2": 2.448,
+                "pass": false,
+                "margin_m2": -0.072
+              },
+              "0.85": {
+                "effective_m2": 2.312,
+                "pass": false,
+                "margin_m2": -0.208
+              },
+              "0.80": {
+                "effective_m2": 2.176,
+                "pass": false,
+                "margin_m2": -0.344
+              }
+            }
+          },
+          {
+            "LT": 0.6,
+            "required_m2": 2.1,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.72,
+                "pass": true,
+                "margin_m2": 0.62
+              },
+              "0.90": {
+                "effective_m2": 2.448,
+                "pass": true,
+                "margin_m2": 0.348
+              },
+              "0.85": {
+                "effective_m2": 2.312,
+                "pass": true,
+                "margin_m2": 0.212
+              },
+              "0.80": {
+                "effective_m2": 2.176,
+                "pass": true,
+                "margin_m2": 0.076
+              }
+            }
+          },
+          {
+            "LT": 0.7,
+            "required_m2": 1.8,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.72,
+                "pass": true,
+                "margin_m2": 0.92
+              },
+              "0.90": {
+                "effective_m2": 2.448,
+                "pass": true,
+                "margin_m2": 0.648
+              },
+              "0.85": {
+                "effective_m2": 2.312,
+                "pass": true,
+                "margin_m2": 0.512
+              },
+              "0.80": {
+                "effective_m2": 2.176,
+                "pass": true,
+                "margin_m2": 0.376
+              }
+            }
+          },
+          {
+            "LT": 0.8,
+            "required_m2": 1.575,
+            "by_frame_factor": {
+              "1.00": {
+                "effective_m2": 2.72,
+                "pass": true,
+                "margin_m2": 1.145
+              },
+              "0.90": {
+                "effective_m2": 2.448,
+                "pass": true,
+                "margin_m2": 0.873
+              },
+              "0.85": {
+                "effective_m2": 2.312,
+                "pass": true,
+                "margin_m2": 0.737
+              },
+              "0.80": {
+                "effective_m2": 2.176,
+                "pass": true,
+                "margin_m2": 0.601
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "minimum": {
+    "changes": [
+      {
+        "id": "V-02",
+        "room": "MAIN",
+        "from_mm": "1000 × 900 @ sill 1100",
+        "to_mm": "1000 × 900 @ sill 1000",
+        "added_glass_m2": 0.0,
+        "added_qualifying_m2": 0.0
+      },
+      {
+        "id": "V-03",
+        "room": "BATH",
+        "from_mm": "500 × 500 @ sill 1500",
+        "to_mm": "500 × 1000 @ sill 1000",
+        "added_glass_m2": 0.25,
+        "added_qualifying_m2": 0.25
+      }
+    ],
+    "openings": [
+      {
+        "id": "V-01",
+        "room": "MAIN",
+        "facade": "y=3000",
+        "x_centre_mm": 2400.0,
+        "width_mm": 1200.0,
+        "height_mm": 1100.0,
+        "sill_mm": 900.0,
+        "gross_m2": 1.32,
+        "qualifying_m2": 1.32,
+        "escape_qualifies": true,
+        "escape_fails": []
+      },
+      {
+        "id": "V-02",
+        "room": "MAIN",
+        "facade": "y=0",
+        "x_centre_mm": 2400.0,
+        "width_mm": 1000.0,
+        "height_mm": 900.0,
+        "sill_mm": 1000.0,
+        "gross_m2": 0.9,
+        "qualifying_m2": 0.9,
+        "escape_qualifies": true,
+        "escape_fails": []
+      },
+      {
+        "id": "V-03",
+        "room": "BATH",
+        "facade": "y=0",
+        "x_centre_mm": 600.0,
+        "width_mm": 500.0,
+        "height_mm": 1000.0,
+        "sill_mm": 1000.0,
+        "gross_m2": 0.5,
+        "qualifying_m2": 0.5,
+        "escape_qualifies": true,
+        "escape_fails": []
+      }
+    ],
+    "qualifying_windows": [
+      "V-01",
+      "V-02",
+      "V-03"
+    ],
+    "qualifying_count": 3,
+    "added_glass_m2": 0.25,
+    "daylight": {
+      "gross_m2": 2.72,
+      "qualifying_m2": 2.72,
+      "minimum_lt": {
+        "1.00": 0.4632,
+        "0.90": 0.5147,
+        "0.85": 0.545,
+        "0.80": 0.579
+      },
+      "grid": [
+        {
+          "LT": 0.4,
+          "required_m2": 3.15,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.72,
+              "pass": false,
+              "margin_m2": -0.43
+            },
+            "0.90": {
+              "effective_m2": 2.448,
+              "pass": false,
+              "margin_m2": -0.702
+            },
+            "0.85": {
+              "effective_m2": 2.312,
+              "pass": false,
+              "margin_m2": -0.838
+            },
+            "0.80": {
+              "effective_m2": 2.176,
+              "pass": false,
+              "margin_m2": -0.974
+            }
+          }
+        },
+        {
+          "LT": 0.5,
+          "required_m2": 2.52,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.72,
+              "pass": true,
+              "margin_m2": 0.2
+            },
+            "0.90": {
+              "effective_m2": 2.448,
+              "pass": false,
+              "margin_m2": -0.072
+            },
+            "0.85": {
+              "effective_m2": 2.312,
+              "pass": false,
+              "margin_m2": -0.208
+            },
+            "0.80": {
+              "effective_m2": 2.176,
+              "pass": false,
+              "margin_m2": -0.344
+            }
+          }
+        },
+        {
+          "LT": 0.6,
+          "required_m2": 2.1,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.72,
+              "pass": true,
+              "margin_m2": 0.62
+            },
+            "0.90": {
+              "effective_m2": 2.448,
+              "pass": true,
+              "margin_m2": 0.348
+            },
+            "0.85": {
+              "effective_m2": 2.312,
+              "pass": true,
+              "margin_m2": 0.212
+            },
+            "0.80": {
+              "effective_m2": 2.176,
+              "pass": true,
+              "margin_m2": 0.076
+            }
+          }
+        },
+        {
+          "LT": 0.7,
+          "required_m2": 1.8,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.72,
+              "pass": true,
+              "margin_m2": 0.92
+            },
+            "0.90": {
+              "effective_m2": 2.448,
+              "pass": true,
+              "margin_m2": 0.648
+            },
+            "0.85": {
+              "effective_m2": 2.312,
+              "pass": true,
+              "margin_m2": 0.512
+            },
+            "0.80": {
+              "effective_m2": 2.176,
+              "pass": true,
+              "margin_m2": 0.376
+            }
+          }
+        },
+        {
+          "LT": 0.8,
+          "required_m2": 1.575,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.72,
+              "pass": true,
+              "margin_m2": 1.145
+            },
+            "0.90": {
+              "effective_m2": 2.448,
+              "pass": true,
+              "margin_m2": 0.873
+            },
+            "0.85": {
+              "effective_m2": 2.312,
+              "pass": true,
+              "margin_m2": 0.737
+            },
+            "0.80": {
+              "effective_m2": 2.176,
+              "pass": true,
+              "margin_m2": 0.601
+            }
+          }
+        }
+      ]
+    }
+  },
+  "recommended": {
+    "min_width_mm": 900.0,
+    "changes": [
+      {
+        "id": "V-02",
+        "room": "MAIN",
+        "from_mm": "1000 × 900 @ sill 1100",
+        "to_mm": "1000 × 900 @ sill 1000",
+        "added_glass_m2": 0.0,
+        "added_qualifying_m2": 0.0
+      },
+      {
+        "id": "V-03",
+        "room": "BATH",
+        "from_mm": "500 × 500 @ sill 1500",
+        "to_mm": "900 × 600 @ sill 1000",
+        "added_glass_m2": 0.29,
+        "added_qualifying_m2": 0.29
+      }
+    ],
+    "openings": [
+      {
+        "id": "V-01",
+        "room": "MAIN",
+        "facade": "y=3000",
+        "x_centre_mm": 2400.0,
+        "width_mm": 1200.0,
+        "height_mm": 1100.0,
+        "sill_mm": 900.0,
+        "gross_m2": 1.32,
+        "qualifying_m2": 1.32,
+        "escape_qualifies": true,
+        "escape_fails": []
+      },
+      {
+        "id": "V-02",
+        "room": "MAIN",
+        "facade": "y=0",
+        "x_centre_mm": 2400.0,
+        "width_mm": 1000.0,
+        "height_mm": 900.0,
+        "sill_mm": 1000.0,
+        "gross_m2": 0.9,
+        "qualifying_m2": 0.9,
+        "escape_qualifies": true,
+        "escape_fails": []
+      },
+      {
+        "id": "V-03",
+        "room": "BATH",
+        "facade": "y=0",
+        "x_centre_mm": 600.0,
+        "width_mm": 900.0,
+        "height_mm": 600.0,
+        "sill_mm": 1000.0,
+        "gross_m2": 0.54,
+        "qualifying_m2": 0.54,
+        "escape_qualifies": true,
+        "escape_fails": []
+      }
+    ],
+    "qualifying_windows": [
+      "V-01",
+      "V-02",
+      "V-03"
+    ],
+    "qualifying_count": 3,
+    "added_glass_m2": 0.29,
+    "daylight": {
+      "gross_m2": 2.76,
+      "qualifying_m2": 2.76,
+      "minimum_lt": {
+        "1.00": 0.4565,
+        "0.90": 0.5072,
+        "0.85": 0.5371,
+        "0.80": 0.5707
+      },
+      "grid": [
+        {
+          "LT": 0.4,
+          "required_m2": 3.15,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.76,
+              "pass": false,
+              "margin_m2": -0.39
+            },
+            "0.90": {
+              "effective_m2": 2.484,
+              "pass": false,
+              "margin_m2": -0.666
+            },
+            "0.85": {
+              "effective_m2": 2.346,
+              "pass": false,
+              "margin_m2": -0.804
+            },
+            "0.80": {
+              "effective_m2": 2.208,
+              "pass": false,
+              "margin_m2": -0.942
+            }
+          }
+        },
+        {
+          "LT": 0.5,
+          "required_m2": 2.52,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.76,
+              "pass": true,
+              "margin_m2": 0.24
+            },
+            "0.90": {
+              "effective_m2": 2.484,
+              "pass": false,
+              "margin_m2": -0.036
+            },
+            "0.85": {
+              "effective_m2": 2.346,
+              "pass": false,
+              "margin_m2": -0.174
+            },
+            "0.80": {
+              "effective_m2": 2.208,
+              "pass": false,
+              "margin_m2": -0.312
+            }
+          }
+        },
+        {
+          "LT": 0.6,
+          "required_m2": 2.1,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.76,
+              "pass": true,
+              "margin_m2": 0.66
+            },
+            "0.90": {
+              "effective_m2": 2.484,
+              "pass": true,
+              "margin_m2": 0.384
+            },
+            "0.85": {
+              "effective_m2": 2.346,
+              "pass": true,
+              "margin_m2": 0.246
+            },
+            "0.80": {
+              "effective_m2": 2.208,
+              "pass": true,
+              "margin_m2": 0.108
+            }
+          }
+        },
+        {
+          "LT": 0.7,
+          "required_m2": 1.8,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.76,
+              "pass": true,
+              "margin_m2": 0.96
+            },
+            "0.90": {
+              "effective_m2": 2.484,
+              "pass": true,
+              "margin_m2": 0.684
+            },
+            "0.85": {
+              "effective_m2": 2.346,
+              "pass": true,
+              "margin_m2": 0.546
+            },
+            "0.80": {
+              "effective_m2": 2.208,
+              "pass": true,
+              "margin_m2": 0.408
+            }
+          }
+        },
+        {
+          "LT": 0.8,
+          "required_m2": 1.575,
+          "by_frame_factor": {
+            "1.00": {
+              "effective_m2": 2.76,
+              "pass": true,
+              "margin_m2": 1.185
+            },
+            "0.90": {
+              "effective_m2": 2.484,
+              "pass": true,
+              "margin_m2": 0.909
+            },
+            "0.85": {
+              "effective_m2": 2.346,
+              "pass": true,
+              "margin_m2": 0.771
+            },
+            "0.80": {
+              "effective_m2": 2.208,
+              "pass": true,
+              "margin_m2": 0.633
+            }
+          }
+        }
+      ]
+    }
+  },
+  "convergence": {
+    "1.00": {
+      "min_lt_before": 0.5101,
+      "min_lt_after": 0.4565,
+      "relief": 0.0536
+    },
+    "0.90": {
+      "min_lt_before": 0.5668,
+      "min_lt_after": 0.5072,
+      "relief": 0.0596
+    },
+    "0.85": {
+      "min_lt_before": 0.6001,
+      "min_lt_after": 0.5371,
+      "relief": 0.063
+    },
+    "0.80": {
+      "min_lt_before": 0.6377,
+      "min_lt_after": 0.5707,
+      "relief": 0.067
+    }
+  },
+  "heat_loss": {
+    "u_wall": 0.22,
+    "u_window": 1.2,
+    "opaque_wall_m2": 35.285,
+    "elements_w_per_k": 19.4207,
+    "delta_per_m2_w_per_k": 0.98,
+    "opening_perimeter_m": 16.3,
+    "reveal_psi_w_per_mk": 0.05,
+    "delta_glass_w_per_k": 0.2842,
+    "delta_reveal_w_per_k": 0.05,
+    "delta_w_per_k": 0.3342,
+    "share_of_elements": 0.0172,
+    "added_glass_m2": 0.29,
+    "added_perimeter_m": 1.0
+  }
+}

@@ -1,0 +1,24 @@
+---
+import type { Content } from '../content/schema';
+
+interface Props {
+  content: Content;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="band--eik" aria-label={content.nav.house}>
+  <div class="wrap">
+    <dl class="facts-list">
+      {
+        content.facts.items.map((item) => (
+          <div>
+            <dt>{item.label}</dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>

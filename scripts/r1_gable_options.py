@@ -33,6 +33,7 @@ NOTES = [
     "Roof area is geometric surface only: no build-up, overlap, waste, purlins or cladding mass.",
     "Loaded height = module ridge height + deck/support stack. Stack values are illustrative; carrier must confirm.",
     "4.00 m height screening comes from Statens vegvesen's summary of Directive 96/53/EC; national rules and route still control.",
+    "Inverse envelope: for a fixed stack and pitch, eave_z must be <= 4000 - stack - rise; required reductions are from the 3000 mm screening datum and may not be achievable with the specified clear height and roof build-up.",
     "ESTA wind area is a screening check using projected bounding areas; the crane company must set allowable wind.",
 ]
 
@@ -77,6 +78,11 @@ def option(pitch_deg: float) -> dict:
             {
                 "deck_plus_support_mm": stack,
                 "loaded_height_mm": round(ridge_z + stack, 1),
+                "over_height_vs_4m_mm": round(ridge_z + stack - NORMAL_HEIGHT_SCREENING_MM, 1),
+                "max_eave_z_for_4m_mm": round(NORMAL_HEIGHT_SCREENING_MM - stack - rise, 1),
+                "eave_reduction_from_datum_mm": round(
+                    EAVE_Z_MM - (NORMAL_HEIGHT_SCREENING_MM - stack - rise), 1
+                ),
                 "status": "ILLUSTRATIVE — carrier to confirm",
             }
             for stack in DECK_SUPPORT_MM
@@ -96,6 +102,7 @@ def build_model() -> dict:
             "eave_z_mm_screening_datum": EAVE_Z_MM,
             "R0_total_height_mm_reference": R0_HEIGHT_MM,
             "esta_wind_ratio_m2_per_t": ESTA_WIND_RATIO_M2_PER_T,
+            "normal_height_screening_mm": NORMAL_HEIGHT_SCREENING_MM,
         },
         "options": [option(p) for p in PITCHES_DEG],
         "notes": NOTES,
@@ -156,6 +163,25 @@ def markdown(model: dict) -> str:
 
     lines += [
         "",
+        "### 2b. Inverse design envelope — maximum eave for 4.00 m",
+        "",
+        "For a fixed pitch and stack, `max eave = 4000 - stack - rise`. "
+        "The reduction is measured from the 3000 mm screening datum. These are feasibility limits, "
+        "not proposed wall heights; required clear height and roof build-up are not yet defined.",
+        "",
+        "| Pitch | Stack mm | Max eave mm | Required eave reduction mm | Over-height at 3000 datum mm |",
+        "|---:|---:|---:|---:|---:|",
+    ]
+    for o in model["options"]:
+        for v in o["loaded_height_examples_mm"]:
+            lines.append(
+                f"| {o['pitch_deg']:.0f}° | {v['deck_plus_support_mm']:.0f} | "
+                f"{v['max_eave_z_for_4m_mm']:.1f} | {v['eave_reduction_from_datum_mm']:.1f} | "
+                f"{v['over_height_vs_4m_mm']:.1f} |"
+            )
+
+    lines += [
+        "",
         "## 3. ESTA wind-area screening",
         "",
         "Projected areas are conservative bounding areas. The minimum mass shown is the mass that would keep "
@@ -180,6 +206,10 @@ def markdown(model: dict) -> str:
         "- With the 3000 mm eave screening datum, all options exceed 4.00 m once a 900 mm stack is added. "
         "At 5° the stack must be at most about 869 mm to stay at 4.00 m; at 20° only about 454 mm. "
         "A lower eave datum, low-loader setup or special transport may be needed.",
+        "- The inverse envelope shows the same constraint from the other side: at a 900 mm stack, the eave "
+        "must be at most about 2969 mm at 5° and 2554 mm at 20°. At an 1100 mm stack, 20° leaves an eave "
+        "of only 2354 mm — just 154 mm above the 2200 mm mikrohus room-height allowance before structure "
+        "and roof build-up. This is a feasibility warning, not a recommendation.",
         "- Even at 5°, the conservative projected area requires roughly 16 t to avoid the ESTA wind-speed caveat; "
         "the real MiniHouse mass is not yet known, so the lift plan must verify this before relying on crane-chart wind limits.",
         "- No recommendation is made here. The decision needs C-02 (pitch/eave/ridge), C-06 (deck/support) "
@@ -212,8 +242,17 @@ def selftest() -> None:
         assert o["projected_wind_area_max_m2"] > 0
         assert o["min_mass_for_1p2_m2_per_t_t"] > 0
         assert o["max_deck_plus_support_for_4m_mm"] > 0
+        for v in o["loaded_height_examples_mm"]:
+            stack = v["deck_plus_support_mm"]
+            assert abs(v["over_height_vs_4m_mm"] - (o["ridge_z_mm"] + stack - NORMAL_HEIGHT_SCREENING_MM)) < 0.11
+            assert abs(v["max_eave_z_for_4m_mm"] - (NORMAL_HEIGHT_SCREENING_MM - stack - o["rise_mm"])) < 0.11
+            assert abs(v["eave_reduction_from_datum_mm"] - (EAVE_Z_MM - v["max_eave_z_for_4m_mm"])) < 0.11
+            assert v["max_eave_z_for_4m_mm"] < EAVE_Z_MM
+            assert v["eave_reduction_from_datum_mm"] > 0
     assert len(opts[0]["loaded_height_examples_mm"]) == len(DECK_SUPPORT_MM)
-    print("R1 self-test OK: 4 pitch options, monotonic rise, geometry and wind checks passed")
+    print(
+        "R1 self-test OK: 4 pitch options, monotonic rise, geometry, wind and inverse-height checks passed"
+    )
 
 
 def main() -> None:

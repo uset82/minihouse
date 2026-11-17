@@ -1,0 +1,682 @@
+{
+  "revision": "INSTALACIONES-CHECK",
+  "state": "CONCEPTUAL — NO PRODUCT, DRAINAGE CONCEPT OR STOVE SELECTED",
+  "units": "mm, m2, tonnes, g/kg, °C",
+  "basis": {
+    "bra_m2": 18.0,
+    "waste_plan_area_new_build_m2": 300.0,
+    "waste_plan_tonnes": 10.0,
+    "sorting_fraction": 0.7,
+    "backflow_head_mm": 900.0,
+    "chimney_min_class_c": 400,
+    "chimney_min_free_sides": 2,
+    "stove_limit_catalyst_g_per_kg": 5.0,
+    "stove_limit_other_g_per_kg": 10.0,
+    "sources": [
+      "S027",
+      "S028"
+    ]
+  },
+  "applicability": [
+    {
+      "provision": "§9-1",
+      "subject": "general external environment",
+      "status": "applies",
+      "basis": "qualitative; NS 3466:2009 programme and follow-up plan"
+    },
+    {
+      "provision": "§9-2",
+      "subject": "hazardous substances in products",
+      "status": "applies — no documented route for reclaimed timber",
+      "basis": "manufacturer instruments only"
+    },
+    {
+      "provision": "§9-3",
+      "subject": "contaminated ground",
+      "status": "applies — siting gate",
+      "basis": "investigation before permit; municipal tiltaksplan"
+    },
+    {
+      "provision": "§9-4",
+      "subject": "selected nature types",
+      "status": "applies — siting gate",
+      "basis": "only if designated type present and plan silent"
+    },
+    {
+      "provision": "§9-5",
+      "subject": "construction waste and reuse",
+      "status": "applies — rewards the concept",
+      "basis": "design for disassembly must be documented"
+    },
+    {
+      "provision": "§9-6",
+      "subject": "waste plan",
+      "status": "conditional on the 10-tonne limb",
+      "basis": "area limbs unreachable at 18 m2"
+    },
+    {
+      "provision": "§9-7",
+      "subject": "hazardous-waste mapping",
+      "status": "NOT applicable — new build",
+      "basis": "existing buildings only"
+    },
+    {
+      "provision": "§9-8",
+      "subject": "waste sorting 70 wt%",
+      "status": "follows §9-6",
+      "basis": "same switch as the waste plan"
+    },
+    {
+      "provision": "§9-9",
+      "subject": "final waste report",
+      "status": "follows §9-6",
+      "basis": "submitted with ferdigattest"
+    },
+    {
+      "provision": "§9-10",
+      "subject": "wood-stove emissions",
+      "status": "applies if a stove is fitted",
+      "basis": "5 g/kg catalyst, 10 g/kg other"
+    },
+    {
+      "provision": "§15-1",
+      "subject": "general heating and cooling",
+      "status": "applies",
+      "basis": "45 °C, T400, B-s1,d0 floor protection"
+    },
+    {
+      "provision": "§15-2",
+      "subject": "central heating",
+      "status": "not triggered",
+      "basis": "no distribution system"
+    },
+    {
+      "provision": "§15-3",
+      "subject": "flue and chimney",
+      "status": "applies if a stove is fitted",
+      "basis": "T400, two free sides, feiing access"
+    },
+    {
+      "provision": "§15-4",
+      "subject": "heat pump and refrigeration",
+      "status": "applies if a heat pump is fitted",
+      "basis": "30 kg sectioning thresholds not reached"
+    },
+    {
+      "provision": "§15-5",
+      "subject": "internal water",
+      "status": "applies",
+      "basis": "38/55 °C, 20/50 mm air gaps, leak stopper"
+    },
+    {
+      "provision": "§15-6",
+      "subject": "internal drainage",
+      "status": "applies",
+      "basis": "0.90 m head sets a minimum burial depth"
+    },
+    {
+      "provision": "§15-7",
+      "subject": "external water supply",
+      "status": "applies to the site",
+      "basis": "2.5/6.0/1.0 bar, 4 m"
+    },
+    {
+      "provision": "§15-8",
+      "subject": "external drainage and stormwater",
+      "status": "applies to the site",
+      "basis": "100-year climate-adjusted; 0.90 m"
+    },
+    {
+      "provision": "§15-9…15-15",
+      "subject": "lifts, platforms, escalators",
+      "status": "NOT applicable",
+      "basis": "no lifting device for persons"
+    },
+    {
+      "provision": "Chapter 16",
+      "subject": "lift safety control",
+      "status": "NOT applicable",
+      "basis": "no lift in the building"
+    },
+    {
+      "provision": "§17-1",
+      "subject": "greenhouse gas account",
+      "status": "NOT applicable",
+      "basis": "boligblokk and yrkesbygning only; småhus exempt"
+    }
+  ],
+  "cabin_waste": [
+    {
+      "mass_t": 2.0,
+      "waste_fraction": 0.05,
+      "waste_t": 0.1,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 2.0,
+      "waste_fraction": 0.1,
+      "waste_t": 0.2,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 2.0,
+      "waste_fraction": 0.2,
+      "waste_t": 0.4,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 2.0,
+      "waste_fraction": 0.3,
+      "waste_t": 0.6,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 3.0,
+      "waste_fraction": 0.05,
+      "waste_t": 0.15,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 3.0,
+      "waste_fraction": 0.1,
+      "waste_t": 0.3,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 3.0,
+      "waste_fraction": 0.2,
+      "waste_t": 0.6,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 3.0,
+      "waste_fraction": 0.3,
+      "waste_t": 0.9,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 4.0,
+      "waste_fraction": 0.05,
+      "waste_t": 0.2,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 4.0,
+      "waste_fraction": 0.1,
+      "waste_t": 0.4,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 4.0,
+      "waste_fraction": 0.2,
+      "waste_t": 0.8,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 4.0,
+      "waste_fraction": 0.3,
+      "waste_t": 1.2,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 5.0,
+      "waste_fraction": 0.05,
+      "waste_t": 0.25,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 5.0,
+      "waste_fraction": 0.1,
+      "waste_t": 0.5,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 5.0,
+      "waste_fraction": 0.2,
+      "waste_t": 1.0,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 5.0,
+      "waste_fraction": 0.3,
+      "waste_t": 1.5,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 6.0,
+      "waste_fraction": 0.05,
+      "waste_t": 0.3,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 6.0,
+      "waste_fraction": 0.1,
+      "waste_t": 0.6,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 6.0,
+      "waste_fraction": 0.2,
+      "waste_t": 1.2,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 6.0,
+      "waste_fraction": 0.3,
+      "waste_t": 1.8,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 8.0,
+      "waste_fraction": 0.05,
+      "waste_t": 0.4,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 8.0,
+      "waste_fraction": 0.1,
+      "waste_t": 0.8,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 8.0,
+      "waste_fraction": 0.2,
+      "waste_t": 1.6,
+      "waste_plan_required": false
+    },
+    {
+      "mass_t": 8.0,
+      "waste_fraction": 0.3,
+      "waste_t": 2.4,
+      "waste_plan_required": false
+    }
+  ],
+  "crossing_mass": [
+    {
+      "waste_fraction": 0.05,
+      "cabin_mass_to_cross_t": 200.0
+    },
+    {
+      "waste_fraction": 0.1,
+      "cabin_mass_to_cross_t": 100.0
+    },
+    {
+      "waste_fraction": 0.2,
+      "cabin_mass_to_cross_t": 50.0
+    },
+    {
+      "waste_fraction": 0.3,
+      "cabin_mass_to_cross_t": 33.3
+    }
+  ],
+  "backflow": [
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 250.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 1700.0,
+      "verdict": "passes",
+      "margin_mm": 800.0,
+      "min_crown_mm": 700.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 250.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 1690.0,
+      "verdict": "passes",
+      "margin_mm": 790.0,
+      "min_crown_mm": 710.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 250.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 1675.0,
+      "verdict": "passes",
+      "margin_mm": 775.0,
+      "min_crown_mm": 725.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 300.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 1750.0,
+      "verdict": "passes",
+      "margin_mm": 850.0,
+      "min_crown_mm": 650.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 300.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 1740.0,
+      "verdict": "passes",
+      "margin_mm": 840.0,
+      "min_crown_mm": 660.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 300.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 1725.0,
+      "verdict": "passes",
+      "margin_mm": 825.0,
+      "min_crown_mm": 675.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 350.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 1800.0,
+      "verdict": "passes",
+      "margin_mm": 900.0,
+      "min_crown_mm": 600.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 350.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 1790.0,
+      "verdict": "passes",
+      "margin_mm": 890.0,
+      "min_crown_mm": 610.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 350.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 1775.0,
+      "verdict": "passes",
+      "margin_mm": 875.0,
+      "min_crown_mm": 625.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 400.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 1850.0,
+      "verdict": "passes",
+      "margin_mm": 950.0,
+      "min_crown_mm": 550.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 400.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 1840.0,
+      "verdict": "passes",
+      "margin_mm": 940.0,
+      "min_crown_mm": 560.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 400.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 1825.0,
+      "verdict": "passes",
+      "margin_mm": 925.0,
+      "min_crown_mm": 575.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 450.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 1900.0,
+      "verdict": "passes",
+      "margin_mm": 1000.0,
+      "min_crown_mm": 500.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 450.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 1890.0,
+      "verdict": "passes",
+      "margin_mm": 990.0,
+      "min_crown_mm": 510.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 450.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 1875.0,
+      "verdict": "passes",
+      "margin_mm": 975.0,
+      "min_crown_mm": 525.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 500.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 1950.0,
+      "verdict": "passes",
+      "margin_mm": 1050.0,
+      "min_crown_mm": 450.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 500.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 1940.0,
+      "verdict": "passes",
+      "margin_mm": 1040.0,
+      "min_crown_mm": 460.0
+    },
+    {
+      "receiving_pipe": "municipal main (frost depth)",
+      "d_crown_mm": 1500.0,
+      "h_ffl_mm": 500.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 1925.0,
+      "verdict": "passes",
+      "margin_mm": 1025.0,
+      "min_crown_mm": 475.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 250.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 600.0,
+      "verdict": "fails",
+      "margin_mm": -300.0,
+      "min_crown_mm": 700.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 250.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 590.0,
+      "verdict": "fails",
+      "margin_mm": -310.0,
+      "min_crown_mm": 710.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 250.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 575.0,
+      "verdict": "fails",
+      "margin_mm": -325.0,
+      "min_crown_mm": 725.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 300.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 650.0,
+      "verdict": "fails",
+      "margin_mm": -250.0,
+      "min_crown_mm": 650.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 300.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 640.0,
+      "verdict": "fails",
+      "margin_mm": -260.0,
+      "min_crown_mm": 660.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 300.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 625.0,
+      "verdict": "fails",
+      "margin_mm": -275.0,
+      "min_crown_mm": 675.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 350.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 700.0,
+      "verdict": "fails",
+      "margin_mm": -200.0,
+      "min_crown_mm": 600.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 350.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 690.0,
+      "verdict": "fails",
+      "margin_mm": -210.0,
+      "min_crown_mm": 610.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 350.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 675.0,
+      "verdict": "fails",
+      "margin_mm": -225.0,
+      "min_crown_mm": 625.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 400.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 750.0,
+      "verdict": "fails",
+      "margin_mm": -150.0,
+      "min_crown_mm": 550.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 400.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 740.0,
+      "verdict": "fails",
+      "margin_mm": -160.0,
+      "min_crown_mm": 560.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 400.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 725.0,
+      "verdict": "fails",
+      "margin_mm": -175.0,
+      "min_crown_mm": 575.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 450.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 800.0,
+      "verdict": "fails",
+      "margin_mm": -100.0,
+      "min_crown_mm": 500.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 450.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 790.0,
+      "verdict": "fails",
+      "margin_mm": -110.0,
+      "min_crown_mm": 510.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 450.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 775.0,
+      "verdict": "fails",
+      "margin_mm": -125.0,
+      "min_crown_mm": 525.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 500.0,
+      "d_trap_mm": 50.0,
+      "head_mm": 850.0,
+      "verdict": "fails",
+      "margin_mm": -50.0,
+      "min_crown_mm": 450.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 500.0,
+      "d_trap_mm": 60.0,
+      "head_mm": 840.0,
+      "verdict": "fails",
+      "margin_mm": -60.0,
+      "min_crown_mm": 460.0
+    },
+    {
+      "receiving_pipe": "shallow sealed-tank connection",
+      "d_crown_mm": 400.0,
+      "h_ffl_mm": 500.0,
+      "d_trap_mm": 75.0,
+      "head_mm": 825.0,
+      "verdict": "fails",
+      "margin_mm": -75.0,
+      "min_crown_mm": 475.0
+    }
+  ],
+  "excluded": [
+    "product selection",
+    "drainage concept",
+    "stove or chimney selection",
+    "installation approval",
+    "waste tonnage measurement",
+    "site connection type"
+  ]
+}

@@ -1,0 +1,24 @@
+---
+import BuildTabs from '../../components/BuildTabs.astro';
+import Gallery from '../../components/Gallery.astro';
+import Hero from '../../components/Hero.astro';
+import Journey from '../../components/Journey.astro';
+import KeyFacts from '../../components/KeyFacts.astro';
+import Living from '../../components/Living.astro';
+import Materials from '../../components/Materials.astro';
+import StatusFaq from '../../components/StatusFaq.astro';
+import { en } from '../../content/assert-content';
+import '../../content/assert-images';
+import Base from '../../layouts/Base.astro';
+---
+
+<Base content={en} lang="en">
+	<Hero content={en} lang="en" />
+	<KeyFacts content={en} />
+	<Gallery content={en} lang="en" />
+	<Materials content={en} lang="en" />
+	<BuildTabs content={en} lang="en" />
+	<Living content={en} lang="en" />
+	<Journey content={en} lang="en" />
+	<StatusFaq content={en} />
+</Base>

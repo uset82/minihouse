@@ -1,0 +1,181 @@
+{
+  "revision": "CONDENSACION-UNION",
+  "state": "CONCEPTUAL — NO JUNCTION DETAIL DRAWN, NO 2D CALCULATION, NO PRODUCT SELECTED",
+  "units": "degC, Pa, m2K/W, mm",
+  "basis": {
+    "t_in_c": 20.0,
+    "rh_in": 0.5,
+    "t_out_c": -10.0,
+    "rh_out": 0.9,
+    "r_si_flat": 0.13,
+    "r_se": 0.04,
+    "rh_crit_mould": 0.8,
+    "outdoor_note": "Screening value for the Bergen coast. The real design temperature comes from the National Annex and the site (C-01); neither is held.",
+    "sources": [
+      "S012",
+      "S023",
+      "S011"
+    ]
+  },
+  "critical": {
+    "f_crit_mould": 0.754,
+    "f_crit_condensation": 0.642,
+    "required_added_mould": 0.3583,
+    "required_added_condensation": 0.193,
+    "governed_by": "mould",
+    "dew_point_c": 9.26
+  },
+  "steel_resistance": 0.0002,
+  "materials": {
+    "timber": 0.13,
+    "rigid PU foam": 0.025,
+    "neoprene": 0.15
+  },
+  "material_thickness_for_requirement": {
+    "timber": 46.6,
+    "rigid PU foam": 9.0,
+    "neoprene": 53.8
+  },
+  "scenarios": [
+    {
+      "scenario": "A. steel exposed indoors",
+      "layers": [],
+      "added_resistance": 0,
+      "r_total": 0.1702,
+      "f_rsi": 0.2362,
+      "surface_temp_c": -2.91,
+      "passes_mould": false,
+      "passes_condensation": false,
+      "condensation_below_c": 5.9,
+      "mould_below_c": 10.3
+    },
+    {
+      "scenario": "B. steel under a 22 mm timber deck",
+      "layers": [
+        "timber 22 mm"
+      ],
+      "added_resistance": 0.1692,
+      "r_total": 0.3394,
+      "f_rsi": 0.617,
+      "surface_temp_c": 8.51,
+      "passes_mould": false,
+      "passes_condensation": false,
+      "condensation_below_c": -8.0,
+      "mould_below_c": 0.7
+    },
+    {
+      "scenario": "C. steel + 6 mm PU pad + timber deck",
+      "layers": [
+        "rigid PU foam 6 mm",
+        "timber 22 mm"
+      ],
+      "added_resistance": 0.4092,
+      "r_total": 0.5794,
+      "f_rsi": 0.7756,
+      "surface_temp_c": 13.27,
+      "passes_mould": true,
+      "passes_condensation": true,
+      "condensation_below_c": -27.9,
+      "mould_below_c": -12.9
+    },
+    {
+      "scenario": "D. steel + 10 mm PU pad + timber deck",
+      "layers": [
+        "rigid PU foam 10 mm",
+        "timber 22 mm"
+      ],
+      "added_resistance": 0.5692,
+      "r_total": 0.7394,
+      "f_rsi": 0.8242,
+      "surface_temp_c": 14.73,
+      "passes_mould": true,
+      "passes_condensation": true,
+      "condensation_below_c": -41.1,
+      "mould_below_c": -22.0
+    },
+    {
+      "scenario": "E. steel + neoprene 6 mm + timber deck",
+      "layers": [
+        "neoprene 6 mm",
+        "timber 22 mm"
+      ],
+      "added_resistance": 0.2092,
+      "r_total": 0.3794,
+      "f_rsi": 0.6574,
+      "surface_temp_c": 9.72,
+      "passes_mould": false,
+      "passes_condensation": true,
+      "condensation_below_c": -11.3,
+      "mould_below_c": -1.5
+    }
+  ],
+  "sensitivity_rh": [
+    {
+      "rh_in": 0.4,
+      "f_crit": 0.642,
+      "required_added": 0.193
+    },
+    {
+      "rh_in": 0.5,
+      "f_crit": 0.754,
+      "required_added": 0.3583
+    },
+    {
+      "rh_in": 0.6,
+      "f_crit": 0.8478,
+      "required_added": 0.6839
+    }
+  ],
+  "sensitivity_t_out": [
+    {
+      "t_out_c": -5.0,
+      "f_crit": 0.7049,
+      "required_added": 0.2703
+    },
+    {
+      "t_out_c": -10.0,
+      "f_crit": 0.754,
+      "required_added": 0.3583
+    },
+    {
+      "t_out_c": -15.0,
+      "f_crit": 0.7892,
+      "required_added": 0.4464
+    },
+    {
+      "t_out_c": -20.0,
+      "f_crit": 0.8155,
+      "required_added": 0.5345
+    }
+  ],
+  "corners": [
+    {
+      "surface": "flat wall",
+      "r_si": 0.13,
+      "f_rsi_bare": 0.2362,
+      "required_added": 0.3583
+    },
+    {
+      "surface": "floor, downward",
+      "r_si": 0.17,
+      "f_rsi_bare": 0.1912,
+      "required_added": 0.481
+    },
+    {
+      "surface": "concave corner",
+      "r_si": 0.25,
+      "f_rsi_bare": 0.1385,
+      "required_added": 0.7262
+    }
+  ],
+  "excluded": [
+    "2D temperature field",
+    "interstitial condensation at the barrier penetration",
+    "air leakage",
+    "junction detail",
+    "chassis profile",
+    "product selection",
+    "rain and wind-driven wetting",
+    "thermal comfort"
+  ]
+}

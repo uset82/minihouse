@@ -1,0 +1,49 @@
+---
+import type { Content } from '../content/schema';
+import { imageIds, type ImageId } from '../content/images';
+import Figure from './Figure.astro';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const textureId = (id: string): ImageId => {
+  const candidate = `texture-${id}`;
+  if (imageIds.includes(candidate as ImageId)) return candidate as ImageId;
+  return 'texture-malmfuru';
+};
+const rowOrder = ['material', 'origin', 'previousUse', 'usedFor', 'treatment', 'status'] as const;
+---
+
+<section class="materials" id="materialer" aria-labelledby="materials-title">
+  <div class="wrap">
+    <h2 id="materials-title">{content.materials.title}</h2>
+    <p class="section-lead">{content.materials.lead}</p>
+    {
+      content.materials.items.map((item, index) => (
+        <article class:list={['material', index % 2 === 1 && 'material--flip']} aria-labelledby={`mat-${item.id}`}>
+          <Figure imageId={textureId(item.id)} lang={lang} class="material-sample" ratio="texture" />
+          <div class="material-body">
+            <h3 id={`mat-${item.id}`}>{item.name}</h3>
+            <p class="material-lead">{item.lead}</p>
+            <details class="passport" open={index === 0}>
+              <summary class="passport-title">{content.materials.passportTitle}</summary>
+              <div class="passport-body">
+                <dl>
+                  {rowOrder.map((key) => (
+                    <div>
+                      <dt>{content.materials.rows[key]}</dt>
+                      <dd>{item.passport[key]}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </details>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

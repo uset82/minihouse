@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Direction A, Patina: reference tile</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../../../web/promo/src/styles/tokens.css">
+  <style>
+    body {
+      margin: 0;
+      padding: var(--space-5) var(--space-4);
+      background: color-mix(in srgb, var(--solvgra) 30%, var(--kalk));
+      color: var(--tjaere);
+      font: 400 var(--size-small) / var(--leading-text) "Segoe UI", system-ui, sans-serif;
+    }
+    .note { max-width: var(--measure); margin: 0 0 var(--space-5); }
+    .note strong { font-weight: 600; }
+    .frames { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--space-5); }
+    .frame p { margin: 0 0 var(--space-2); font-weight: 600; }
+    iframe { display: block; border: 1px solid var(--solvgra); background: var(--kalk); }
+  </style>
+</head>
+<body>
+  <p class="note"><strong>Direction A, Patina: reference tile by Claude Code, 2026-11-17.</strong>
+    One responsive page shown at a true 360 px and 1280 px. Copy comes from <code>nb.json</code> with the D12 title;
+    tokens come from <code>tokens.css</code>, and the fonts are self-hosted Besley and Jost. The house image and the board texture are
+    stand-ins from Carlos's concept images: the real texture will be a photo of the reclaimed boards.</p>
+  <div class="frames">
+    <div class="frame"><p>360 px</p><iframe src="tile-a.html" width="360" height="2560" title="Reference tile at 360 px"></iframe></div>
+    <div class="frame"><p>1280 px</p><iframe src="tile-a.html" width="1280" height="1840" title="Reference tile at 1280 px"></iframe></div>
+  </div>
+</body>
+</html>

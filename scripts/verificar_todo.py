@@ -10,6 +10,28 @@ Ejecuta, en orden:
   6. chasis_r0.py                    (equilibrio de los 6 casos A-F)
   7. matriz-acciones.csv             (parseable, columnas obligatorias)
   8. enlaces internos Markdown       (excluye web/, node_modules/, .tmp/, dist/)
+  9. alcance normativo TEK17 §13/§14 (guard de regresiones S020-S023)
+ 10. lift_geometry_screen.py --selftest (geometría de eslingas I-1/I-2 y paso a toneladas)
+ 11. mass_sensitivity.py --selftest (preparación y sensibilidad de C-07)
+ 12. r1_frame_skeleton.py --selftest (nudos/barras R1, sin secciones)
+ 13. daylight_check.py --selftest (TEK17 §13-7, luz diurna)
+ 14. fire_check.py --selftest (TEK17 capítulo 11, ventanas de escape y R 15)
+ 15. room_height_check.py --selftest (TEK17 §12-7, altura libre y cobertura)
+ 16. natural_hazard_screen.py --selftest (TEK17 capítulo 7, inundación y deslizamiento)
+ 17. envelope_check.py --selftest (TEK17 §14-3 U-values y §13-13 humedad)
+ 18. section_feasibility.py --selftest (sección integrada: altura, pendiente, envolvente, gálibo)
+ 19. section_options.py --selftest (opciones R2 de sección y su tolerancia)
+ 20. instalaciones_check.py --selftest (TEK17 caps. 9/15/16/17: residuos, desagüe, estufa)
+ 21. documentacion_check.py --selftest (TEK17 caps. 2 y 4: audit §2-2(3) de los informes)
+ 22. puentes_termicas.py --selftest (puentes térmicos del chasis; §14-3 no los limita)
+ 23. condensacion_union.py --selftest (condensación en el encuentro; factor f_Rsi ISO 13788)
+ 24. cubierta_incendio.py --selftest (cubierta bajo cap. 11: ramas, R 15 por carbonización)
+ 25. ventanas_check.py --selftest (ventanas de rømning §11-13 contra luz diurna §13-7)
+ 26. incertidumbre.py --selftest (¿son adecuados los márgenes declarados? §2-2(3), 4.º)
+ 27. puente_2d.py --selftest (conducción 2D en el encuentro; f_Rsi, Ψ, y la malla)
+ 28. estrategia_incendio.py --selftest (cap. 11: qué cláusulas dependen de la misma decisión)
+ 29. ventilacion_check.py --selftest (§13-1(1): caudales documentados y la presión que imponen)
+ 30. aporte_aire.py --selftest (el aire de reposición: su tamaño, y el tiro que no rescata)
 
 Uso:  python scripts/verificar_todo.py
 Sale con codigo 0 si todo pasa, 1 si algo falla. Pensado para CI local o para
@@ -57,7 +79,9 @@ def enlaces():
             text = open(p, encoding="utf-8").read()
             for m in re.finditer(r"\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)", text):
                 t = m.group(1)
-                if t.startswith(("http:", "https:", "mailto:", "#")):
+                # file:/// es una ruta absoluta del sistema, no un enlace relativo
+                # al repositorio: comprobarla aqui daria falsos positivos.
+                if t.startswith(("http:", "https:", "mailto:", "file:", "#")):
                     continue
                 t2 = t.split("#")[0]
                 if not t2:
@@ -98,6 +122,28 @@ def main():
     resultados.append(run("chasis A-F equilibrio", [r"scripts\chasis_r0.py"]))
     resultados.append(matriz())
     resultados.append(enlaces())
+    resultados.append(run("alcance normativo §13/§14", [r"scripts\verificar_alcance_normativo.py"]))
+    resultados.append(run("lift geometry screen", [r"scripts\lift_geometry_screen.py", "--selftest"]))
+    resultados.append(run("mass sensitivity screen", [r"scripts\mass_sensitivity.py", "--selftest"]))
+    resultados.append(run("R1 frame skeleton", [r"scripts\r1_frame_skeleton.py", "--selftest"]))
+    resultados.append(run("daylight check §13-7", [r"scripts\daylight_check.py", "--selftest"]))
+    resultados.append(run("fire check capítulo 11", [r"scripts\fire_check.py", "--selftest"]))
+    resultados.append(run("room height §12-7", [r"scripts\room_height_check.py", "--selftest"]))
+    resultados.append(run("natural hazard capítulo 7", [r"scripts\natural_hazard_screen.py", "--selftest"]))
+    resultados.append(run("envelope §14-3 / §13-13", [r"scripts\envelope_check.py", "--selftest"]))
+    resultados.append(run("sección integrada", [r"scripts\section_feasibility.py", "--selftest"]))
+    resultados.append(run("opciones de sección R2", [r"scripts\section_options.py", "--selftest"]))
+    resultados.append(run("instalaciones caps. 9/15/16/17", [r"scripts\instalaciones_check.py", "--selftest"]))
+    resultados.append(run("documentación caps. 2/4", [r"scripts\documentacion_check.py", "--selftest"]))
+    resultados.append(run("puentes térmicos chasis", [r"scripts\puentes_termicas.py", "--selftest"]))
+    resultados.append(run("condensación del encuentro", [r"scripts\condensacion_union.py", "--selftest"]))
+    resultados.append(run("cubierta bajo cap. 11", [r"scripts\cubierta_incendio.py", "--selftest"]))
+    resultados.append(run("ventanas §11-13 / §13-7", [r"scripts\ventanas_check.py", "--selftest"]))
+    resultados.append(run("adecuación de márgenes", [r"scripts\incertidumbre.py", "--selftest"]))
+    resultados.append(run("conducción 2D del encuentro", [r"scripts\puente_2d.py", "--selftest"]))
+    resultados.append(run("estrategia de incendio cap. 11", [r"scripts\estrategia_incendio.py", "--selftest"]))
+    resultados.append(run("ventilación §13-1(1)", [r"scripts\ventilacion_check.py", "--selftest"]))
+    resultados.append(run("aire de reposición", [r"scripts\aporte_aire.py", "--selftest"]))
     print("=" * 40)
     if all(resultados):
         print("SUITE COMPLETA: TODO PASA")

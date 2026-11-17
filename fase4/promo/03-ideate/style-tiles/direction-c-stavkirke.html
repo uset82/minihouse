@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniHouse · Retning C, Stavkirke (Style Tile)</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px 24px;
+      background: #0E0C0A;
+      color: #EDE6DC;
+      font: 400 1rem / 1.55 "Segoe UI", system-ui, sans-serif;
+    }
+    .header-bar {
+      max-width: 1680px;
+      margin: 0 auto 40px;
+      background: #171412;
+      padding: 24px;
+      border: 1px solid #3A3028;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-bar h1 {
+      font-family: "Cinzel", "Times New Roman", Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 4px;
+      color: #EDE6DC;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+    .header-bar p { margin: 0; color: #B5ACA0; font-size: 0.875rem; }
+    .badge {
+      background: #CA6B35;
+      color: #171412;
+      padding: 6px 12px;
+      border-radius: 2px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .frames {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 40px;
+      justify-content: center;
+      max-width: 1720px;
+      margin: 0 auto;
+    }
+    .frame p { margin: 0 0 8px; font-weight: 600; font-size: 0.875rem; color: #B5ACA0; }
+    iframe { display: block; border: 1px solid #3A3028; background: #171412; }
+  </style>
+</head>
+<body>
+  <div class="header-bar">
+    <div>
+      <h1>Retning C · Stavkirke</h1>
+      <p>Svart tjærebunn (#171412), lys pergamenttekst (#EDE6DC, 14.8:1), brent kobber (#CA6B35, 4.95:1) knapper, Cinzel + Jost. Ren setningsstil uten versaler. Responsive visninger testet i ekte 360 px og 1280 px viewports.</p>
+    </div>
+    <div class="badge">Retning C</div>
+  </div>
+  <div class="frames">
+    <div class="frame">
+      <p>Mobilvisning (360 px)</p>
+      <iframe src="tile-c.html" width="360" height="2300" title="Retning C mobilvisning"></iframe>
+    </div>
+    <div class="frame">
+      <p>Desktopvisning (1280 px)</p>
+      <iframe src="tile-c.html" width="1280" height="1650" title="Retning C desktopvisning"></iframe>
+    </div>
+  </div>
+</body>
+</html>

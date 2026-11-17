@@ -1,0 +1,56 @@
+:root {
+  /* Core material colours, sampled from images/ (PLAN §8.1) */
+  --kalk: #ECEAE4;          /* lime plaster: page ground */
+  --tjaere: #241A13;        /* pine tar: text, footer */
+  --malmfuru: #9D5F30;      /* heartwood pine: large wood surfaces, numerals ≥ 24px */
+  --eik: #BA936B;           /* oak: key facts band, spec table */
+  --kobber: #A9481C;        /* copper: interactive on light grounds */
+  --irr: #2C4F40;           /* petrol-green tile / verdigris: interior band */
+
+  /* Support */
+  --kobber-mork: #8E3B16;   /* copper hover (kalk text on it: 6.26:1) */
+  --kobber-lys: #E08A52;    /* copper on dark bands (tjære, irr) only */
+  --solvgra: #8C7E71;       /* weathered cladding: hairlines on kalk only */
+  --malmfuru-mork: #6F3F1E; /* wood-toned text, captions on kalk */
+
+  /* Roles */
+  --bg: var(--kalk);
+  --text: var(--tjaere);
+  --text-soft: var(--malmfuru-mork);
+  --line: var(--solvgra);
+  --action: var(--kobber);
+  --action-hover: var(--kobber-mork);
+  --action-on-dark: var(--kobber-lys);
+
+  /* Type */
+  --font-display: "Besley", Georgia, "Times New Roman", serif;
+  --font-text: "Jost", "Segoe UI", system-ui, sans-serif;
+  --size-caption: 0.875rem;                               /* 14 */
+  --size-small: 1rem;                                     /* 16 */
+  --size-body: 1.125rem;                                  /* 18 */
+  --size-lead: 1.3125rem;                                 /* 21 */
+  --size-h3: 1.5rem;                                      /* 24 */
+  --size-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);     /* 28 → 36 */
+  --size-h1: clamp(2.75rem, 1.9rem + 3.8vw, 4.5rem);      /* 44 → 72 */
+  --leading-text: 1.55;
+  --leading-display: 1.08;
+  --measure: 64ch;
+
+  /* Space and shape */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 40px; --space-6: 64px; --space-7: 96px;
+  --radius: 2px;
+  --max-content: 1200px;
+  --gutter: 24px;
+  --focus-ring: 3px solid var(--kobber);
+  --focus-ring-dark: 3px solid var(--kobber-lys);
+  --focus-offset: 3px;
+
+  /* Motion */
+  --dur: 180ms;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0ms; }
+}

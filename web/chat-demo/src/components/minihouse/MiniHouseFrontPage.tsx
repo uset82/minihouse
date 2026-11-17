@@ -12,23 +12,20 @@ const CONCEPT_CARDS = [
     id: 'concept-1',
     title: 'Concept 1 · Nordic Craft & Steel Documentary Hero',
     badge: '[CONCEPTUAL · REV 0.1]',
-    image: 'concepts/hero-nordic.jpg',
     description:
-      'Editorial documentary presentation of the 6000 × 3000 × 3200 mm transportable cabin on adjustable piers, pairing an S355 steel primary frame with documented reclaimed Nordic timber.',
+      'Editorial documentary presentation of the 6000 × 3000 mm transportable cabin (height TBD with gable roof) on adjustable piers, pairing a steel primary frame (grade TBD) with reclaimed Nordic timber (batch documentation pending).',
   },
   {
     id: 'concept-2',
     title: 'Concept 2 · Interactive 3D Lifting & FEA Deflection Lab',
-    badge: '[CALCULADO · EULER-BERNOULLI]',
-    image: 'concepts/3d-lifting-sim.jpg',
+    badge: '[CONCEPTUAL · 3 t REFERENCE BEAM]',
     description:
-      'Dark-mode structural twin comparing Mode A (Top-Corner Lift, 24.63 mm deflection) vs. Mode B (1.2 m Inset Supports, 1.49 mm deflection) alongside the OpenRouter Free AI Assistant.',
+      'Dark-mode structural twin comparing Mode A (Top-Corner Lift, 24.63 mm deflection) vs. Mode B (1.2 m Inset Supports, 1.49 mm deflection) — hypothetical 3 t reference beam from the research report, NOT the module — alongside the OpenRouter Free AI Assistant.',
   },
   {
     id: 'concept-3',
     title: 'Concept 3 · 4-Layer Exploded BOM & Material Passport',
     badge: '[TRACEABLE BOM]',
-    image: 'concepts/exploded-materials.jpg',
     description:
       'Exploded axonometric view separating the steel skid, corner nodes, reclaimed barn timber panels, and standing-seam roof with component IDs and verification badges.',
   },
@@ -263,9 +260,9 @@ export const MiniHouseDocumentaryContent = ({
               margin: '0 0 20px',
             }}
           >
-            A transportable <strong>6000 × 3000 mm</strong> modular cabin engineered to be lifted by
+            A transportable <strong>6000 × 3000 mm</strong> modular cabin designed to be lifted by
             crane, transported by flatbed truck, and placed on site without permanent deformation of
-            the primary steel frame, corner nodes, or door/window openings.
+            the primary steel frame, corner nodes, or door/window openings (engineering in progress).
           </p>
 
           {/* Key Dimension & Traceability Pills */}
@@ -304,13 +301,13 @@ export const MiniHouseDocumentaryContent = ({
               }}
             >
               <div style={{ fontSize: '11px', color: '#64748B', fontFamily: 'monospace' }}>
-                INSET DEFLECTION
+                INSET DEFLECTION · 3 t REFERENCE BEAM
               </div>
               <div style={{ fontSize: '15px', fontWeight: 700, marginTop: '2px' }}>
                 1.49 mm (a=1.2m)
               </div>
-              <div style={{ fontSize: '10px', color: '#0284C7', fontFamily: 'monospace' }}>
-                [CALCULADO · 3t REF]
+              <div style={{ fontSize: '10px', color: '#D97706', fontFamily: 'monospace' }}>
+                [CONCEPTUAL · HYPOTHETICAL EXAMPLE, NOT MODULE]
               </div>
             </div>
             <div
@@ -387,17 +384,21 @@ export const MiniHouseDocumentaryContent = ({
             boxShadow: '0 14px 34px rgba(20, 24, 29, 0.08)',
           }}
         >
-          <img
-            src={CONCEPT_CARDS[selectedConcept].image}
-            alt={CONCEPT_CARDS[selectedConcept].title}
+          <div
             style={{
               width: '100%',
-              height: '290px',
-              objectFit: 'cover',
-              display: 'block',
-              background: '#14181D',
+              minHeight: '120px',
+              display: 'flex',
+              alignItems: 'center',
+              padding: '20px 16px',
+              background: '#E8E4DC',
+              color: '#1E2328',
+              fontSize: '14px',
+              lineHeight: 1.5,
             }}
-          />
+          >
+            Concept pictures withdrawn. They showed a flat-roofed container and are archived, not the MiniHouse design.
+          </div>
           <div style={{ padding: '14px 16px' }}>
             <div
               style={{

@@ -21,3 +21,7 @@ El agente principal toma una tarea acotada, elige el rol por su entrega y conser
 2. Lee la definición del rol y la habilidad correspondiente. Entrega al siguiente rol los archivos, la revisión, los datos faltantes y las verificaciones ejecutadas.
 3. Marca cada casilla cuando se cumpla su criterio y haya evidencia. Trabaja en orden. Cuando un dato falte, registra el supuesto o la dependencia y continúa las tareas de la fase que puedas verificar.
 4. Para esta entrega, cierra la inicialización del contexto. Los cálculos del módulo real, el CAD de la casita, los ensayos y el sitio tienen sus propias fases en el plan.
+
+## Web promocional (Fase 4)
+
+Desde 2026-11-17, la web principal de MiniHouse es promocional. Antigravity, Cursor y DeepSeek la construyen en paralelo según el [reparto de tareas](fase4/promo/agents/README.md). Antes de tocar la UI, los textos o las imágenes, carga la habilidad [minihouse-frontend-design](.agents/skills/minihouse-frontend-design/SKILL.md) y lee la [guía de diseño](fase4/promo/DESIGN-GUIDE.md). Después sigue el brief de tu cliente en `fase4/promo/agents/`. Edita sólo los archivos que te asigna el brief y registra cada tarea en `fase4/promo/status/`.

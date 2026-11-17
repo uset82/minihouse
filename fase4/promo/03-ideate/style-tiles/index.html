@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiniHouse · Style Tiles Sammenligning (Gate G3)</title>
+  <style>
+    :root {
+      --kalk: #ECEAE4;
+      --tjaere: #241A13;
+      --kobber: #A9481C;
+      --solvgra: #8C7E71;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--kalk);
+      color: var(--tjaere);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 40px 24px;
+      line-height: 1.5;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header { margin-bottom: 40px; border-bottom: 1px solid var(--solvgra); padding-bottom: 24px; }
+    h1 { font-size: 32px; font-weight: 800; margin-bottom: 12px; }
+    p.lead { font-size: 18px; color: #4A3E36; max-width: 800px; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 32px; margin-top: 32px; }
+    .card {
+      background: #FFF;
+      border: 1px solid var(--solvgra);
+      border-radius: 4px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .card h2 { font-size: 22px; margin-bottom: 8px; }
+    .card p { font-size: 15px; color: #555; margin-bottom: 20px; }
+    .card .features { font-size: 13px; color: #666; margin-bottom: 24px; }
+    .card .features li { margin-bottom: 4px; margin-left: 18px; }
+    .btn {
+      display: inline-block;
+      text-align: center;
+      background: var(--kobber);
+      color: #FFF;
+      padding: 12px 20px;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 2px;
+    }
+    .btn:hover { background: #8E3C16; }
+    .recommended-badge {
+      display: inline-block;
+      background: #2C4F40;
+      color: #FFF;
+      padding: 4px 8px;
+      border-radius: 2px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>MiniHouse · De tre designretningene (Gate G3)</h1>
+      <p class="lead">Hver style tile demonstrerer nøyaktig samme kjerneinnhold (Hero med kanonisk bilde og Materialpass for malmfuru) gjengitt i både 360 px mobilvisning og 1280 px desktopvisning.</p>
+    </header>
+
+    <div class="grid">
+
+      <!-- Retning A -->
+      <div class="card" style="border-top: 4px solid var(--kobber);">
+        <div>
+          <span class="recommended-badge">Anbefalt retning (§8)</span>
+          <h2>Retning A · Patina</h2>
+          <p>Kalkgrunn, tjæresort typografi, dempede tre- og verdigristoner, med kobber reservert utelukkende for klikkbare elementer.</p>
+          <ul class="features">
+            <li><strong>Fargebunn:</strong> Kalk (#ECEAE4) og Eik (#BA936B)</li>
+            <li><strong>Typografi:</strong> Besley 800 (display) + Jost (brødtekst)</li>
+            <li><strong>Følelse:</strong> Arkitektonisk, verdig, naturlig aldring, moderne retro</li>
+            <li><strong>Status:</strong> Grunnlag for live Astro-bygg i web/promo/</li>
+          </ul>
+        </div>
+        <a href="direction-a-patina.html" class="btn">Åpne Retning A (Patina)</a>
+      </div>
+
+      <!-- Retning B -->
+      <div class="card" style="border-top: 4px solid #B3410E;">
+        <div>
+          <span class="recommended-badge" style="background: #78482A;">Nostalgisk</span>
+          <h2>Retning B · Hytte '74</h2>
+          <p>Varme honningtoner fra furupanel, dyp nøttebrun tekst, myke Cooper-serifer og 1970-talls rya-oransje aksenter.</p>
+          <ul class="features">
+            <li><strong>Fargebunn:</strong> Varm furu (#F6EBD9 / #ECD7BC)</li>
+            <li><strong>Typografi:</strong> Caprasimo (myk display) + Jost</li>
+            <li><strong>Følelse:</strong> Lun, nostalgisk, 1970-talls hyttekos, uformell</li>
+            <li><strong>Aksent:</strong> Rya-oransje (#B3410E, 5.71:1)</li>
+          </ul>
+        </div>
+        <a href="direction-b-hytte74.html" class="btn" style="background: #B3410E;">Åpne Retning B (Hytte '74)</a>
+      </div>
+
+      <!-- Retning C -->
+      <div class="card" style="border-top: 4px solid #CA6B35; background: #1F1B18; color: #EDE6DC;">
+        <div>
+          <span class="recommended-badge" style="background: #CA6B35; color: #171412;">Dramatisk / Historisk</span>
+          <h2 style="color: #EDE6DC;">Retning C · Stavkirke</h2>
+          <p style="color: #B5ACA0;">Dyp tjæresort bunn, utskårne serifer i pergament, og glimt av brent kobber. 900 års trearv.</p>
+          <ul class="features" style="color: #B5ACA0;">
+            <li><strong>Fargebunn:</strong> Tjære dyp (#171412) og Tjære lys (#221C18)</li>
+            <li><strong>Typografi:</strong> Cinzel (meisel-serif) + Jost</li>
+            <li><strong>Følelse:</strong> Monumental, historisk tyngde, mørk eleganse</li>
+            <li><strong>Aksent:</strong> Brent kobber (#CA6B35, 4.95:1)</li>
+          </ul>
+        </div>
+        <a href="direction-c-stavkirke.html" class="btn" style="background: #CA6B35; color: #171412;">Åpne Retning C (Stavkirke)</a>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

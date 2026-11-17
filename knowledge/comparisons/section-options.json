@@ -1,0 +1,281 @@
+{
+  "state": "OPTIONS — NO SELECTION, NO GEOMETRY FROZEN",
+  "width_mm": 3000.0,
+  "length_mm": 6000.0,
+  "target_free_mm": 2200.0,
+  "wall_build_mm": 264.0,
+  "reserve_mm": 100.0,
+  "internal": {
+    "width_m": 2.47,
+    "length_m": 5.47,
+    "area_m2": 13.53
+  },
+  "options": [
+    {
+      "id": "R2-A",
+      "name": "Shallow gable, full headroom",
+      "pitch": 8.0,
+      "stack": 900.0,
+      "floor": 250.0,
+      "roof": 300.0,
+      "limit": 4000.0,
+      "keeps_gable": true,
+      "cost": "the roof reads almost flat; the gable in the reference images becomes a ridge line",
+      "wall_mm": 2336.0,
+      "coverage": 1.0,
+      "band_mm": 3000.0,
+      "low_zone_mm": 0.0,
+      "low_zone_area_m2": 0.0,
+      "ridge_free_mm": 2547.0,
+      "transport_mm": 4000.0,
+      "headroom_over_limit": 0.0,
+      "full_coverage": true,
+      "effectively_full": true,
+      "wall_reserve_mm": 2236.0,
+      "coverage_reserve": 1.0,
+      "survives_reserve": true,
+      "loft_possible": false,
+      "d_to_2000_mm": 0.0,
+      "d_to_1600_mm": 0.0
+    },
+    {
+      "id": "R2-B",
+      "name": "20° gable, low side zones",
+      "pitch": 20.0,
+      "stack": 1100.0,
+      "floor": 250.0,
+      "roof": 300.0,
+      "limit": 4000.0,
+      "keeps_gable": true,
+      "cost": "2.2 m only over the central band; bathroom, kitchen and storage move to the low zones",
+      "wall_mm": 1785.0,
+      "coverage": 0.239,
+      "band_mm": 718.0,
+      "low_zone_mm": 1141.0,
+      "low_zone_area_m2": 6.24,
+      "ridge_free_mm": 2331.0,
+      "transport_mm": 4000.0,
+      "headroom_over_limit": -0.0,
+      "full_coverage": false,
+      "effectively_full": false,
+      "wall_reserve_mm": 1685.0,
+      "coverage_reserve": 0.056,
+      "survives_reserve": false,
+      "loft_possible": false,
+      "d_to_2000_mm": 591.0,
+      "d_to_1600_mm": 0.0
+    },
+    {
+      "id": "R2-C",
+      "name": "15° gable on a low loader",
+      "pitch": 15.0,
+      "stack": 700.0,
+      "floor": 250.0,
+      "roof": 300.0,
+      "limit": 4000.0,
+      "keeps_gable": true,
+      "cost": "a specialised low-deck trailer, which may cost more per move and is not available on every route",
+      "wall_mm": 2337.0,
+      "coverage": 1.0,
+      "band_mm": 3000.0,
+      "low_zone_mm": 0.0,
+      "low_zone_area_m2": 0.0,
+      "ridge_free_mm": 2739.0,
+      "transport_mm": 4000.0,
+      "headroom_over_limit": 0.0,
+      "full_coverage": true,
+      "effectively_full": true,
+      "wall_reserve_mm": 2237.0,
+      "coverage_reserve": 1.0,
+      "survives_reserve": true,
+      "loft_possible": false,
+      "d_to_2000_mm": 0.0,
+      "d_to_1600_mm": 0.0
+    },
+    {
+      "id": "R2-D",
+      "name": "20° gable with a dispensation",
+      "pitch": 20.0,
+      "stack": 1100.0,
+      "floor": 250.0,
+      "roof": 300.0,
+      "limit": 4400.0,
+      "keeps_gable": true,
+      "cost": "a permit application before every move, and the risk that one route refuses it after the cabin is built",
+      "wall_mm": 2185.0,
+      "coverage": 0.972,
+      "band_mm": 2916.0,
+      "low_zone_mm": 42.0,
+      "low_zone_area_m2": 0.23,
+      "ridge_free_mm": 2731.0,
+      "transport_mm": 4400.0,
+      "headroom_over_limit": 0.0,
+      "full_coverage": false,
+      "effectively_full": true,
+      "wall_reserve_mm": 2085.0,
+      "coverage_reserve": 0.789,
+      "survives_reserve": false,
+      "loft_possible": false,
+      "d_to_2000_mm": 0.0,
+      "d_to_1600_mm": 0.0
+    }
+  ],
+  "revised": [
+    {
+      "stud_fraction": 0.15,
+      "build_up": {
+        "floor_mm": 280.7,
+        "roof_mm": 277.5,
+        "floor_ins_mm": 240.7,
+        "roof_ins_mm": 245.2
+      },
+      "min_limit_full_coverage_mm": 4422.0,
+      "options": [
+        {
+          "id": "R2-A",
+          "wall_mm": 2328.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 1.0,
+          "survives_reserve": true,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-B",
+          "wall_mm": 1778.0,
+          "coverage": 0.227,
+          "band_mm": 681.0,
+          "full_coverage": false,
+          "coverage_reserve": 0.044,
+          "survives_reserve": false,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-C",
+          "wall_mm": 2330.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 1.0,
+          "survives_reserve": true,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-D",
+          "wall_mm": 2178.0,
+          "coverage": 0.96,
+          "band_mm": 2879.0,
+          "full_coverage": false,
+          "coverage_reserve": 0.777,
+          "survives_reserve": false,
+          "transport_mm": 4400.0
+        }
+      ]
+    },
+    {
+      "stud_fraction": 0.12,
+      "build_up": {
+        "floor_mm": 267.5,
+        "roof_mm": 264.0,
+        "floor_ins_mm": 227.5,
+        "roof_ins_mm": 231.7
+      },
+      "min_limit_full_coverage_mm": 4394.0,
+      "options": [
+        {
+          "id": "R2-A",
+          "wall_mm": 2355.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 1.0,
+          "survives_reserve": true,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-B",
+          "wall_mm": 1806.0,
+          "coverage": 0.278,
+          "band_mm": 833.0,
+          "full_coverage": false,
+          "coverage_reserve": 0.094,
+          "survives_reserve": false,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-C",
+          "wall_mm": 2357.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 1.0,
+          "survives_reserve": true,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-D",
+          "wall_mm": 2206.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 0.827,
+          "survives_reserve": false,
+          "transport_mm": 4400.0
+        }
+      ]
+    },
+    {
+      "stud_fraction": 0.08,
+      "build_up": {
+        "floor_mm": 250.3,
+        "roof_mm": 246.3,
+        "floor_ins_mm": 210.3,
+        "roof_ins_mm": 214.0
+      },
+      "min_limit_full_coverage_mm": 4358.0,
+      "options": [
+        {
+          "id": "R2-A",
+          "wall_mm": 2390.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 1.0,
+          "survives_reserve": true,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-B",
+          "wall_mm": 1842.0,
+          "coverage": 0.344,
+          "band_mm": 1031.0,
+          "full_coverage": false,
+          "coverage_reserve": 0.16,
+          "survives_reserve": false,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-C",
+          "wall_mm": 2393.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 1.0,
+          "survives_reserve": true,
+          "transport_mm": 4000.0
+        },
+        {
+          "id": "R2-D",
+          "wall_mm": 2242.0,
+          "coverage": 1.0,
+          "band_mm": 3000.0,
+          "full_coverage": true,
+          "coverage_reserve": 0.893,
+          "survives_reserve": false,
+          "transport_mm": 4400.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "WebDesigner",
+    "description": "Ask for a website or app in chat and the agent builds it with the WebDesigner pipeline: intake and stack selection via MCP tools (wd_*), then design skills for tokens, smooth-shadow elevation, 2D vector motion, GSAP, Three.js, anti-slop audits, and accessibility polish. Engine output lands in a fixed webdesigner/ folder inside the MiniHouse workspace; one active project at a time.",
+    "detail": "docs/DETAIL.md"
+  }
+}

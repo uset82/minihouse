@@ -1,0 +1,35 @@
+[1mRunning axe-core 4.14.1 in chrome-headless[22m
+[1m[22m
+[1mTesting [4m[34mhttp://localhost:4322/[39m[24m[22m ... please wait, this may take a minute.
+
+[31m[1m  Violation of "color-contrast" with 5 occurrences![22m[39m
+[31m[1m[22m[39m    Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - .living-hero > figcaption
+     - .room:nth-child(1) > figure > figcaption
+     - .room:nth-child(2) > figure > figcaption
+     - .room:nth-child(3) > figure > figcaption
+     - .room:nth-child(4) > figure > figcaption
+    For details, see: [4m[34mhttps://dequeuniversity.com/rules/axe/4.14/color-contrast[39m[24m
+[31m[1m[22m[39m
+[31m[1m5 Accessibility issues detected.[22m[39m
+[1m[22m
+[1mTesting [4m[34mhttp://localhost:4322/en/[39m[24m[22m ... please wait, this may take a minute.
+
+[31m[1m  Violation of "color-contrast" with 5 occurrences![22m[39m
+[31m[1m[22m[39m    Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - .living-hero > figcaption
+     - .room:nth-child(1) > figure > figcaption
+     - .room:nth-child(2) > figure > figcaption
+     - .room:nth-child(3) > figure > figcaption
+     - .room:nth-child(4) > figure > figcaption
+    For details, see: [4m[34mhttps://dequeuniversity.com/rules/axe/4.14/color-contrast[39m[24m
+[31m[1m[22m[39m
+[31m[1m5 Accessibility issues detected.[22m[39m
+[1mTesting complete of 2 pages[22m
+[1m[22m
+Saved file at C:\Users\carlos\PROYECTOS\minihouse\fase4\promo\05-test\reports\axe-4322.json 
+
+[3mPlease note that only 20% to 50% of all accessibility issues can automatically be detected. [23m
+[3mManual testing is always required. For more information see:[23m
+[3m[4m[34mhttps://dequeuniversity.com/class/testing[39m[24m[23m
+[3m[23m

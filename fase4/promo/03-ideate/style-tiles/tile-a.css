@@ -1,0 +1,259 @@
+/* MiniHouse · Direction A "Patina" · reference tile
+   Built by Claude Code, 2026-11-17, against DESIGN-GUIDE R1.2.
+   Colours, type sizes and spacing come only from tokens.css (linked before this file).
+   Literals used here are the ones DESIGN-GUIDE §3 allows: breakpoints 48rem / 64rem / 80rem,
+   1–3 px lines, letter-spacing -0.01em, min-height 48px, the 10 px punched hole, fr units,
+   percentages, and color-mix() with token colours. */
+
+@font-face { font-family: "Besley"; src: url("fonts/besley-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Besley"; src: url("fonts/besley-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Jost"; src: url("fonts/jost-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Jost"; src: url("fonts/jost-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: var(--size-body);
+  font-weight: 400;
+  line-height: var(--leading-text);
+}
+h1, h2, h3, p, dl, dd, figure, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: var(--leading-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: var(--action); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--action-hover); text-decoration-thickness: 2px; }
+:focus-visible { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+
+.wrap {
+  max-width: calc(var(--max-content) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--gutter);
+  top: var(--space-2);
+  z-index: 2;
+  padding: var(--space-2) var(--space-3);
+  background: var(--kalk);
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }
+
+/* ---------- Actions: copper means "press here" ---------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: var(--action);
+  color: var(--kalk);
+  font: 500 var(--size-body) / var(--leading-display) var(--font-text);
+  text-decoration: none;
+}
+.button:hover { background: var(--action-hover); color: var(--kalk); }
+
+/* ---------- Header ---------- */
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-3);
+}
+.wordmark {
+  margin-right: auto;
+  color: var(--text);
+  font: 800 var(--size-h3) / var(--leading-display) var(--font-display);
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.nav, .site-header .lang, .site-header .button { display: none; }
+.menu-button {
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--action);
+  font: 500 var(--size-body) / var(--leading-display) var(--font-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.nav ul { display: flex; gap: var(--space-4); }
+.nav a, .site-header .lang {
+  color: var(--text);
+  font-weight: 500;
+  font-size: var(--size-small);
+  text-decoration: none;
+}
+.nav a:hover, .site-header .lang:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--action);
+  text-decoration-thickness: 2px;
+}
+
+/* ---------- Hero: mobile order follows Carlos's mobile concept ---------- */
+.hero { padding-block: var(--space-5) var(--space-6); }
+.hero h1 {
+  font-weight: 800;
+  font-size: var(--size-h1);
+  margin-bottom: var(--space-4);
+}
+.hero-figure { margin-bottom: var(--space-4); }
+.hero-figure img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+figcaption {
+  margin-top: var(--space-2);
+  color: var(--text-soft);
+  font-size: var(--size-caption);
+}
+.lead {
+  max-width: var(--measure);
+  font-size: var(--size-lead);
+  margin-bottom: var(--space-4);
+}
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3) var(--space-4); }
+
+/* ---------- Key facts: the oak workbench ---------- */
+.band--eik { background: var(--eik); color: var(--tjaere); padding-block: var(--space-4); }
+.facts-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-2);
+  border-top: 1px solid var(--tjaere);
+}
+.facts-list > div:first-child { border-top: 0; }
+.facts-list dt { font-weight: 500; font-size: var(--size-small); }
+.facts-list dd { font-variant-numeric: tabular-nums; }
+
+/* ---------- Materials: the one bold thing ---------- */
+.materials { padding-block: var(--space-6); }
+.materials h2 { font-weight: 700; font-size: var(--size-h2); margin-bottom: var(--space-3); }
+.section-lead { max-width: var(--measure); font-size: var(--size-lead); margin-bottom: var(--space-5); }
+
+.material-sample { width: 60%; margin-bottom: var(--space-4); }
+.material-sample img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.material h3 { font-weight: 800; font-size: var(--size-h3); margin-bottom: var(--space-2); }
+.material-lead { max-width: var(--measure); margin-bottom: var(--space-4); }
+
+/* The passport is a timber lot tag: a stub with an eyelet, a perforation, then a short ledger.
+   The hole lives in its own strip so it can't be mistaken for a radio button. */
+.passport {
+  display: grid;
+  grid-template-columns: var(--space-5) minmax(0, 1fr);
+  max-width: var(--measure);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.passport-stub { position: relative; border-right: 1px dashed var(--line); }
+.passport-stub::before {
+  content: "";
+  position: absolute;
+  top: var(--space-4);
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--line);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+.passport-body { padding: var(--space-3) var(--space-4) var(--space-2); }
+.passport-title {
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+  font-size: var(--size-small);
+  line-height: var(--leading-display);
+}
+/* Accessory removed in the critique pass: the hairline under every row. With the edge, the
+   perforation and six hairlines the tag read as a spreadsheet; spacing alone separates the rows. */
+.passport dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-1);
+}
+.passport dt { color: var(--text-soft); font-weight: 500; font-size: var(--size-small); }
+
+/* ---------- Footer: the steel base ---------- */
+.band--tjaere { background: var(--tjaere); color: var(--kalk); padding-block: var(--space-5); }
+.band--tjaere a { color: var(--action-on-dark); }
+.band--tjaere a:hover { color: var(--kalk); }
+.band--tjaere :focus-visible { outline: var(--focus-ring-dark); }
+.footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-3) var(--space-5); }
+.footer-row ul { display: flex; flex-wrap: wrap; gap: var(--space-4); }
+
+/* ---------- 48rem: twelve columns ---------- */
+@media (min-width: 48rem) {
+  .facts-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .facts-list > div {
+    display: block;
+    padding: 0 var(--space-3);
+    border-top: 0;
+    border-left: 1px solid var(--tjaere);
+  }
+  .facts-list > div:first-child { border-left: 0; padding-left: 0; }
+  .facts-list dd { margin-top: var(--space-1); }
+
+  .material {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    align-items: start;
+  }
+  .material-sample { width: 100%; margin-bottom: 0; }
+}
+
+/* ---------- 64rem: the hero splits, the photo bleeds to the right edge ---------- */
+@media (min-width: 64rem) {
+  .nav, .site-header .lang, .site-header .button { display: inline-flex; }
+  .menu-button { display: none; }
+
+  .hero { padding-block: var(--space-6); }
+  .hero .wrap { max-width: none; padding-inline: 0; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns:
+      max(var(--gutter), calc((100% - var(--max-content)) / 2))
+      minmax(0, 5fr)
+      var(--space-6)
+      minmax(0, 7fr);
+    grid-template-rows: 1fr auto auto auto 1fr;
+    grid-template-areas:
+      ". .       . figure"
+      ". title   . figure"
+      ". lead    . figure"
+      ". actions . figure"
+      ". .       . figure";
+  }
+  .hero h1 { grid-area: title; }
+  .hero-figure { grid-area: figure; margin-bottom: 0; }
+  .hero .lead { grid-area: lead; }
+  .hero .actions { grid-area: actions; }
+}
+
+/* ---------- 80rem: more air between sections ---------- */
+@media (min-width: 80rem) {
+  .hero, .materials { padding-block: var(--space-7); }
+  .band--eik { padding-block: var(--space-5); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}

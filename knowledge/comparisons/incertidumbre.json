@@ -1,0 +1,292 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01",
+  "wall_ins_mm": 189.0,
+  "stud_fractions": [
+    0.08,
+    0.1,
+    0.12,
+    0.15,
+    0.18,
+    0.23
+  ],
+  "sweeps": {
+    "wall_u": [
+      {
+        "fraction": 0.08,
+        "u": 0.1964,
+        "margin": 0.0236
+      },
+      {
+        "fraction": 0.1,
+        "u": 0.2032,
+        "margin": 0.0168
+      },
+      {
+        "fraction": 0.12,
+        "u": 0.21,
+        "margin": 0.01
+      },
+      {
+        "fraction": 0.15,
+        "u": 0.2202,
+        "margin": -0.0002
+      },
+      {
+        "fraction": 0.18,
+        "u": 0.2304,
+        "margin": -0.0104
+      },
+      {
+        "fraction": 0.23,
+        "u": 0.2474,
+        "margin": -0.0274
+      }
+    ],
+    "section": [
+      {
+        "fraction": 0.08,
+        "deficit_mm": 358.4,
+        "margin_mm": -358.4
+      },
+      {
+        "fraction": 0.1,
+        "deficit_mm": 376.2,
+        "margin_mm": -376.2
+      },
+      {
+        "fraction": 0.12,
+        "deficit_mm": 394.4,
+        "margin_mm": -394.4
+      },
+      {
+        "fraction": 0.15,
+        "deficit_mm": 422.0,
+        "margin_mm": -422.0
+      },
+      {
+        "fraction": 0.18,
+        "deficit_mm": 450.1,
+        "margin_mm": -450.1
+      },
+      {
+        "fraction": 0.23,
+        "deficit_mm": 497.6,
+        "margin_mm": -497.6
+      }
+    ],
+    "bridges": [
+      {
+        "level": "good",
+        "psi_prime": 0.1169,
+        "margin": -0.0669
+      },
+      {
+        "level": "ordinary",
+        "psi_prime": 0.2099,
+        "margin": -0.1599
+      },
+      {
+        "level": "poor",
+        "psi_prime": 0.3969,
+        "margin": -0.3469
+      }
+    ],
+    "flue": [
+      {
+        "draught_pa": 10.0,
+        "worst_net_pa": -129.7,
+        "best_net_pa": -95.5
+      },
+      {
+        "draught_pa": 20.0,
+        "worst_net_pa": -119.7,
+        "best_net_pa": -85.5
+      }
+    ]
+  },
+  "rows": [
+    {
+      "number": 1,
+      "screen": "Daylight §13-7",
+      "quantity": "LT",
+      "kind": "input",
+      "source": "LT and frame factor are both unselected",
+      "margin": null,
+      "magnitude": null,
+      "adequate": null,
+      "verdict": "undefined — no adequacy test is possible"
+    },
+    {
+      "number": 2,
+      "screen": "Fire ch. 11 — door",
+      "quantity": "free width, mm",
+      "kind": "construction",
+      "source": "the frame, hinge and stop build-up that turns a 900 mm leaf into a free width",
+      "margin": 40.0,
+      "magnitude": null,
+      "adequate": false,
+      "verdict": "**not demonstrated** — 40 mm is inside the range of ordinary frame and hinge build-ups, and none is specified"
+    },
+    {
+      "number": 3,
+      "screen": "Fire ch. 11 — escape sill",
+      "quantity": "sill, mm",
+      "kind": "interpretation",
+      "source": "which of the three §11-13 readings applies",
+      "margin": -500.0,
+      "magnitude": null,
+      "adequate": false,
+      "verdict": "**sign set by the interpretation** — −500 mm under the strictest §11-13 reading, +100 mm on V-01 under the minimal one"
+    },
+    {
+      "number": 4,
+      "screen": "Fire ch. 11 — escape size",
+      "quantity": "h+w, mm",
+      "kind": "interpretation",
+      "source": "which of the three §11-13 readings applies",
+      "margin": -500.0,
+      "magnitude": null,
+      "adequate": false,
+      "verdict": "**sign set by the interpretation** — −500 mm under the strictest §11-13 reading, +100 mm on V-01 under the minimal one"
+    },
+    {
+      "number": 5,
+      "screen": "Room height §12-7",
+      "quantity": "eave, mm",
+      "kind": "input",
+      "source": "the timber fraction, which is width ÷ centres and not yet chosen",
+      "margin": -422.0,
+      "magnitude": {
+        "kind": "input",
+        "span": 139.2,
+        "from": -358.4,
+        "to": -497.6,
+        "unit": "mm"
+      },
+      "adequate": false,
+      "verdict": "**negative across the band** (−358 to −498) — sign robust, magnitude not"
+    },
+    {
+      "number": 6,
+      "screen": "Natural hazards ch. 7",
+      "quantity": "freeboard, mm",
+      "kind": "interpretation",
+      "source": "the freeboard is a project choice, not a regulatory figure",
+      "margin": 300.0,
+      "magnitude": null,
+      "adequate": null,
+      "verdict": "positive, but the number is a project choice, not a requirement"
+    },
+    {
+      "number": 7,
+      "screen": "Envelope §14-3 — wall U",
+      "quantity": "W/m²K",
+      "kind": "input",
+      "source": "the stud fraction at a fixed insulation thickness",
+      "margin": 0.0,
+      "magnitude": {
+        "kind": "input",
+        "span": 0.051,
+        "from": 0.0236,
+        "to": -0.0274,
+        "unit": "W/m²K"
+      },
+      "adequate": false,
+      "verdict": "**zero by construction** — the thickness was solved to hit 0.22 at 15 %, so the margin is zero there and the band across 8–23 % runs +0.0236 to −0.0274"
+    },
+    {
+      "number": 8,
+      "screen": "Thermal bridges",
+      "quantity": "Ψ″ W/m²K",
+      "kind": "model",
+      "source": "only one junction has been calculated, and the mean Ψ″ still rests on a generic range",
+      "margin": -0.16,
+      "magnitude": {
+        "kind": "model",
+        "span": 0.28,
+        "from": -0.0669,
+        "to": -0.3469,
+        "unit": "W/m²K"
+      },
+      "adequate": false,
+      "verdict": "**negative across the band** (−0.0669 to −0.347) — sign robust, magnitude not"
+    },
+    {
+      "number": 9,
+      "screen": "Integrated section",
+      "quantity": "% of width",
+      "kind": "interpretation",
+      "source": "no fraction is specified, so there is no limit to be short of",
+      "margin": null,
+      "magnitude": null,
+      "adequate": null,
+      "verdict": "undefined — no adequacy test is possible"
+    },
+    {
+      "number": 10,
+      "screen": "R2 options",
+      "quantity": "transport, mm",
+      "kind": "judgement",
+      "source": "the 100 mm reserve is a project allowance, not a measurement",
+      "margin": 0.0,
+      "magnitude": null,
+      "adequate": false,
+      "verdict": "**zero by construction** — the option was solved *to* the limit"
+    },
+    {
+      "number": 11,
+      "screen": "Installations — drain",
+      "quantity": "cover, mm",
+      "kind": "site",
+      "source": "ground level, which no survey has fixed",
+      "margin": -160.0,
+      "magnitude": null,
+      "adequate": null,
+      "verdict": "**sign set by the site** — +940 mm on the sewer route, −160 mm on the shallow tank"
+    },
+    {
+      "number": 12,
+      "screen": "Lift geometry",
+      "quantity": "per-leg tension",
+      "kind": "input",
+      "source": "C-07: the equipment masses and positions",
+      "margin": null,
+      "magnitude": null,
+      "adequate": null,
+      "verdict": "undefined — no adequacy test is possible"
+    },
+    {
+      "number": 13,
+      "screen": "Condensation at the junction",
+      "quantity": "m²K/W",
+      "kind": "model",
+      "source": "the 1D requirement was computed on a surface that stops governing once any break is built",
+      "margin": -0.8,
+      "magnitude": null,
+      "adequate": false,
+      "verdict": "**sign inverted by 2D** — the 1D requirement of 0.358 m²K/W was computed on the steel, which stops governing at the first millimetre of pad; the corner needs 0.80, so the margin is −0.80 as drawn, not +0.051"
+    },
+    {
+      "number": 14,
+      "screen": "Ventilation §13-1(1) — flue",
+      "quantity": "Pa net draught",
+      "kind": "model",
+      "source": "both the flue's draught and the pressure a fan holds are assumption ranges",
+      "margin": -130.0,
+      "magnitude": {
+        "kind": "model",
+        "span": 44.2,
+        "from": -85.5,
+        "to": -129.7,
+        "unit": "Pa"
+      },
+      "adequate": false,
+      "verdict": "**negative across the band** (−85.5 to −130) — and the only negative row whose resolution is not a number: a room-sealed stove removes the coupling instead of shrinking it, so the row is **retired** rather than made positive"
+    }
+  ],
+  "counts": {
+    "adequate": 0,
+    "not_adequate": 9,
+    "untestable": 5
+  }
+}

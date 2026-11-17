@@ -1,0 +1,54 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { images } from '../content/assert-images';
+import type { ImageId } from '../content/images';
+
+interface Props {
+  imageId: ImageId;
+  lang: 'nb' | 'en';
+  class?: string;
+  ratio: 'hero' | 'texture' | 'wide' | 'room' | 'tile' | 'journey';
+  plain?: boolean;
+}
+
+const { imageId, lang, class: className, ratio, plain = false } = Astro.props;
+const image = images.find((entry) => entry.id === imageId);
+const masters = import.meta.glob<{ default: ImageMetadata }>('../assets/images/*.{jpg,jpeg,png,webp}');
+const load = image?.file ? masters[`../assets/images/${image.file}`] : undefined;
+const source = load ? (await load()).default : undefined;
+const sizes = {
+  hero: '(min-width: 1024px) 56vw, 100vw',
+  wide: '(min-width: 1280px) 1200px, 100vw',
+  tile: '(min-width: 1280px) 480px, (min-width: 768px) 36vw, 82vw',
+  room: '(min-width: 1280px) 560px, (min-width: 768px) 47vw, 96vw',
+  texture: '(min-width: 1280px) 350px, (min-width: 768px) 29vw, 60vw',
+  journey: `(min-width: 768px) min(${source?.width ?? 0}px, 30vw), min(${source?.width ?? 0}px, 34vw)`,
+};
+const targetWidths = ratio === 'journey' ? [160, 320, 480, 960, 1600] : [480, 960, 1600, 2400];
+const widths = source
+  ? Array.from(new Set(targetWidths.map((width) => Math.min(width, source.width))))
+  : [];
+const priority = ratio === 'hero';
+const Wrapper = plain ? 'span' : 'figure';
+const Caption = plain ? 'span' : 'figcaption';
+---
+
+{image && source && image.alt[lang] && image.alt[lang] !== 'TODO' && (
+  <Wrapper class={className} style={ratio === 'journey' ? { maxInlineSize: `min(100%, ${source.width}px)`, "--photo-ratio": source.width / source.height } : undefined}>
+    <Picture
+      src={source}
+      formats={['avif', 'webp']}
+      fallbackFormat="jpeg"
+      widths={widths}
+      sizes={sizes[ratio]}
+      alt={image.alt[lang]}
+      class={`ratio-${ratio}`}
+      loading={priority ? 'eager' : 'lazy'}
+      fetchpriority={priority ? 'high' : undefined}
+      decoding="async"
+      style={{ objectPosition: image.focal }}
+    />
+    {image.caption[lang] && <Caption class="tile-caption">{image.caption[lang]}</Caption>}
+  </Wrapper>
+)}

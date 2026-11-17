@@ -1,0 +1,205 @@
+{
+  "revision": "PUENTES-TERMICAS",
+  "state": "CONCEPTUAL — NO JUNCTION DETAIL DRAWN, NO PSI CALCULATED, NO PRODUCT SELECTED",
+  "units": "m, m2, W/m2K, W/mK, W/K",
+  "basis": {
+    "plan_m": [
+      6.0,
+      3.0
+    ],
+    "plan_area_m2": 18.0,
+    "perimeter_m": 18.0,
+    "wall_height_mm": 2200.0,
+    "ref_pitch_deg": 20.0,
+    "benchmark_psi_prime_w_m2k": 0.05,
+    "benchmark_note": "§14-2 alternative energy-measures route, exempt for a detached building up to 70 m2 under §14-5(1). §14-3 sets NO thermal-bridge limit. The benchmark is therefore voluntary on the applying route.",
+    "u_values": {
+      "wall_stud_15pct": 0.22,
+      "roof_stud_15pct": 0.18,
+      "floor_stud_15pct": 0.18,
+      "glazing": 1.2
+    },
+    "sources": [
+      "S011",
+      "S021",
+      "S029"
+    ]
+  },
+  "junctions": {
+    "floor / chassis perimeter": 18.0,
+    "eave (wall to roof)": 18.0,
+    "external corner (4 x wall height)": 8.8,
+    "opening reveals": 16.3
+  },
+  "junction_total_m": 61.1,
+  "areas": {
+    "wall_net_m2": 35.285,
+    "roof_m2": 19.155,
+    "floor_m2": 18.0,
+    "openings_m2": 4.315
+  },
+  "heat_loss_elements_w_per_k": 19.629,
+  "scenarios": [
+    {
+      "scenario": "poor",
+      "psi": {
+        "floor": 0.2,
+        "eave": 0.1,
+        "corner": 0.05,
+        "reveal": 0.08
+      },
+      "psi_prime_w_m2k": 0.3969,
+      "times_benchmark": 7.94,
+      "bridge_loss_w_per_k": 7.144,
+      "bridge_share": 0.2668,
+      "compensation": {
+        "bridge": 0.3969,
+        "bridge_loss_w_per_k": 7.144,
+        "element_scale": 0.636,
+        "feasible": true,
+        "elements": {
+          "wall": {
+            "u_now": 0.22,
+            "u_target": 0.1399,
+            "ins_mm_baseline": 189.2,
+            "ins_mm_needed": 316.5,
+            "delta_mm": 127.3
+          },
+          "roof": {
+            "u_now": 0.18,
+            "u_target": 0.1145,
+            "ins_mm_baseline": 245.2,
+            "ins_mm_needed": 401.3,
+            "delta_mm": 156.1
+          },
+          "floor": {
+            "u_now": 0.18,
+            "u_target": 0.1145,
+            "ins_mm_baseline": 240.7,
+            "ins_mm_needed": 396.6,
+            "delta_mm": 156.0
+          }
+        }
+      }
+    },
+    {
+      "scenario": "ordinary",
+      "psi": {
+        "floor": 0.1,
+        "eave": 0.05,
+        "corner": 0.03,
+        "reveal": 0.05
+      },
+      "psi_prime_w_m2k": 0.2099,
+      "times_benchmark": 4.2,
+      "bridge_loss_w_per_k": 3.779,
+      "bridge_share": 0.1614,
+      "compensation": {
+        "bridge": 0.2099,
+        "bridge_loss_w_per_k": 3.779,
+        "element_scale": 0.8075,
+        "feasible": true,
+        "elements": {
+          "wall": {
+            "u_now": 0.22,
+            "u_target": 0.1776,
+            "ins_mm_baseline": 189.2,
+            "ins_mm_needed": 242.1,
+            "delta_mm": 52.9
+          },
+          "roof": {
+            "u_now": 0.18,
+            "u_target": 0.1453,
+            "ins_mm_baseline": 245.2,
+            "ins_mm_needed": 310.2,
+            "delta_mm": 65.0
+          },
+          "floor": {
+            "u_now": 0.18,
+            "u_target": 0.1453,
+            "ins_mm_baseline": 240.7,
+            "ins_mm_needed": 305.6,
+            "delta_mm": 64.9
+          }
+        }
+      }
+    },
+    {
+      "scenario": "good",
+      "psi": {
+        "floor": 0.05,
+        "eave": 0.03,
+        "corner": 0.02,
+        "reveal": 0.03
+      },
+      "psi_prime_w_m2k": 0.1169,
+      "times_benchmark": 2.34,
+      "bridge_loss_w_per_k": 2.105,
+      "bridge_share": 0.0969,
+      "compensation": {
+        "bridge": 0.1169,
+        "bridge_loss_w_per_k": 2.105,
+        "element_scale": 0.8928,
+        "feasible": true,
+        "elements": {
+          "wall": {
+            "u_now": 0.22,
+            "u_target": 0.1964,
+            "ins_mm_baseline": 189.2,
+            "ins_mm_needed": 215.9,
+            "delta_mm": 26.7
+          },
+          "roof": {
+            "u_now": 0.18,
+            "u_target": 0.1607,
+            "ins_mm_baseline": 245.2,
+            "ins_mm_needed": 278.0,
+            "delta_mm": 32.7
+          },
+          "floor": {
+            "u_now": 0.18,
+            "u_target": 0.1607,
+            "ins_mm_baseline": 240.7,
+            "ins_mm_needed": 273.3,
+            "delta_mm": 32.7
+          }
+        }
+      }
+    }
+  ],
+  "size_effect": [
+    {
+      "area_m2": 18.0,
+      "square_perimeter_m": 16.97,
+      "perimeter_per_m2": 0.9428,
+      "psi_prime_ordinary": 0.1988
+    },
+    {
+      "area_m2": 50.0,
+      "square_perimeter_m": 28.28,
+      "perimeter_per_m2": 0.5657,
+      "psi_prime_ordinary": 0.1157
+    },
+    {
+      "area_m2": 100.0,
+      "square_perimeter_m": 40.0,
+      "perimeter_per_m2": 0.4,
+      "psi_prime_ordinary": 0.0808
+    },
+    {
+      "area_m2": 150.0,
+      "square_perimeter_m": 48.99,
+      "perimeter_per_m2": 0.3266,
+      "psi_prime_ordinary": 0.0655
+    }
+  ],
+  "max_mean_psi_for_benchmark": 0.01473,
+  "excluded": [
+    "2D/3D psi calculation",
+    "junction detail",
+    "chassis profile",
+    "airtightness",
+    "moisture risk at the junction",
+    "product selection"
+  ]
+}

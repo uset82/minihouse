@@ -21,7 +21,7 @@ These three are never assumed coincident.
 
 ## 3. Rigging calculations (D003)
 
-- [ ] T = V/sin α, H = V·cot α, α from horizontal — verified.
+- [ ] T = V/sin α, H = V·cot α, α from horizontal — verified. Geometry-only screen for candidate corner/inset layouts and I-1/I-2: [lift-geometry-screen.md](lift-geometry-screen.md); no sling or variant selected.
 - [ ] Leg-length tolerance and pre-tension considered.
 - [ ] Unequal distribution: at minimum the **two-effective-leg** pattern (doubles V_leg) with a dynamic factor fixed by the specialist.
 - [ ] Dynamic component as a multiple of self weight (S008 §7.2).

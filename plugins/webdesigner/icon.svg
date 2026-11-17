@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <!-- Browser frame -->
+  <rect x="7" y="8" width="22" height="20" rx="2.5" fill="none" stroke="#7d8794" stroke-width="1.6"/>
+  <path d="M7 12.4h22" stroke="#7d8794" stroke-width="1.6"/>
+  <circle cx="9.8" cy="10.2" r="0.8" fill="#7d8794"/>
+  <circle cx="12.4" cy="10.2" r="0.8" fill="#7d8794"/>
+  <!-- Asymmetric bento layout -->
+  <rect x="9.6" y="14.6" width="9.4" height="6.2" rx="1.2" fill="#4f8ef7"/>
+  <rect x="20.6" y="14.6" width="5.8" height="2.6" rx="1" fill="#9aa4b2"/>
+  <rect x="20.6" y="18.2" width="5.8" height="2.6" rx="1" fill="#9aa4b2"/>
+  <rect x="9.6" y="22.4" width="16.8" height="2.8" rx="1" fill="#34c39a"/>
+</svg>

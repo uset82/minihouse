@@ -12,6 +12,7 @@ Esto **no cumple** las casillas de Fase 2: no hay Robot, no hay masas reales, no
 | --- | --- | --- |
 | [../scripts/barras3d.py](../scripts/barras3d.py) | Solver propio de barras 3D (6 GDL/nudo, Euler-Bernoulli, EA/EIy/EIz/GJ, cargas distribuidas consistentes) | `--selftest` OK: reproduce los dos casos del informe (24,634 mm y 1,490 mm; M_A −1,766 kNm; M_mid 2,207/11,036 kNm), voladizo y torsión exactos, equilibrio de reacciones |
 | [../scripts/chasis_r0.py](../scripts/chasis_r0.py) | Chasis conceptual R0 (2 largueros + 7 travesaños + columnas de izaje), 6 casos A–F | Ejecutado; equilibrio verificado en los 6 casos (suma R = W en todos) |
+| [../scripts/r1_frame_skeleton.py](../scripts/r1_frame_skeleton.py) | Esqueleto geométrico R1 (nudos/barras) para 5°/10°/15°/20°, sin secciones ni masas | `--selftest` OK: 32 nudos y 59 barras por opción; [salida CSV](miembros-R1-opciones.csv), [JSON](../knowledge/comparisons/r1-frame-skeleton.json) y [resumen](miembros-R1-opciones.md) |
 | [../scripts/masas_cg.py](../scripts/masas_cg.py) | Inventario → W, CG, reacciones (Fase 1) | `--selftest` OK |
 
 Limitaciones declaradas del solver: sin alabeo (perfiles abiertos → SCI P385 o 7º GDL), sin rigidez geométrica, sin releases, uniones rígidas. Para el informe, PyNite sigue siendo la opción recomendada como *segundo* solver cuando haya red/instalación; este solver propio es un tercero reproducible sin dependencias externas más allá de NumPy.
@@ -26,6 +27,10 @@ Lecturas **cualitativas** transferibles (los números NO):
 2. **B (apoyos retranqueados 1,2/4,8 exactos)**: flecha 1,158 mm vs 19,155 mm en extremos, mismo orden del fenómeno del informe (su viga ideal daba 1,490 mm; la diferencia es la sección provisional y los travesaños). No valida "1,2 m óptimo".
 3. **E (excéntrico)**: el reparto por punto se desplaza (5,89 vs 4,90 kN) — confirma que la herramienta captura asimetría; el caso de diseño real debe cubrir además desigualdad de ramales.
 4. **F (2 puntos diagonales)**: torsión diferencial de ~58 mm y flecha ~116 mm con la sección provisional: el bastidor sin diafragma es torsionalmente blando. Esto justifica (a) el caso excéntrico obligatorio en el protocolo de ensayo y (b) estudiar diafragmas/paredes colaborantes en el modelo real.
+
+## Esqueleto geométrico R1 (añadido 2026-11-17)
+
+[miembros-R1-opciones.md](miembros-R1-opciones.md) y su CSV/JSON companion contienen la malla de coordenadas de las cuatro pendientes R1: 32 nudos y 59 barras por opción, con perfiles `PROFILE_NOT_SELECTED`. Es un puente geométrico hacia CAD/IFC y futuros modelos estructurales; **no** es cálculo, no tiene masas y no selecciona pendiente. La cumbrera queda en 3131/3265/3402/3546 mm según pendiente, coherente con [r1-opciones-techo.md](../fase1/r1-opciones-techo.md).
 
 ## Bloqueos de Fase 2 (sin cambios)
 

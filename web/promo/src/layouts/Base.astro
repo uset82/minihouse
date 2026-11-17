@@ -1,0 +1,83 @@
+---
+import type { Content } from '../content/schema';
+import { localePaths } from '../content/locale-paths';
+import besley800 from '@fontsource/besley/files/besley-latin-800-normal.woff2?url';
+import ogImage from '../assets/images/og-image.jpg';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import '../styles/tokens.css';
+import '../styles/fonts.css';
+import '../styles/base.css';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const path = Astro.url.pathname;
+const { nb: nbPath, en: enPath } = localePaths(path);
+const origin = Astro.site ?? new URL('https://minihouse.canner.app');
+const canonical = new URL(path, origin);
+const nbHref = new URL(nbPath, origin).href;
+const enHref = new URL(enPath, origin).href;
+const og = new URL(ogImage.src, origin);
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'MiniHouse',
+  url: origin.href,
+  description: content.meta.description,
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{content.meta.title}</title>
+		<meta name="description" content={content.meta.description} />
+		<link rel="canonical" href={canonical.href} />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
+		<link rel="preload" href={besley800} as="font" type="font/woff2" crossorigin />
+		<link rel="alternate" hreflang="nb" href={nbHref} />
+		<link rel="alternate" hreflang="en" href={enHref} />
+		<link rel="alternate" hreflang="x-default" href={nbHref} />
+		<meta property="og:title" content={content.meta.title} />
+		<meta property="og:description" content={content.meta.description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical.href} />
+		<meta property="og:image" content={og.href} />
+		<meta property="og:image:alt" content={content.meta.ogAlt} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={content.meta.title} />
+		<meta name="twitter:description" content={content.meta.description} />
+		<meta name="twitter:image" content={og.href} />
+		<meta name="twitter:image:alt" content={content.meta.ogAlt} />
+		<script type="application/ld+json" set:html={JSON.stringify(organization)} />
+	</head>
+	<body>
+		<a class="skip-link" href="#innhold">{content.nav.skip}</a>
+		<SiteHeader content={content} lang={lang} />
+		<main id="innhold">
+			<slot />
+		</main>
+		<SiteFooter content={content} lang={lang} />
+		<script>
+			const syncLangHashes = () => {
+				document.querySelectorAll('[data-keep-hash]').forEach((link) => {
+					if (!(link instanceof HTMLAnchorElement)) return;
+					const url = new URL(link.getAttribute('href') || link.href, location.origin);
+					if (!link.dataset.langBase) {
+						link.dataset.langBase = `${url.pathname}${url.search}`;
+					}
+					link.href = `${link.dataset.langBase}${location.hash}`;
+				});
+			};
+
+			syncLangHashes();
+			window.addEventListener('hashchange', syncLangHashes);
+		</script>
+	</body>
+</html>

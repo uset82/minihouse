@@ -1,0 +1,115 @@
+---
+import type { Content } from '../content/schema';
+import { images } from '../content/assert-images';
+import type { ImageId } from '../content/images';
+import Figure from './Figure.astro';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const order: ImageId[] = ['living', 'bath-vanity', 'meadow-wide'];
+const pictures = order.filter((id) => images.some((image) => image.id === id && image.file && image.alt[lang] !== 'TODO'));
+---
+
+<section class="gallery" id="bilder" aria-labelledby="gallery-title">
+  <div class="wrap">
+    <div class="gallery-heading">
+      <h2 id="gallery-title">{content.gallery.title}</h2>
+      <p class="gallery-count" data-count={content.gallery.count}></p>
+    </div>
+    <div class="gallery-strip">
+      {pictures.map((id) => (
+        <button type="button" class="gallery-tile" aria-haspopup="dialog">
+          <Figure imageId={id} lang={lang} plain ratio="tile" />
+        </button>
+      ))}
+    </div>
+  </div>
+  <dialog class="lightbox" aria-labelledby="gallery-title">
+    <div class="lightbox-stage"></div>
+    <p class="lightbox-caption" aria-live="polite"></p>
+    <div class="lightbox-controls">
+      <button type="button" data-prev>{content.gallery.prev}</button>
+      <button type="button" data-next>{content.gallery.next}</button>
+      <button type="button" data-close autofocus>{content.gallery.close}</button>
+    </div>
+  </dialog>
+</section>
+
+<script>
+  const gallery = document.querySelector('.gallery');
+  const dialog = gallery?.querySelector('dialog');
+  const strip = gallery?.querySelector<HTMLElement>('.gallery-strip');
+  const count = gallery?.querySelector<HTMLElement>('[data-count]');
+  const stage = dialog?.querySelector('.lightbox-stage');
+  const caption = dialog?.querySelector('.lightbox-caption');
+
+  if (dialog && strip && count && stage && caption) {
+    const tiles = Array.from(strip.querySelectorAll<HTMLButtonElement>('.gallery-tile'));
+    const position = (index: number) => (count.dataset.count ?? '')
+      .replace('{current}', String(index + 1)).replace('{total}', String(tiles.length));
+    let selected = 0;
+    let opener: HTMLButtonElement | undefined;
+
+    const updatePicture = (index: number) => {
+      selected = (index + tiles.length) % tiles.length;
+      const tile = tiles[selected];
+      const thumbnail = tile.querySelector('picture');
+      if (!thumbnail) return;
+      const enlarged = thumbnail.cloneNode(true) as HTMLPictureElement;
+      for (const source of enlarged.querySelectorAll('source, img')) {
+        source.setAttribute('sizes', '100vw');
+      }
+      const image = enlarged.querySelector('img');
+      if (image) image.loading = 'eager';
+      stage.replaceChildren(enlarged);
+      caption.textContent = [position(selected), tile.querySelector('.tile-caption')?.textContent]
+        .filter(Boolean).join(' / ');
+    };
+
+    tiles.forEach((tile, index) => tile.addEventListener('click', () => {
+      opener = tile;
+      updatePicture(index);
+      dialog.showModal();
+    }));
+
+    const previous = () => updatePicture(selected - 1);
+    const next = () => updatePicture(selected + 1);
+    dialog.querySelector('[data-prev]')?.addEventListener('click', previous);
+    dialog.querySelector('[data-next]')?.addEventListener('click', next);
+    dialog.querySelector('[data-close]')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('close', () => opener?.focus({ preventScroll: true }));
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+        event.preventDefault();
+        if (event.key === 'ArrowLeft') previous();
+        else next();
+      }
+    });
+
+    let startX = 0;
+    stage.addEventListener('touchstart', (event) => {
+      startX = (event as TouchEvent).changedTouches[0].clientX;
+    }, { passive: true });
+    stage.addEventListener('touchend', (event) => {
+      const delta = (event as TouchEvent).changedTouches[0].clientX - startX;
+      if (delta > 45) previous();
+      if (delta < -45) next();
+    }, { passive: true });
+
+    const updateCount = () => {
+      const left = strip.getBoundingClientRect().left;
+      let nearestIndex = 0;
+      tiles.forEach((tile, index) => {
+        if (Math.abs(tile.getBoundingClientRect().left - left)
+            < Math.abs(tiles[nearestIndex].getBoundingClientRect().left - left)) nearestIndex = index;
+      });
+      if (tiles.length) count.textContent = position(nearestIndex);
+    };
+    strip.addEventListener('scroll', updateCount, { passive: true });
+    updateCount();
+  }
+</script>

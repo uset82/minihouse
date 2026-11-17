@@ -1,0 +1,29 @@
+---
+import type { Content } from '../content/schema';
+import { localePaths } from '../content/locale-paths';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const path = Astro.url.pathname;
+const otherLang = lang === 'en' ? 'nb' : 'en';
+const otherHref = localePaths(path)[otherLang];
+const privacy = lang === 'en' ? '/en/personvern/' : '/personvern/';
+---
+
+<footer class="band--tjaere">
+  <div class="wrap footer-row">
+    <div>
+      {content.footer.contact ? <p>{content.footer.contact}</p> : null}
+      <p>{content.footer.imagesNote}</p>
+    </div>
+    <ul>
+      <li><a href={privacy}>{content.footer.privacy}</a></li>
+      <li><a href="https://minihouse-docs.canner.app">{content.footer.pro}</a></li>
+      <li><a href={otherHref} lang={otherLang} hreflang={otherLang} data-keep-hash>{content.nav.language}</a></li>
+    </ul>
+  </div>
+</footer>

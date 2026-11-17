@@ -1,0 +1,156 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01. Not a ventilation design, not a product selection, not a compliance statement.",
+  "volume_m3": 36.9,
+  "rates": {
+    "whole_dwelling_m3h": 21.6,
+    "bed_places_m3h": 52.0,
+    "governing_m3h": 52.0,
+    "extract_basic_m3h": 90.0,
+    "extract_boosted_one_m3h": 108.0,
+    "extract_boosted_all_m3h": 216.0,
+    "basis": "§13-2 rates adopted voluntarily; they do not bind on this route",
+    "note": "supply must equal extract in boosted mode (S012); the source does not say whether both wet rooms boost at once, so both readings are carried"
+  },
+  "orifice": {
+    "cd": 0.6,
+    "rho": 1.2,
+    "law": "Q = 3600 · Cd · A · sqrt(2 · dp / rho)"
+  },
+  "barrier": {
+    "net_m2": 48.48,
+    "sd_m": 10.0,
+    "thickness_mm": 264.0
+  },
+  "no_inlet": {
+    "pressure_pa": 139.7,
+    "mode": "boosted, one room",
+    "basic_pa": 105.5
+  },
+  "design_flow_m3h": 108.0,
+  "design": [
+    {
+      "design_pa": 2.0,
+      "leakage_m3h": 6.8,
+      "inlet_m3h": 101.2,
+      "area_cm2": 256.5,
+      "diameter_mm": 181.0,
+      "standard": false,
+      "holdable": false,
+      "flue_worst_pa": 8.0,
+      "flue_best_pa": 18.0,
+      "flue_adequate": true
+    },
+    {
+      "design_pa": 5.0,
+      "leakage_m3h": 12.4,
+      "inlet_m3h": 95.6,
+      "area_cm2": 153.3,
+      "diameter_mm": 140.0,
+      "standard": false,
+      "holdable": false,
+      "flue_worst_pa": 5.0,
+      "flue_best_pa": 15.0,
+      "flue_adequate": false
+    },
+    {
+      "design_pa": 10.0,
+      "leakage_m3h": 19.5,
+      "inlet_m3h": 88.5,
+      "area_cm2": 100.4,
+      "diameter_mm": 113.0,
+      "standard": true,
+      "holdable": true,
+      "flue_worst_pa": 0.0,
+      "flue_best_pa": 10.0,
+      "flue_adequate": false
+    },
+    {
+      "design_pa": 15.0,
+      "leakage_m3h": 25.3,
+      "inlet_m3h": 82.7,
+      "area_cm2": 76.6,
+      "diameter_mm": 99.0,
+      "standard": true,
+      "holdable": true,
+      "flue_worst_pa": -5.0,
+      "flue_best_pa": 5.0,
+      "flue_adequate": false
+    },
+    {
+      "design_pa": 20.0,
+      "leakage_m3h": 30.5,
+      "inlet_m3h": 77.5,
+      "area_cm2": 62.1,
+      "diameter_mm": 89.0,
+      "standard": true,
+      "holdable": true,
+      "flue_worst_pa": -10.0,
+      "flue_best_pa": 0.0,
+      "flue_adequate": false
+    }
+  ],
+  "chosen": {
+    "design_pa": 10.0,
+    "leakage_m3h": 19.5,
+    "inlet_m3h": 88.5,
+    "area_cm2": 100.4,
+    "diameter_mm": 113.0,
+    "standard": true,
+    "holdable": true,
+    "flue_worst_pa": 0.0,
+    "flue_best_pa": 10.0,
+    "flue_adequate": false
+  },
+  "chosen_pressure": {
+    "basic_pa": 7.1,
+    "boosted_one_pa": 10.0,
+    "removed_basic_pa": 98.5,
+    "removed_boosted_pa": 129.7
+  },
+  "robust_without_size_limit": true,
+  "buildable_rows": 3,
+  "adequate_rows": 1,
+  "wind": {
+    "holdable_min_pa": 5.4,
+    "at": [
+      {
+        "speed_ms": 3.0,
+        "pressure_pa": 5.4
+      },
+      {
+        "speed_ms": 5.0,
+        "pressure_pa": 15.0
+      },
+      {
+        "speed_ms": 10.0,
+        "pressure_pa": 60.0
+      }
+    ]
+  },
+  "heat": {
+    "basic_m3h": 90.0,
+    "delta_t_k": 30.0,
+    "w_no_recovery": 905.0,
+    "w_with_recovery": 181.0,
+    "recovery": 0.8,
+    "fabric_w_per_k": 18.32,
+    "fabric_w": 550.0,
+    "ratio_no_recovery": 1.65,
+    "ratio_with_recovery": 0.33
+  },
+  "diffusion": {
+    "share_pct": 0.78,
+    "factor": 37.878787878787875
+  },
+  "radon": {
+    "from_pa": 105.5,
+    "to_pa": 7.1,
+    "reduction": 14.9
+  },
+  "stove": {
+    "room_sealed": true,
+    "retires_row": 14,
+    "reason": "a room-sealed appliance takes its combustion air from outside and its flue is balanced against the outside, so cabin pressure no longer appears in the draught",
+    "requirement": "the stove must be room-sealed, or the flue must be balanced; no make-up air design substitutes for this"
+  }
+}

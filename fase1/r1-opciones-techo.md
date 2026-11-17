@@ -31,6 +31,25 @@ Loaded height = ridge height + trailer deck + transport supports. The stack valu
 | 15° | 3401.9 | 598 | 4302 | 4502 | 4702 |
 | 20° | 3546.0 | 454 | 4446 | 4646 | 4846 |
 
+### 2b. Inverse design envelope — maximum eave for 4.00 m
+
+For a fixed pitch and stack, `max eave = 4000 - stack - rise`. The reduction is measured from the 3000 mm screening datum. These are feasibility limits, not proposed wall heights; required clear height and roof build-up are not yet defined.
+
+| Pitch | Stack mm | Max eave mm | Required eave reduction mm | Over-height at 3000 datum mm |
+|---:|---:|---:|---:|---:|
+| 5° | 900 | 2968.8 | 31.2 | 31.2 |
+| 5° | 1100 | 2768.8 | 231.2 | 231.2 |
+| 5° | 1300 | 2568.8 | 431.2 | 431.2 |
+| 10° | 900 | 2835.5 | 164.5 | 164.5 |
+| 10° | 1100 | 2635.5 | 364.5 | 364.5 |
+| 10° | 1300 | 2435.5 | 564.5 | 564.5 |
+| 15° | 900 | 2698.1 | 301.9 | 301.9 |
+| 15° | 1100 | 2498.1 | 501.9 | 501.9 |
+| 15° | 1300 | 2298.1 | 701.9 | 701.9 |
+| 20° | 900 | 2554.0 | 446.0 | 446.0 |
+| 20° | 1100 | 2354.0 | 646.0 | 646.0 |
+| 20° | 1300 | 2154.0 | 846.0 | 846.0 |
+
 ## 3. ESTA wind-area screening
 
 Projected areas are conservative bounding areas. The minimum mass shown is the mass that would keep the ratio at or below ESTA's 1.2 m²/t guidance threshold; below it, the crane operating company must calculate a reduced permissible wind speed.
@@ -46,6 +65,7 @@ Projected areas are conservative bounding areas. The minimum mass shown is the m
 
 - A steeper pitch raises the ridge and increases roof/gable area, transport height and wind exposure.
 - With the 3000 mm eave screening datum, all options exceed 4.00 m once a 900 mm stack is added. At 5° the stack must be at most about 869 mm to stay at 4.00 m; at 20° only about 454 mm. A lower eave datum, low-loader setup or special transport may be needed.
+- The inverse envelope shows the same constraint from the other side: at a 900 mm stack, the eave must be at most about 2969 mm at 5° and 2554 mm at 20°. At an 1100 mm stack, 20° leaves an eave of only 2354 mm — just 154 mm above the 2200 mm mikrohus room-height allowance before structure and roof build-up. This is a feasibility warning, not a recommendation.
 - Even at 5°, the conservative projected area requires roughly 16 t to avoid the ESTA wind-speed caveat; the real MiniHouse mass is not yet known, so the lift plan must verify this before relying on crane-chart wind limits.
 - No recommendation is made here. The decision needs C-02 (pitch/eave/ridge), C-06 (deck/support) and confirmation from carrier and crane company.
 

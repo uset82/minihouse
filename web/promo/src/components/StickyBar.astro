@@ -1,0 +1,35 @@
+---
+import type { Content } from '../content/schema';
+
+interface Props {
+  content: Content;
+}
+
+const { content } = Astro.props;
+---
+
+<div class="sticky-cta" hidden>
+  <a class="button" href="#folg">{content.nav.cta}</a>
+</div>
+
+<script>
+  const bar = document.querySelector('.sticky-cta');
+  const hero = document.querySelector('.hero');
+  const form = document.getElementById('folg');
+  if (bar instanceof HTMLElement && hero instanceof HTMLElement) {
+    let heroGone = false;
+    let formVisible = false;
+    const paint = () => {
+      bar.hidden = !(heroGone && !formVisible);
+    };
+    const watch = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.target === hero) heroGone = !entry.isIntersecting;
+        if (entry.target === form) formVisible = entry.isIntersecting;
+      }
+      paint();
+    });
+    watch.observe(hero);
+    if (form) watch.observe(form);
+  }
+</script>

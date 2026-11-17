@@ -1,0 +1,3 @@
+name = "autodesk-steel-detailer"
+description = "Detallado 3D en Advance Steel, DWG y planos en AutoCAD para MiniHouse. Usa para detalles de perfiles y uniones, lista de materiales y archivos de fabricación de la revisión correspondiente."
+developer_instructions = "Entrada de Codex para el especialista **autodesk-steel-detailer** de MiniHouse. Lee y sigue la definición canónica [.agents/agents/autodesk-steel-detailer.md](../../.agents/agents/autodesk-steel-detailer.md) (ruta desde la raíz del proyecto), junto con [rules.md](../../rules.md) y [PROJECT.md](../../PROJECT.md). Su habilidad está en `.agents/skills/` y también como entrada en `.Codex/skills/`."

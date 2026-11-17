@@ -8,7 +8,8 @@
     "ridge_position": "centred at y=1500 mm",
     "eave_z_mm_screening_datum": 3000.0,
     "R0_total_height_mm_reference": 3200.0,
-    "esta_wind_ratio_m2_per_t": 1.2
+    "esta_wind_ratio_m2_per_t": 1.2,
+    "normal_height_screening_mm": 4000.0
   },
   "options": [
     {
@@ -31,16 +32,25 @@
         {
           "deck_plus_support_mm": 900.0,
           "loaded_height_mm": 4031.2,
+          "over_height_vs_4m_mm": 31.2,
+          "max_eave_z_for_4m_mm": 2968.8,
+          "eave_reduction_from_datum_mm": 31.2,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1100.0,
           "loaded_height_mm": 4231.2,
+          "over_height_vs_4m_mm": 231.2,
+          "max_eave_z_for_4m_mm": 2768.8,
+          "eave_reduction_from_datum_mm": 231.2,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1300.0,
           "loaded_height_mm": 4431.2,
+          "over_height_vs_4m_mm": 431.2,
+          "max_eave_z_for_4m_mm": 2568.8,
+          "eave_reduction_from_datum_mm": 431.2,
           "status": "ILLUSTRATIVE — carrier to confirm"
         }
       ]
@@ -65,16 +75,25 @@
         {
           "deck_plus_support_mm": 900.0,
           "loaded_height_mm": 4164.5,
+          "over_height_vs_4m_mm": 164.5,
+          "max_eave_z_for_4m_mm": 2835.5,
+          "eave_reduction_from_datum_mm": 164.5,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1100.0,
           "loaded_height_mm": 4364.5,
+          "over_height_vs_4m_mm": 364.5,
+          "max_eave_z_for_4m_mm": 2635.5,
+          "eave_reduction_from_datum_mm": 364.5,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1300.0,
           "loaded_height_mm": 4564.5,
+          "over_height_vs_4m_mm": 564.5,
+          "max_eave_z_for_4m_mm": 2435.5,
+          "eave_reduction_from_datum_mm": 564.5,
           "status": "ILLUSTRATIVE — carrier to confirm"
         }
       ]
@@ -99,16 +118,25 @@
         {
           "deck_plus_support_mm": 900.0,
           "loaded_height_mm": 4301.9,
+          "over_height_vs_4m_mm": 301.9,
+          "max_eave_z_for_4m_mm": 2698.1,
+          "eave_reduction_from_datum_mm": 301.9,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1100.0,
           "loaded_height_mm": 4501.9,
+          "over_height_vs_4m_mm": 501.9,
+          "max_eave_z_for_4m_mm": 2498.1,
+          "eave_reduction_from_datum_mm": 501.9,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1300.0,
           "loaded_height_mm": 4701.9,
+          "over_height_vs_4m_mm": 701.9,
+          "max_eave_z_for_4m_mm": 2298.1,
+          "eave_reduction_from_datum_mm": 701.9,
           "status": "ILLUSTRATIVE — carrier to confirm"
         }
       ]
@@ -133,16 +161,25 @@
         {
           "deck_plus_support_mm": 900.0,
           "loaded_height_mm": 4446.0,
+          "over_height_vs_4m_mm": 446.0,
+          "max_eave_z_for_4m_mm": 2554.0,
+          "eave_reduction_from_datum_mm": 446.0,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1100.0,
           "loaded_height_mm": 4646.0,
+          "over_height_vs_4m_mm": 646.0,
+          "max_eave_z_for_4m_mm": 2354.0,
+          "eave_reduction_from_datum_mm": 646.0,
           "status": "ILLUSTRATIVE — carrier to confirm"
         },
         {
           "deck_plus_support_mm": 1300.0,
           "loaded_height_mm": 4846.0,
+          "over_height_vs_4m_mm": 846.0,
+          "max_eave_z_for_4m_mm": 2154.0,
+          "eave_reduction_from_datum_mm": 846.0,
           "status": "ILLUSTRATIVE — carrier to confirm"
         }
       ]
@@ -155,6 +192,7 @@
     "Roof area is geometric surface only: no build-up, overlap, waste, purlins or cladding mass.",
     "Loaded height = module ridge height + deck/support stack. Stack values are illustrative; carrier must confirm.",
     "4.00 m height screening comes from Statens vegvesen's summary of Directive 96/53/EC; national rules and route still control.",
+    "Inverse envelope: for a fixed stack and pitch, eave_z must be <= 4000 - stack - rise; required reductions are from the 3000 mm screening datum and may not be achievable with the specified clear height and roof build-up.",
     "ESTA wind area is a screening check using projected bounding areas; the crane company must set allowable wind."
   ],
   "excluded": [

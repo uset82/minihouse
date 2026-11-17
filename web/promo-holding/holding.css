@@ -1,0 +1,168 @@
+:root {
+  /* Core material colours, sampled from images/ (PLAN §8.1) */
+  --kalk: #ECEAE4;          /* lime plaster: page ground */
+  --tjaere: #241A13;        /* pine tar: text, footer */
+  --malmfuru: #9D5F30;      /* heartwood pine: large wood surfaces, numerals ≥ 24px */
+  --eik: #BA936B;           /* oak: key facts band, spec table */
+  --kobber: #A9481C;        /* copper: interactive on light grounds */
+  --irr: #2C4F40;           /* petrol-green tile / verdigris: interior band */
+
+  /* Support */
+  --kobber-mork: #8E3B16;   /* copper hover (kalk text on it: 6.26:1) */
+  --kobber-lys: #E08A52;    /* copper on dark bands (tjære, irr) only */
+  --solvgra: #8C7E71;       /* weathered cladding: hairlines on kalk only */
+  --malmfuru-mork: #6F3F1E; /* wood-toned text, captions on kalk */
+
+  /* Roles */
+  --bg: var(--kalk);
+  --text: var(--tjaere);
+  --text-soft: var(--malmfuru-mork);
+  --line: var(--solvgra);
+  --action: var(--kobber);
+  --action-hover: var(--kobber-mork);
+  --action-on-dark: var(--kobber-lys);
+
+  /* Type */
+  --font-display: "Besley", Georgia, "Times New Roman", serif;
+  --font-text: "Jost", "Segoe UI", system-ui, sans-serif;
+  --size-caption: 0.875rem;                               /* 14 */
+  --size-small: 1rem;                                     /* 16 */
+  --size-body: 1.125rem;                                  /* 18 */
+  --size-lead: 1.3125rem;                                 /* 21 */
+  --size-h3: 1.5rem;                                      /* 24 */
+  --size-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);     /* 28 → 36 */
+  --size-h1: clamp(2.75rem, 1.9rem + 3.8vw, 4.5rem);      /* 44 → 72 */
+  --leading-text: 1.55;
+  --leading-display: 1.08;
+  --measure: 64ch;
+
+  /* Space and shape */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 16px; --space-4: 24px;
+  --space-5: 40px; --space-6: 64px; --space-7: 96px;
+  --radius: 2px;
+  --max-content: 1200px;
+  --gutter: 24px;
+  --focus-ring: 3px solid var(--kobber);
+  --focus-ring-dark: 3px solid var(--kobber-lys);
+  --focus-offset: 3px;
+
+  /* Motion */
+  --dur: 180ms;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur: 0ms; }
+}
+
+@font-face {
+  font-family: "Besley";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("fonts/besley-latin-800-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/jost-latin-400-normal.woff2") format("woff2");
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: var(--size-body);
+  font-weight: 400;
+  line-height: var(--leading-text);
+}
+
+.page {
+  flex: 1 0 auto;
+  padding-top: var(--space-6);
+  padding-inline: var(--gutter);
+  padding-bottom: var(--space-6);
+}
+
+h1,
+p {
+  max-width: var(--measure);
+  margin: 0;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--size-h1);
+  font-weight: 800;
+  line-height: var(--leading-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.lead {
+  margin-top: var(--space-5);
+  font-size: var(--size-lead);
+}
+
+.lead p + p {
+  margin-top: var(--space-4);
+}
+
+.english {
+  max-width: var(--measure);
+  margin-top: var(--space-5);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  font-size: var(--size-body);
+}
+
+.english p + p {
+  margin-top: var(--space-4);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--gutter);
+  background: var(--tjaere);
+  color: var(--kalk);
+}
+
+footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  color: var(--action-on-dark);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+footer a:hover {
+  text-decoration-thickness: 2px;
+}
+
+footer a:focus-visible {
+  outline: var(--focus-ring-dark);
+  outline-offset: var(--focus-offset);
+}
+
+@media (min-width: 80rem) {
+  .page {
+    padding-top: var(--space-7);
+  }
+}

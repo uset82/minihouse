@@ -1,0 +1,241 @@
+{
+  "revision": "CUBIERTA-INCENDIO",
+  "state": "DETERMINATION — NOT A FIRE-ENGINEERING REPORT, NOT A STRUCTURAL CHECK",
+  "units": "mm, min, mm/min, -, m2K/W",
+  "basis": {
+    "fire_minutes": 15.0,
+    "beta_n_mm_min": 0.65,
+    "d0_mm": 7.0,
+    "char_depth_mm": 15.0,
+    "roof_u_target": 0.18,
+    "stud_fraction": 0.15,
+    "pitch_deg": 20.0,
+    "sources": [
+      "S024",
+      "S011"
+    ],
+    "standard": "EN 1995-1-2 §3.4.2 (charring), EN 1995-1-1 (section modulus)"
+  },
+  "branches": [
+    {
+      "branch": "no. 4 — roof is part of the main system",
+      "rafters": "R 15 on the load-bearing roof (§11-4(3) no. 4, BKL 1, risk class 4)",
+      "insulation_class": "A2-s1,d0",
+      "insulation_basis": "§11-9 D main rule",
+      "lining": "none required by §11-4(3)"
+    },
+    {
+      "branch": "no. 6.1 — fire-cell-dividing element",
+      "rafters": "no specified roof resistance; the element below is dimensioned for two-sided fire",
+      "insulation_class": "A2-s1,d0",
+      "insulation_basis": "§11-9 D main rule",
+      "lining": "two-sided fire-cell element"
+    },
+    {
+      "branch": "no. 6.2 — all roof materials A2-s1,d0",
+      "rafters": "no specified roof resistance",
+      "insulation_class": "A2-s1,d0",
+      "insulation_basis": "explicit in 6.2",
+      "lining": "none — but no timber anywhere in the roof"
+    },
+    {
+      "branch": "no. 6.3 — protected from below",
+      "rafters": "no specified roof resistance",
+      "insulation_class": "A2-s1,d0",
+      "insulation_basis": "explicit in 6.3",
+      "lining": "K210 B-s1,d0, or D-s2,d0 in risk class 4"
+    }
+  ],
+  "insulation_invariant": true,
+  "rafters": [
+    {
+      "b_mm": 48.0,
+      "h_mm": 198.0,
+      "b_eff_mm": 18.0,
+      "h_eff_mm": 183.0,
+      "modulus_ratio": 0.32,
+      "modulus_ratio_protected": 1.0,
+      "b_needed_for_parity": 78.0
+    },
+    {
+      "b_mm": 48.0,
+      "h_mm": 223.0,
+      "b_eff_mm": 18.0,
+      "h_eff_mm": 208.0,
+      "modulus_ratio": 0.326,
+      "modulus_ratio_protected": 1.0,
+      "b_needed_for_parity": 78.0
+    },
+    {
+      "b_mm": 73.0,
+      "h_mm": 198.0,
+      "b_eff_mm": 43.0,
+      "h_eff_mm": 183.0,
+      "modulus_ratio": 0.503,
+      "modulus_ratio_protected": 1.0,
+      "b_needed_for_parity": 103.0
+    },
+    {
+      "b_mm": 73.0,
+      "h_mm": 223.0,
+      "b_eff_mm": 43.0,
+      "h_eff_mm": 208.0,
+      "modulus_ratio": 0.512,
+      "modulus_ratio_protected": 1.0,
+      "b_needed_for_parity": 103.0
+    },
+    {
+      "b_mm": 98.0,
+      "h_mm": 198.0,
+      "b_eff_mm": 68.0,
+      "h_eff_mm": 183.0,
+      "modulus_ratio": 0.593,
+      "modulus_ratio_protected": 1.0,
+      "b_needed_for_parity": 128.0
+    },
+    {
+      "b_mm": 98.0,
+      "h_mm": 223.0,
+      "b_eff_mm": 68.0,
+      "h_eff_mm": 208.0,
+      "modulus_ratio": 0.604,
+      "modulus_ratio_protected": 1.0,
+      "b_needed_for_parity": 128.0
+    }
+  ],
+  "rafter_grid": [
+    {
+      "accidental_fraction": 0.4,
+      "passing": [
+        "73x198",
+        "73x223",
+        "98x198",
+        "98x223"
+      ],
+      "failing": [
+        "48x198",
+        "48x223"
+      ]
+    },
+    {
+      "accidental_fraction": 0.5,
+      "passing": [
+        "73x198",
+        "73x223",
+        "98x198",
+        "98x223"
+      ],
+      "failing": [
+        "48x198",
+        "48x223"
+      ]
+    },
+    {
+      "accidental_fraction": 0.6,
+      "passing": [
+        "98x223"
+      ],
+      "failing": [
+        "48x198",
+        "48x223",
+        "73x198",
+        "73x223",
+        "98x198"
+      ]
+    },
+    {
+      "accidental_fraction": 0.7,
+      "passing": [],
+      "failing": [
+        "48x198",
+        "48x223",
+        "73x198",
+        "73x223",
+        "98x198",
+        "98x223"
+      ]
+    }
+  ],
+  "insulation": [
+    {
+      "insulation": "mineral wool (A2-s1,d0)",
+      "lambda": 0.035,
+      "thickness_mm": 245.2,
+      "permitted_without_analysis": true,
+      "vertical_mm": 261.0
+    },
+    {
+      "insulation": "wood fibre (combustible)",
+      "lambda": 0.04,
+      "thickness_mm": 268.5,
+      "permitted_without_analysis": false,
+      "vertical_mm": 285.7
+    }
+  ],
+  "framing": [
+    {
+      "centres_mm": 400.0,
+      "width_mm": 48.0,
+      "fraction": 0.12,
+      "wool_mm": 231.7,
+      "vertical_mm": 246.5
+    },
+    {
+      "centres_mm": 400.0,
+      "width_mm": 73.0,
+      "fraction": 0.1825,
+      "wool_mm": 260.1,
+      "vertical_mm": 276.8
+    },
+    {
+      "centres_mm": 400.0,
+      "width_mm": 98.0,
+      "fraction": 0.245,
+      "wool_mm": 289.4,
+      "vertical_mm": 308.0
+    },
+    {
+      "centres_mm": 600.0,
+      "width_mm": 48.0,
+      "fraction": 0.08,
+      "wool_mm": 214.0,
+      "vertical_mm": 227.7
+    },
+    {
+      "centres_mm": 600.0,
+      "width_mm": 73.0,
+      "fraction": 0.1217,
+      "wool_mm": 232.4,
+      "vertical_mm": 247.3
+    },
+    {
+      "centres_mm": 600.0,
+      "width_mm": 98.0,
+      "fraction": 0.1633,
+      "wool_mm": 251.3,
+      "vertical_mm": 267.4
+    }
+  ],
+  "r15_section_cost": {
+    "wool_48_mm": 214.0,
+    "wool_98_mm": 251.3,
+    "delta_mm": 37.3,
+    "delta_vertical_mm": 39.7
+  },
+  "section_cost": {
+    "wool_mm": 245.2,
+    "fibre_mm": 268.5,
+    "delta_mm": 23.3,
+    "delta_vertical_mm": 24.7
+  },
+  "excluded": [
+    "fire-engineering analysis",
+    "structural design",
+    "connection design",
+    "charring of the deck and lining",
+    "smoke and toxicity",
+    "BROOF(t2)",
+    "fire-service access",
+    "sprayed or intumescent protection"
+  ]
+}

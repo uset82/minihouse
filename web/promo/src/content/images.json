@@ -1,0 +1,306 @@
+[
+  {
+    "id": "hero-slope",
+    "file": "hero-slope.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Et lite hus i værbitt tre på en gressbakke. Gjennom det store vinduet ser vi inn på kjøkkenet. Fjellene ligger bak saltaket.",
+      "en": "A weathered timber house on a grassy slope. Its broad window opens a view into the kitchen, with mountains beyond the gabled roof."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/Weathered timber cabin with a glowing interior.png",
+    "focal": "52% 52%"
+  },
+  {
+    "id": "meadow-wide",
+    "file": "meadow-wide.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "MiniHouse med mørk dør og stort vindu mellom eng, fjord og snødekte fjell.",
+      "en": "MiniHouse stands in a meadow above a fjord, with a dark front door, a broad window and snow on the distant mountains."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse Nordic Meadow Homepage-1.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "exploded",
+    "file": "exploded.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "En illustrasjon viser stålet nederst, den trekledde huskroppen i midten og saltaket løftet over.",
+      "en": "The illustration shows the steel base below the timber-clad house, with the gabled roof lifted above."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse_ From Base to Roof-1.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "living",
+    "file": "living.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "En lang vindusbenk vender mot et smalt bord. Innerst i rommet står kjøkkenet med dempet grønne fronter.",
+      "en": "A long window seat faces a narrow table. Sage-green kitchen cabinets line the far wall."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse cabin interior-1.png",
+    "focal": "53% 50%"
+  },
+  {
+    "id": "kitchen",
+    "file": "kitchen.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Vask, kran og en liten trebenk under kjøkkenvinduet, med åpne hyller ved siden av.",
+      "en": "A sink and tap sit in a timber worktop under the kitchen window, next to open shelves."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse cabin interior-1.png",
+    "focal": "55% 55%"
+  },
+  {
+    "id": "bench",
+    "file": "bench.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "En polstret vindusbenk med rustfarget pledd og grønne puter står under utsikten mot fjorden.",
+      "en": "An upholstered window seat with a rust-coloured blanket and green cushions looks out towards the fjord."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/Two-Bed Tiny Cabin with Low Loft-2.png",
+    "focal": "55% 55%"
+  },
+  {
+    "id": "storage",
+    "file": "storage.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "En treskuff under sittebenken er trukket ut og rommer brettede tekstiler.",
+      "en": "An open timber drawer beneath the seat holds folded linen."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse cabin interior-1.png",
+    "focal": "60% 50%"
+  },
+  {
+    "id": "bath-shower",
+    "file": "bath-shower.jpg",
+    "kind": "render",
+    "status": "pending",
+    "alt": {
+      "nb": "Dusjhjørne med stående petrolgrønne fliser, armaturer i børstet bronse og skyvedør i glass med mørk ramme.",
+      "en": "Shower corner with vertical petrol-green tiles, brushed bronze fixtures, and framed sliding glass door."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse Bathroom with Petrol-Green Shower.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "bath-vanity",
+    "file": "bath-vanity.jpg",
+    "kind": "render",
+    "status": "pending",
+    "alt": {
+      "nb": "Servantbenk i gjenbrukt treverk med oppsatt servant i lys kremfarget stein, benkemontert kran i bronse og organisk bølget speil i kobberramme.",
+      "en": "Reclaimed timber vanity with pale cream stone vessel sink, deck-mounted bronze faucet, and wavy copper-framed mirror."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/Reclaimed Vanity View in a MiniHouse Bathroom-1.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "bath-window",
+    "file": "bath-window.jpg",
+    "kind": "render",
+    "status": "pending",
+    "alt": {
+      "nb": "Baderom med stående petrolgrønne fliser, gulvstående toalett og eikeinnrammet vindu med hengeplante i terrakottapotte.",
+      "en": "Bathroom with vertical petrol-green tiles, floor-standing toilet, and oak-framed window with trailing plant in terracotta pot."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/Compact bathroom with window, plant, and toilet-2.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "bath-doorway",
+    "file": "bath-doorway.jpg",
+    "kind": "render",
+    "status": "pending",
+    "alt": {
+      "nb": "Utsikt fra petrolgrønt flislagt dusjhjørne gjennom tredør mot lyst oppholdsrom med furupanel.",
+      "en": "View from petrol-green tiled shower area through timber doorway toward bright living space with pine paneling."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/Shower-side view toward the timber doorway-3.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "journey-workshop",
+    "file": "journey-workshop.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Takbjelker og verkstedlys over et saltak og en vegg med stående trebord.",
+      "en": "Workshop lights and overhead beams above a gabled roof and a wall of vertical timber boards."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse_ From workshop to terrain-2.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "journey-truck",
+    "file": "journey-truck.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Et trekkvognførerhus foran en plattform som bærer den trekledde modulen.",
+      "en": "A lorry cab in front of the platform carrying the timber-clad module."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse_ From workshop to terrain-2.png",
+    "focal": "48% 60%"
+  },
+  {
+    "id": "journey-plot",
+    "file": "journey-plot.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Den trekledde hytta står lavt i en skråning med fjorden og skogkledde fjell i bakgrunnen.",
+      "en": "The timber cabin sits low on the hillside, with a fjord and wooded mountains in the background."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/MiniHouse cabin on a Norwegian slope-2.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "texture-malmfuru",
+    "file": "texture-malmfuru.jpg",
+    "kind": "texture",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Sølvbrune bord med synlige kvister, sprekker og årringer.",
+      "en": "Silver-brown boards with visible knots, splits and grain."
+    },
+    "caption": {
+      "nb": "Konseptbilde av materialuttrykket",
+      "en": "Concept image of the material finish"
+    },
+    "source": "images/MiniHouse cabin on a Norwegian slope-2.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "texture-eik",
+    "file": "texture-eik.jpg",
+    "kind": "texture",
+    "status": "stand-in",
+    "alt": {
+      "nb": "En varm, gyllen vinduskarm med en terrakottapotte på brettet.",
+      "en": "A golden timber window frame and sill with a small terracotta plant pot."
+    },
+    "caption": {
+      "nb": "Konseptbilde av materialuttrykket",
+      "en": "Concept image of the material finish"
+    },
+    "source": "images/Compact bathroom with window, plant, and toilet-2.png",
+    "focal": "50% 55%"
+  },
+  {
+    "id": "texture-kobber",
+    "file": "texture-kobber.jpg",
+    "kind": "texture",
+    "status": "stand-in",
+    "alt": {
+      "nb": "En bølget speilramme i varm kobbertone over kranen på badet.",
+      "en": "A wavy, copper-coloured mirror frame hangs above the bathroom tap."
+    },
+    "caption": {
+      "nb": "Konseptbilde av materialuttrykket",
+      "en": "Concept image of the material finish"
+    },
+    "source": "images/Reclaimed Vanity View in a MiniHouse Bathroom-1.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "texture-stal",
+    "file": "texture-stal.jpg",
+    "kind": "texture",
+    "status": "stand-in",
+    "alt": {
+      "nb": "Den mørke stålrammen møtes i et hjørne under den stående trekledningen.",
+      "en": "Two dark steel rails meet at a corner beneath the vertical timber cladding."
+    },
+    "caption": {
+      "nb": "Konseptbilde av materialuttrykket",
+      "en": "Concept image of the material finish"
+    },
+    "source": "images/Weathered timber cabin with a glowing interior.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "og-image",
+    "file": "og-image.jpg",
+    "kind": "render",
+    "status": "stand-in",
+    "alt": {
+      "nb": "MiniHouse med saltak, stående trekledning og utsikt mot en vestlandsfjord.",
+      "en": "The gabled timber MiniHouse overlooking a fjord in Western Norway."
+    },
+    "caption": {
+      "nb": "Konseptbilde",
+      "en": "Concept image"
+    },
+    "source": "images/Weathered timber cabin with a glowing interior.png",
+    "focal": "50% 50%"
+  }
+]

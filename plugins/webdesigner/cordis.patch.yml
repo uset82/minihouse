@@ -1,0 +1,41 @@
+# WebDesigner for DeepSeek Harness.
+#
+# Two contributions:
+# 1. One MCP client entry bridging the locally installed WebDesigner engine
+#    (https://github.com/uset82/webdesigner, cloned and built at
+#    C:/Users/carlos/.webdesigner). Its five wd_* tools appear as
+#    mcp__webdesigner__*. The engine writes manifests and generated code
+#    relative to the server cwd, pinned to the dedicated webdesigner/ folder
+#    inside the MiniHouse workspace.
+# 2. The Host-plane skill-filesystem row, re-enabled with the engine's skill
+#    catalog and this bundle's bridging skill as custom roots. The web-app
+#    layer disables that row because presets normally own local discovery;
+#    the skill registry merges host-layer providers into every agent's
+#    catalog, so this reaches all sessions and presets without overriding
+#    preset declarations. Default roots stay on (includeDefaultRoots: true),
+#    so project, user, and bundled skills are preserved. The shipped dsh-doc
+#    root keeps coming from each preset's own skill-filesystem row.
+
+- insert:
+    - id: webdesigner-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: webdesigner
+        transport: stdio
+        command: 'C:\Program Files\nodejs\node.exe'
+        args:
+          - 'C:\Users\carlos\.webdesigner\dist\mcp\server.js'
+        cwd: 'C:\Users\carlos\PROYECTOS\minihouse\webdesigner'
+        startupTimeoutMs: 30000
+        failOnStartupError: false
+
+- id: skill-filesystem
+  name: '@deepseek-ai/dsh-skill-filesystem'
+  disabled: false
+  config:
+    providerName: filesystem
+    includeDefaultRoots: true
+    customSkillDirs:
+      - 'C:\Users\carlos\.webdesigner\skills'
+      - 'C:\Users\carlos\PROYECTOS\minihouse\plugins\webdesigner\skills'
+    watch: true

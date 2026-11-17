@@ -1,0 +1,65 @@
+---
+import type { Content } from '../content/schema';
+import Figure from './Figure.astro';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+---
+
+<section class="build" aria-labelledby="build-title">
+  <div class="wrap">
+    <h2 id="build-title">{content.build.title}</h2>
+    <p class="section-lead">{content.build.lead}</p>
+    <div class="tablist" role="tablist" aria-labelledby="build-title">
+      <button type="button" role="tab" id="tab-exterior" aria-controls="panel-exterior" aria-selected="true" tabindex="0">
+        {content.build.tabExterior}
+      </button>
+      <button type="button" role="tab" id="tab-structure" aria-controls="panel-structure" aria-selected="false" tabindex="-1">
+        {content.build.tabStructure}
+      </button>
+    </div>
+    <div role="tabpanel" tabindex="0" id="panel-exterior" aria-labelledby="tab-exterior">
+      <Figure imageId="meadow-wide" lang={lang} ratio="wide" />
+      <p>{content.build.exterior}</p>
+    </div>
+    <div role="tabpanel" tabindex="0" id="panel-structure" aria-labelledby="tab-structure" hidden>
+      <Figure imageId="exploded" lang={lang} ratio="wide" />
+      <p>{content.build.structure}</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+
+  const select = (next: HTMLButtonElement) => {
+    tabs.forEach((tab) => {
+      const selected = tab === next;
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+      const panel = document.getElementById(tab.getAttribute('aria-controls') ?? '');
+      if (panel instanceof HTMLElement) panel.hidden = !selected;
+    });
+    next.focus();
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => select(tab));
+    tab.addEventListener('keydown', (event) => {
+      const previous = index === 0 ? tabs.length - 1 : index - 1;
+      const following = index === tabs.length - 1 ? 0 : index + 1;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        select(tabs[following]);
+      }
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        select(tabs[previous]);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,1041 @@
+{
+  "state": "SCREENING — PARAMETRIC, NO GEOMETRY FROZEN, NO PITCH SELECTED",
+  "width_mm": 3000.0,
+  "target_free_mm": 2200.0,
+  "transport_limit_mm": 4000.0,
+  "rows": [
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2517.8,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2467.6,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2417.4,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2467.8,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2417.6,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2367.4,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2417.8,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2367.6,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2317.4,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2317.8,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2267.6,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2217.4,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2267.8,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2217.6,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2167.4,
+      "coverage": 0.752,
+      "full_coverage": false,
+      "transport_at_full": 4032.6
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2217.8,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2167.6,
+      "coverage": 0.753,
+      "full_coverage": false,
+      "transport_at_full": 4032.4
+    },
+    {
+      "pitch_deg": 5.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2117.4,
+      "coverage": 0.371,
+      "full_coverage": false,
+      "transport_at_full": 4082.6
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2381.7,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2330.9,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2280.1,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2331.7,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2280.9,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2230.1,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2281.7,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2230.9,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2180.1,
+      "coverage": 0.925,
+      "full_coverage": false,
+      "transport_at_full": 4019.9
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2181.7,
+      "coverage": 0.931,
+      "full_coverage": false,
+      "transport_at_full": 4018.3
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2130.9,
+      "coverage": 0.739,
+      "full_coverage": false,
+      "transport_at_full": 4069.1
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2080.1,
+      "coverage": 0.547,
+      "full_coverage": false,
+      "transport_at_full": 4119.9
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2131.7,
+      "coverage": 0.742,
+      "full_coverage": false,
+      "transport_at_full": 4068.3
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2080.9,
+      "coverage": 0.55,
+      "full_coverage": false,
+      "transport_at_full": 4119.1
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2030.1,
+      "coverage": 0.358,
+      "full_coverage": false,
+      "transport_at_full": 4169.9
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2081.7,
+      "coverage": 0.553,
+      "full_coverage": false,
+      "transport_at_full": 4118.3
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2030.9,
+      "coverage": 0.361,
+      "full_coverage": false,
+      "transport_at_full": 4169.1
+    },
+    {
+      "pitch_deg": 10.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1980.1,
+      "coverage": 0.169,
+      "full_coverage": false,
+      "transport_at_full": 4219.9
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2239.3,
+      "coverage": 1.0,
+      "full_coverage": true,
+      "transport_at_full": 4000.0
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2187.5,
+      "coverage": 0.969,
+      "full_coverage": false,
+      "transport_at_full": 4012.5
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2135.7,
+      "coverage": 0.84,
+      "full_coverage": false,
+      "transport_at_full": 4064.3
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2189.3,
+      "coverage": 0.973,
+      "full_coverage": false,
+      "transport_at_full": 4010.7
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2137.5,
+      "coverage": 0.844,
+      "full_coverage": false,
+      "transport_at_full": 4062.5
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2085.7,
+      "coverage": 0.716,
+      "full_coverage": false,
+      "transport_at_full": 4114.3
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2139.3,
+      "coverage": 0.849,
+      "full_coverage": false,
+      "transport_at_full": 4060.7
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2087.5,
+      "coverage": 0.72,
+      "full_coverage": false,
+      "transport_at_full": 4112.5
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 2035.7,
+      "coverage": 0.591,
+      "full_coverage": false,
+      "transport_at_full": 4164.3
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2039.3,
+      "coverage": 0.6,
+      "full_coverage": false,
+      "transport_at_full": 4160.7
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1987.5,
+      "coverage": 0.471,
+      "full_coverage": false,
+      "transport_at_full": 4212.5
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1935.7,
+      "coverage": 0.342,
+      "full_coverage": false,
+      "transport_at_full": 4264.3
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1989.3,
+      "coverage": 0.476,
+      "full_coverage": false,
+      "transport_at_full": 4210.7
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1937.5,
+      "coverage": 0.347,
+      "full_coverage": false,
+      "transport_at_full": 4262.5
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1885.7,
+      "coverage": 0.218,
+      "full_coverage": false,
+      "transport_at_full": 4314.3
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1939.3,
+      "coverage": 0.351,
+      "full_coverage": false,
+      "transport_at_full": 4260.7
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1887.5,
+      "coverage": 0.222,
+      "full_coverage": false,
+      "transport_at_full": 4312.5
+    },
+    {
+      "pitch_deg": 15.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1835.7,
+      "coverage": 0.094,
+      "full_coverage": false,
+      "transport_at_full": 4364.3
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2088.0,
+      "coverage": 0.795,
+      "full_coverage": false,
+      "transport_at_full": 4112.0
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 2034.8,
+      "coverage": 0.697,
+      "full_coverage": false,
+      "transport_at_full": 4165.2
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1981.6,
+      "coverage": 0.6,
+      "full_coverage": false,
+      "transport_at_full": 4218.4
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 2038.0,
+      "coverage": 0.703,
+      "full_coverage": false,
+      "transport_at_full": 4162.0
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1984.8,
+      "coverage": 0.606,
+      "full_coverage": false,
+      "transport_at_full": 4215.2
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1931.6,
+      "coverage": 0.508,
+      "full_coverage": false,
+      "transport_at_full": 4268.4
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1988.0,
+      "coverage": 0.612,
+      "full_coverage": false,
+      "transport_at_full": 4212.0
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1934.8,
+      "coverage": 0.514,
+      "full_coverage": false,
+      "transport_at_full": 4265.2
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1881.6,
+      "coverage": 0.417,
+      "full_coverage": false,
+      "transport_at_full": 4318.4
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1888.0,
+      "coverage": 0.429,
+      "full_coverage": false,
+      "transport_at_full": 4312.0
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1834.8,
+      "coverage": 0.331,
+      "full_coverage": false,
+      "transport_at_full": 4365.2
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1781.6,
+      "coverage": 0.234,
+      "full_coverage": false,
+      "transport_at_full": 4418.4
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1838.0,
+      "coverage": 0.337,
+      "full_coverage": false,
+      "transport_at_full": 4362.0
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1784.8,
+      "coverage": 0.239,
+      "full_coverage": false,
+      "transport_at_full": 4415.2
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1731.6,
+      "coverage": 0.142,
+      "full_coverage": false,
+      "transport_at_full": 4468.4
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1788.0,
+      "coverage": 0.245,
+      "full_coverage": false,
+      "transport_at_full": 4412.0
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1734.8,
+      "coverage": 0.148,
+      "full_coverage": false,
+      "transport_at_full": 4465.2
+    },
+    {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1681.6,
+      "coverage": 0.05,
+      "full_coverage": false,
+      "transport_at_full": 4518.4
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1924.7,
+      "coverage": 0.606,
+      "full_coverage": false,
+      "transport_at_full": 4275.3
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1869.5,
+      "coverage": 0.528,
+      "full_coverage": false,
+      "transport_at_full": 4330.5
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1814.4,
+      "coverage": 0.449,
+      "full_coverage": false,
+      "transport_at_full": 4385.6
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1874.7,
+      "coverage": 0.535,
+      "full_coverage": false,
+      "transport_at_full": 4325.3
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1819.5,
+      "coverage": 0.456,
+      "full_coverage": false,
+      "transport_at_full": 4380.5
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1764.4,
+      "coverage": 0.377,
+      "full_coverage": false,
+      "transport_at_full": 4435.6
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1824.7,
+      "coverage": 0.463,
+      "full_coverage": false,
+      "transport_at_full": 4375.3
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1769.5,
+      "coverage": 0.385,
+      "full_coverage": false,
+      "transport_at_full": 4430.5
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1714.4,
+      "coverage": 0.306,
+      "full_coverage": false,
+      "transport_at_full": 4485.6
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1724.7,
+      "coverage": 0.32,
+      "full_coverage": false,
+      "transport_at_full": 4475.3
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1669.5,
+      "coverage": 0.242,
+      "full_coverage": false,
+      "transport_at_full": 4530.5
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1614.4,
+      "coverage": 0.163,
+      "full_coverage": false,
+      "transport_at_full": 4585.6
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1674.7,
+      "coverage": 0.249,
+      "full_coverage": false,
+      "transport_at_full": 4525.3
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1619.5,
+      "coverage": 0.17,
+      "full_coverage": false,
+      "transport_at_full": 4580.5
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1564.4,
+      "coverage": 0.091,
+      "full_coverage": false,
+      "transport_at_full": 4635.6
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_wall_mm": 1624.7,
+      "coverage": 0.178,
+      "full_coverage": false,
+      "transport_at_full": 4575.3
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1569.5,
+      "coverage": 0.099,
+      "full_coverage": false,
+      "transport_at_full": 4630.5
+    },
+    {
+      "pitch_deg": 25.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_wall_mm": 1514.4,
+      "coverage": 0.02,
+      "full_coverage": false,
+      "transport_at_full": 4685.6
+    }
+  ],
+  "pitches": [
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_pitch_full_deg": 16.33
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_pitch_full_deg": 14.58
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_pitch_full_deg": 12.81
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_pitch_full_deg": 14.63
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_pitch_full_deg": 12.85
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_pitch_full_deg": 11.07
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_pitch_full_deg": 12.9
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_pitch_full_deg": 11.1
+    },
+    {
+      "stack_mm": 900.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_pitch_full_deg": 9.29
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 250.0,
+      "max_pitch_full_deg": 9.34
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 300.0,
+      "max_pitch_full_deg": 7.5
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 200.0,
+      "roof_mm": 350.0,
+      "max_pitch_full_deg": 5.65
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 250.0,
+      "max_pitch_full_deg": 7.51
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_pitch_full_deg": 5.66
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 350.0,
+      "max_pitch_full_deg": 3.78
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 250.0,
+      "max_pitch_full_deg": 5.66
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 300.0,
+      "max_pitch_full_deg": 3.79
+    },
+    {
+      "stack_mm": 1100.0,
+      "floor_mm": 300.0,
+      "roof_mm": 350.0,
+      "max_pitch_full_deg": 1.9
+    }
+  ],
+  "levers": {
+    "reference": {
+      "pitch_deg": 20.0,
+      "stack_mm": 1100.0,
+      "floor_mm": 250.0,
+      "roof_mm": 300.0,
+      "max_wall_mm": 1784.8,
+      "coverage": 0.239
+    },
+    "stack_for_full_coverage": 684.8,
+    "floor_for_full_coverage": -165.2,
+    "roof_for_full_coverage": -90.2,
+    "limit_for_full_coverage": 4415.2,
+    "pitch_for_full_coverage": 5.66
+  },
+  "internal": {
+    "width_m": 2.472,
+    "length_m": 5.472,
+    "area_m2": 13.53,
+    "gross_area_m2": 18.0,
+    "loss_m2": 4.47,
+    "wall_build_mm": 264.0
+  }
+}

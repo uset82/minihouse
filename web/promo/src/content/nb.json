@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "title": "MiniHouse for Vestlandet",
+    "description": "Et huskonsept for Bergen på ca. 6 × 3 m. Se romløsningen og planen for gjenbruk av gamle furubord.",
+    "ogAlt": "Konseptbilde av MiniHouse, et lite hus med saltak i svart metall og kledning av gjenbrukt tre, på en vestlandsk skråning."
+  },
+  "nav": {
+    "skip": "Hopp til innhold",
+    "house": "Huset",
+    "materials": "Materialer",
+    "moving": "Flytting",
+    "questions": "Spørsmål",
+    "cta": "Følg prosjektet",
+    "menu": "Meny",
+    "close": "Lukk",
+    "language": "English"
+  },
+  "hero": {
+    "title": "Et lite hus, laget for å flyttes.",
+    "lead": "Vi tegner et hus for Bergen med gamle furubord utenpå, eik i tersklene og kobber rundt speilet på badet.",
+    "cta": "Følg prosjektet",
+    "gallery": "Se huset",
+    "caption": "Konseptbilde"
+  },
+  "facts": {
+    "items": [
+      { "label": "Størrelse", "value": "ca. 6 × 3 m" },
+      { "label": "Konstruksjon", "value": "stålramme og gjenbrukt tre" },
+      { "label": "Tak", "value": "saltak i metall (konsept)" },
+      { "label": "Flytting", "value": "mål om å flyttes i ett stykke" },
+      { "label": "Status", "value": "under utvikling" }
+    ]
+  },
+  "gallery": {
+    "title": "Huset i bilder",
+    "count": "{current} av {total}",
+    "prev": "Forrige",
+    "next": "Neste",
+    "close": "Lukk"
+  },
+  "build": {
+    "title": "Under kledningen",
+    "lead": "I tegningene møter værgrå bord et svart saltak. Under huset ligger en lav ramme av stål.",
+    "tabExterior": "Utvendig",
+    "tabStructure": "Konstruksjon",
+    "exterior": "Vi planlegger en luftespalte bak kledningen så bordene kan tørke mellom regnbygene. Døren og vindusrammene er tegnet i svart.",
+    "structure": "To langsgående stålbjelker og kortere tverrbjelker danner understellet i utkastet. Dimensjonene er fortsatt åpne."
+  },
+  "materials": {
+    "title": "Gammelt tre, nytt hus",
+    "lead": "Vi vil gi gamle bord et nytt liv som kledning. Når vi finner treet, skal materialpasset vise hvor det kommer fra og hva det ble brukt til før.",
+    "passportTitle": "Materialpass",
+    "rows": {
+      "material": "Materiale",
+      "origin": "Opprinnelse",
+      "previousUse": "Tidligere bruk",
+      "usedFor": "Brukes til",
+      "treatment": "Behandling",
+      "status": "Status"
+    },
+    "items": [
+      {
+        "id": "malmfuru",
+        "name": "Malmfuru",
+        "lead": "Rødbrun kjerneved av furu har lenge vært brukt i norsk kledning. Vi ser etter gamle bord av saktevokst furu.",
+        "passport": {
+          "material": "furu, kjerneved",
+          "origin": "dokumenteres per parti",
+          "previousUse": "dokumenteres per parti",
+          "usedFor": "kledning",
+          "treatment": "ikke bestemt",
+          "status": "planlagt"
+        }
+      },
+      {
+        "id": "eik",
+        "name": "Europeisk eik",
+        "lead": "Vi har tegnet inn eik der hånden hviler på vindusbrettet og foten treffer terskelen.",
+        "passport": {
+          "material": "europeisk eik",
+          "origin": "dokumenteres per parti",
+          "previousUse": "dokumenteres per parti",
+          "usedFor": "terskler og innvendige vindusbrett",
+          "treatment": "ikke bestemt",
+          "status": "planlagt"
+        }
+      },
+      {
+        "id": "kobber",
+        "name": "Kobber",
+        "lead": "I skissen har speilet på badet en smal kobberkant mot de petrolgrønne flisene.",
+        "passport": {
+          "material": "kobber",
+          "origin": "dokumenteres",
+          "previousUse": "ikke bestemt",
+          "usedFor": "detaljer, blant annet på badet",
+          "treatment": "ikke bestemt",
+          "status": "konsept"
+        }
+      },
+      {
+        "id": "stal",
+        "name": "Stål",
+        "lead": "I tegningene ligger stålrammen under huset og binder understellet sammen.",
+        "passport": {
+          "material": "stål",
+          "origin": "dokumenteres",
+          "previousUse": "ikke bestemt",
+          "usedFor": "ramme og chassis",
+          "treatment": "ikke bestemt",
+          "status": "konsept"
+        }
+      }
+    ]
+  },
+  "living": {
+    "title": "Inne i MiniHouse",
+    "lead": "I skissen deler kjøkkenet og vindusbenken ett rom. Skuffene ligger under setet, og badet får plass i den ene enden.",
+    "rooms": [
+      { "id": "kitchen", "title": "Kjøkken", "body": "Et lite kjøkken langs veggen." },
+      { "id": "bench", "title": "Sittebenk", "body": "En innebygd benk under vinduet." },
+      { "id": "storage", "title": "Oppbevaring", "body": "Skuffer under benken." },
+      { "id": "bath", "title": "Bad", "body": "Fargeskissen for badet viser petrolgrønne fliser, tre og kobber." }
+    ]
+  },
+  "journey": {
+    "title": "Fra verksted til tomt",
+    "steps": [
+      { "title": "Verksted", "body": "Planen er å bygge huset ferdig i verkstedet." },
+      { "title": "Transport", "body": "Målet er å frakte huset i ett stykke på lastebil. Ruten må sjekkes først." },
+      { "title": "Tomt", "body": "På tomten ser vi for oss at en kran løfter huset på plass på støttene." }
+    ]
+  },
+  "status": {
+    "title": "Hvor står prosjektet?",
+    "body": "MiniHouse finnes foreløpig på tegnebordet. Vi arbeider med stålrammen og leter etter tre til kledningen.",
+    "phases": [
+      { "name": "Tegninger og plan", "state": "første utkast klart" },
+      { "name": "Beregninger", "state": "pågår" },
+      { "name": "Prototype", "state": "ikke bygget" }
+    ]
+  },
+  "faq": {
+    "title": "Spørsmål og svar",
+    "items": [
+      {
+        "q": "Trenger huset byggesøknad?",
+        "a": "Det avhenger av hva huset skal brukes til, og det er kommunen som avgjør."
+      },
+      {
+        "q": "Er huset til salgs?",
+        "a": "MiniHouse er et huskonsept under utvikling. Det finnes ingen ferdig modell å kjøpe."
+      },
+      {
+        "q": "Når blir prototypen ferdig?",
+        "a": "Vi har ennå ingen dato for en prototype."
+      },
+      {
+        "q": "Hvordan flyttes huset?",
+        "a": "Målet er at det skal kunne flyttes i ett stykke på lastebil. Hver rute må sjekkes før den brukes."
+      },
+      {
+        "q": "Hva er et konseptbilde?",
+        "a": "Et konseptbilde viser hvordan vi ser for oss huset. Bildene av badet viser farger og materialer, mens planløsningen fortsatt er åpen."
+      },
+      {
+        "q": "Hvilket tre vil dere bruke om igjen?",
+        "a": "Vi ser etter gamle furubord til kledningen. Når vi finner et egnet parti, vil vi dokumentere hvor bordene kommer fra og hva de ble brukt til før."
+      }
+    ]
+  },
+  "interest": {
+    "title": "Følg prosjektet",
+    "lead": "Legg igjen e-postadressen din, og få en melding når det skjer noe i prosjektet.",
+    "fields": {
+      "email": "E-post",
+      "name": "Navn",
+      "optional": "(valgfritt)"
+    },
+    "consent": "Ja, send meg oppdateringer om MiniHouse på e-post.",
+    "submit": "Følg prosjektet",
+    "success": "Takk! Du følger nå prosjektet.",
+    "errors": {
+      "required": "Feil: Skriv inn e-postadressen din.",
+      "email": "Feil: Skriv inn en e-postadresse, for eksempel navn@epost.no.",
+      "network": "Feil: Noe gikk galt. Prøv igjen om et øyeblikk."
+    }
+  },
+  "footer": {
+    "contact": "",
+    "privacy": "Personvern",
+    "pro": "For fagfolk",
+    "docs": "Dokumentasjon",
+    "lab": "3D-lab",
+    "imagesNote": "Alle bilder er konseptbilder. Huset er under utvikling."
+  },
+  "privacy": {
+    "title": "Personvern",
+    "body": "Du kan se bildene og lese om huset uten å registrere deg. Denne siden har ingen påmelding og ber ikke om navn eller e-postadresse."
+  },
+  "notFound": {
+    "title": "Siden finnes ikke",
+    "body": "Adressen stemmer ikke.",
+    "home": "Til forsiden"
+  }
+}

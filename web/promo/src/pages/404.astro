@@ -1,0 +1,19 @@
+---
+import { en, nb } from '../content/assert-content';
+import Base from '../layouts/Base.astro';
+---
+
+<Base content={nb} lang="nb">
+	<article class="page-copy">
+		<div class="wrap">
+			<h1>{nb.notFound.title}</h1>
+			<p>{nb.notFound.body}</p>
+			<p><a href="/">{nb.notFound.home}</a></p>
+			<div lang="en">
+				<h2>{en.notFound.title}</h2>
+				<p>{en.notFound.body}</p>
+				<p><a href="/en/">{en.notFound.home}</a></p>
+			</div>
+		</div>
+	</article>
+</Base>

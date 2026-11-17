@@ -1,0 +1,37 @@
+---
+import type { Content } from '../content/schema';
+import type { ImageId } from '../content/images';
+import Figure from './Figure.astro';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const roomImage: Record<string, ImageId> = {
+  kitchen: 'kitchen',
+  bench: 'bench',
+  storage: 'storage',
+  bath: 'bath-shower',
+};
+---
+
+<section class="band--irr" aria-labelledby="living-title">
+  <div class="wrap">
+    <h2 id="living-title">{content.living.title}</h2>
+    <p class="section-lead">{content.living.lead}</p>
+    <Figure imageId="living" lang={lang} class="living-hero" ratio="wide" />
+    <div class="room-list">
+      {
+        content.living.rooms.map((room) => (
+          <article class="room">
+            <Figure imageId={roomImage[room.id] ?? 'living'} lang={lang} ratio="room" />
+            <h3>{room.title}</h3>
+            <p>{room.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

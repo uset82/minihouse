@@ -1,0 +1,23 @@
+---
+import type { Content } from '../content/schema';
+import Figure from './Figure.astro';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+---
+
+<section class="hero" id="bygget" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <h1 id="hero-title">{content.hero.title}</h1>
+    <Figure imageId="hero-slope" lang={lang} class="hero-figure" ratio="hero" />
+    <p class="lead">{content.hero.lead}</p>
+    <p class="actions">
+      <a class="button" href="#bilder">{content.hero.gallery}</a>
+      <a href="#materialer">{content.nav.materials}</a>
+    </p>
+  </div>
+</section>

@@ -1,0 +1,275 @@
+{
+  "state": "SCREENING — NO SITE, NO HAZARD MAP, NO GEOTECHNICAL ASSESSMENT",
+  "minihouse_flood_class": "F2",
+  "minihouse_landslide_class": "S2",
+  "outdoor_reduction": "S2 outdoor area may be assessed at the S1 level (1/100)",
+  "classes": [
+    {
+      "class": "F1",
+      "hazard": "flood / storm surge",
+      "return_period_years": 20,
+      "annual": 0.05,
+      "within": {
+        "25": 0.7226104268781662,
+        "50": 0.9230550247232868,
+        "75": 0.9786562661541225
+      },
+      "minihouse": false
+    },
+    {
+      "class": "F2",
+      "hazard": "flood / storm surge",
+      "return_period_years": 200,
+      "annual": 0.005,
+      "within": {
+        "25": 0.11777975705119881,
+        "50": 0.22168744293135811,
+        "75": 0.31335690681280004
+      },
+      "minihouse": true
+    },
+    {
+      "class": "F3",
+      "hazard": "flood / storm surge",
+      "return_period_years": 1000,
+      "annual": 0.001,
+      "within": {
+        "25": 0.024702287402953438,
+        "50": 0.04879437180296864,
+        "75": 0.0722913266099986
+      },
+      "minihouse": false
+    },
+    {
+      "class": "S1",
+      "hazard": "landslide",
+      "return_period_years": 100,
+      "annual": 0.01,
+      "within": {
+        "25": 0.22217864060085335,
+        "50": 0.39499393286246365,
+        "75": 0.5294133584143501
+      },
+      "minihouse": false
+    },
+    {
+      "class": "S2",
+      "hazard": "landslide",
+      "return_period_years": 1000,
+      "annual": 0.001,
+      "within": {
+        "25": 0.024702287402953438,
+        "50": 0.04879437180296864,
+        "75": 0.0722913266099986
+      },
+      "minihouse": true
+    },
+    {
+      "class": "S3",
+      "hazard": "landslide",
+      "return_period_years": 5000,
+      "annual": 0.0002,
+      "within": {
+        "25": 0.004988018379776471,
+        "50": 0.009951156432195907,
+        "75": 0.014889538260788537
+      },
+      "minihouse": false
+    }
+  ],
+  "flood_level_mm": 1250.0,
+  "margin_mm": 300.0,
+  "flood": [
+    {
+      "slr_mm_per_year": 0.0,
+      "allowance": {
+        "25": 0.0,
+        "50": 0.0,
+        "75": 0.0
+      },
+      "ffl": {
+        "25": 1550.0,
+        "50": 1550.0,
+        "75": 1550.0
+      }
+    },
+    {
+      "slr_mm_per_year": 2.0,
+      "allowance": {
+        "25": 50.0,
+        "50": 100.0,
+        "75": 150.0
+      },
+      "ffl": {
+        "25": 1600.0,
+        "50": 1650.0,
+        "75": 1700.0
+      }
+    },
+    {
+      "slr_mm_per_year": 4.0,
+      "allowance": {
+        "25": 100.0,
+        "50": 200.0,
+        "75": 300.0
+      },
+      "ffl": {
+        "25": 1650.0,
+        "50": 1750.0,
+        "75": 1850.0
+      }
+    },
+    {
+      "slr_mm_per_year": 6.0,
+      "allowance": {
+        "25": 150.0,
+        "50": 300.0,
+        "75": 450.0
+      },
+      "ffl": {
+        "25": 1700.0,
+        "50": 1850.0,
+        "75": 2000.0
+      }
+    },
+    {
+      "slr_mm_per_year": 8.0,
+      "allowance": {
+        "25": 200.0,
+        "50": 400.0,
+        "75": 600.0
+      },
+      "ffl": {
+        "25": 1750.0,
+        "50": 1950.0,
+        "75": 2150.0
+      }
+    }
+  ],
+  "slopes": [
+    {
+      "beta_deg": 20.0,
+      "phi_deg": 30.0,
+      "fs": 1.586,
+      "verdict": "above material-factor practice — still needs geotechnical confirmation"
+    },
+    {
+      "beta_deg": 20.0,
+      "phi_deg": 32.0,
+      "fs": 1.717,
+      "verdict": "above material-factor practice — still needs geotechnical confirmation"
+    },
+    {
+      "beta_deg": 20.0,
+      "phi_deg": 34.0,
+      "fs": 1.853,
+      "verdict": "above material-factor practice — still needs geotechnical confirmation"
+    },
+    {
+      "beta_deg": 20.0,
+      "phi_deg": 36.0,
+      "fs": 1.996,
+      "verdict": "above material-factor practice — still needs geotechnical confirmation"
+    },
+    {
+      "beta_deg": 25.0,
+      "phi_deg": 30.0,
+      "fs": 1.238,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 25.0,
+      "phi_deg": 32.0,
+      "fs": 1.34,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 25.0,
+      "phi_deg": 34.0,
+      "fs": 1.446,
+      "verdict": "above material-factor practice — still needs geotechnical confirmation"
+    },
+    {
+      "beta_deg": 25.0,
+      "phi_deg": 36.0,
+      "fs": 1.558,
+      "verdict": "above material-factor practice — still needs geotechnical confirmation"
+    },
+    {
+      "beta_deg": 30.0,
+      "phi_deg": 30.0,
+      "fs": 1.0,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 30.0,
+      "phi_deg": 32.0,
+      "fs": 1.082,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 30.0,
+      "phi_deg": 34.0,
+      "fs": 1.168,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 30.0,
+      "phi_deg": 36.0,
+      "fs": 1.258,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 35.0,
+      "phi_deg": 30.0,
+      "fs": 0.825,
+      "verdict": "fails in the model"
+    },
+    {
+      "beta_deg": 35.0,
+      "phi_deg": 32.0,
+      "fs": 0.892,
+      "verdict": "fails in the model"
+    },
+    {
+      "beta_deg": 35.0,
+      "phi_deg": 34.0,
+      "fs": 0.963,
+      "verdict": "fails in the model"
+    },
+    {
+      "beta_deg": 35.0,
+      "phi_deg": 36.0,
+      "fs": 1.038,
+      "verdict": "below material-factor practice"
+    },
+    {
+      "beta_deg": 40.0,
+      "phi_deg": 30.0,
+      "fs": 0.688,
+      "verdict": "fails in the model"
+    },
+    {
+      "beta_deg": 40.0,
+      "phi_deg": 32.0,
+      "fs": 0.745,
+      "verdict": "fails in the model"
+    },
+    {
+      "beta_deg": 40.0,
+      "phi_deg": 34.0,
+      "fs": 0.804,
+      "verdict": "fails in the model"
+    },
+    {
+      "beta_deg": 40.0,
+      "phi_deg": 36.0,
+      "fs": 0.866,
+      "verdict": "fails in the model"
+    }
+  ],
+  "material_factor": 1.4,
+  "pressure_ceiling_kpa": 50.0,
+  "pressure_ceiling_depth_m": 2.78,
+  "pressure_ceiling_mass_kg_m2": 5099.0
+}

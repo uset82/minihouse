@@ -83,7 +83,7 @@ Marca cada casilla al cumplir su criterio de cierre. El desglose operativo del b
 
 - [ ] Aprobar audiencia, páginas, contenido y medios utilizables. (Propuesta completa para decisión de Carlos: [fase4/brief-web.md](fase4/brief-web.md) §8. Imágenes de `images/` registradas como NO autorizadas hasta revisión visual humana.)
 - [ ] Usar la habilidad de frontend para diseñar y revisar la interfaz en pantallas estrechas y anchas. (Prototipo estático de 4 páginas con tokens documentados: [fase4/sitio/](fase4/sitio/index.html). Revisión automatizada OK: contraste medido 15 pares, skip-link, alt, 0 peticiones externas, 32,5 KB — [check_web.py](scripts/check_web.py). Revisión VISUAL estrecho/ancho pendiente: requiere humano o modelo con visión.)
-- [ ] Verificar navegación, contraste, accesibilidad y rendimiento antes de publicar en el destino acordado. (Checks automatizados pasan 2026-11-16; faltan teclado manual, capturas visuales y destino de publicación — checklist en el brief §7.)
+- [ ] Verificar navegación, contraste, accesibilidad y rendimiento antes de publicar en el destino acordado. (PUBLICADO 2026-11-17: chat-demo + 3D lab de Antigravity en https://minihouse.canner.app con los hallazgos W-1…W-4 corregidos y verificados en vivo; sitio documental preservado en https://minihouse-docs.canner.app — [despliegue-web.md](docs/despliegue-web.md). Faltan para cerrar: teclado manual, capturas visuales y aprobación formal del encargo.)
 
 ## Verificación y riesgos
 

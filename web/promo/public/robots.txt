@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minihouse.canner.app/sitemap-index.xml

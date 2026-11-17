@@ -42,3 +42,7 @@ Status: framework established (Stage 3). No numeric forces yet — blocked on ve
 ## Blockers
 
 W and 3D CG verified; z_G; crane/radius (C-04); allowable wind; hook height; number of transport cycles (C-03).
+
+## Geometry screen added 2026-11-17
+
+[lift-geometry-screen.md](lift-geometry-screen.md) now quantifies sling angle, length and normalized `T/W`, `H/W` for extreme-corner and 20%-inset layouts at 3000/4000/5000 mm hook-to-point vertical distance. It deliberately does **not** choose I-1 or I-2. Key result: at the same vertical, the 20% inset layout reduces horizontal thrust by about 30 % versus extreme corners; I-1 and I-2 have identical geometry ratios when vertical is measured from the lift point, so their difference is structural and procedural (below-CG critical lift for I-2), not sling trigonometry. Real W, CG, crane geometry and specialist factors remain blocking.

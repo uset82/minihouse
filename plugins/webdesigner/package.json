@@ -1,0 +1,24 @@
+{
+  "name": "@local/webdesigner",
+  "version": "1.2.0",
+  "private": true,
+  "description": "Connects the local WebDesigner production engine (MCP tools plus design skills) so agents can build modern, non-generic UI/UX website apps.",
+  "type": "module",
+  "exports": {
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "locale/*.json",
+    "docs",
+    "icon.svg",
+    "README.md",
+    "skills"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

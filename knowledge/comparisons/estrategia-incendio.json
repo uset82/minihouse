@@ -1,0 +1,142 @@
+{
+  "state": "DETERMINATION — NOT A FIRE-ENGINEERING ANALYSIS, NOT A COMPLIANCE STATEMENT",
+  "basis": {
+    "sources": [
+      "S024"
+    ],
+    "risk_class": 4,
+    "fire_class": 1
+  },
+  "coupling": {
+    "clauses": [
+      "§11-13(4)",
+      "§11-14"
+    ],
+    "rows": [
+      2,
+      3,
+      4
+    ],
+    "reason": "both are engaged by whether the exit leads to a safe place or to a rømningsvei, which is one question"
+  },
+  "packages": [
+    {
+      "id": "P1",
+      "name": "the door discharges to a safe place",
+      "basis": "§11-13(1) satisfied directly — one exit to a safe place",
+      "engaged": {
+        "§11-13(1)": true,
+        "§11-13(4)": false,
+        "§11-14": false,
+        "§11-17": true
+      },
+      "windows": "none required as escape windows",
+      "width": "§11-14 does not apply: there is no rømningsvei to be in or to",
+      "rows": {
+        "2": "not required",
+        "3": "not required",
+        "4": "not required"
+      },
+      "cost": "nothing",
+      "risk": "the municipality may not accept grade outside the door as a safe place",
+      "window_cost": null
+    },
+    {
+      "id": "P2",
+      "name": "the exit leads to a rømningsvei with one direction",
+      "basis": "§11-13(4) engaged — the allowance needs qualifying windows in every cell",
+      "engaged": {
+        "§11-13(1)": true,
+        "§11-13(4)": true,
+        "§11-14": true,
+        "§11-17": true
+      },
+      "windows": "a qualifying window in every room without a direct exit",
+      "width": "§11-14 applies: 0.86 m free width in the door",
+      "rows": {
+        "2": "mandatory",
+        "3": "mandatory",
+        "4": "mandatory"
+      },
+      "cost": "0.29 m² of glass and a 100 mm sill drop",
+      "risk": "none — this is the conservative answer, and it is buildable",
+      "window_cost": {
+        "added_glass_m2": 0.29,
+        "changes": [
+          {
+            "id": "V-02",
+            "room": "MAIN",
+            "from_mm": "1000 × 900 @ sill 1100",
+            "to_mm": "1000 × 900 @ sill 1000",
+            "added_glass_m2": 0.0,
+            "added_qualifying_m2": 0.0
+          },
+          {
+            "id": "V-03",
+            "room": "BATH",
+            "from_mm": "500 × 500 @ sill 1500",
+            "to_mm": "900 × 600 @ sill 1000",
+            "added_glass_m2": 0.29,
+            "added_qualifying_m2": 0.29
+          }
+        ],
+        "min_lt_after": 0.5371
+      }
+    }
+  ],
+  "not_coupled": [
+    {
+      "clause": "§11-9 surfaces",
+      "value": "D-s2,d0 walls and ceiling (cell ≤200 m²)",
+      "why": "a fire cell that contains no rømningsvei is still a fire cell, and the ≤200 m² row applies to it whatever §11-13 decides"
+    },
+    {
+      "clause": "§11-9 cladding",
+      "value": "K210 D-s2,d0",
+      "why": "the cladding is metal, so it meets either row without a product choice"
+    },
+    {
+      "clause": "§11-9 insulation",
+      "value": "A2-s1,d0",
+      "why": "already forced by §11-4(3) no. 6 as well; the roof is mineral wool either way"
+    },
+    {
+      "clause": "§11-17 fire service",
+      "value": "one accessible window",
+      "why": "applies on both packages, and V-01 already satisfies it"
+    }
+  ],
+  "travel": {
+    "max_internal_m": 5.04,
+    "from": {
+      "x_mm": 0.0,
+      "y_mm": 0.0,
+      "jamb_mm": 4050.0
+    },
+    "door_to_exit_one_stair_m": 15.0,
+    "door_to_exit_several_m": 30.0,
+    "margin_vs_loosest_m": 9.96,
+    "note": "straight line, so a lower bound on the path and an upper bound on the margin"
+  },
+  "timber": {
+    "eave_mm": 1778.0,
+    "ridge_mm": 2324.0,
+    "long_walls_m2": 21.34,
+    "gables_m2": 12.31,
+    "ceiling_m2": 19.16,
+    "gross_m2": 52.8,
+    "openings_m2": 4.32,
+    "net_m2": 48.48
+  },
+  "door": {
+    "leaf_mm": 900.0,
+    "required_mm": 860.0,
+    "nominal_margin_mm": 40.0
+  },
+  "excluded": [
+    "fire-engineering analysis",
+    "municipal decision",
+    "product documentation for B-s1,d0 timber",
+    "compliance statement"
+  ]
+}

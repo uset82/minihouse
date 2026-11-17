@@ -1,0 +1,678 @@
+{
+  "state": "SCREENING — GENERIC MATERIAL DATA, NO PRODUCTS SELECTED",
+  "u_limits": {
+    "wall": 0.22,
+    "roof": 0.18,
+    "floor": 0.18,
+    "window": 1.2
+  },
+  "elements": {
+    "wall": {
+      "insulation_mm": 150.0,
+      "r_total": 4.796,
+      "u_clear": 0.209,
+      "u_limit": 0.22,
+      "clear_field_ok": true,
+      "layers": [
+        {
+          "name": "timber lining",
+          "d_mm": 13.0,
+          "r": 0.1,
+          "sd_m": 0.65,
+          "counted": true
+        },
+        {
+          "name": "vapour barrier",
+          "d_mm": 0.2,
+          "r": 0.0,
+          "sd_m": 10.0,
+          "counted": true
+        },
+        {
+          "name": "mineral wool between studs",
+          "d_mm": 150.0,
+          "r": 4.286,
+          "sd_m": 0.15,
+          "counted": true
+        },
+        {
+          "name": "wind barrier board",
+          "d_mm": 12.0,
+          "r": 0.24,
+          "sd_m": 0.06,
+          "counted": true
+        },
+        {
+          "name": "ventilated cavity",
+          "d_mm": 0.0,
+          "r": 0.17,
+          "sd_m": 0.0,
+          "counted": false
+        },
+        {
+          "name": "reclaimed timber cladding",
+          "d_mm": 25.0,
+          "r": 0.192,
+          "sd_m": 1.25,
+          "counted": true
+        }
+      ],
+      "stud_cases": [
+        {
+          "stud_fraction": 0.1,
+          "u_stud_path": 0.601,
+          "u_parallel": 0.248,
+          "ok": false,
+          "penalty_pct": 18.8
+        },
+        {
+          "stud_fraction": 0.15,
+          "u_stud_path": 0.601,
+          "u_parallel": 0.267,
+          "ok": false,
+          "penalty_pct": 28.2
+        },
+        {
+          "stud_fraction": 0.2,
+          "u_stud_path": 0.601,
+          "u_parallel": 0.287,
+          "ok": false,
+          "penalty_pct": 37.6
+        }
+      ],
+      "min_clear_mm": 141.2,
+      "min_with_studs_mm": {
+        "0.10": 172.0,
+        "0.15": 189.0,
+        "0.20": 207.0
+      }
+    },
+    "roof": {
+      "insulation_mm": 200.0,
+      "r_total": 6.093,
+      "u_clear": 0.164,
+      "u_limit": 0.18,
+      "clear_field_ok": true,
+      "layers": [
+        {
+          "name": "timber ceiling lining",
+          "d_mm": 13.0,
+          "r": 0.1,
+          "sd_m": 0.65,
+          "counted": true
+        },
+        {
+          "name": "vapour barrier",
+          "d_mm": 0.2,
+          "r": 0.0,
+          "sd_m": 10.0,
+          "counted": true
+        },
+        {
+          "name": "mineral wool between rafters",
+          "d_mm": 200.0,
+          "r": 5.714,
+          "sd_m": 0.2,
+          "counted": true
+        },
+        {
+          "name": "roof board",
+          "d_mm": 18.0,
+          "r": 0.138,
+          "sd_m": 0.9,
+          "counted": true
+        },
+        {
+          "name": "underlay",
+          "d_mm": 0.5,
+          "r": 0.0,
+          "sd_m": 0.5,
+          "counted": true
+        },
+        {
+          "name": "ventilated cavity",
+          "d_mm": 0.0,
+          "r": 0.2,
+          "sd_m": 0.0,
+          "counted": false
+        },
+        {
+          "name": "standing-seam metal",
+          "d_mm": 0.6,
+          "r": 0.0,
+          "sd_m": 0.0,
+          "counted": true
+        }
+      ],
+      "stud_cases": [
+        {
+          "stud_fraction": 0.1,
+          "u_stud_path": 0.522,
+          "u_parallel": 0.2,
+          "ok": false,
+          "penalty_pct": 21.8
+        },
+        {
+          "stud_fraction": 0.15,
+          "u_stud_path": 0.522,
+          "u_parallel": 0.218,
+          "ok": false,
+          "penalty_pct": 32.7
+        },
+        {
+          "stud_fraction": 0.2,
+          "u_stud_path": 0.522,
+          "u_parallel": 0.236,
+          "ok": false,
+          "penalty_pct": 43.6
+        }
+      ],
+      "min_clear_mm": 181.2,
+      "min_with_studs_mm": {
+        "0.10": 224.0,
+        "0.15": 247.0,
+        "0.20": 271.0
+      }
+    },
+    "floor": {
+      "insulation_mm": 200.0,
+      "r_total": 6.232,
+      "u_clear": 0.16,
+      "u_limit": 0.18,
+      "clear_field_ok": true,
+      "layers": [
+        {
+          "name": "timber floor deck",
+          "d_mm": 22.0,
+          "r": 0.169,
+          "sd_m": 1.1,
+          "counted": true
+        },
+        {
+          "name": "mineral wool between joists",
+          "d_mm": 200.0,
+          "r": 5.714,
+          "sd_m": 0.2,
+          "counted": true
+        },
+        {
+          "name": "structural board",
+          "d_mm": 18.0,
+          "r": 0.138,
+          "sd_m": 0.9,
+          "counted": true
+        },
+        {
+          "name": "ventilated void over chassis",
+          "d_mm": 0.0,
+          "r": 0.17,
+          "sd_m": 0.0,
+          "counted": false
+        }
+      ],
+      "stud_cases": [
+        {
+          "stud_fraction": 0.1,
+          "u_stud_path": 0.486,
+          "u_parallel": 0.193,
+          "ok": false,
+          "penalty_pct": 20.3
+        },
+        {
+          "stud_fraction": 0.15,
+          "u_stud_path": 0.486,
+          "u_parallel": 0.209,
+          "ok": false,
+          "penalty_pct": 30.5
+        },
+        {
+          "stud_fraction": 0.2,
+          "u_stud_path": 0.486,
+          "u_parallel": 0.226,
+          "ok": false,
+          "penalty_pct": 40.6
+        }
+      ],
+      "min_clear_mm": 176.3,
+      "min_with_studs_mm": {
+        "0.10": 217.0,
+        "0.15": 238.0,
+        "0.20": 260.0
+      }
+    }
+  },
+  "moisture": {
+    "Sd 10 m barrier (TEK17 §13-13)": {
+      "rh_in_40": {
+        "sd_total_m": 10.86,
+        "condensation_at": null,
+        "excess_pa": 0.0,
+        "rate_kg_m2_90d": null
+      },
+      "rh_in_55": {
+        "sd_total_m": 10.86,
+        "condensation_at": null,
+        "excess_pa": 0.0,
+        "rate_kg_m2_90d": null
+      },
+      "profile_rh40": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 933.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.414,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 908.6,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.413,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 10.65,
+          "p_pa": 527.3,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.24,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 10.8,
+          "p_pa": 521.6,
+          "p_sat_pa": 664.8,
+          "ratio": 0.785,
+          "condensing": false
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 10.86,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ],
+      "profile_rh55": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 1283.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.569,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 1237.7,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.563,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 10.65,
+          "p_pa": 534.1,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.243,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 10.8,
+          "p_pa": 523.5,
+          "p_sat_pa": 664.8,
+          "ratio": 0.787,
+          "condensing": false
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 10.86,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ]
+    },
+    "Sd 2 m barrier (a weak retarder)": {
+      "rh_in_40": {
+        "sd_total_m": 2.86,
+        "condensation_at": null,
+        "excess_pa": 0.0,
+        "rate_kg_m2_90d": null
+      },
+      "rh_in_55": {
+        "sd_total_m": 2.86,
+        "condensation_at": null,
+        "excess_pa": 0.0,
+        "rate_kg_m2_90d": null
+      },
+      "profile_rh40": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 933.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.414,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 839.3,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.382,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 2.65,
+          "p_pa": 549.7,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.25,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 2.8,
+          "p_pa": 528.0,
+          "p_sat_pa": 664.8,
+          "ratio": 0.794,
+          "condensing": false
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 2.86,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ],
+      "profile_rh55": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 1283.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.569,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 1109.7,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.505,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 2.65,
+          "p_pa": 575.4,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.262,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 2.8,
+          "p_pa": 535.3,
+          "p_sat_pa": 664.8,
+          "ratio": 0.805,
+          "condensing": false
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 2.86,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ]
+    },
+    "no barrier, vapour-open wind barrier": {
+      "rh_in_40": {
+        "sd_total_m": 0.86,
+        "condensation_at": null,
+        "excess_pa": 0.0,
+        "rate_kg_m2_90d": null
+      },
+      "rh_in_55": {
+        "sd_total_m": 0.86,
+        "condensation_at": null,
+        "excess_pa": 0.0,
+        "rate_kg_m2_90d": null
+      },
+      "profile_rh40": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 933.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.414,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 620.4,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.282,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 620.4,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.282,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 0.8,
+          "p_pa": 548.2,
+          "p_sat_pa": 664.8,
+          "ratio": 0.825,
+          "condensing": false
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 0.86,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ],
+      "profile_rh55": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 1283.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.569,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 705.9,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.321,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 705.9,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.321,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 0.8,
+          "p_pa": 572.6,
+          "p_sat_pa": 664.8,
+          "ratio": 0.861,
+          "condensing": false
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 0.86,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ]
+    },
+    "no barrier, tight sheathing Sd 2 m": {
+      "rh_in_40": {
+        "sd_total_m": 2.8,
+        "condensation_at": "after mineral wool between studs",
+        "excess_pa": 150.3,
+        "rate_kg_m2_90d": 0.409
+      },
+      "rh_in_55": {
+        "sd_total_m": 2.8,
+        "condensation_at": "after mineral wool between studs",
+        "excess_pa": 400.3,
+        "rate_kg_m2_90d": 1.089
+      },
+      "profile_rh40": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 933.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.414,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 837.3,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.381,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 837.3,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.381,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 0.8,
+          "p_pa": 815.1,
+          "p_sat_pa": 664.8,
+          "ratio": 1.226,
+          "condensing": true
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 2.8,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ],
+      "profile_rh55": [
+        {
+          "name": "inner surface",
+          "t_c": 19.46,
+          "sd_cum": 0.0,
+          "p_pa": 1283.4,
+          "p_sat_pa": 2256.6,
+          "ratio": 0.569,
+          "condensing": false
+        },
+        {
+          "name": "after timber lining",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 1106.0,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.503,
+          "condensing": false
+        },
+        {
+          "name": "after vapour barrier",
+          "t_c": 19.04,
+          "sd_cum": 0.65,
+          "p_pa": 1106.0,
+          "p_sat_pa": 2198.3,
+          "ratio": 0.503,
+          "condensing": false
+        },
+        {
+          "name": "after mineral wool between studs",
+          "t_c": 1.17,
+          "sd_cum": 0.8,
+          "p_pa": 1065.1,
+          "p_sat_pa": 664.8,
+          "ratio": 1.602,
+          "condensing": true
+        },
+        {
+          "name": "after wind barrier board",
+          "t_c": 0.17,
+          "sd_cum": 2.8,
+          "p_pa": 519.3,
+          "p_sat_pa": 618.5,
+          "ratio": 0.84,
+          "condensing": false
+        }
+      ]
+    }
+  }
+}
