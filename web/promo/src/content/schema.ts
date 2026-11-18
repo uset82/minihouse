@@ -25,6 +25,7 @@ export type Content = {
     materials: string;
     moving: string;
     questions: string;
+    story: string;
     cta: string;
     menu: string;
     close: string;
@@ -129,5 +130,22 @@ export type Content = {
     title: string;
     body: string;
     home: string;
+  };
+  story: {
+    meta: { title: string; description: string };
+    title: string;
+    byline: string;
+    lead: string;
+    intro: string[];
+    reference: { label: string; link: string; href: string };
+    noticed: string[];
+    question: string;
+    questionFollow: string;
+    origin: string;
+    sections: Array<{ title: string; paragraphs: string[] }>;
+    closing: string;
+    motto: string[];
+    cta: string;
+    teaser: { title: string; body: string; link: string };
   };
 };

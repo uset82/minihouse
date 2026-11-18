@@ -5,14 +5,15 @@ Revision R2, 2026-11-18. Antigravity, Cursor and DeepSeek build the site **at th
 **Two things changed on 2026-11-18:**
 
 - **There is no design-thinking process (D14).** Interviews, personas, the card sort, preference and usability tests, style tiles and gate G2 are cancelled. Their files are in `archive/design-thinking/`. Don't read, extend or cite them, and don't ask Carlos for research.
-- **The look is «Patina, made funkier» (G3).** The light Patina site stays as built, plus the four funk moves in DESIGN-GUIDE R2. The built example is in [reference/](../reference/index.html). Direction C (Stavkirke) is not used.
+- **The look is «Patina, made funkier» (G3).** The light Patina site stays as built, plus the funk moves in DESIGN-GUIDE §2.1 (five since R2.4). The built example is in [reference/](../reference/index.html). Direction C (Stavkirke) is not used.
 
 The briefs:
 
 - [Cursor](cursor.md): code
 - [Antigravity](antigravity.md): images and visual QA
 - [DeepSeek](deepseek.md): words and checks
-- WorkBuddy has no standing brief. It joins for single tasks, the current one being [task-film-v18.md](task-film-v18.md): the 4K film.
+- WorkBuddy has no standing brief. It joins for single tasks, most recently [task-film-v18.md](task-film-v18.md): the 4K film (closed on 2026-11-18).
+- Grok has no standing brief either. It joins DeepSeek for [task-story-page.md](task-story-page.md): Carlos's story page «Hvordan ideen oppstod».
 
 ---
 
@@ -22,9 +23,10 @@ The briefs:
 |---|---|---|
 | **Cursor** | the code in `web/promo/`, the image pipeline, deploys and git (each with Carlos's OK) | C-12b: review Claude Code's C-12 and remove `living.rooms` from the schema |
 | **Antigravity** | images, alt text and visual QA. It can see screenshots. | A-9: review Claude Code's C-12 at 4 widths, then A-12 |
-| **DeepSeek** | copy, the claims register and the automated checks. It **can't see images**, so it never judges visuals. | D-12: paths and the token check, then D-11 |
+| **DeepSeek** | copy, the claims register and the automated checks. It **can't see images**, so it never judges visuals. | D-16 and D-17 of the film task if they're open, then [task-story-page.md](task-story-page.md): D-18 to D-23; D-12 and D-11 after |
 | **Codex** | supervisor, if Carlos uses it | follows this file; edits only what its task names |
-| **WorkBuddy** | the project's engineering agent (`.workbuddy-ai/`). It runs scripts and sees its output through Playwright screenshots. | [task-film-v18.md](task-film-v18.md): W-1 to W-7, moving the film to the 4K master |
+| **WorkBuddy** | the project's engineering agent (`.workbuddy-ai/`). It runs scripts and sees its output through Playwright screenshots. | none: [task-film-v18.md](task-film-v18.md) (W-1 to W-7) closed on 2026-11-18 |
+| **Grok** | the xAI Grok CLI (`grok`), started in the repo root with the folder trusted. It edits code, runs the build and Playwright, and can look at screenshots. It never generates images for this site. | [task-story-page.md](task-story-page.md): G-1 to G-8, Carlos's story page |
 | **Claude Code** | `PLAN.md`, `DESIGN-GUIDE.md`, the briefs, `reference/` and its review. On 2026-11-18, at Carlos's request, it also built C-12 in `web/promo`: see [its log](../status/claude-code.md). | – |
 | **Carlos** | decisions, renders and photos | D6, then G4 and G5 (§5) |
 
@@ -36,7 +38,7 @@ The critical path is D6 (the follow form), the new images, G4, G5 and then the d
 
 | Path | Writer | Everyone else |
 |---|---|---|
-| `fase4/promo/PLAN.md`, `DESIGN-GUIDE.md`, `agents/*.md`, `reference/**` | Claude Code, for Carlos | read only; copy from the reference, don't edit it |
+| `fase4/promo/PLAN.md`, `DESIGN-GUIDE.md`, `agents/*.md`, `reference/**`, `web/promo/DESIGN.md` | Claude Code, for Carlos | read only; copy from the reference, don't edit it |
 | `fase4/promo/decisions.md` | Carlos | may append Carlos's answer, quoting him, after re-reading the file |
 | `fase4/promo/status/<agent>.md`, `status/<agent>-screens/`, including `status/claude-code.md` | that agent | read only |
 | `fase4/promo/canonical-house.md`, `shot-list.md`, `bildeliste.csv`, `assets-source/**` | Antigravity | read only |
@@ -44,9 +46,9 @@ The critical path is D6 (the follow form), the new images, G4, G5 and then the d
 | `web/promo/src/assets/images/**`, `web/promo/src/content/images.json` | Antigravity | read only |
 | The concept film: `web/promo/public/film/**`, `web/promo/src/assets/film/**`, `web/promo/src/content/films.json` | Antigravity (made by Claude Code on 2026-11-18) | read only |
 | `scripts/cut_film.py` | Claude Code | read only; ask Claude Code to re-run it when the walkthrough changes |
-| **While [task-film-v18.md](task-film-v18.md) is open:** `scripts/cut_film.py`, the film cuts and posters, `films.json`, `films.ts`, `Film.astro`, `src/scripts/film.ts`, `archive/film-v11/`, `status/workbuddy.md` | WorkBuddy, instead of the owners above; the task lists DeepSeek's part | read only; Cursor and Antigravity leave these files alone until the task is closed |
+| **While [task-story-page.md](task-story-page.md) is open** (paths in `web/promo/`):<br>• new: `src/pages/historien.astro`, `src/pages/en/historien.astro`, `src/components/Story.astro`, `src/components/StoryTeaser.astro`, `src/styles/story.css`;<br>• edits: `src/content/schema.ts`, `scripts/content-contract.mjs`, `src/layouts/Base.astro`, `src/content/locale-paths.ts`, `src/components/SiteHeader.astro`, both `index.astro` files, and only the header rules in `src/styles/base.css`;<br>• `status/grok.md` and `status/grok-screens/` | Grok, instead of Cursor. DeepSeek keeps its own files, listed in the task | read only; Cursor and Antigravity leave these files alone until the task is closed |
 | `fase4/promo/review/claude-code-review.md` | Claude Code | read only; each owner fixes findings in its own files |
-| `web/promo/**`, apart from the files listed for Antigravity and DeepSeek | Cursor | read only |
+| `web/promo/**`, apart from the files listed for Antigravity, DeepSeek and Claude Code | Cursor | read only |
 | `web/promo-holding/**`, and the `web/chat-demo` files named in [task-holding-page.md](task-holding-page.md) | Cursor | read only |
 | `fase4/promo/archive/rejected-renders/**`, `qa/changelog.md` | Cursor | read only |
 | `fase4/promo/content/**`: claims register, sitemap, copy decks | DeepSeek | read only |
@@ -94,6 +96,7 @@ The key groups are listed in [content/sitemap.md](../content/sitemap.md) §4.
 - Only Cursor runs `npm install`, `npm run dev` (port **4321**) and `npm run build`, always with the system Node (`C:\Program Files\nodejs`).
 - When a change is ready for review, Cursor runs `npm run build && npm run preview -- --port 4322` and says so in its status file.
 - Antigravity takes screenshots on 4321 or 4322, and DeepSeek runs its checks against 4322. Nobody else starts a server on these ports.
+- **While [task-story-page.md](task-story-page.md) is open,** Grok runs `npm run check`, `npm run build` and the 4322 preview in Cursor's place. It adds no dependencies, and it never stops a server it didn't start.
 
 ---
 
@@ -116,3 +119,5 @@ The key groups are listed in [content/sitemap.md](../content/sitemap.md) §4.
 3. **Photos of the real reclaimed boards** in daylight (close-ups and end grain), and of the steel base if it exists, saved in the same inbox. They are the strongest proof for the material passports.
 4. **Look at the preview.** Claude Code's C-12 is built and served at http://127.0.0.1:4322/ while Cursor's preview runs. Then approve G4 (content and images) and G5 (launch).
 5. **Optional:** ask a native Norwegian speaker to read the copy before G4.
+6. **Your story page:** when Grok writes its HANDOVER, open https://minihouse-preview.canner.app/historien/ and look at it.
+   - **Your own photos (optional):** photos you took yourself of the old timber at Øvsttunvegen can go on the story page. Use only photos you may publish, with no one's face in them, and save them in `fase4/promo/assets-source/inbox/`. Until you add and approve them, the page shows no picture of the old building.

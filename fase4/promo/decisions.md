@@ -2,7 +2,7 @@
 
 **Owner: Carlos.** Write your answer in the "Answer" column. Writing "OK" accepts the recommendation. You can also tell any agent your answer: it adds your words here with the date, after re-reading this file. The agents read this file before every task.
 
-## Decisions D1–D14
+## Decisions D1–D15
 
 | ID | Question | Recommended | Answer | Date |
 |---|---|---|---|---|
@@ -17,9 +17,10 @@
 | D9 | Measuring visits | count form submissions only (no cookies, no banner) | OK: form submissions only | 2026-11-17 |
 | D10 | Is MiniHouse for sale? | – | **No.** The site presents MiniHouse as a minihouse project and doesn't sell it: no price, no ordering, no sales wording and no FINN ad. | 2026-11-17 |
 | D12 | Hero title | «Et lite hus, laget for å flyttes.» (says the moving goal as intent, and echoes Carlos's mockup «Diseñada para moverse») | **«Et lite hus, laget for å flyttes.»** English: "A small house, made to be moved." | 2026-11-17 |
-| D11 | Is it presented as an emergency cabin? | – | **No.** It is shown as a minihouse, like other minihouses. The emergency-cabin use and its persona are not on the site. | 2026-11-17 |
+| D11 | Is it presented as an emergency cabin? | – | **No.** It is shown as a minihouse, like other minihouses. The emergency-cabin use and its persona are not on the site. **Amended 2026-11-18 («Story page only»):** Carlos's own story page tells the emergency-housing purpose in his words (D15). The rest of the site still shows MiniHouse as a minihouse and links to the story. | 2026-11-17, amended 2026-11-18 |
 | D13 | What should the team deliver now? | – | **A working landing page that shows the MiniHouse concept.** Show the exterior, living space and materials in Bokmål and English. Use copper, natural heartwood pine and European oak as the visual direction. The design-thinking coursework belongs to a separate project. | 2026-11-17 |
 | D14 | Does the site work follow a design-thinking process? | – | **No.** "Design thinking process" was Carlos's separate course, not part of MiniHouse. There are no interviews, personas, card sorts, preference or usability tests, style-tile rounds or brief gate (G2). The team builds the site, modern and funky, in the look chosen at G3. Accessibility, performance and visual checks stay, because they are quality checks. The old research and ideation files are in `archive/design-thinking/`: don't use them. | 2026-11-18 |
+| D15 | Carlos's story «Hvordan ideen oppstod» on the site | his own page, in his words, signed | **Yes.** It gets a page of its own, `/historien/` and `/en/historien/`.<br>• His Norwegian is published as he wrote it, and the English follows his English.<br>• Signed «Av Carlos».<br>• «Keep my words»: his two «bærekraftig» and the English "sustainable" (twice) and "experience" stay, as the only exceptions to the banned words.<br>Grok and DeepSeek build it (`agents/task-story-page.md`). Spec: DESIGN-GUIDE §6.16. | 2026-11-18 |
 
 ## Canonical house questions (PLAN §2.2)
 
@@ -48,6 +49,7 @@ Accepting the defaults above approves none of these. Each one still needs its ow
 | G5 | Launch | | | |
 | Git | Commit and push the branch `web/promo-r1` | Yes | 2026-11-18 | Carlos: «push to github». Claude Code pushed `d057beb` and `b1d1280`, promo paths only; nothing reached `main`. Each later push still needs his OK. |
 | Preview | An online preview before G4/G5 | Yes | 2026-11-18 | «New preview address»: https://minihouse-preview.canner.app, upload-only, uploaded by Claude Code. For the 4K film, «Yes, after the checks» approves WorkBuddy's W-6 upload there, and only there. |
+| Preview (story) | Grok's upload of the site with Carlos's story page to minihouse-preview | Yes | 2026-11-18 | «Yes, after the checks»: task G-8 in `agents/task-story-page.md`, only after every check in that task passes, and only to minihouse-preview. minihouse.canner.app and minihouse-docs stay untouched, and nothing is committed or pushed. |
 
 ## Log of answers given in chat
 
@@ -79,3 +81,10 @@ Agents add one line per answer: date, agent, Carlos's words in quotes.
   - «Yes, after the checks»: the upload to minihouse-preview only.
 
   Task: `agents/task-film-v18.md`.
+- 2026-11-18 · Claude Code · Carlos: «generate a detail task plan so deepseek and grok execute your plan · make sure deepseek and grok use /frontend-design:frontend-design and /design style so the fonts and design is modern funky natural cooper norwegian trees natural colors style palette · the page has to writen in Fluent norwegian». He pasted his story «MiniHouse: Hvordan ideen oppstod» in Norwegian and English. He chose:
+  - «Story page only»: D11 is amended;
+  - «Keep my words»: the banned-word exceptions in D15;
+  - «Av Carlos»: the byline;
+  - «Yes, after the checks»: the preview upload, row "Preview (story)".
+
+  He approved the plan in Claude Code. That plan adds funk move 5, his question on a malmfuru band (DESIGN-GUIDE §2.1). Task: `agents/task-story-page.md`. Design system for the agents: `web/promo/DESIGN.md`, which is what the "/design style" means here.

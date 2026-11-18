@@ -16,10 +16,84 @@ Open requests go here, one line each, for example "→ Antigravity: …". Mark t
 - → Carlos (or Cursor): run a Patentstyret search for «MiniHouse» before G5 and record the result in `05-test/claims-audit.md` §5; the Brønnøysund check returned 0 hits.
 - → Cursor: the follow-form schema change is closed on both sides — `schema.ts` holds only `fields { email, name, optional }` and both JSON files match (2026-11-17 22:26). No action.
 - → WorkBuddy: when W-2 lands, name the four output sizes and whether any budget needed a CRF raise; in W-3, say explicitly whether any of the five shots changed content from v11 to v18, since that decides whether I rewrite `film.alt`, `film.livingAlt` or `film.bathAlt`. Details in `qa/film-v18.md` §5.
+- → Grok: the G-8 upload is missing the two story routes. `web/promo/.bundle` has no `historien/` and `check_promo.py --dist web/promo/.bundle` counts 5 pages, so the preview answers 404 for `/historien/` and `/en/historien/`. Run `cd web/promo && npm run bundle` from the current build and redeploy to `minihouse-preview`; tell me the deployment id and I re-run D-23. Also: `hreflang` points at `minihouse.canner.app` from the preview — decide with Carlos whether that is intended.
 - → Antigravity: `scripts/check_promo.py` is the gate for image alt/caption text and for `--release`; when the 19 entries have their alts in both languages, the release check has one class of failure left (no image may be `stand-in` or `pending`).
 - → Cursor: the claims register is live at [02-define/claims-register.csv](../content/claims-register.csv). `schema.ts` may need one key I expect to use: a per-image `alt`/`caption` pair already exists, so no change is requested yet. If the copy needs a claims note in the UI, I'll ask before touching `nb.json`.
 
 ## Log
+
+### 2026-11-18 23:54 · D-23 live check · BLOCKED: the preview does not carry the story pages
+Files: `fase4/promo/qa/story.md` (§6 the live check, §7 what remains).
+Plan (DESIGN-GUIDE §1, step 2): no UI. Check the live preview exactly as D-23 asks, and report what answers.
+Evidence:
+- **Routes:** `/` **200**, `/en/` **200**, `/historien/` **404**, `/en/historien/` **404**. The 404s are real, not a routing quirk: `web/promo/.bundle` has no `historien/` or `en/historien/`, and `check_promo.py --dist web/promo/.bundle` counts **5 pages**, not 7. The bundle on disk is the **pre-story build**, so G-8 did not upload the story pages even though the local `dist` has them.
+- **`hreflang`:** the pages that answer carry the landing pairs (`nb → minihouse.canner.app/`, `en → /en/`, `x-default → /`), pointing at the **production** host. The correct story pairs exist only in the local build (`/historien/` ↔ `/en/historien/`). Two findings: the bundle must be rebuilt and redeployed, and the absolute host should either be relative or made configurable per deployment.
+- **What passes:** the build (`--dist web/promo/dist`, 7 pages), axe (0 violations on both story pages), Lighthouse (100s, LCP 0.8 s phone / 0.2 s desktop, CLS 0) and the claims audit. The page is ready in `dist`; it is not on the preview.
+- I did not deploy: G-8 belongs to Grok, and a deploy I ran would hide whose build is live.
+Checks: 4 `curl` status codes, `hreflang` extraction on 4 pages, `check_promo.py --dist web/promo/.bundle` (5 pages).
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [N/A] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots  [x] garbage list clear  [N/A] one accessory removed
+**HANDOVER → Carlos:** the story page is **not** on minihouse-preview yet, so G4 has nothing to look at there. Grok needs one more `npm run bundle` and a deploy to `minihouse-preview`; when `/historien/` and `/en/historien/` answer 200, I re-run D-23 and hand over again. The page itself is finished in the build (claims audit, axe and Lighthouse all pass).
+→ Grok: rebuild `.bundle` from the current `dist` and redeploy; the bundle you uploaded predates the story pages. Also decide the absolute-host question with Carlos.
+Next: D-23b after the corrected upload — four status codes, `hreflang` pairs on the story pages, `--dist .bundle` expecting 7 pages.
+
+### 2026-11-18 23:48 · D-21 closed, D-22 done · done
+Files: `scripts/check_promo.py` (D-21, closed by the new build), `fase4/promo/qa/story.md` (new), `qa/a11y.md`, `qa/perf.md`, `qa/reports/axe-story.{txt,json}`, `qa/reports/lighthouse-story-page-{mobile,desktop}.json`, `fase4/promo/content/sitemap.md`.
+Plan (DESIGN-GUIDE §1, step 2): no UI. Verify the built story pages with the tools I can run, and audit every rendered sentence against the register.
+Evidence:
+- **D-21 closed:** `check_promo.py --dist web/promo/dist` → **7 pages, all checks passed**, with 12 contrast pairs, DESIGN.md parity 10/10 and the five kept sentences green.
+- **D-22 claims audit:** every block on both story pages traces to K-01, K-06, K-19, K-20, K-36…K-44 or is «Carlos's own view»; table in `qa/story.md` §1. The page repeats nothing the register does not carry, and it never implies the Øvsttunvegen timber is MiniHouse material (K-37).
+- **External link:** `curl … https://totalbyggoganlegg.no/ovsttunvegen/` → **200 text/html** (2026-11-18 23:30); the rendered tag is the same URL in the same tab.
+- **axe:** **0 violations** on `/historien/` and `/en/historien/`, axe-core 4.14.1, raw files in `qa/reports/`.
+- **Lighthouse:** performance/accessibility/best-practices/SEO **100/100/100/100** on both form factors; LCP **0.8 s** phone and **0.2 s** desktop; CLS **0**; TBT 0; JS 0 bytes; 74 KB and 131 KB. All D-22 gates pass.
+- **Sitemap updated:** the two story routes, the fifth menu link, the home teaser, the `story.*` content group and the story's one external link are recorded.
+- What I did not do: judge the layout, the band or the crops (Grok's G-6 and Carlos's G4), build, deploy or touch git.
+Checks: `check_promo.py --dist` (7 pages), axe (2 pages), Lighthouse (2 runs), curl (1 link), all recorded with versions and dates.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [x] copy from content files  [N/A] images from images.json  [N/A] keyboard (Grok's G-6)  [N/A] reduced motion  [N/A] 360/1280 screenshots (Grok's; I did not look)  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER: → Grok: D-21 and D-22 pass on your build; G-8 can upload once G-6 and G-7 are done. → Carlos: the story page is ready for his eyes at G4 after the preview upload.
+Next: D-23 after G-8 — the four HTML routes, the `hreflang` pairs and `check_promo.py --dist web/promo/.bundle` on the live preview.
+
+### 2026-11-18 23:36 · D-21 checker: exception, D11 guard, DESIGN.md parity, pair · done pending the story build
+Files: `scripts/check_promo.py` only.
+Plan (DESIGN-GUIDE §1, step 2): no UI. The five kept sentences must pass **and nothing else**; the guard must keep emergency words off the home page; DESIGN.md and tokens.css must not drift.
+Evidence:
+- **(a) The exception.** `story_hits()` allows «bærekraftig», "sustainable" and "experience" only when the string sits under `story.*` **and** equals one of the five kept sentences verbatim (apostrophes normalised). The source run went from 5 problems to **all checks passed**, and the five that turned green are exactly the five that were red.
+- **(b) The D11 guard.** «beredskap», «krise», «naturkatastrof», «nødbolig», "emergency", "disaster" and "crisis" are allowed under `story.*` only, never in `story.teaser`; anywhere else they fail. The teaser text I wrote carries none.
+- **(c) DESIGN.md parity.** New `check_design_parity()` compares every hex in `web/promo/DESIGN.md` with the colour variables in `tokens.css`, both directions: **10 and 10, no difference**.
+- **(d) The pair.** kalk on malmfuru (4.24, the story band, 24 px and up) is now an explicit entry, so the bands' only text pair is covered even though the ratio is symmetric with the existing numerals pair. 12 pairs recomputed.
+- **(e) Self-tests.** 14 new assertions, **47 in total, all pass**: kept sentence passes under story, the same words fail outside it, a non-kept story paragraph fails, the curly-apostrophe variant still matches, an emergency word passes under story and fails in the teaser and on the home page, parity catches an extra colour on either side, and the 4.24 pair is both listed and recomputed.
+- **`--dist` on the current build passes** (5 pages), but that build predates the story page: Grok has not run G-5 yet, so the two story pages are not in `web/promo/dist`. D-21's last clause ("--dist passes on Grok's latest build") waits for that build, and I re-run it the moment it exists.
+Checks: `check_promo.py --selftest` (47/47), source run (all pass), `--dist` on the current build (all pass).
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [N/A] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots (Grok's)  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER: → Grok: the checker now lets the five kept sentences through and blocks the words everywhere else. G-5 can run; when the build exists I run `--dist` and then D-22.
+Next: D-22 after G-5 — claims audit of both story pages, the external link check, `content/sitemap.md`, axe and Lighthouse.
+
+### 2026-11-18 23:28 · D-18 copy deck, D-19 claims, D-20 JSON · done
+Files: `fase4/promo/content/copy-story.md` (new); `fase4/promo/content/claims-register.csv` (K-36…K-44, K-01 expanded); `web/promo/src/content/nb.json` and `en.json` (`nav.story` + the whole `story` group). No other code touched.
+Plan (DESIGN-GUIDE §1, step 2): no UI. Carlos's Norwegian is the master; the deck copies it, the register proves it, the JSON carries it.
+Evidence:
+- **D-18:** the deck holds his Norwegian and English side by side per key with the claim for each paragraph, the five changes and the five kept sentences. A script compared all **34** of his strings in the deck against Appendix A: **all verbatim**, zero differences.
+- **D-19:** read https://totalbyggoganlegg.no/ovsttunvegen/ on 2026-11-18. It confirms the 2026 demolition by Totalentreprenør AS (roof and upper floor by crowbar), **43 tonnes** of good-quality materials preserved, **52 % reuse**, and **46 tonnes** of natural stone; the permit was conditioned on rebuilding in approximately identical form and style. Added **K-36…K-44**: his part in the demolition, the building and the figures (verified but not published, because his text has none), the redevelopment plan, the reuse goal, the emergency-housing purpose (`intensjon`, story page only), the transport-and-crane frame (→ K-05), the material checks (→ K-22), the prototype first (→ K-19/K-26), and his five kept sentences as his own view. **K-01** now also allows «omtrent 3 × 6 meter» / "approximately 3 × 6 metres". **Never-claim note recorded:** the Øvsttunvegen timber is never stated or implied to be MiniHouse material. 44 rows, unique ids, legal statuses.
+- **D-20:** `nav.story` («Historien» / "The story") and the full `story` group are in both files, from the deck. `node scripts/check-content.mjs` → **content check passed**.
+- **D-21 is the next step and its failures are known by design:** `check_promo.py` now reports exactly five, all the kept sentences — «bærekraftig» ×2 (nb), "sustainable" ×2 and "experience" ×1 (en). The exception rule in D-21(a) is what turns them green, under `story.*` only.
+- I did not touch `Story.astro`, `story.css`, the pages or any Grok file; no build, no screenshots, no deploy, no git.
+Checks: `check-content.mjs` passes; `check_promo.py` source run is at the five expected story exceptions.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [x] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots (Grok's; I did not look)  [x] garbage list clear (my words; his are his)  [N/A] one accessory removed
+HANDOVER: → Grok: the JSON is filled and the content check passes; `npm run check` and `npm run build` can run now. G-7's comparison should use `content/copy-story.md`, where every string is already verified against Appendix A.
+→ Carlos (proposals, not edits, in `copy-story.md` §5): his English «tiny homes» and his «experience» are kept as written; the reference link opens in the same tab unless Grok decides otherwise.
+Next: D-21 (checker exceptions, D11 guard, DESIGN.md parity, selftest), then D-22 once Grok builds.
+
+### 2026-11-18 23:08 · D-15, D-16, D-17 closed · done
+Files: `fase4/promo/qa/film-v18.md` (§4 now holds D-15–D-17), `fase4/promo/qa/perf.md` (film section), `qa/reports/lighthouse-story-{mobile,desktop}.json`. No JSON, cut or master touched.
+Plan (DESIGN-GUIDE §1, step 2): no UI. WorkBuddy's W-7 closed the last visual question, so the three film tasks could finish without guessing.
+Evidence:
+- **D-15 closed by W-7:** no shot changed from v11 to v18, both crops keep their subject, and the CRF-33/32 files show no banding at full size. So `film.alt`, `film.livingAlt` and `film.bathAlt` stand, and K-35 already cites the 4K master.
+- **D-16:** Lighthouse 13.6.0, phone (412) and desktop (1350) against 4322. Performance 100 both; LCP **1.7 s / 0.4 s**; CLS 0 / 0.009; largest paint is the **poster `img.film-still`** in both; every film request starts **after** `load` (746 vs 712 ms; 486 vs 391 ms). Film bytes: **2.29 MB** phone (720p), **5.84 MB** desktop (1080p hero 3.76 + both loops). The hero file is inside its 4.5 MB budget; the desktop total is larger only because the two loops enter the load window.
+- **D-17:** live check of https://minihouse-preview.canner.app — `/` and `/en/` 200 `text/html`; all four films **206 `video/mp4`** with a 2-byte range; `/.env.production`, `/package.json`, `/serve.mjs` **404**; `check_promo.py --dist web/promo/.bundle` **all checks passed** (5 pages, one `h1` each, correct `lang`).
+- I did not deploy, commit or push; the preview WorkBuddy deployed (`78aaecbf`) is the one checked.
+Checks: two Lighthouse runs and five `curl` checks, all recorded with commands and versions in the QA files.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [N/A] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots (Grok/WorkBuddy looked; I did not)  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER: task-film-v18 is closed on my side. → Cursor: W-7's note that commit `232573e` already carried my D-14 work; nothing of mine is uncommitted except the QA/perf and status edits.
+Next: task-story-page D-18 (copy deck), then D-19 (claims).
 
 ### 2026-11-18 20:58 · D-14 closed, D-15 source updated · done / in progress
 Files: `fase4/promo/qa/film-v18.md` (D-14 final), `fase4/promo/content/claims-register.csv` (K-35 source). The alt keys are untouched.

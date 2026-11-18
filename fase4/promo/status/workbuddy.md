@@ -6,6 +6,26 @@ Only WorkBuddy writes this file. Newest entry first. Task: agents/task-film-v18.
 
 ## Log
 
+### 2026-11-18 21:32 · W-7 close: facts, log and handover · done
+Files: `DESIGN-GUIDE.md` §6.15 (facts only: v18 master, shot times, four-cut table, poster provenance, wide-file behaviour) and `PLAN.md` §7 (facts only: the second master replacement and the four measured cuts); this status file. No design rule, claim wording or other agent's file changed.
+Evidence:
+- Commands in this task, in order: `ffprobe` on the master and cuts; `python scripts/cut_film.py` (1 m 58 s); `npm run check`; `npm run build`; `python scripts/check_promo.py`; `python scripts/check_promo.py --dist web/promo/dist`; `python scripts/verificar_todo.py` (twice — **SUITE COMPLETA: TODO PASA** both times, after the fact edits too); Playwright/Chrome tests against `http://127.0.0.1:4322/`; `npm run bundle`; `canner deploy --slug=minihouse-preview --follow`; `curl -r 0-1` and live Playwright Chrome + WebKit.
+- Final cuts (decimal MB, ffprobe): `house-film-1920.mp4` 1920×1080 / 16.54 s / 3.94 MB; `house-film.mp4` 1280×720 / 16.54 s / 2.40 MB; `living-loop.mp4` 1440×960 / 5.67 s / 1.04 MB; `bath-loop.mp4` 1080×1350 / 7.00 s / 1.14 MB. Posters 402 / 236 / 122 KB, hero poster from the 1920 cut.
+- Screenshot paths: `status/workbuddy-screens/hero_{360,768,1280,1920}.png`, `inne_{360,768,1280,1920}.png`, `v18_contact_sheet.png`, `v11_vs_v18_all_shots.png`, `shot4_v11_v18_detail.png`, `shot45_boundary.png`, `v18_crop_check.png`, `bath_mirror_clip_check.png`, `hero_seam_strip.png`, `living_seam_strip.png`, `bath_seam_strip.png`.
+- **Not my action, recorded for the file:** at 21:00, while I was on W-6, commit `232573e` ("Film v18 4K: cuts, code, QA and claims") was created under Carlos's git identity and is already at `origin/web/promo-r1` (HEAD == remote, 0/0). It captured the cut script, the four code files and my log as they stood then. **I did not run any git commit or push**, and I have not run one since; the §6.15 / §7 fact edits and this final entry remain uncommitted. The live preview deployment `78aaecbf` carries the built film and code; the two fact files are documentation only.
+HANDOVER → DeepSeek: W-3's answer is **no shot changed**, so `film.alt` / `film.livingAlt` / `film.bathAlt` stay; K-35's source is already on the 4K master. The CRF-33 hero and CRF-32 living loop were checked at full size: no visible banding in sky, cladding, wall or copper. D-16 can run against the live preview or the still-running 4322 server; D-17's live codes are in the W-6 entry. → Carlos: the film is on `minihouse-preview` only; the cuts stay `pending` until your G4.
+Next: none in this task; W-1…W-7 are closed.
+
+### 2026-11-18 21:25 · W-6 preview deploy and live checks · done
+Files: no source edits. Deployment to `minihouse-preview` only; no git operation, no `canner redeploy`, nothing sent to minihouse-docs or minihouse.canner.app.
+Plan: read both status files first — my W-5 entry and DeepSeek's 20:58 entry, where D-14 is final. Carlos's approval is in the task («Yes, after the checks») and `decisions.md` Preview row; both gates (W-5, D-14) had passed.
+Evidence:
+- `cd web/promo && npm run bundle` → `.bundle/` with `serve.mjs`, `package.json`, 4 films, no `.env.production`. `cd web/promo/.bundle && canner deploy --slug=minihouse-preview --follow` → 156 files, 17.59 MB compressed, deployment **78aaecbf**, health check OK, stable, **LIVE at https://minihouse-preview.canner.app**; rollback target retained.
+- `curl` against the live site: `/` and `/en/` 200 `text/html`. Byte-range `-r 0-1` on **all four** films → **206 Partial Content**, `Content-Type: video/mp4`, correct `Content-Range` (3943047 / 2403562 / 1041410 / 1137205 bytes). `/.env.production`, `/package.json` and `/serve.mjs` → **404**.
+- Playwright live playback: Chrome (`channel='chrome'`) and Playwright WebKit, each at 390×844 and 1920×1080. All four cases: hero `currentSrc` = the expected normal/wide file, `muted=true`, `paused=false`, `currentTime` advanced (Chrome 2.22 / 2.25 s; WebKit 0.96 / 0.37 s), no media error. On desktop the two loops also play; on the phone they wait off screen as designed.
+HANDOVER → DeepSeek (D-17): the new preview is live; the codes, byte ranges, content types, hidden-file 404s and both-engine playback are recorded above for your own re-check. D-16 can also use this URL if the local 4322 preview has gone away.
+Next: W-7 — close the log and update the two fact tables.
+
 ### 2026-11-18 21:17 · W-5 build and three-viewport verification · done
 Files: no source edits; screenshots added to `status/workbuddy-screens/` (hero_360/768/1280/1920.png, inne_360/768/1280/1920.png).
 Plan: read both status files first (my W-4 entry; DeepSeek's 20:58 entry — D-15 source updated, D-16 waiting on W-5). Run every checker, then Playwright on installed Chrome at the three specified viewports and review screenshots by eye.

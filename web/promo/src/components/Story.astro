@@ -1,0 +1,72 @@
+---
+import type { Content } from '../content/schema';
+import Figure from './Figure.astro';
+import '../styles/story.css';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const story = content.story;
+const houseHref = lang === 'en' ? '/en/#bilder' : '/#bilder';
+---
+
+<article class="story">
+  <div class="story-open">
+    <div class="wrap">
+      <div class="story-col">
+        <h1>{story.title}</h1>
+        <p class="story-byline">{story.byline}</p>
+        <p class="story-lead">{story.lead}</p>
+        {story.intro.map((paragraph) => <p>{paragraph}</p>)}
+        <p>
+          {story.reference.label}{' '}
+          <a href={story.reference.href}>{story.reference.link}</a>
+        </p>
+        {story.noticed.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+  </div>
+
+  <div class="story-band">
+    <div class="wrap">
+      <p class="story-question">{story.question}</p>
+      <p class="story-follow">{story.questionFollow}</p>
+    </div>
+  </div>
+
+  <div class="story-rest">
+    <div class="wrap">
+      <p class="story-lead">{story.origin}</p>
+      {
+        story.sections.map((section, index) => (
+          <section>
+            <h2>{section.title}</h2>
+            {index === 0 ? (
+              <div class="story-split">
+                <div>
+                  {section.paragraphs.map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+                <Figure imageId="exploded" lang={lang} ratio="wide" />
+              </div>
+            ) : (
+              section.paragraphs.map((paragraph) => <p>{paragraph}</p>)
+            )}
+          </section>
+        ))
+      }
+      <div class="story-end">
+        <Figure class="story-house" imageId="hero-slope" lang={lang} ratio="wide" />
+        <p class="story-lead">{story.closing}</p>
+        <div class="story-motto">
+          {story.motto.map((line) => <p>{line}</p>)}
+        </div>
+        <a class="button" href={houseHref}>{story.cta}</a>
+      </div>
+    </div>
+  </div>
+</article>

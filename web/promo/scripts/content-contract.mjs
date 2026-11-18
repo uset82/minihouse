@@ -22,6 +22,7 @@ export const contentShape = {
     materials: '',
     moving: '',
     questions: '',
+    story: '',
     cta: '',
     menu: '',
     close: '',
@@ -77,6 +78,23 @@ export const contentShape = {
   },
   privacy: { title: '', body: '' },
   notFound: { title: '', body: '', home: '' },
+  story: {
+    meta: { title: '', description: '' },
+    title: '',
+    byline: '',
+    lead: '',
+    intro: [''],
+    reference: { label: '', link: '', href: '' },
+    noticed: [''],
+    question: '',
+    questionFollow: '',
+    origin: '',
+    sections: [{ title: '', paragraphs: [''] }],
+    closing: '',
+    motto: [''],
+    cta: '',
+    teaser: { title: '', body: '', link: '' },
+  },
 };
 
 const imageKinds = new Set(['render', 'photo', 'texture']);

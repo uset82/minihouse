@@ -1,0 +1,20 @@
+---
+import type { Content } from '../content/schema';
+import '../styles/story.css';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+const { content, lang } = Astro.props;
+const href = lang === 'en' ? '/en/historien/' : '/historien/';
+---
+
+<section class="story-teaser" aria-labelledby="story-teaser-title">
+  <div class="wrap">
+    <h2 id="story-teaser-title">{content.story.teaser.title}</h2>
+    <p>{content.story.teaser.body}</p>
+    <a href={href}>{content.story.teaser.link}</a>
+  </div>
+</section>

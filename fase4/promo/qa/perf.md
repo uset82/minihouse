@@ -14,6 +14,51 @@ Lighthouse 13.6.0 measured the local static pages on 17 November 2026 at 23:27 a
 
 The observed LCP and CLS meet the project targets of 2.5 s and 0.1. These are lab runs against a loopback preview. Field interaction latency requires actual visitor data.
 
+## Story page · D-22 (2026-11-18)
+
+`/historien/` on Grok's story build, two Lighthouse 13.6.0 runs:
+
+```powershell
+npx lighthouse http://127.0.0.1:4322/historien/ --output=json --output-path=fase4/promo/qa/reports/lighthouse-story-page-mobile.json --chrome-flags="--headless=new --no-sandbox" --quiet
+npx lighthouse http://127.0.0.1:4322/historien/ --preset=desktop --output=json --output-path=fase4/promo/qa/reports/lighthouse-story-page-desktop.json --chrome-flags="--headless=new --no-sandbox" --quiet
+```
+
+| | Phone (412) | Desktop (1350) |
+|---|---:|---:|
+| Performance | **100** | **100** |
+| Accessibility / best practices / SEO | 100 / 100 / 100 | 100 / 100 / 100 |
+| LCP | **0.8 s** | **0.2 s** |
+| CLS | **0** | **0** |
+| TBT | 0 ms | 0 ms |
+| Transfer | 74 KB | 131 KB |
+| JavaScript | 0 bytes | 0 bytes |
+
+The story page is text and two images: no film, no script, and the two concept pictures are lazy-loaded. All four of D-22's gates pass (0 axe violations, LCP ≤ 2.5 s, CLS ≤ 0.1).
+
+## Film performance · D-16 of task-film-v18 (2026-11-18)
+
+Two Lighthouse 13.6.0 runs on the film build, against the local preview on 4322, system Node v22.22.0:
+
+```powershell
+npx lighthouse http://127.0.0.1:4322/ --output=json --output-path=fase4/promo/qa/reports/lighthouse-story-mobile.json --chrome-flags="--headless=new --no-sandbox" --quiet
+npx lighthouse http://127.0.0.1:4322/ --preset=desktop --output=json --output-path=fase4/promo/qa/reports/lighthouse-story-desktop.json --chrome-flags="--headless=new --no-sandbox" --quiet
+```
+
+| | Phone (412 × 823, mobile emulation) | Desktop (1350 × 940) |
+|---|---:|---:|
+| Performance score | **100** | **100** |
+| LCP | **1.7 s** | **0.4 s** |
+| CLS | 0 | 0.009 |
+| Largest paint | **the poster `img.film-still`** | **the poster `img.film-still`** |
+| `load` event | 712 ms | 391 ms |
+| Film requested at | 746 ms (after load) | 486 ms (after load) |
+| Film bytes in the run | **2.29 MB** (`house-film.mp4`, 1280 × 720) | **5.84 MB** (1920 hero 3.76 + living 0.99 + bath 1.08) |
+| Poster + images | 12 requests, 428 KB | 12 requests, 428 KB |
+
+The largest paint is the poster image in both runs, so the page is readable before any film arrives; every film starts **after** the `load` event, which is what DESIGN-GUIDE §6.15 promises. The phone takes the 720p film and the desktop the 1080p one, exactly the split Carlos chose.
+
+The desktop run pulls 5.84 MB of film, not the ~4.5 MB of the hero file alone: at 1350 px the living and bath loops are also within the load window. The hero file itself is **3.76 MB**, inside its 4.5 MB budget. All of it is lazy, so it does not delay LCP.
+
 Reproduce with the local preview on port 4322 and the installed Lighthouse 13.6.0 CLI.
 
 ```powershell

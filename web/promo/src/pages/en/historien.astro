@@ -1,0 +1,10 @@
+---
+import Story from '../../components/Story.astro';
+import { en } from '../../content/assert-content';
+import '../../content/assert-images';
+import Base from '../../layouts/Base.astro';
+---
+
+<Base content={en} lang="en" title={en.story.meta.title} description={en.story.meta.description}>
+	<Story content={en} lang="en" />
+</Base>

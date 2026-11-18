@@ -13,7 +13,8 @@
     "cta": "Follow the project",
     "menu": "Menu",
     "close": "Close",
-    "language": "Norsk"
+    "language": "Norsk",
+    "story": "The story"
   },
   "hero": {
     "title": "A small house, made to be moved.",
@@ -24,11 +25,26 @@
   },
   "facts": {
     "items": [
-      { "label": "Size", "value": "about 6 × 3 m" },
-      { "label": "Construction", "value": "steel frame and reclaimed timber" },
-      { "label": "Roof", "value": "metal gable roof (concept)" },
-      { "label": "Moving", "value": "goal of moving in one piece" },
-      { "label": "Status", "value": "under development" }
+      {
+        "label": "Size",
+        "value": "about 6 × 3 m"
+      },
+      {
+        "label": "Construction",
+        "value": "steel frame and reclaimed timber"
+      },
+      {
+        "label": "Roof",
+        "value": "metal gable roof (concept)"
+      },
+      {
+        "label": "Moving",
+        "value": "goal of moving in one piece"
+      },
+      {
+        "label": "Status",
+        "value": "under development"
+      }
     ]
   },
   "gallery": {
@@ -117,10 +133,26 @@
     "title": "Inside MiniHouse",
     "lead": "The kitchen and window seat share one room in the drawings. Drawers tuck beneath the seat, with a bathroom at one end of the house.",
     "rooms": [
-      { "id": "kitchen", "title": "Kitchen", "body": "A small kitchen along the wall." },
-      { "id": "bench", "title": "Bench seat", "body": "A built-in bench under the window." },
-      { "id": "storage", "title": "Storage", "body": "Drawers under the bench." },
-      { "id": "bath", "title": "Bathroom", "body": "The bathroom study pairs deep teal tiles with timber and copper." }
+      {
+        "id": "kitchen",
+        "title": "Kitchen",
+        "body": "A small kitchen along the wall."
+      },
+      {
+        "id": "bench",
+        "title": "Bench seat",
+        "body": "A built-in bench under the window."
+      },
+      {
+        "id": "storage",
+        "title": "Storage",
+        "body": "Drawers under the bench."
+      },
+      {
+        "id": "bath",
+        "title": "Bathroom",
+        "body": "The bathroom study pairs deep teal tiles with timber and copper."
+      }
     ]
   },
   "film": {
@@ -134,18 +166,36 @@
   "journey": {
     "title": "From workshop to plot",
     "steps": [
-      { "title": "Workshop", "body": "We plan to finish building the house in the workshop." },
-      { "title": "Transport", "body": "The aim is to carry the house in one piece by truck. The route needs to be checked first." },
-      { "title": "Plot", "body": "On site, a crane would lower the house onto its supports." }
+      {
+        "title": "Workshop",
+        "body": "We plan to finish building the house in the workshop."
+      },
+      {
+        "title": "Transport",
+        "body": "The aim is to carry the house in one piece by truck. The route needs to be checked first."
+      },
+      {
+        "title": "Plot",
+        "body": "On site, a crane would lower the house onto its supports."
+      }
     ]
   },
   "status": {
     "title": "Where the project stands",
     "body": "MiniHouse is still on the drawing board. We’re working on the steel frame and looking for timber for the cladding.",
     "phases": [
-      { "name": "Drawings and plan", "state": "first draft ready" },
-      { "name": "Calculations", "state": "in progress" },
-      { "name": "Prototype", "state": "not built" }
+      {
+        "name": "Drawings and plan",
+        "state": "first draft ready"
+      },
+      {
+        "name": "Calculations",
+        "state": "in progress"
+      },
+      {
+        "name": "Prototype",
+        "state": "not built"
+      }
     ]
   },
   "faq": {
@@ -210,5 +260,75 @@
     "title": "This page is not here",
     "body": "That address does not match a page.",
     "home": "To the front page"
+  },
+  "story": {
+    "meta": {
+      "title": "MiniHouse: How the idea started",
+      "description": "How MiniHouse began: from the demolition of an old teachers' residence in Bergen to a small house made to be moved."
+    },
+    "title": "How the idea started",
+    "byline": "By Carlos",
+    "lead": "I want to revisit a few concepts behind my MiniHouse project, starting with how the idea came to life.",
+    "intro": [
+      "In 2026, I was involved in the demolition of the old Midtun School Teachers' Residence at Øvsttunvegen 21 in Bergen, Norway.",
+      "It was a beautiful old building with character, history and memories attached to it. The property was being redeveloped, with a new building planned for the site that would preserve the architectural character and form of the original.",
+      "One of the redevelopment project's objectives was to reuse as much of the existing building material as possible."
+    ],
+    "reference": {
+      "label": "Project reference:",
+      "link": "totalbyggoganlegg.no/ovsttunvegen",
+      "href": "https://totalbyggoganlegg.no/ovsttunvegen/"
+    },
+    "noticed": [
+      "Working on that demolition made me look at construction waste differently.",
+      "As we dismantled the building, I kept noticing the quality of the old timber. Some pieces had been there for decades, yet they still looked remarkably good and potentially useful.",
+      "It seemed such a waste to throw away materials that had already served one generation and could potentially serve another.",
+      "That experience made me ask myself a simple question:"
+    ],
+    "question": "Why should the life of a building's materials end when the building itself is demolished?",
+    "questionFollow": "What if we could take those materials and create something entirely new?",
+    "origin": "That's where MiniHouse began.",
+    "sections": [
+      {
+        "title": "From demolition waste to emergency housing",
+        "paragraphs": [
+          "My idea is to design and build small, prefabricated emergency homes, approximately 3 × 6 metres, using reclaimed timber and other reusable construction materials wherever practical and safe.",
+          "The houses would be built around a properly engineered structural frame, designed to make them strong enough for transportation and suitable for lifting and relocation by crane.",
+          "I want these homes to be practical, comfortable and durable, but also easy to manufacture, transport and deploy.",
+          "They could provide temporary accommodation for people affected by emergencies, natural disasters or other situations where safe housing is urgently needed."
+        ]
+      },
+      {
+        "title": "Giving old materials a new purpose",
+        "paragraphs": [
+          "MiniHouse is not simply about building tiny homes.",
+          "It's about bringing together emergency preparedness, engineering, sustainable construction and the circular economy.",
+          "I want to show that materials recovered from demolition sites can become valuable resources rather than automatically ending up as waste.",
+          "The idea is to preserve what is still useful, combine it with modern engineering and create something that serves a completely new purpose.",
+          "Of course, every reclaimed material would need to be assessed for its suitability. Structural safety, insulation, moisture protection and long-term durability would remain essential parts of the design."
+        ]
+      },
+      {
+        "title": "The bigger vision",
+        "paragraphs": [
+          "My long-term goal is to develop a repeatable system for manufacturing transportable emergency homes, starting with one properly engineered prototype.",
+          "If the concept works, MiniHouse could eventually become a practical way to transform suitable demolition materials into safe, sustainable emergency housing.",
+          "What began as a thought on a demolition site could become something much bigger."
+        ]
+      }
+    ],
+    "closing": "Instead of seeing demolition as the end of a building's story, I want to see it as an opportunity to begin another.",
+    "motto": [
+      "MiniHouse:",
+      "Old materials.",
+      "New homes.",
+      "A second life."
+    ],
+    "cta": "Explore the house",
+    "teaser": {
+      "title": "How the idea started",
+      "body": "The story behind MiniHouse starts on a demolition site in Bergen, with old timber that was still in good condition.",
+      "link": "Read the story"
+    }
   }
 }

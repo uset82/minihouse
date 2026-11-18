@@ -13,7 +13,8 @@
     "cta": "Følg prosjektet",
     "menu": "Meny",
     "close": "Lukk",
-    "language": "English"
+    "language": "English",
+    "story": "Historien"
   },
   "hero": {
     "title": "Et lite hus, laget for å flyttes.",
@@ -24,11 +25,26 @@
   },
   "facts": {
     "items": [
-      { "label": "Størrelse", "value": "ca. 6 × 3 m" },
-      { "label": "Konstruksjon", "value": "stålramme og gjenbrukt tre" },
-      { "label": "Tak", "value": "saltak i metall (konsept)" },
-      { "label": "Flytting", "value": "mål om å flyttes i ett stykke" },
-      { "label": "Status", "value": "under utvikling" }
+      {
+        "label": "Størrelse",
+        "value": "ca. 6 × 3 m"
+      },
+      {
+        "label": "Konstruksjon",
+        "value": "stålramme og gjenbrukt tre"
+      },
+      {
+        "label": "Tak",
+        "value": "saltak i metall (konsept)"
+      },
+      {
+        "label": "Flytting",
+        "value": "mål om å flyttes i ett stykke"
+      },
+      {
+        "label": "Status",
+        "value": "under utvikling"
+      }
     ]
   },
   "gallery": {
@@ -117,10 +133,26 @@
     "title": "Inne i MiniHouse",
     "lead": "I skissen deler kjøkkenet og vindusbenken ett rom. Skuffene ligger under setet, og badet får plass i den ene enden.",
     "rooms": [
-      { "id": "kitchen", "title": "Kjøkken", "body": "Et lite kjøkken langs veggen." },
-      { "id": "bench", "title": "Sittebenk", "body": "En innebygd benk under vinduet." },
-      { "id": "storage", "title": "Oppbevaring", "body": "Skuffer under benken." },
-      { "id": "bath", "title": "Bad", "body": "Fargeskissen for badet viser petrolgrønne fliser, tre og kobber." }
+      {
+        "id": "kitchen",
+        "title": "Kjøkken",
+        "body": "Et lite kjøkken langs veggen."
+      },
+      {
+        "id": "bench",
+        "title": "Sittebenk",
+        "body": "En innebygd benk under vinduet."
+      },
+      {
+        "id": "storage",
+        "title": "Oppbevaring",
+        "body": "Skuffer under benken."
+      },
+      {
+        "id": "bath",
+        "title": "Bad",
+        "body": "Fargeskissen for badet viser petrolgrønne fliser, tre og kobber."
+      }
     ]
   },
   "film": {
@@ -134,18 +166,36 @@
   "journey": {
     "title": "Fra verksted til tomt",
     "steps": [
-      { "title": "Verksted", "body": "Planen er å bygge huset ferdig i verkstedet." },
-      { "title": "Transport", "body": "Målet er å frakte huset i ett stykke på lastebil. Ruten må sjekkes først." },
-      { "title": "Tomt", "body": "På tomten ser vi for oss at en kran løfter huset på plass på støttene." }
+      {
+        "title": "Verksted",
+        "body": "Planen er å bygge huset ferdig i verkstedet."
+      },
+      {
+        "title": "Transport",
+        "body": "Målet er å frakte huset i ett stykke på lastebil. Ruten må sjekkes først."
+      },
+      {
+        "title": "Tomt",
+        "body": "På tomten ser vi for oss at en kran løfter huset på plass på støttene."
+      }
     ]
   },
   "status": {
     "title": "Hvor står prosjektet?",
     "body": "MiniHouse finnes foreløpig på tegnebordet. Vi arbeider med stålrammen og leter etter tre til kledningen.",
     "phases": [
-      { "name": "Tegninger og plan", "state": "første utkast klart" },
-      { "name": "Beregninger", "state": "pågår" },
-      { "name": "Prototype", "state": "ikke bygget" }
+      {
+        "name": "Tegninger og plan",
+        "state": "første utkast klart"
+      },
+      {
+        "name": "Beregninger",
+        "state": "pågår"
+      },
+      {
+        "name": "Prototype",
+        "state": "ikke bygget"
+      }
     ]
   },
   "faq": {
@@ -210,5 +260,75 @@
     "title": "Siden finnes ikke",
     "body": "Adressen stemmer ikke.",
     "home": "Til forsiden"
+  },
+  "story": {
+    "meta": {
+      "title": "MiniHouse: Hvordan ideen oppstod",
+      "description": "Hvordan ideen om MiniHouse oppstod: fra rivingen av en gammel lærerbolig i Bergen til et lite hus som er laget for å kunne flyttes."
+    },
+    "title": "Hvordan ideen oppstod",
+    "byline": "Av Carlos",
+    "lead": "Jeg ønsker å se nærmere på noen av tankene bak MiniHouse-prosjektet mitt, og først og fremst fortelle hvordan ideen oppstod.",
+    "intro": [
+      "I 2026 var jeg med på rivingen av den gamle lærerboligen til Midtun skole i Øvsttunvegen 21 i Bergen.",
+      "Det var en vakker, gammel bygning med særpreg, historie og mange minner knyttet til seg. Eiendommen skulle utvikles videre, og planen var å oppføre et nytt bygg på samme tomt, med utgangspunkt i den opprinnelige bygningens arkitektoniske uttrykk og form.",
+      "Et av målene med prosjektet var å gjenbruke så mye som mulig av de eksisterende byggematerialene."
+    ],
+    "reference": {
+      "label": "Prosjektreferanse:",
+      "link": "totalbyggoganlegg.no/ovsttunvegen",
+      "href": "https://totalbyggoganlegg.no/ovsttunvegen/"
+    },
+    "noticed": [
+      "Arbeidet med rivingen fikk meg til å se på byggavfall på en helt annen måte.",
+      "Etter hvert som vi demonterte bygningen, la jeg stadig merke til kvaliteten på det gamle treverket. Noe av materialet hadde vært en del av bygningen i flere tiår, men var fortsatt i overraskende god stand og så ut til å kunne brukes videre.",
+      "Jeg syntes det var synd at materialer som allerede hadde tjent én generasjon, skulle kastes når de kanskje kunne komme til nytte for flere.",
+      "Denne opplevelsen fikk meg til å stille meg selv et enkelt spørsmål:"
+    ],
+    "question": "Hvorfor skal materialenes levetid ta slutt bare fordi bygningen de kommer fra, blir revet?",
+    "questionFollow": "Hva om vi kunne ta vare på disse materialene og bruke dem til å skape noe helt nytt?",
+    "origin": "Det var slik ideen om MiniHouse oppstod.",
+    "sections": [
+      {
+        "title": "Fra rivningsmaterialer til beredskapsboliger",
+        "paragraphs": [
+          "Ideen min er å utvikle og bygge små, prefabrikkerte beredskapsboliger på omtrent 3 × 6 meter, der vi bruker ombrukstre og andre byggematerialer som fortsatt er i god stand, så lenge det er praktisk mulig og sikkerhetsmessig forsvarlig.",
+          "Boligene skal bygges rundt en solid og nøye dimensjonert bærekonstruksjon. Den skal være konstruert for å tåle transport og gjøre det mulig å løfte og flytte hele boligen ved hjelp av en kran.",
+          "Jeg ønsker at disse boligene skal være praktiske, komfortable og holdbare, samtidig som de skal være enkle å produsere, transportere og sette opp.",
+          "De skal kunne brukes som midlertidige boliger for mennesker som er rammet av krisesituasjoner, naturkatastrofer eller andre hendelser der det oppstår et akutt behov for et trygt sted å bo."
+        ]
+      },
+      {
+        "title": "Å gi gamle materialer et nytt formål",
+        "paragraphs": [
+          "MiniHouse handler ikke bare om å bygge små hus.",
+          "For meg handler prosjektet om å kombinere beredskap, ingeniørfag, bærekraftig bygging og sirkulærøkonomi.",
+          "Jeg ønsker å vise at materialer fra riveprosjekter fortsatt kan ha stor verdi, og at de ikke nødvendigvis trenger å ende opp som avfall.",
+          "Tanken er å ta vare på det som fortsatt kan brukes, kombinere det med moderne ingeniørløsninger og skape noe som får en helt ny funksjon.",
+          "Samtidig er det viktig at alle materialer som skal brukes på nytt, blir kontrollert og vurdert ut fra hva de egner seg til. Konstruksjonssikkerhet, isolasjon, fuktsikring og lang levetid skal være viktige deler av utviklingsarbeidet."
+        ]
+      },
+      {
+        "title": "Den større visjonen",
+        "paragraphs": [
+          "Det langsiktige målet mitt er å utvikle et standardisert system for produksjon av transportable beredskapsboliger. Første steg blir å bygge en prototype som er grundig planlagt, dimensjonert og testet.",
+          "Hvis konseptet fungerer, kan MiniHouse etter hvert bli en praktisk løsning for å gi egnede rivningsmaterialer nytt liv som trygge og bærekraftige beredskapsboliger.",
+          "Det som startet som en tanke på en riveplass, kan kanskje utvikle seg til noe mye større."
+        ]
+      }
+    ],
+    "closing": "I stedet for å se på riving som slutten på en bygnings historie, ønsker jeg å se på det som en mulighet til å starte en ny.",
+    "motto": [
+      "MiniHouse:",
+      "Gamle materialer.",
+      "Nye hjem.",
+      "Et nytt liv."
+    ],
+    "cta": "Se huset",
+    "teaser": {
+      "title": "Hvordan ideen oppstod",
+      "body": "Historien bak MiniHouse starter på en riveplass i Bergen, med gammelt treverk som fortsatt var i god stand.",
+      "link": "Les historien"
+    }
   }
 }

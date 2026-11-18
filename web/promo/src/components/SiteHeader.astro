@@ -16,11 +16,14 @@ const sectionBase = isHome ? '' : home;
 const otherLang = lang === 'en' ? 'nb' : 'en';
 const otherHref = localePaths(path)[otherLang];
 const navLabel = lang === 'en' ? 'Main' : 'Hovedmeny';
-const links = [
+const storyPath = lang === 'en' ? '/en/historien/' : '/historien/';
+const onStory = normalized === '/historien' || normalized === '/en/historien';
+const links: Array<{ href: string; hash?: string; label: string; current?: boolean }> = [
   { href: `${sectionBase}#bilder`, hash: '#bilder', label: content.nav.house },
   { href: `${sectionBase}#materialer`, hash: '#materialer', label: content.nav.materials },
   { href: `${sectionBase}#flytting`, hash: '#flytting', label: content.nav.moving },
   { href: `${sectionBase}#sporsmal`, hash: '#sporsmal', label: content.nav.questions },
+  { href: storyPath, label: content.nav.story, current: onStory },
 ];
 ---
 
@@ -32,7 +35,7 @@ const links = [
         {
           links.map((link) => (
             <li>
-              <a href={link.href} data-nav-hash={link.hash}>{link.label}</a>
+              <a href={link.href} data-nav-hash={link.hash} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
             </li>
           ))
         }
@@ -48,7 +51,7 @@ const links = [
         {
           links.map((link) => (
             <li>
-              <a href={link.href} data-nav-hash={link.hash}>{link.label}</a>
+              <a href={link.href} data-nav-hash={link.hash} aria-current={link.current ? 'page' : undefined}>{link.label}</a>
             </li>
           ))
         }

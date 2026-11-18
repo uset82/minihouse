@@ -1,6 +1,6 @@
 # Estado del plan · puerta por puerta
 
-2026-11-18 · Generado por la sesión lead (DSH). Verificación completa: `python scripts/verificar_todo.py` → **TODO PASA** (34 comprobaciones, exit 0). Este documento es el mapa honesto de qué está hecho, qué falta y quién lo desbloquea. No marca casillas de PROJECT.md: eso exige cumplir el criterio completo.
+2026-11-18 · Generado por la sesión lead (DSH). Verificación completa: `python scripts/verificar_todo.py` → **TODO PASA** (36 comprobaciones, exit 0). Este documento es el mapa honesto de qué está hecho, qué falta y quién lo desbloquea. No marca casillas de PROJECT.md: eso exige cumplir el criterio completo.
 
 ## Fase 0 · Contexto — CERRADA ✅
 
@@ -56,7 +56,7 @@
 
 | Casilla | Hecho | Falta |
 | --- | --- | --- |
-| Unión piloto + planos | — | Fase 2 real completa |
+| Unión piloto + planos | [Modelo del marco 6 × 3 m](../fase1/modelo-marco-R0.md) a 1:40 (150 × 75 mm) con cuatro miembros numerados, canales U para la pared sándwich y cuatro travesaños; [cupón de la unión](../fase1/prototipo-union-atornillada-R0.md) para montaje y llave | Sección de acero real, clase de pernos y clase de ejecución (**Carlos/ingeniero**); imprimir y medir; el detalle térmico queda reabierto |
 | Instrumentación/criterios | [Protocolo E-1…E-5](../fase3/protocolo-ensayos-R0.md) con estructura de aceptación previa | Valores de aceptación (**ingeniero**), empresa de ensayo (**contratación**) |
 | Ejecutar pruebas | — | Prototipo físico + taller + izaje competente |
 | Archivos de taller liberados | — | Liberación del RIB (rules.md §5) |

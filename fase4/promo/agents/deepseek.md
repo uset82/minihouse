@@ -28,6 +28,8 @@ You never edit code or styles in `web/promo/`, `images.json`, the image files, o
 
 ## Tasks, in order
 
+**Now, with Grok:** [task-story-page.md](task-story-page.md), D-18 to D-23, Carlos's story page «Hvordan ideen oppstod». First close D-16 and D-17 of [task-film-v18.md](task-film-v18.md) if they're still open. The standing tasks below follow.
+
 | ID | Task | Output | Done when |
 |---|---|---|---|
 | D-11 | **The living copy.** Claude Code's C-12 removed the room list from the irr band (2026-11-18). Make sure `living.lead` still carries what the room list said, in both languages, with every phrase tracing to a claim row (the bath sentence, for instance). When Cursor writes that `living.rooms` is gone from `schema.ts`, remove the keys from both JSON files and from the copy decks. | `nb.json`, `en.json`, `content/copy-*.md` | `npm run check` passes (Cursor runs it); no claim without a row |
@@ -43,7 +45,9 @@ You never edit code or styles in `web/promo/`, `images.json`, the image files, o
 - **Norwegian that sounds Norwegian:** short sentences, everyday words, no anglicisms, «» quotes, decimal comma, «ca.». Still flag everything for a native reader; you are not the final judge.
 - **Honest by construction.** If a sentence has no claim row, it doesn't ship. Prefer «planlagt» and «under utvikling» over a confident lie. «Bærekraftig» and "sustainable" never appear without the specific fact that earns them.
 - **Same action, same words:** «Følg prosjektet» everywhere.
-- **No sales words** (D10) and no emergency-cabin framing (D11).
+- **No sales words** (D10).
+- **Emergency housing appears only on Carlos's story page, in his words** (D11, as amended on 2026-11-18). Never on the home page, in its story section or in the menu.
+- **Carlos's story is published as he wrote it.** His five sentences with «bærekraftig», "sustainable" or "experience" are the only exceptions to the banned words ([task-story-page.md](task-story-page.md)).
 - **Reproducible checks:** every number in your reports carries the command, the tool version, the date and the URL.
 - **Copy that serves the design:** the hero title is one line of thought, and the lead is at most 2 sentences. No paragraph runs over 3 sentences.
 

@@ -19,7 +19,7 @@ The work is: build the page, check it, show it to Carlos.
 - **The house.** MiniHouse is a small house of about 6 × 3 m with a steel base, reclaimed timber and a gable roof. It is designed in Bergen to be moved in one piece by truck and crane. It is under development and isn't built yet, so every picture is a concept.
 - **What the site does.** It shows the house and invites people to follow the project with «Følg prosjektet» (D1).
   - MiniHouse **isn't for sale** (D10): no price, no ordering and no sales wording.
-  - It **isn't presented as an emergency cabin** (D11). It's a minihouse, like other minihouses.
+  - It **isn't presented as an emergency cabin** (D11). It's a minihouse, like other minihouses. **The one exception,** since 2026-11-18, is Carlos's own story page «Hvordan ideen oppstod». It tells the emergency-housing purpose in his words (D11 as amended, D15).
 - **Who it's for.** People who like small houses: homeowners with a plot, cabin owners and the curious. Professionals such as builders and crane or transport firms follow «For fagfolk» to the documentation site.
 - **What we borrow from FINN:** the order of information only. That means pictures, key facts, the description and an honest note on status, but not its look, text, photos or the sale (Appendix A).
 - **Languages:** Bokmål at `/`, English at `/en/` (D3).
@@ -85,10 +85,11 @@ The full wording and dates are in [decisions.md](decisions.md).
 | D3 | Bokmål first, plus English | `/` and `/en/` |
 | D6 | where sign-ups go: **still open** | no follow form and no copper band until Carlos names the inbox and the form service |
 | D10 | not for sale | no price, no «Pris kommer», no ordering or sales words |
-| D11 | not an emergency cabin | shown as a minihouse, like other minihouses |
+| D11 | not an emergency cabin; amended 2026-11-18 | shown as a minihouse, like other minihouses. The emergency-housing purpose appears only on Carlos's story page, in his words |
 | D12 | the hero title | «Et lite hus, laget for å flyttes.» / "A small house, made to be moved." |
 | D13 | a working landing page | exterior, living space and materials, in both languages |
 | D14 | no design-thinking process | build, check, show Carlos |
+| D15 | Carlos's story page | «Hvordan ideen oppstod» at `/historien/` and `/en/historien/`: his words as written, signed «Av Carlos» (DESIGN-GUIDE §6.16) |
 | G3 | «Patina, made funkier» | §4 |
 
 ---
@@ -108,12 +109,13 @@ The full wording and dates are in [decisions.md](decisions.md).
 
 The type is **Besley** for headings and numerals, a revival of Clarendon, the 19th-century wood type. **Jost** sets the text. The tokens, colour pairs and rules are in [DESIGN-GUIDE.md](DESIGN-GUIDE.md) §3.
 
-**The built site keeps this look.** Four funk moves make it bolder, and each one comes from a real part of the house:
+**The built site keeps this look.** Five funk moves make it bolder, and each one comes from a real part of the house:
 
 1. **The wavy copper mirror frame, «speilramme».** It traces the bathroom mirror and is used once: the bath photo in the interior band hangs in it. It's the one copper shape you can't press (DESIGN-GUIDE §6.14).
 2. **A bold irr band, «Inne i MiniHouse».** Full-bleed petrol green with a large heading, and the living-room photo beside the mirror (§6.8).
 3. **Giant wood-type numerals.** The journey's 1, 2 and 3 are set in Besley 800 in malmfuru, overlapping the top of each step's photo (§6.9).
 4. **A copper follow band, «Følg prosjektet».** Full-bleed copper with kalk text and an inverted kalk button. It's built only after D6 (§6.11).
+5. **A malmfuru band for Carlos's question.** It appears only on his story page. «Hvorfor skal materialenes levetid ta slutt …?» is set large in kalk on full-bleed malmfuru, the heartwood of the old boards the story is about (§6.16).
 
 The built example is in [reference/](reference/index.html). Open `index.html` to see it at 360 px and 1280 px side by side. Cursor copies from it, and only Claude Code edits it.
 
@@ -132,12 +134,14 @@ The section order, anchors and content keys are in [content/sitemap.md](content/
 | 3 | Inne i MiniHouse (irr band) | built, the funk version; the living-room film plays, and the bathroom film plays inside the mirror; moved up | remove the unused `living.rooms` keys (Cursor, DeepSeek) |
 | 4 | Huset i bilder (gallery and lightbox) | built as a contact sheet of 7 uncropped pictures | – |
 | 5 | Gammelt tre, nytt hus (material passports) | built; passports always visible, compact on phones, tags hanging off their samples on desktop | replace the steel image, which shows mostly wood cladding (Antigravity) |
+| – | Hvordan ideen oppstod (a short section that leads to Carlos's story) | not built | Grok builds it ([agents/task-story-page.md](agents/task-story-page.md)) |
 | 6 | Under kledningen | built; both views side by side, no tabs | – |
 | 7 | Fra verksted til tomt (journey) | built with giant numerals over 4:3 pictures | a workshop image of at least 1600 × 1200 (Carlos renders it, Antigravity checks it) |
 | 8 | Hvor langt har vi kommet? (status and FAQ) | built | – |
 | 9 | Følg prosjektet (copper band and form) | not built | waits for D6 |
 | 10 | Footer (steel base) | built | a contact address (K-29) |
 | – | Personvern, 404, sitemap, robots | built | the privacy text waits for D6; check that Canner serves a real 404 |
+| – | Carlos's story «Hvordan ideen oppstod» (`/historien/`, `/en/historien/`) | not built | Grok and DeepSeek build it, and Grok uploads it to the preview after the checks ([agents/task-story-page.md](agents/task-story-page.md)); Carlos approves it at G4 |
 
 The sticky mobile bar exists but stays off until the form exists. Review findings are in [review/visual-review.md](review/visual-review.md), and QA reports are in [qa/](qa/a11y.md).
 
@@ -164,12 +168,12 @@ The sticky mobile bar exists but stays off until the form exists. Review finding
 - **`images/` changed on 2026-11-18 between 06:38 and 07:12, from outside this project's agents:**
   - two new bathroom renders appeared;
   - four bathroom renders disappeared, including the sources of `bath-shower` and `bath-doorway`;
-  - the walkthrough was replaced by a 17.02 s cut.
+  - the walkthrough was replaced by a 17.02 s cut, and again on 2026-11-18 by `minihouse_walkthrough_v18_4k.mp4` (3840 × 2160, 24 fps, 17.04 s).
 
   The site's masters are copies, so nothing on the page broke. Antigravity re-checks the image sources in `bildeliste.csv`.
 - **The concept film** (DESIGN-GUIDE §6.15): Carlos asked on 2026-11-18 for «an automatic video presentation of the house» that is part of the whole site.
-  - `scripts/cut_film.py` cuts his walkthrough into three silent loops: the whole film for the hero, the living room, and the bathroom inside the mirror.
-  - They are listed in `films.json`, with the posters in `src/assets/film/` and the videos in `public/film/`, all out of git.
+  - `scripts/cut_film.py` cuts the 4K master into four silent loops: `house-film-1920.mp4` (1920 × 1080, 3.94 MB, for screens from `64rem`), `house-film.mp4` (1280 × 720, 2.40 MB), `living-loop.mp4` (1440 × 960, 1.04 MB) and `bath-loop.mp4` (1080 × 1350, 1.14 MB). All are 24 fps H.264 with `+faststart`, and the script reads the source size with ffprobe.
+  - They are listed in `films.json`, with the posters in `src/assets/film/` and the videos in `public/film/`, all out of git. The v11 cuts are backed up in `fase4/promo/archive/film-v11/`.
 - New images follow §2: the canonical prompt, the fidelity checklist and a row in `bildeliste.csv`.
 - Only Carlos approves images and the film cuts, at G4. A release build fails on any image or film marked `stand-in` or `pending`.
 
@@ -183,6 +187,8 @@ The file ownership, contracts and protocol are in [agents/README.md](agents/READ
 - **Antigravity** (images and visual QA) replaces the steel texture, prepares the workshop and mirror images, and screenshots every change at 360, 768, 1280 and 1920 px.
 - **DeepSeek** (words and checks) keeps the copy, the claims register and `check_promo.py` current, and re-runs the checks after each build.
 - **Codex**, if Carlos uses it as a supervisor, follows the same rules and edits only what its task names.
+- **WorkBuddy** joined for one task and moved the film to the 4K master ([task-film-v18.md](agents/task-film-v18.md), closed on 2026-11-18).
+- **Grok** (code, layout and visual review) joins for one task: Carlos's story page and its home section. With **DeepSeek** on the words, claims and checks, it builds them and uploads them to the preview after the checks ([task-story-page.md](agents/task-story-page.md)).
 - **Claude Code** keeps this plan, the design guide and the reference. On 2026-11-18 Carlos asked it to work on the site itself, so it built three things in `web/promo` ([its log](status/claude-code.md)):
   - the funk layer and the section polish;
   - four UX fixes;
@@ -225,8 +231,8 @@ Seen on 2026-11-17; we noted the structure only. The MAYA listing opens with a 1
 fase4/promo/
   PLAN.md               this plan
   DESIGN-GUIDE.md       tokens, components, garbage list, definition of done
-  decisions.md          D1–D14 and the gates, with Carlos's words
-  agents/               who does what, plus one brief per agent
+  decisions.md          D1–D15 and the gates, with Carlos's words
+  agents/               who does what, one brief per agent, and single tasks (task-*.md)
   status/               one log per agent
   reference/            the built example (Claude Code)
   content/              claims register, sitemap, copy decks
@@ -237,5 +243,6 @@ fase4/promo/
   review/               visual review and Claude Code's review
   archive/              rejected renders and the design-thinking material (don't use)
 web/promo/              the Astro site
+web/promo/DESIGN.md     the design system in the DESIGN.md format (summary of DESIGN-GUIDE.md)
 scripts/check_promo.py  automated checks
 ```

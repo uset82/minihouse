@@ -589,3 +589,49 @@ Escribirla cambió tres cosas que la tabla agregada no podía ver.
 La fila 14.5 **no se cierra**: sigue `undetermined` por dos motivos independientes — el edificio no
 existe para medirlo y la norma que define el método no se tiene. Nada de esto es una declaración de
 conformidad ni una autorización de fabricación.
+
+## AH. La unión trenzada no se puede montar rígida, y eso cambió el prototipo (2026-11-18)
+
+Los croquis numeran cuatro miembros entrelazados «como manos unas sobre otras», atornillados en
+los solapes, con el panel sándwich en el medio. El modelo de papel parece demostrar que se
+ensamblan. **Cuatro barras rígidas no se ensamblan**: cada una pasa por encima de una vecina y por
+debajo de la siguiente, y el grafo de precedencia es el ciclo **1 → 2 → 3 → 4 → 1**. Un orden
+topológico devuelve `None`. El papel funciona porque se dobla; una lámina PETG de **2 mm** también.
+La capa **4** se marca como la flexible y se enhebra la última. Esa es la pregunta que imprime el
+prototipo, no una forma de dibujar el croquis más bonita.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿Cabe en la impresora? | Sí: **150 × 150 × 9,5 mm** en una cama A1 mini de 180 | Márgenes 30/30/170 mm. El artículo es sólo la región de la unión, no el chasis de 6 m |
+| ¿Qué se mide? | Diámetros reales de los cuatro asientos M6/Ø6,4, espesor apilado, holgura de la llave y tres ciclos de montaje/desmontaje | La holgura mínima calculada al wrench de Ø24 es **53 mm**. El archivo dice qué medir; **no hay ninguna medición** |
+| ¿Qué escala es? | Mixta y declarada: disposición 1:2 de una plancha nominal de 100 mm, espesor **2 mm** para que pueda doblarse, tornillería M6 a tamaño real | Los tornillos impresos por debajo de M6 no son fiables. No se inventa una sección de acero: `miembros-R0.csv` sigue `PROV` |
+| ¿Valida resistencia? | **No.** Sólo secuencia de montaje, alineación de taladros y acceso a la llave | Sin grado de acero, clase de perno, EXC, soldadura ni espesor de chapa. EN 1993-1-8 sigue **PENDING** y NS-EN 1090-2 es de pago |
+| ¿Y el panel sándwich? | La ranura de **34 mm** es un hueco de localización, **no** un sándwich a escala | C-02 sigue abierto. Sustituir la base por planchas trenzadas **reabre** el detalle del encuentro aislado (Ψ +0,027 con acero envuelto); no lo resuelve |
+
+**Estado:** `fase1/prototipo-union-atornillada-R0.md`, generado por `scripts/bolted_lap_prototype.py`,
+check 35. Cuatro STL, un 3MF y un STEP con 32 sólidos (20 impresos, 12 de referencia). La importación
+en Fusion **no se ha verificado aquí**. Nada de esto es liberación para fabricación ni autorización
+de izaje.
+
+## AI. El croquis era el marco, no sólo la unión (2026-11-18)
+
+La primera entrega fue un cupón cuadrado de 150 × 150 mm para probar el solape atornillado. No era
+lo pedido. Los croquis numeran **los cuatro miembros del marco de 6 × 3 m**: **1** izquierdo, **2**
+superior, **3** derecho, **4** inferior, entrelazados en las esquinas, y el modelo de papel muestra
+otra cosa que yo había pasado por alto: **dos aletas verticales con el panel sándwich en medio**.
+El cupón sigue sirviendo para la unión; la respuesta al encargo es el modelo del marco.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿Cómo cabe en la impresora? | Plano a **1:40**: 6000 × 3000 mm → **150 × 75 mm** en cama A1 mini de 180 | Márgenes 15 y 52,5 mm. La **sección no está a escala**: base de 2 mm y aletas de 7 mm para que se imprima |
+| ¿Qué es cada miembro? | Un canal U: base plana, dos aletas, hueco libre de **5,6 mm** para la pared aluminio/aislamiento | Las aletas se detienen antes de las esquinas para que el trenzado se vea y no choque |
+| ¿Qué más lleva? | Cuatro travesaños a 1200 mm reales (30/60/90/120 mm en el modelo) | Es la malla canónica @1200, no los 7 travesaños de la discretización de demostración |
+| ¿Qué orden de montaje? | **1 → 2 → 3 → 4 → 1**, otro ciclo cerrado: ningún orden rígido | El cupón de 2 mm demuestra si la lámina flexible se enhebra; aquí se dibuja la consecuencia, no se resuelve |
+| ¿Valida algo más? | Sólo disposición, canal y secuencia; tornillos y taladros del marco son **esquemáticos** | El M6 real está en el cupón. Sin sección de acero, clase de perno, soldadura ni EXC; EN 1993-1-8 sigue PENDING |
+
+**Estado:** `fase1/modelo-marco-R0.md`, generado por `scripts/frame_model.py`, check 36. Cuatro STL de
+miembros, uno de travesaños, 3MF de cinco objetos y STEP con paredes y pernos de referencia. La
+importación en Fusion **no está verificada**. Dos defectos de triangulación se corregieron en la
+misma pasada: primero una cuña junto a cada taladro, después el extremo lejano de los miembros
+largos recortado por muestrear sólo el círculo; ahora se añaden los cuatro rayos a las esquinas y
+el autotest comprueba el área de cada placa. Nada es liberación para fabricación ni izaje.

@@ -192,6 +192,9 @@ Basado en [lift-plan-checklist.md](../knowledge/comparisons/lift-plan-checklist.
 
 ### 3A. Detalle y fabricación
 
+- [x] **Modelo del marco de 6 × 3 m imprimible**: [modelo R0](../fase1/modelo-marco-R0.md) generado por `scripts/frame_model.py`, con los cuatro miembros numerados del croquis (**1** izquierdo, **2** superior, **3** derecho, **4** inferior), el ciclo cerrado **1 → 2 → 3 → 4 → 1**, canales U con dos aletas verticales y el hueco central para la pared sándwich, más cuatro travesaños cada 1200 mm reales. Plano a **1:40** (150 × 75 mm en cama A1 mini); sección **no a escala**. Es el marco, no el cupón de unión.
+- [x] **Modelo imprimible de la unión trenzada atornillada**: [ficha R0](../fase1/prototipo-union-atornillada-R0.md) generada por `scripts/bolted_lap_prototype.py`. El trenzado cerrado es el ciclo **1 → 2 → 3 → 4 → 1** y no admite orden de montaje rígido: la lámina **4** se imprime delgada y se enhebra la última. Cuatro cuerpos STL, un 3MF y un STEP para Fusion; **150 × 150 × 9,5 mm** en una cama A1 mini de 180, con **53 mm** de holgura para la llave. Valida montaje y acceso, **no resistencia, ni clase de ejecución, ni conformidad**. El detalle térmico del encuentro se **reabre**, no se resuelve.
+- [ ] **Imprimir el prototipo en PETG y medir** los cuatro asientos M6/Ø6,4, el espesor apilado y la holgura de la llave en tres ciclos de montaje y desmontaje. La ficha dice qué medir; la medición no existe todavía.
 - [ ] Completar modelo 3D coordinado: dimensiones, huecos, instalaciones y geometría estructural en la **misma revisión**.
 - [ ] Preparar planos de conjunto, despiece del chasis, detalles de esquina, uniones, enganches, apoyos, amarres y encuentros de envolvente.
 - [ ] Indicar materiales, dimensiones, tolerancias, uniones, soldaduras y protección anticorrosiva **sólo después** de definir la clase de ejecución con texto autorizado y revisión del ingeniero.

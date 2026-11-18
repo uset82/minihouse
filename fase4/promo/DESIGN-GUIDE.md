@@ -1,8 +1,18 @@
 # MiniHouse promo website · Design guide
 
-**For every agent that designs, builds, writes or reviews the promo site: Antigravity, Cursor and DeepSeek.** Revision R2.3, 2026-11-18. Read this before you touch UI, copy or images. It holds the visual system, «Patina, made funkier» (G3), as rules you can check. [PLAN.md](PLAN.md) says what gets built and by whom.
+**For every agent that designs, builds, writes or reviews the promo site: Antigravity, Cursor and DeepSeek, and Grok or WorkBuddy when a task brings them in.** Revision R2.4, 2026-11-18. Read this before you touch UI, copy or images. It holds the visual system, «Patina, made funkier» (G3), as rules you can check. [PLAN.md](PLAN.md) says what gets built and by whom.
 
 **Built reference:** `fase4/promo/reference/` holds the look built by Claude Code to this guide: header, hero, key facts, the material passport, the irr band with the mirror frame, the journey with giant numerals, the copper follow band and the footer. Open `index.html` to see it at 360 px and 1280 px. When this guide and the reference seem to disagree, ask; don't guess.
+
+**R2.4 changes, 2026-11-18:** Carlos asked for his story «Hvordan ideen oppstod» as its own page, in his own Norwegian, built by Grok and DeepSeek ([agents/task-story-page.md](agents/task-story-page.md)).
+
+- §2.1 adds funk move 5: his question on a malmfuru band, on the story page only.
+- §3: kalk type of 24 px and up may sit on malmfuru.
+- §5 and §6.2: the story page's bands, the home page's new section and a fifth menu link.
+- The new §6.16 describes the page.
+- §9 lists his five sentences as the only exceptions to the banned words.
+
+The same system, summarised in the DESIGN.md format, is in [web/promo/DESIGN.md](../../web/promo/DESIGN.md).
 
 **R2.3 changes, 2026-11-18:** Carlos asked for «an automatic video presentation of the house» that is part of the whole site. The new §6.15 describes it:
 
@@ -39,7 +49,7 @@
 
 Earlier revisions (R1.1–R1.3, 2026-11-17) set side margins to `--gutter`, listed the allowed literals, made the call to action «Følg prosjektet» and drew the passport as a timber tag.
 
-The working method comes from the `frontend-design` skill that Carlos uses in Claude Code. The original is on this machine, read-only: `C:\Users\carlos\.claude\plugins\cache\claude-plugins-official\frontend-design\1.1.1\skills\frontend-design\SKILL.md`. This guide applies that method to MiniHouse. Where the two differ, this guide wins.
+The working method comes from the `frontend-design` skill that Carlos uses in Claude Code. The original is on this machine, read-only: `C:\Users\carlos\.claude\plugins\cache\claude-plugins-official\frontend-design\1.1.1\skills\frontend-design\SKILL.md`. This guide applies that method to MiniHouse. Where the two differ, this guide wins. `/frontend-design:frontend-design` exists only in Claude Code, so agents in other clients, such as Grok and DeepSeek, read that file directly. [web/promo/DESIGN.md](../../web/promo/DESIGN.md) is this guide's system in the DESIGN.md format (the "/design style").
 
 ---
 
@@ -51,7 +61,7 @@ The working method comes from the `frontend-design` skill that Carlos uses in Cl
 4. **Build with tokens only** (§3). No new hex values, font sizes or shadows.
 5. **Critique with screenshots** at 360 px and 1280 px, comparing against this guide. Then remove the least necessary decoration (one thing) before you call it done, and say what you removed.
 
-Boldness lives in a few named places: the material passport (§6.6) and the four funk moves (§2.1). Everything around them stays quiet.
+Boldness lives in a few named places: the material passport (§6.6) and the five funk moves (§2.1). Everything around them stays quiet.
 
 ---
 
@@ -77,7 +87,7 @@ All of it is laid out with modern calm: big photography, few words, generous spa
 
 ### 2.1 Made funkier
 
-Carlos asked for a site that is modern and **funky**. The funk comes from four moves, and each one comes from a real material or object of the house:
+Carlos asked for a site that is modern and **funky**. The funk comes from five moves, and each one comes from a real material or object of the house:
 
 | # | Move | Where it comes from | Where it's used | Spec |
 |---|---|---|---|---|
@@ -85,8 +95,9 @@ Carlos asked for a site that is modern and **funky**. The funk comes from four m
 | 2 | A bold irr band | the petrol-green glazed bathroom tile | «Inne i MiniHouse» | §6.8 |
 | 3 | Giant wood-type numerals | 19th-century wood type, cut in old wood | the journey's 1, 2 and 3 | §6.9 |
 | 4 | A copper colour block | the copper fittings: the copper you press | the «Følg prosjektet» band, after D6 | §6.11 |
+| 5 | A malmfuru colour block | the heartwood of the old boards that Carlos's story is about | once: his question on the story page (Carlos approved it with the story-page plan, 2026-11-18) | §6.16 |
 
-Each move is used where the table says and nowhere else. A fifth move needs Carlos's OK and a new row here.
+Each move is used where the table says and nowhere else. A sixth move needs Carlos's OK and a new row here.
 
 ---
 
@@ -165,7 +176,7 @@ Each move is used where the table says and nowhere else. A fifth move needs Carl
 | tjære / kobber-lys | 6.43 | buttons on dark bands |
 | kobber-lys / tjære | 6.43 | links in the footer |
 | kobber-lys button edge / irr | 3.45 | button shape, focus ring and the mirror frame's stroke on irr: **no text in kobber-lys on irr** |
-| malmfuru / kalk | 4.24 | numerals and display type ≥ 24 px only, including the journey numerals |
+| malmfuru / kalk (both ways) | 4.24 | numerals and display type ≥ 24 px only, including the journey numerals; kalk type of 24 px and up on the story page's malmfuru band (§6.16) |
 | sølvgrå / kalk | 3.27 | hairlines and borders only |
 
 **Never use these pairs:**
@@ -227,7 +238,9 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - eik for key facts;
   - irr for living and the bathroom;
   - kobber for the follow band, once D6 is decided;
-  - in page order: kalk hero, eik facts, irr «Inne i MiniHouse», kalk gallery, then the kalk sections (materials, build, journey, status and FAQ), and the tjære footer ([content/sitemap.md](content/sitemap.md));
+  - malmfuru once, for Carlos's question on the story page (§6.16);
+  - in page order: kalk hero, eik facts, irr «Inne i MiniHouse», kalk gallery, then the kalk sections (materials, the story section «Hvordan ideen oppstod», build, journey, status and FAQ), and the tjære footer ([content/sitemap.md](content/sitemap.md));
+  - on the story page: the kalk opening, the malmfuru question band, the kalk story and ending, and the tjære footer;
   - tjære for the footer.
   - No two neighbouring bands share a colour, except kalk next to kalk with a sølvgrå hairline between them.
 - **Spacing:** section padding is `--space-7` on desktop and `--space-6` on mobile. Use `--space-4` inside groups and `--space-5` between groups.
@@ -252,7 +265,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 
 ### 6.2 Header
 - The wordmark is "MiniHouse" set in Besley 800 at `--size-h3`. It is text, not an image.
-- Nav: Huset, Materialer, Flytting, Spørsmål. Jost 500 at `--size-small` in tjære. «Huset» opens the gallery «Huset i bilder» (`#bilder`); the wordmark goes to the top. The link for the section in the address gets a 2 px kobber underline and `aria-current`; at the top of the page, none does.
+- Nav: Huset, Materialer, Flytting, Spørsmål, Historien. Jost 500 at `--size-small` in tjære. «Huset» opens the gallery «Huset i bilder» (`#bilder`); the wordmark goes to the top. «Historien» («The story») opens Carlos's story page (§6.16) and carries `aria-current="page"` there. The link for the section in the address gets a 2 px kobber underline and `aria-current`; at the top of the page, none does.
 - On the right sits the primary button «Følg prosjektet». Until D6 is decided there is nothing to follow, so the button isn't shown. The language link («English» / «Norsk») is a plain text link.
 - Mobile: a text button «Meny» opens a full-screen kalk sheet. Close it with «Lukk» or Esc, and return focus to the button.
 - Add a skip link, «Hopp til innhold».
@@ -367,21 +380,23 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 - **No motion of its own.** The frame doesn't wobble, rotate or animate; only the film inside it moves.
 
 ### 6.15 The concept film «Konseptfilm» (Carlos, 2026-11-18)
-- **What it is:** Carlos's own walkthrough of the house, `images/minihouse_walkthrough_v11.mp4` (17.02 s, five shots: the hillside, the living room, the bed, the bathroom and a wide bathroom view). It's a rendered concept, never a recording of a built house: caption «Konseptfilm» (claim K-35).
+- **What it is:** Carlos's own walkthrough of the house, `images/minihouse_walkthrough_v18_4k.mp4` (3840 × 2160, 24 fps, 17.04 s, five shots cut at 4.04, 7.04, 10.54 and 14.54 s: the hillside, the living room, the bed, the bathroom and a wide bathroom view). It's a rendered concept, never a recording of a built house: caption «Konseptfilm» (claim K-35).
 - **Where it plays:**
   - the whole film in the hero, instead of the photo, at 16:9, because the house is too wide for a 4:5 phone crop;
   - the living-room shot in «Inne i MiniHouse»;
   - the bathroom shot inside the copper mirror.
   - Everything else stays still.
-- **The cuts:** `scripts/cut_film.py` (ffmpeg) makes them from the master, which is never changed. They are silent H.264 with `+faststart`.
+- **The cuts:** `scripts/cut_film.py` (ffmpeg) makes them from the master, which is never changed. It reads the master's width and height with ffprobe, so the 3:2 and 4:5 crops land on the same subjects at any resolution. They are silent H.264 with `+faststart` and a GOP of 48.
 
   | File | Size | Length | Loop |
   |---|---|---|---|
-  | `house-film.mp4` | 1280 × 720, 2.1 MB | 16.5 s | a 0.5 s crossfade at the seam |
-  | `living-loop.mp4` | 960 × 640, 0.56 MB | 5.75 s | forward and back |
-  | `bath-loop.mp4` | 720 × 900, 0.87 MB | 7.0 s | forward and back |
+  | `house-film-1920.mp4` | 1920 × 1080, 3.94 MB | 16.54 s | a 0.5 s crossfade at the seam; screens from `64rem` |
+  | `house-film.mp4` | 1280 × 720, 2.40 MB | 16.54 s | a 0.5 s crossfade at the seam; smaller screens |
+  | `living-loop.mp4` | 1440 × 960, 1.04 MB | 5.67 s | forward and back |
+  | `bath-loop.mp4` | 1080 × 1350, 1.14 MB | 7.00 s | forward and back |
 
-  The posters are the first frames. If the master changes, re-check the shot times (the script refuses a master of a different length).
+  The posters are the first frame of each film's largest cut, so the hero poster comes from the 1920 cut (402 KB; the loops are 236 KB and 122 KB). The script refuses a master whose length differs from 17.04 s; re-check the shot times if the master changes.
+- **The sharper desktop film:** the hero `<video>` carries `data-film-src-wide`, and the controller loads `house-film-1920.mp4` when `matchMedia('(min-width: 64rem)')` matches. The living and bath loops keep one file each; nothing else in the shared controller changes.
 - **Markup (`Film.astro`):**
   - the still is a normal responsive `<Picture>` with the alt text (`film.alt`, `film.livingAlt`, `film.bathAlt`);
   - the `<video muted playsinline loop preload="none">` lies on top with `aria-hidden="true"`, and only shows once it plays, so a loading video never covers the still with black.
@@ -394,6 +409,65 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - If the browser refuses autoplay, the still stays and the button offers «Spill av filmen».
   - Nothing loads before the window's `load` event; a film loads only when it comes within a quarter screen, and films off screen or in a hidden tab are paused.
 - **Release:** `films.json` holds each cut's status, and a release build fails until Carlos approves them at G4, as with the images. The host must answer byte-range requests (206), which Safari needs for video. Canner's built-in static server doesn't, so the upload is `npm run bundle`, which adds `web/promo/deploy/serve.mjs`: byte ranges, `video/mp4` and `image/avif` types, a real 404, and no dotfiles.
+
+### 6.16 Carlos's story «Hvordan ideen oppstod» (story page, funk move 5)
+
+- **What it is:** Carlos's own account of how MiniHouse started, on a page of its own: `/historien/`, and `/en/historien/` in English.
+  - His Norwegian ([agents/task-story-page.md](agents/task-story-page.md), Appendix A) is published as he wrote it, and the English follows his English.
+  - It's signed «Av Carlos» / "By Carlos".
+  - The words are the `story.*` group in `nb.json` / `en.json`. The page is built in `web/promo/src/components/Story.astro` and `src/styles/story.css`.
+- **The idea: words first, the house last.** The site has no pictures of the old teachers' residence and never borrows any, so the story opens in type. The house appears only at the end, as the payoff of the motto: old materials, new homes.
+- **One loud moment: the question on the old wood.** «Hvorfor skal materialenes levetid ta slutt bare fordi bygningen de kommer fra, blir revet?» sits on a full-bleed `--malmfuru` band, the heartwood of the boards the story is about (funk move 5, §2.1). Everything else on the page stays quiet.
+- **Top to bottom:**
+  1. **The opening (kalk).**
+     - The h1 `story.title` in Besley 800 at `--size-h1`.
+     - The byline `story.byline` in Jost 500 at `--size-small` in `--malmfuru-mork`.
+     - The lead `story.lead` in Jost 400 at `--size-lead`.
+     - Then `story.intro[]`, and the reference line: `story.reference.label` followed by a copper text link (`story.reference.link`), external, in the same tab, with no icon.
+     - Then `story.noticed[]`, whose last sentence ends in a colon and leads into the band.
+     - The text sits in columns 1–8 from `64rem` and is never wider than `--measure`.
+  2. **The question band (malmfuru), full bleed.**
+     - `story.question` in Besley 800 in `--kalk`, at `--size-h2` below `48rem` and `--size-h1` from `48rem`, with `--leading-display`, `letter-spacing: -0.01em` and `text-wrap: balance`, in columns 1–10.
+     - Under it, `story.questionFollow` in Jost 500 at `--size-h3` in `--kalk`, in columns 1–8.
+     - Kalk on malmfuru measures 4.24:1, so **no text on the band is under 24 px**, and nothing on it can be focused or pressed.
+     - Padding `--space-6`, and `--space-7` from `80rem`. Both texts are paragraphs, not headings.
+  3. **The idea (kalk).**
+     - `story.origin` at `--size-lead`.
+     - Then the three `story.sections[]`, each an h2 in Besley 800 at `--size-h2` followed by its paragraphs.
+     - In the first section, the drawing `exploded` (3:2) sits beside the text from `64rem` (text in columns 1–7, picture in 8–12) and under it on smaller screens, with «Konseptbilde» below it.
+  4. **The ending (kalk).**
+     - The house, `hero-slope`, at 3:2 in columns 1–8 from `64rem` (the `wide` size, up to 800 px) and full width below, lazy-loaded, with «Konseptbilde» below.
+     - Then `story.closing` at `--size-lead`.
+     - Then `story.motto[]` as a stack of short lines, one per line, in Besley 800 in `--tjaere`, at `--size-h2` below `48rem` and `--size-h1` from `48rem`, like the question. At `--size-h1` on a 360 px phone, «Gamle materialer.» breaks onto two lines (CR-23).
+     - On phones the h1 «Hvordan ideen oppstod» stacks one word per line. That's accepted: it's a three-word stack, not a lone last word, so the h1 keeps `--size-h1`.
+     - Last, the primary button `story.cta` («Se huset») to `/#bilder` (English: `/en/#bilder`): the same words and action as the hero's.
+  5. **The footer,** as on every page.
+- **Body text** follows §4: Jost at 18 px, line height 1.55, `--space-4` between paragraphs and `--space-6` before each h2. It's left-aligned and ragged right.
+- **Long Norwegian compounds:** below `48rem`, the h2s use `hyphens: auto`, so «Fra rivningsmaterialer til beredskapsboliger» breaks at the compound joints instead of leaving «Fra» and «til» alone on their lines (CR-24). The page is `lang="nb"`, so the browser's Bokmål dictionary applies.
+- **The home section «Hvordan ideen oppstod»** (`StoryTeaser.astro`), right after «Gammelt tre, nytt hus»:
+  - a kalk band with a sølvgrå hairline above;
+  - the h2 `story.teaser.title` in Besley 800 at `--size-h2`;
+  - one or two sentences, `story.teaser.body`, at `--size-lead` in columns 1–7;
+  - the copper text link `story.teaser.link` («Les historien») to the story page.
+
+  No picture and no band colour. It names no emergency use (D11).
+- **The header** gets a fifth link, «Historien» (§6.2).
+- **Markup:**
+  - one h1; the story is an `<article>` with h2 sections;
+  - the question, the follow-up and the motto are `<p>` elements;
+  - pictures come through `Figure.astro` (`ratio="wide"`), with the alt text and captions from `images.json`;
+  - the page has its own `<title>` and description (`story.meta`), and `hreflang` points to its twin.
+- **Never on this page:**
+  - a drop cap or giant initial (wood-type giants belong to the journey, move 3);
+  - numbered markers or a timeline;
+  - a quote card with big quotation marks;
+  - stats, icons or emoji;
+  - the irr band or the film;
+  - italics or colour for emphasis;
+  - any picture of the old building, until Carlos supplies his own photos and approves them;
+  - generated images;
+  - scroll effects.
+- **Claims:** the story says Carlos saw how good the old timber was. It never says MiniHouse uses timber from Øvsttunvegen, and nothing on the site may imply it. Reclaimed timber stays out of the load-bearing structure (K-06). Emergency housing appears on this page only (D11 as amended).
 
 ---
 
@@ -439,6 +513,9 @@ Never use scroll-triggered reveals, parallax, hover lifts, auto-playing carousel
   - Norwegian: *revolusjonerende, unik, drømmehjem, sømløs, innovativ, fremtidens, bærekraftig, miljøvennlig, grønn*.
   - English: *revolutionary, unique, dream home, seamless, elevate, discover, unlock, experience, eco-friendly, sustainable, green, game-changing*.
 - **Never claim:** «ingen byggesøknad», «TEK17-godkjent», U-values, a price, a delivery time, a weight, «verifisert», «garantert», customer counts or testimonials.
+- **Carlos's signed story** (§6.16) is published as he wrote it.
+  - His five sentences with «bærekraftig», "sustainable" or "experience" are the only exceptions to the banned words. They're listed in the claims register as his own view, and `check_promo.py` allows them on the story page and nowhere else (Carlos: «Keep my words», 2026-11-18).
+  - Emergency housing («beredskapsboliger») appears only on that page (D11 as amended).
 
 ---
 

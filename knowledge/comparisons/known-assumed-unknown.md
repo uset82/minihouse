@@ -132,6 +132,10 @@ Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Cha
 | 3,000 kg / EI=1.68 MN·m² / q=2.4525 kN/m beam example | illustrative only | S000, C003 |
 | Example mass inventory | 2,200 kg, CG (2.545,1.471,0.741) — explicitly "NO ES DATO DEL PROYECTO" | fase1/inventario-masas-ejemplo.csv |
 | 20% inset (1.2 m) as lift point candidate | SCI recommendation for LGS modules; not yet justified for this chassis | S008, lift-variants.md |
+| Printed-joint layout | 1:2 of a nominal 100 mm flat bar, **2 mm PETG** strip so ply 4 can thread, M6 at full size, Ø6.4 clearance hole, Ø10.2 circular nut seat, 150 × 150 × 9.5 mm article | bolted_lap_prototype.py — values for a print test only, **not** a steel section |
+| Printed-joint process assumptions | PETG over PLA for repeated assembly, 0.4 mm nozzle, free nuts with two-sided wrench access; no captive nut modelled | Bambu/FFF sources cited in the generated sheet; no print has been made |
+| Frame model section | Plan 1:40, base **2 mm**, fins **7 mm**, channel **8 mm**, clear wall slot **5.6 mm**, schematic Ø2 mm corner holes | frame_model.py — section exaggerated, **not** a steel profile |
+| Frame model numbering | 1 left, 2 top, 3 right, 4 bottom, matching the hand sketch; four crossmembers at 30/60/90/120 mm model scale | frame_model.py, derived from the canonical 1200 mm centres |
 
 ## UNKNOWN (blocking, with owner/question)
 
@@ -203,6 +207,11 @@ Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Cha
 | Specific written lift-plan paragraph | not located in §§10/13 | do not claim a paragraph number |
 | Architecture theory books (Ching, Mallgrave, Maggi) | to acquire | visual/spatial design depth |
 | Steel section, plate thickness, weld, ear detail | Fase 2/3 | no fabrication |
+| Real flat-bar/angle size, bolt class and nut strategy for the woven base | Carlos / responsible engineer | the 2 mm PETG and M6 values describe a print test, not a specified joint; no capacity claim is possible |
+| Whether the sandwich-panel interface needs its own detail | C-02 build-up | the 34 mm slot only locates the test article; it is not a scaled wall build-up |
+| Woven flat bar versus the wrapped-steel junction previously priced at Ψ +0.027 | Fase 2 junction detail | the thermal-bridge answer is **re-opened**, not carried over |
+| Whether the U-channel fin height and slot width are buildable with the chosen sandwich panel | C-02 build-up | the 5.6 mm slot is a printed-model value, not a specified wall thickness |
+| Whether the full frame is printed as one piece or as four members plus crossmembers | Carlos / print test | the 3MF currently has five separate objects; assembly sequence is untested |
 | Autodesk exchange test result | no product access | interface stays pending |
 
 ## State

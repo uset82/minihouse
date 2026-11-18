@@ -304,3 +304,50 @@ Owner: Antigravity · Status: cancelled 2026-11-18 (D14). The moodboard is archi
 ## Round 6 (2026-11-18): design-thinking material cancelled
 
 Carlos cancelled the design-thinking process (D14) and chose «Patina, made funkier» (G3). CR-19 and CR-20 are cancelled, not fixed. Their files are in `archive/design-thinking/03-ideate/`. Every finding in this file is now closed or cancelled. New findings follow the R2 plan and DESIGN-GUIDE R2.
+
+---
+
+## Round 7 (2026-11-18): Grok's story page, before G-5
+
+I checked Grok's G-3 and G-4 and DeepSeek's D-18 to D-20 ([task-story-page.md](../agents/task-story-page.md)).
+
+**Method:** I measured the rendered page on Claude Code's own dev server (`astro dev` on port 4330, which writes no `dist/`), at 360, 1024 and 1280 px. I didn't run a build, so Grok's G-5 and 4322 are untouched.
+
+**What's right:**
+- the routes, the fifth menu link with `aria-current="page"`, and the language link between the two story pages;
+- `hreflang`, the page titles, and one h1 per page;
+- the home section between «Gammelt tre, nytt hus» and «Under kledningen»;
+- the question band (kalk Besley on malmfuru, 6 lines at 28 px on a phone, 5 at 72 px on desktop, 1000 px wide);
+- the 64ch measure, and the 7/5 split at 1280;
+- the header still fits on one row at 1024 px;
+- no sideways overflow.
+
+**The words:** all 34 of Carlos's strings match Appendix A, and the teaser carries no emergency words.
+
+### CR-21 · the opening's paragraphs have no space between them · serious
+Rule: DESIGN-GUIDE §6.16 (`--space-4` between paragraphs).
+What: `.story-open > * + *` matches nothing, because `.story-open`'s only child is `.wrap`. The paragraphs are inside `.story-col`, and `base.css` sets every `p` margin to 0. Measured gaps between the opening's 10 blocks: 8, 0, 0, 0, 0, 0, 0, 0, 0, 0 px, at both 360 and 1280 px. The lead, the three intro paragraphs, the reference and the four «noticed» paragraphs read as one wall of text. `.story-open > h1 + .story-byline` is dead for the same reason.
+Fix: in `story.css`, use `.story-col > * + *` and `.story-col > h1 + .story-byline`.
+Owner: Grok · Status: open
+
+### CR-22 · section 1's text starts twice as far below its heading · minor
+Rule: DESIGN-GUIDE §6.16.
+What: `.story-split` has `margin-top: var(--space-4)`, and its first paragraph adds its own `--space-4`. Grid items don't collapse margins, so the gap from h2 to first paragraph is 48, 24 and 24 px in the three sections.
+Fix: drop `.story-split`'s `margin-top`, or zero the first paragraph's top margin inside it.
+Owner: Grok · Status: open
+
+### CR-23 · the motto breaks on phones · serious (spec fixed)
+Rule: DESIGN-GUIDE §6.16, which I had written as `--size-h1` at every width. That was my mistake.
+What: at 360 px, `--size-h1` is 44 px, and «Gamle materialer.» runs onto two lines, so the four-line motto becomes five. "Old materials." is just as long in English.
+Fix: §6.16 now says `--size-h2` below `48rem` and `--size-h1` from `48rem`, like the question. Add `.story-motto p { font-size: var(--size-h2) }` with the `--size-h1` step inside the existing `48rem` query.
+Owner: Grok · Status: open
+
+**Accepted, no change:** on phones the h1 «Hvordan ideen oppstod» stacks one word per line, on 3 lines. That's a three-word stack, not a lone last word, so the h1 keeps `--size-h1` (§6.16).
+
+**Follow-up, 23:45:** CR-21, CR-22 and CR-23 are fixed by Grok and checked in its G-6 entry and screenshots (opening gaps 24 px, section gaps 24/24/24, motto 28 px at 360). They're closed.
+
+### CR-24 · the first h2 stacks one word per line on phones · minor
+Rule: DESIGN-GUIDE §11 (no single-word lines in headings), from Grok's G-6 note.
+What: at 360 px, «Fra rivningsmaterialer til beredskapsboliger» falls into four lines, «Fra / rivningsmaterialer / til / beredskapsboliger». His two long compounds can't share a line at `--size-h2` in a 312 px column, so «Fra» and «til» stand alone. His words don't change.
+Fix: below `48rem`, add `.story h2 { hyphens: auto; }` to `story.css`. The page is `lang="nb"`, and Chrome on this PC has the Bokmål dictionary (`hyph-nb.hyb`), as do Safari and Firefox. The heading can then break at the compound joints, for example «Fra rivnings- / materialer til / beredskapsboliger». Re-shoot at 360 px. If a browser has no dictionary, the heading simply stays as it is now.
+Owner: Grok · Status: open

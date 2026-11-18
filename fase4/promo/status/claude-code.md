@@ -13,6 +13,58 @@ Only Claude Code writes this file; the other agents and Carlos read it. Put the 
 
 ## Log
 
+### 2026-11-18 23:45 · Review of the story page before G-5 (round 7) · done
+
+I read Grok's G-1 to G-4 and DeepSeek's D-18 to D-20, and measured the page on my own `astro dev` server (port 4330, no build) at 360, 1024 and 1280 px.
+
+**Everything is wired, and his words are verbatim.** There are three findings for Grok, all in `story.css`, in [review/claude-code-review.md](../review/claude-code-review.md) round 7:
+- **CR-21 (serious):** the opening's paragraphs have 0 px between them.
+- **CR-22 (minor):** section 1's text sits 48 px below its heading; sections 2 and 3 have 24 px.
+- **CR-23 (serious):** the motto breaks on phones. That one is my spec's fault, so DESIGN-GUIDE §6.16 now sets it at `--size-h2` below `48rem`. The h1 stacking one word per line on phones is accepted.
+
+**Checks:**
+- `check-content.mjs` passes.
+- `check_promo.py` fails only on the five kept sentences, which D-21's exception will allow.
+- `verificar_todo.py` prints **SUITE COMPLETA: TODO PASA** (867 links).
+
+Next:
+- → Grok: CR-21 to CR-23, then G-5 when D-21 lands.
+- → DeepSeek: D-21.
+
+### 2026-11-18 22:00 · Task plan for Grok and DeepSeek: Carlos's story page · done
+
+Carlos: «generate a detail task plan so deepseek and grok execute your plan · make sure deepseek and grok use /frontend-design:frontend-design and /design style …». He pasted his story «MiniHouse: Hvordan ideen oppstod» in Norwegian and English. He chose «Story page only», «Keep my words», «Av Carlos» and «Yes, after the checks», and he approved the plan.
+
+**New files:**
+- `agents/task-story-page.md`: Grok's G-1 to G-8 and DeepSeek's D-18 to D-23, the content contract, how each client loads the skills, kickoff prompts, and his two texts verbatim in Appendix A.
+- `web/promo/DESIGN.md`: the design system in the DESIGN.md format, the "/design style".
+
+**Updated files:**
+- DESIGN-GUIDE R2.4: funk move 5 (the malmfuru question band), §5, §6.2, the new §6.16 and §9.
+- PLAN: §1, §3 (D11 amended, D15), §4, §5, §8 and Appendix B.
+- `agents/README.md`: Grok joins; a temporary ownership row; the film row is closed.
+- `agents/deepseek.md`.
+- The project skill `minihouse-frontend-design`.
+- `AGENTS.md`: one sentence.
+- `decisions.md`: D11 amended, D15, the "Preview (story)" approval and a log line.
+
+No code, content JSON, images or media changed.
+
+**Findings that shaped the task:**
+- **Grok** is the xAI Grok CLI 1.0.77. It loads `AGENTS.md` and `.agents/skills/` but not Claude Code plugins, so both agents read the frontend-design `SKILL.md` by path.
+- **`check_promo.py`:**
+  - it compares array lengths between the languages, so two of his English paragraphs become one item;
+  - it bans the words he wants kept, which becomes D-21's exception.
+- **Claims:** the story never says MiniHouse uses the Øvsttunvegen timber, so the page must not imply it.
+
+**Checks:**
+- `python scripts/check_promo.py` passes.
+- `python scripts/verificar_todo.py` prints **SUITE COMPLETA: TODO PASA**.
+- The 10 hex values in `DESIGN.md` equal the 10 in `tokens.css`.
+- Every existing path in the task file was checked, and the eight new files don't exist yet.
+
+Nothing is committed.
+
 ### 2026-11-18 19:45 · Pushed to GitHub, and an online preview at minihouse-preview.canner.app · done
 
 Carlos: «push to github so i can see it in my https://minihouse-docs.canner.app/».

@@ -56,6 +56,7 @@ PAIRS = [
     ("kobber-lys", "tjaere", 6.43, "links in the footer"),
     ("kobber-lys", "irr", 3.45, "button shape and focus ring only, never text"),
     ("malmfuru", "kalk", 4.24, "numerals and display type >= 24 px only"),
+    ("kalk", "malmfuru", 4.24, "the story page's question band, type >= 24 px only"),
     ("solvgra", "kalk", 3.27, "hairlines and borders only"),
 ]
 
@@ -67,6 +68,38 @@ FORBIDDEN_PAIRS = [
 ]
 
 RATIO_TOLERANCE = 0.01
+
+# --- The story page's exceptions (task-story-page D-21) ----------------------
+
+# Carlos's five kept sentences, verbatim, at most one line each. These are the
+# only places where an exception word may pass, and only under `story.*`.
+KEPT_SENTENCES = {
+    "nb": {
+        "For meg handler prosjektet om å kombinere beredskap, ingeniørfag, bærekraftig bygging og sirkulærøkonomi.",
+        "Hvis konseptet fungerer, kan MiniHouse etter hvert bli en praktisk løsning for å gi egnede rivningsmaterialer nytt liv som trygge og bærekraftige beredskapsboliger.",
+    },
+    "en": {
+        "That experience made me ask myself a simple question:",
+        "It's about bringing together emergency preparedness, engineering, sustainable construction and the circular economy.",
+        "If the concept works, MiniHouse could eventually become a practical way to transform suitable demolition materials into safe, sustainable emergency housing.",
+    },
+}
+
+# Words that only a kept sentence may contain.
+EXCEPTION_WORDS = {
+    "nb": ["bærekraftig"],
+    "en": ["sustainable", "experience"],
+}
+
+# Emergency words: allowed under `story.*` only, never in `story.teaser`.
+EMERGENCY_WORDS = {
+    "nb": ["beredskap", "krise", "naturkatastrof", "nødbolig"],
+    "en": ["emergency", "disaster", "crisis"],
+}
+
+
+def normalise_apostrophes(text: str) -> str:
+    return text.replace("’", "'")
 
 # --- DESIGN-GUIDE §9 ---------------------------------------------------------
 
@@ -197,6 +230,34 @@ def check_tokens(promo: Path) -> tuple[list[str], list[str]]:
     return errors, notes
 
 
+def design_token_sets(markdown: str, css: str) -> tuple[set[str], set[str]]:
+    """Hex colours in DESIGN.md and the colour variables declared in tokens.css."""
+    in_markdown = {match.group(0).lower() for match in re.finditer(r"#[0-9a-fA-F]{6}", markdown)}
+    in_css = {value.lower() for value in parse_css_variables(css).values()}
+    return in_markdown, in_css
+
+
+def check_design_parity(promo: Path) -> tuple[list[str], list[str]]:
+    """D-21(c): DESIGN.md and tokens.css must list the same colours."""
+    errors: list[str] = []
+    notes: list[str] = []
+    design = promo / "DESIGN.md"
+    tokens = promo / "src" / "styles" / "tokens.css"
+    if not design.is_file():
+        return [f"design: {design} not found"], notes
+    if not tokens.is_file():
+        return [f"design: {tokens} not found"], notes
+    in_markdown, in_css = design_token_sets(
+        design.read_text(encoding="utf-8"), tokens.read_text(encoding="utf-8")
+    )
+    for colour in sorted(in_markdown - in_css):
+        errors.append(f"design: DESIGN.md lists {colour}, which is not a colour in tokens.css")
+    for colour in sorted(in_css - in_markdown):
+        errors.append(f"design: tokens.css colour {colour} is missing from DESIGN.md")
+    notes.append(f"design: {len(in_markdown)} hex in DESIGN.md, {len(in_css)} colours in tokens.css")
+    return errors, notes
+
+
 def walk_strings(value, path: str = ""):
     if isinstance(value, str):
         yield path, value
@@ -233,6 +294,41 @@ def banned_hits(text: str, language: str) -> list[str]:
     for word in BANNED_WORDS[language]:
         if re.search(r"\b" + re.escape(word) + r"\w*", lowered):
             hits.append(word)
+    for pattern, why in BANNED_PATTERNS:
+        if re.search(pattern, text, re.IGNORECASE):
+            hits.append(why)
+    return hits
+
+
+def story_hits(text: str, language: str, path: str) -> list[str]:
+    """Hits for one content string, with the story page's two exceptions.
+
+    - Exception words pass only inside one of the five kept sentences, matched
+      verbatim, under `story.*`.
+    - Emergency words pass under `story.*` only, never in `story.teaser`.
+    """
+    hits: list[str] = []
+    lowered = text.lower()
+    in_story = path == "story" or path.startswith("story.")
+    kept = (
+        in_story
+        and path.startswith("story.")
+        and normalise_apostrophes(text) in KEPT_SENTENCES[language]
+    )
+    emergency_allowed = in_story and not path.startswith("story.teaser")
+
+    for word in BANNED_WORDS[language]:
+        if not re.search(r"\b" + re.escape(word) + r"\w*", lowered):
+            continue
+        if kept and word in EXCEPTION_WORDS[language]:
+            continue
+        hits.append(word)
+    for word in EMERGENCY_WORDS[language]:
+        if not re.search(r"\b" + re.escape(word) + r"\w*", lowered):
+            continue
+        if emergency_allowed:
+            continue
+        hits.append(f"{word} (an emergency word outside story.*)")
     for pattern, why in BANNED_PATTERNS:
         if re.search(pattern, text, re.IGNORECASE):
             hits.append(why)
@@ -277,7 +373,7 @@ def check_content(promo: Path, release: bool = False) -> tuple[list[str], list[s
                 empty += 1
                 continue
             words += len(value.split())
-            for hit in banned_hits(value, language):
+            for hit in story_hits(value, language, path):
                 errors.append(f"content: {language}.{path} contains «{hit}»")
 
     if release:
@@ -706,6 +802,66 @@ def selftest() -> int:
         resolve_internal(Path("."), Path("x.html"), "https://example.com") is True,
     )
 
+    # D-21(a): the kept sentences pass, the same words elsewhere fail.
+    kept_nb = "For meg handler prosjektet om å kombinere beredskap, ingeniørfag, bærekraftig bygging og sirkulærøkonomi."
+    kept_en = "It's about bringing together emergency preparedness, engineering, sustainable construction and the circular economy."
+    check(
+        "story: a kept sentence passes under story.*",
+        story_hits(kept_nb, "nb", "story.sections[1].paragraphs[1]") == []
+        and story_hits(kept_en, "en", "story.sections[1].paragraphs[1]") == [],
+        str(story_hits(kept_nb, "nb", "story.sections[1].paragraphs[1]")),
+    )
+    check(
+        "story: the same words fail outside story.*",
+        story_hits(kept_nb, "nb", "hero.lead") != [],
+    )
+    check(
+        "story: a paragraph that is not a kept sentence fails",
+        story_hits("Vi bygger bærekraftig.", "nb", "story.sections[0].paragraphs[0]") != [],
+    )
+    check(
+        "story: apostrophe variants still match the kept sentence",
+        story_hits("It’s about bringing together emergency preparedness, engineering, sustainable construction and the circular economy.", "en", "story.sections[1].paragraphs[1]") == [],
+    )
+
+    # D-21(b): emergency words only under story.*, never in the teaser.
+    check(
+        "story: an emergency word passes under story.*",
+        story_hits("De skal brukes som beredskapsboliger.", "nb", "story.sections[0].paragraphs[3]") == [],
+    )
+    check(
+        "story: an emergency word fails in story.teaser",
+        story_hits("Et lite hus for beredskap.", "nb", "story.teaser.body") != [],
+    )
+    check(
+        "story: an emergency word fails on the home page",
+        story_hits("Emergency housing.", "en", "hero.lead") != [],
+    )
+
+    # D-21(c): DESIGN.md and tokens.css must agree on the colours.
+    markdown = "a #ECEAE4 b #241A13"
+    css = ":root{--kalk:#eceae4;--tjaere:#241a13}"
+    in_markdown, in_css = design_token_sets(markdown, css)
+    check("design: matching colours produce no difference", in_markdown == in_css)
+    in_markdown, in_css = design_token_sets("a #ECEAE4 b #FFFFFF", css)
+    check(
+        "design: the extra colour on each side is caught",
+        in_markdown - in_css == {"#ffffff"} and in_css - in_markdown == {"#241a13"},
+        f"{in_markdown - in_css} / {in_css - in_markdown}",
+    )
+
+    # D-21(d): the story band's pair is present and computes 4.24.
+    pair = [entry for entry in PAIRS if entry[0] == "kalk" and entry[1] == "malmfuru"]
+    check(
+        "contrast: kalk on malmfuru is listed at 4.24",
+        bool(pair) and abs(pair[0][2] - 4.24) < 0.001,
+        str(pair),
+    )
+    check(
+        "contrast: kalk on malmfuru computes 4.24",
+        abs(contrast_ratio("#ECEAE4", "#9D5F30") - 4.24) < RATIO_TOLERANCE,
+    )
+
     print()
     if failures:
         print(f"selftest FAILED ({len(failures)})")
@@ -740,6 +896,7 @@ def main(argv: list[str]) -> int:
 
     for collected_errors, collected_notes in (
         check_tokens(args.promo),
+        check_design_parity(args.promo),
         check_content(args.promo, args.release),
         check_images(args.promo, args.release),
     ):

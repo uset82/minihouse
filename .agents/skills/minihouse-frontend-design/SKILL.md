@@ -12,7 +12,11 @@ Habilidad del rol [frontend-designer](../../agents/frontend-designer.md). Cárga
 La web principal es ahora promocional. Antes de diseñar, programar, escribir textos o generar imágenes para ella:
 
 1. Lee completa la [guía de diseño](../../../fase4/promo/DESIGN-GUIDE.md). Recoge el método de trabajo (adaptado de la habilidad `frontend-design` de Claude Code), los tokens exactos, los componentes, la lista de patrones prohibidos y la definición de terminado.
-2. Lee el [plan](../../../fase4/promo/PLAN.md) y el [reparto entre agentes](../../../fase4/promo/agents/README.md). Sigue el brief de tu cliente (Antigravity, Cursor o DeepSeek), que está en `fase4/promo/agents/`.
+   - El resumen en formato DESIGN.md (el estilo «/design») está en [web/promo/DESIGN.md](../../../web/promo/DESIGN.md).
+   - `/frontend-design:frontend-design` sólo existe en Claude Code. Fuera de él (Grok, DeepSeek), lee directamente el archivo de la habilidad que indica la guía.
+2. Lee el [plan](../../../fase4/promo/PLAN.md) y el [reparto entre agentes](../../../fase4/promo/agents/README.md). Están en `fase4/promo/agents/`:
+   - el brief de tu cliente (Antigravity, Cursor o DeepSeek);
+   - si te unes para una sola tarea (Grok, WorkBuddy), su archivo `task-*.md`.
 3. En cada sección: planifica los tokens y la maquetación, y compáralos con la lista de patrones prohibidos (§10 de la guía). Construye sólo con tokens y revisa capturas a 360 y 1280 px. Quita un adorno antes de darla por terminada.
 4. Edita sólo los archivos que te asigna tu brief y registra cada tarea en `fase4/promo/status/<agente>.md`.
 

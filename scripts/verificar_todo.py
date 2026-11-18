@@ -36,6 +36,8 @@ Ejecuta, en orden:
  32. detalle_encuentro.py --selftest (el detalle del encuentro, generado desde el solver)
  33. ytelsesoversikt.py --selftest (§2-2(4): las tres categorías y lo que queda fuera)
  34. tetthet_test.py --selftest (§14-3 medido: la especificación del ensayo de estanqueidad)
+ 35. bolted_lap_prototype.py --selftest (unión trenzada atornillada: malla, STEP y acceso a la llave)
+ 36. frame_model.py --selftest (marco 6 × 3 m a escala 1:40, canales U y travesaños)
 
 Uso:  python scripts/verificar_todo.py
 Sale con codigo 0 si todo pasa, 1 si algo falla. Pensado para CI local o para
@@ -152,6 +154,8 @@ def main():
     resultados.append(run("detalle del encuentro", [r"scripts\detalle_encuentro.py", "--selftest"]))
     resultados.append(run("ytelsesoversikt §2-2(4)", [r"scripts\ytelsesoversikt.py", "--selftest"]))
     resultados.append(run("tetthet §14-3 especificado", [r"scripts\tetthet_test.py", "--selftest"]))
+    resultados.append(run("prototipo unión atornillada", [r"scripts\bolted_lap_prototype.py", "--selftest"]))
+    resultados.append(run("modelo del marco 6x3 a escala", [r"scripts\frame_model.py", "--selftest"]))
     print("=" * 40)
     if all(resultados):
         print("SUITE COMPLETA: TODO PASA")

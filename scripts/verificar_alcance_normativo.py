@@ -517,6 +517,50 @@ def main():
     require("fase1/declaracion-de-margenes.md", "The rule is about evidence, not about analysis")
     require("fase1/registro-decisiones.md", "## AG.")
 
+    # Prototipo de la unión trenzada atornillada. Dos hechos que un modelo rígido
+    # esconde: el trenzado cerrado es un ciclo sin orden de montaje, y la prueba
+    # impresa valida montaje y acceso a la llave — no resistencia ni norma.
+    require(
+        "fase1/prototipo-union-atornillada-R0.md",
+        "CONCEPTUAL — NOT FOR FABRICATION",
+        "assembly sequence and tool access only",
+        "no strength claim",
+        "no rigid assembly order",
+        "1 → 2 → 3 → 4 → 1",
+        "Ply **4**",
+        "53.0 mm",
+        "EN 1993-1-8",
+        "NS-EN 1090-2",
+        "re-opens the insulated-junction detail",
+    )
+    require("knowledge/comparisons/bolted-lap-prototype.json",
+            '"status": "CONCEPTUAL — NOT FOR FABRICATION"',
+            '"threaded_ply": 4',
+            '"min_wrench_spare_mm": 53.0')
+    require("fase1/registro-decisiones.md", "## AH.")
+    require("scripts/verificar_todo.py", "35. bolted_lap_prototype.py --selftest")
+
+    # Modelo del marco: el croquis es el marco de 6 × 3 m, no sólo la unión. La
+    # guarda impide que el modelo a escala se lea como sección de acero definida.
+    require(
+        "fase1/modelo-marco-R0.md",
+        "CONCEPTUAL — NOT FOR FABRICATION",
+        "frame layout and channel geometry only",
+        "no strength claim",
+        "**1:40**",
+        "not to scale",
+        "**sandwich wall**",
+        "1 → 2 → 3 → 4 → 1",
+        "EN 1993-1-8",
+        "thermal bridge",
+    )
+    require("knowledge/comparisons/frame-model.json",
+            '"real_mm": [6000.0, 3000.0]',
+            '"model_mm": [150.0, 75.0]',
+            '"clear_slot_mm": 5.6')
+    require("fase1/registro-decisiones.md", "## AI.")
+    require("scripts/verificar_todo.py", "36. frame_model.py --selftest")
+
 
     # Condensación del encuentro: §14-3 y §13-13 no cubren la temperatura del acero.
     # La fórmula de f_Rsi se puede invertir por error (0,236 vs 0,765): el autotest

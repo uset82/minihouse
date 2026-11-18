@@ -10,12 +10,14 @@
 |---|---|---|---|
 | `/` | nb (`<html lang="nb">`) | the landing page | built |
 | `/en/` | en (`<html lang="en">`) | the same page, mirrored | built |
+| `/historien/` | nb | Carlos's story, «Hvordan ideen oppstod» | built 2026-11-18 |
+| `/en/historien/` | en | the same story in his English | built 2026-11-18 |
 | `/personvern`, `/en/privacy` | nb / en | privacy page, linked from the form and the footer | text blocked on D6 and the contact address |
 | `/404` | nb + en | not found, with a link home | built (check that Canner returns a real 404) |
 | `/sitemap.xml`, `/robots.txt` | – | both languages | built |
-| `hreflang` | – | `nb` ↔ `en` pairs, `x-default` = `/` | built |
+| `hreflang` | – | `nb` ↔ `en` pairs, `x-default` = `/`; the story twin is `/historien` ↔ `/en/historien` | built |
 
-External links appear only in the footer: the documentation site ([K-28](claims-register.csv)) and, once it's live, the lab.
+External links: the footer (the documentation site, [K-28](claims-register.csv), and the lab once live) and **the story page's project reference** ([K-37](claims-register.csv)) — nowhere else on the site.
 
 ---
 
@@ -50,13 +52,17 @@ External links appear only in the footer: the documentation site ([K-28](claims-
 
 The room list (`living.rooms[]`) is no longer shown: the lead sentence already names the rooms (DESIGN-GUIDE §6.8). The keys can stay in the content files until DeepSeek removes them.
 
+**The home page's story section** (2026-11-18): right after «Gammelt tre, nytt hus», a kalk band with a sølvgrå hairline, the h2 «Hvordan ideen oppstod», one or two sentences of `story.teaser.body`, and the copper link «Les historien» to `/historien/` (`/en/historien/` in English). No picture, no band colour, and no emergency word (D11).
+
+**The story page** (DESIGN-GUIDE §6.16, `/historien/` and `/en/historien/`): kalk opening (h1, «Av Carlos», lead, three intro paragraphs, the reference line and its external link, four noticed sentences); a full-bleed malmfuru band with the question and the follow-up; then kalk with «Det var slik ideen om MiniHouse oppstod.», the three sections (the first beside `exploded`), `hero-slope` with «Konseptbilde», the closing, the four-line motto and «Se huset»; then the footer.
+
 ---
 
 ## 3 · Navigation
 
 | Slot | Labels | Source |
 |---|---|---|
-| Primary, desktop | Huset (→ `#bilder`), Materialer, Flytting, Spørsmål | page map |
+| Primary, desktop | Huset (→ `#bilder`), Materialer, Flytting, Spørsmål, Historien (→ `/historien/`) | page map |
 | Primary, mobile | same, in a «Meny» sheet | DESIGN-GUIDE §6.2 |
 | Header action | «Følg prosjektet» (until D6, the preview's action is «Se huset») | D1 |
 | Language | «English» / «Norsk» | D3 |
@@ -71,7 +77,8 @@ Cursor owns `web/promo/src/content/schema.ts`, which is the source of truth for 
 | Key group | Section | Notes |
 |---|---|---|
 | `meta.*` | head | title, description, OG alt text |
-| `nav.*` | header | `skip`, `menu`, `close`, `language`, `cta` |
+| `nav.*` | header | `skip`, `house`, `materials`, `moving`, `questions`, `story`, `cta`, `menu`, `close`, `language` |
+| `story.*` | the story page and its home teaser | `meta`, `title`, `byline`, `lead`, `intro[]`, `reference`, `noticed[]`, `question`, `questionFollow`, `origin`, `sections[]` (3), `closing`, `motto[]` (4), `cta`, `teaser`; the words are Carlos's ([copy-story.md](copy-story.md)) and the claims are K-36 to K-44 |
 | `hero.*` | 1 | `title`, `lead`, `cta`, `gallery`, `caption` |
 | `facts.items[]` | 2 | five `{ label, value }` pairs |
 | `gallery.*` | 3 | `title`, `count`, `prev`, `next`, `close` |

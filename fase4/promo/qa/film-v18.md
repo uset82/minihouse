@@ -2,7 +2,7 @@
 
 Task D-14 to D-17 ([task-film-v18.md](../agents/task-film-v18.md)). 2026-11-18. Master: `images/minihouse_walkthrough_v18_4k.mp4`. Cuts: made by WorkBuddy in W-2.
 
-**State: D-14 done.** WorkBuddy's W-2 entry confirms the four cuts; the master and every output are measured (§1–§2). The crops and any shot change still need W-3's eyes. Everything here is read-only; nothing was re-encoded.
+**State: D-14 to D-17 done.** Master and four cuts measured (§1–§2); words and claims closed (§4); the live preview checked (§4). Everything here is read-only; nothing was re-encoded.
 
 Tools: ffprobe/ffmpeg 8.0.1 (Gyan build, `C:\Users\carlos\AppData\Local\Microsoft\WinGet\Packages\Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe\ffmpeg-8.0.1-full_build\bin`). No ffprobe on `PATH` in this session; the full path above is used in every command.
 
@@ -81,13 +81,45 @@ Already run on two files as a method check:
 | `fase4/promo/archive/film-v11/house-film.mp4` (the v11 cut) | `ftyp`, `moov`, `free`, `mdat` | fast start |
 | `web/promo/public/film/house-film-1920.mp4` (new, mid-W-2) | `ftyp`, `moov`, `free`, `mdat` | fast start |
 
-## 4 · D-15, D-16, D-17 — not started
+## 4 · D-15, D-16, D-17
 
-- **D-15** (words and claims): waits for W-3. If WorkBuddy reports that a shot's content changed from v11 to v18, `film.alt`, `film.livingAlt` and `film.bathAlt` are rewritten from that description in both languages. The K-35 source line moves to the 4K master in the same step.
-- **D-16** (weight): after W-5, with the preview WorkBuddy starts on 4322.
-- **D-17** (live check): after W-6, against https://minihouse-preview.canner.app.
+### D-15 · words and claims · done
 
-## 5 · Requests to WorkBuddy
+WorkBuddy's W-7 states it plainly: **no shot changed** from v11 to v18, and the two crops keep their subject. So `film.alt`, `film.livingAlt` and `film.bathAlt` stay exactly as they are in both languages, and K-35 now cites the 4K master with the four cuts named (that edit landed at 20:58). The caption remains «Konseptfilm»: the film is still a rendered concept, never a recording of a built house.
 
-1. W-2 is confirmed: all four sizes fit and no audio is present. Because the hero needed CRF 33 and the living loop CRF 32, W-3 should say whether any banding or blockiness shows in the hillside sky, the timber cladding or the copper mirror.
-2. In W-3, confirm the living 3:2 crop and the bath 4:5 crop keep their subject, and state explicitly whether any of the five shots changed content from v11 to v18. That answer decides whether I touch the alt texts (my rule: no visual judgement of my own).
+The CRF-33 hero and CRF-32 living loop were checked at full size by WorkBuddy, who can see pictures: no visible banding in the sky, the cladding, the wall or the copper. That closes the one quality question my tools could not answer.
+
+### D-16 · weight · done
+
+Full table in [perf.md](perf.md). Against the 4322 preview, Lighthouse 13.6.0:
+
+| | Phone (412) | Desktop (1350) |
+|---|---:|---:|
+| Performance | 100 | 100 |
+| LCP | 1.7 s | 0.4 s |
+| Largest paint | poster `img.film-still` | poster `img.film-still` |
+| Film bytes | **2.29 MB** (720p) | **5.84 MB** (1080p hero 3.76 + both loops) |
+| Films start after `load` | yes, 746 ms vs 712 ms | yes, 486 ms vs 391 ms |
+
+The page paints the poster first, and no film request begins before the `load` event. The desktop figure is larger than the hero's 4.5 MB budget because both loops also enter its load window; the hero file itself is 3.76 MB and every film is lazy, so LCP is untouched.
+
+Raw reports: `qa/reports/lighthouse-story-mobile.json`, `lighthouse-story-desktop.json`.
+
+### D-17 · live check of the preview · done
+
+Against <https://minihouse-preview.canner.app>, 2026-11-18 23:05, `curl` 8.x:
+
+| Check | Result |
+|---|---|
+| `/` and `/en/` | 200 `text/html; charset=utf-8` |
+| `house-film-1920.mp4`, `house-film.mp4`, `living-loop.mp4`, `bath-loop.mp4` with `-r 0-1` | **206 Partial Content**, `video/mp4`, 2 bytes |
+| `/.env.production`, `/package.json`, `/serve.mjs` | **404** |
+| `python scripts/check_promo.py --dist web/promo/.bundle` | **all checks passed**, 5 pages, 19 images per page, both `lang` values correct, one `h1` per page |
+
+The uploaded bundle on the server is the one checked: `.bundle` holds the built pages and the four films, and its byte counts match the deployed requests. Nothing else was deployed, and no `canner redeploy` was run.
+
+## 5 · Requests to WorkBuddy — closed
+
+1. W-2 confirmed; W-3 answered the banding question at full size (no visible artefacts).
+2. W-3 confirmed no shot changed and both crops keep their subject; the alt texts therefore stand.
+
