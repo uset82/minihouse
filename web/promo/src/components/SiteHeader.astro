@@ -17,7 +17,7 @@ const otherLang = lang === 'en' ? 'nb' : 'en';
 const otherHref = localePaths(path)[otherLang];
 const navLabel = lang === 'en' ? 'Main' : 'Hovedmeny';
 const links = [
-  { href: `${sectionBase}#bygget`, hash: '#bygget', label: content.nav.house },
+  { href: `${sectionBase}#bilder`, hash: '#bilder', label: content.nav.house },
   { href: `${sectionBase}#materialer`, hash: '#materialer', label: content.nav.materials },
   { href: `${sectionBase}#flytting`, hash: '#flytting', label: content.nav.moving },
   { href: `${sectionBase}#sporsmal`, hash: '#sporsmal', label: content.nav.questions },
@@ -75,8 +75,9 @@ const links = [
   menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => menu.close()));
 
   const syncCurrent = () => {
+    // On the home page, mark the menu link whose section is in the address; at the top, none.
     const home = document.getElementById('bygget');
-    const active = home ? location.hash || '#bygget' : '';
+    const active = home ? location.hash : '';
     document.querySelectorAll<HTMLAnchorElement>('[data-nav-hash]').forEach((link) => {
       if (link.dataset.navHash === active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');

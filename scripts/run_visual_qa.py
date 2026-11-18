@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-OUT_DIR = Path("fase4/promo/05-test/screens/qa")
+OUT_DIR = Path("fase4/promo/qa/screens/qa")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 BASE_URL = "http://127.0.0.1:4322"

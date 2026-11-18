@@ -1,19 +1,42 @@
 ---
 import type { Content } from '../content/schema';
+import { getFilm } from '../content/films';
 import Figure from './Figure.astro';
+import Film from './Film.astro';
 
 interface Props {
   content: Content;
   lang: 'nb' | 'en';
 }
 
+/*
+ * The first screen: the title on kalk, and Carlos's concept film of the house, playing by
+ * itself without sound (DESIGN-GUIDE §6.15). Without the film media on this machine, the
+ * hero falls back to the still photo.
+ */
 const { content, lang } = Astro.props;
+const hasFilm = getFilm('house') !== undefined;
 ---
 
 <section class="hero" id="bygget" aria-labelledby="hero-title">
   <div class="wrap hero-grid">
     <h1 id="hero-title">{content.hero.title}</h1>
-    <Figure imageId="hero-slope" lang={lang} class="hero-figure" ratio="hero" />
+    {
+      hasFilm ? (
+        <Film
+          id="house"
+          class="hero-figure"
+          label={content.film.alt}
+          caption={content.film.caption}
+          play={content.film.play}
+          pause={content.film.pause}
+          sizes="(min-width: 1024px) 56vw, 100vw"
+          priority
+        />
+      ) : (
+        <Figure imageId="hero-slope" lang={lang} class="hero-figure" ratio="hero" />
+      )
+    }
     <p class="lead">{content.hero.lead}</p>
     <p class="actions">
       <a class="button" href="#bilder">{content.hero.gallery}</a>

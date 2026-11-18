@@ -1,0 +1,68 @@
+---
+import { Picture } from 'astro:assets';
+import { getFilm, type FilmId } from '../content/films';
+
+interface Props {
+  id: FilmId;
+  /** What the film shows; it becomes the still frame's alt text. */
+  label: string;
+  caption: string;
+  play: string;
+  pause: string;
+  class?: string;
+  sizes: string;
+  /** The hero's still frame is the page's first big paint. */
+  priority?: boolean;
+}
+
+/*
+ * The concept film (DESIGN-GUIDE §6.15). The still frame is a normal responsive picture that
+ * carries the alt text; the silent video lies on top of it and is hidden from screen readers.
+ * The «Pause filmen» / «Spill av filmen» button sits in the caption row, never on the picture,
+ * and controls every film on the page (src/scripts/film.ts).
+ */
+const { id, label, caption, play, pause, class: className, sizes, priority = false } = Astro.props;
+const film = getFilm(id);
+const widths = film
+  ? Array.from(new Set([480, 960, 1280].map((width) => Math.min(width, film.posterImage.width))))
+  : [];
+---
+
+{film && (
+  <figure class:list={['film', className]}>
+    <div class="film-frame" style={`--film-ar: ${film.width} / ${film.height}`}>
+      <Picture
+        src={film.posterImage}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpeg"
+        widths={widths}
+        sizes={sizes}
+        alt={label}
+        class="film-still"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchpriority={priority ? 'high' : undefined}
+        decoding="async"
+      />
+      <video
+        class="film-video"
+        muted
+        playsinline
+        loop
+        preload="none"
+        width={film.width}
+        height={film.height}
+        data-film-src={film.src}
+        aria-hidden="true"
+        tabindex="-1"
+      ></video>
+    </div>
+    <figcaption class="film-caption">
+      <span>{caption}</span>
+      <button type="button" class="film-toggle" data-film-toggle data-play={play} data-pause={pause}>{play}</button>
+    </figcaption>
+  </figure>
+)}
+
+<script>
+  import '../scripts/film';
+</script>

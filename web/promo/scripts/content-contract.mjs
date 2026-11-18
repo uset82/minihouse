@@ -50,6 +50,7 @@ export const contentShape = {
     lead: '',
     rooms: [{ id: '', title: '', body: '' }],
   },
+  film: { caption: '', play: '', pause: '', alt: '', livingAlt: '', bathAlt: '' },
   journey: { title: '', steps: [{ title: '', body: '' }] },
   status: { title: '', body: '', phases: [{ name: '', state: '' }] },
   faq: { title: '', items: [{ q: '', a: '' }] },

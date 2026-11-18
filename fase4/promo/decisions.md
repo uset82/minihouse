@@ -2,7 +2,7 @@
 
 **Owner: Carlos.** Write your answer in the "Answer" column. Writing "OK" accepts the recommendation. You can also tell any agent your answer: it adds your words here with the date, after re-reading this file. The agents read this file before every task.
 
-## Decisions D1–D13
+## Decisions D1–D14
 
 | ID | Question | Recommended | Answer | Date |
 |---|---|---|---|---|
@@ -19,6 +19,7 @@
 | D12 | Hero title | «Et lite hus, laget for å flyttes.» (says the moving goal as intent, and echoes Carlos's mockup «Diseñada para moverse») | **«Et lite hus, laget for å flyttes.»** English: "A small house, made to be moved." | 2026-11-17 |
 | D11 | Is it presented as an emergency cabin? | – | **No.** It is shown as a minihouse, like other minihouses. The emergency-cabin use and its persona are not on the site. | 2026-11-17 |
 | D13 | What should the team deliver now? | – | **A working landing page that shows the MiniHouse concept.** Show the exterior, living space and materials in Bokmål and English. Use copper, natural heartwood pine and European oak as the visual direction. The design-thinking coursework belongs to a separate project. | 2026-11-17 |
+| D14 | Does the site work follow a design-thinking process? | – | **No.** "Design thinking process" was Carlos's separate course, not part of MiniHouse. There are no interviews, personas, card sorts, preference or usability tests, style-tile rounds or brief gate (G2). The team builds the site, modern and funky, in the look chosen at G3. Accessibility, performance and visual checks stay, because they are quality checks. The old research and ideation files are in `archive/design-thinking/`: don't use them. | 2026-11-18 |
 
 ## Canonical house questions (PLAN §2.2)
 
@@ -40,9 +41,9 @@ Accepting the defaults above approves none of these. Each one still needs its ow
 |---|---|---|---|---|
 | Hotfix | Cursor's C-1 deploy, which removes the container renders from the live site | Yes | 2026-11-17 | Upload `5c9f96bf` is live. The JPEG is gone. The URL returns the SPA HTML shell with status 200, not 404. |
 | Holding page | Replace the engineering app at minihouse.canner.app with a text-only holding page until G5. The app stays offline until its false figures are fixed (`agents/task-holding-page.md`). | Yes | 2026-11-17 | Covers building and deploying the holding page only. The lab's later move to minihouse-lab still needs its own yes. |
-| G1 | Stage 0 done: canonical house and claims register | Yes | 2026-11-17 | `canonical-house.md` (A-1, redone) and `02-define/claims-register.csv` (D-1), both reviewed by Claude Code. The open follow-ups don't block it: CR-13 to CR-15 for Antigravity, and K-06, K-08 and K-27 for DeepSeek. |
-| G2 | The brief: audience, pages, content, media, languages, call to action, price display | | | |
-| G3 | Design direction: A Patina / B Hytte '74 / C Stavkirke | | | |
+| G1 | Stage 0 done: canonical house and claims register | Yes | 2026-11-17 | `canonical-house.md` (A-1, redone) and `content/claims-register.csv` (D-1), both reviewed by Claude Code. The open follow-ups don't block it: CR-13 to CR-15 for Antigravity, and K-06, K-08 and K-27 for DeepSeek. |
+| G2 | The brief: audience, pages, content, media, languages, call to action, price display | Cancelled | 2026-11-18 | Cancelled by D14. D1–D14 already settle the audience, pages, languages and call to action. The first Fase 4 box in PROJECT.md (audience, pages, content and media) now closes at G4. |
+| G3 | Design direction | Yes | 2026-11-18 | **«Patina, made funkier»**, chosen by Carlos in Claude Code. Keep the light Patina site that's built (kalk ground, tjære text, copper actions, malmfuru and eik) and add four funk moves: the wavy copper mirror frame, a bold irr band, giant wood-type numerals on the journey and, once D6 is decided, a copper follow band. Specs: DESIGN-GUIDE R2. Built example: `reference/`. This replaces Antigravity's Stavkirke entry in the log. |
 | G4 | Content and images, approved for publication | | | |
 | G5 | Launch | | | |
 | Git | Commit and push the branch `web/promo-r1` | | | |
@@ -62,3 +63,6 @@ Agents add one line per answer: date, agent, Carlos's words in quotes.
 - 2026-11-17 · Codex · Carlos wrote «we are focusing in creating the UX the main site landing page to show the concept of the minihouse» and identified “design thinking process” as his separate course. D13 supersedes the interview, card-sort and coursework prerequisites for this landing-page preview in the original [plan](PLAN.md). D5, D6 and the publication decisions retain their own scope.
 
   **Preview implementation.** The copper action «Se huset» / “Explore the house” opens the gallery. While D6 is open, the preview offers house and material navigation on mobile and desktop. D1's «Følg prosjektet» belongs to the working subscription form once its recipient and service are configured. Use this distinction when reviewing the hero, footer and mobile controls.
+- ~~2026-11-18 · Antigravity · Carlos chose Gate G3 design direction: **Direction C: Stavkirke** (tar-black dramatic ground `#171412`, high-contrast pergament text `#EDE6DC`, Cinzel display typography, copper accents `#CA6B35`). Next focus: review and refine specific concept images in `web/promo/src/assets/images/`.~~ **Superseded on 2026-11-18:** Carlos chose «Patina, made funkier» in Claude Code (next lines). Direction C is not used.
+- 2026-11-18 · Claude Code · Carlos, on the Patina reference in `reference/` (hero, key facts, material passport, footer): «Looks right».
+- 2026-11-18 · Claude Code · Carlos: «limpia esos errores y ese plan que hable sobre design thinking process. we need to focus in createing this website modern and funky». Recorded as D14. Asked how to make it funky, he chose «Patina, made funkier», recorded at G3. He chose to archive the design-thinking files, not delete them. G2 is cancelled.

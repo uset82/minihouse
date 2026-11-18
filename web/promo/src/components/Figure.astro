@@ -8,7 +8,7 @@ interface Props {
   imageId: ImageId;
   lang: 'nb' | 'en';
   class?: string;
-  ratio: 'hero' | 'texture' | 'wide' | 'room' | 'tile' | 'journey';
+  ratio: 'hero' | 'texture' | 'wide' | 'room' | 'tile' | 'step';
   plain?: boolean;
 }
 
@@ -19,15 +19,14 @@ const load = image?.file ? masters[`../assets/images/${image.file}`] : undefined
 const source = load ? (await load()).default : undefined;
 const sizes = {
   hero: '(min-width: 1024px) 56vw, 100vw',
-  wide: '(min-width: 1280px) 1200px, 100vw',
-  tile: '(min-width: 1280px) 480px, (min-width: 768px) 36vw, 82vw',
+  wide: '(min-width: 1280px) 800px, (min-width: 1024px) 62vw, 100vw',
+  tile: '(min-width: 1280px) 520px, (min-width: 768px) 40vw, 80vw',
   room: '(min-width: 1280px) 560px, (min-width: 768px) 47vw, 96vw',
-  texture: '(min-width: 1280px) 350px, (min-width: 768px) 29vw, 60vw',
-  journey: `(min-width: 768px) min(${source?.width ?? 0}px, 30vw), min(${source?.width ?? 0}px, 34vw)`,
+  texture: '(min-width: 1280px) 380px, (min-width: 768px) 33vw, 60vw',
+  step: '(min-width: 1280px) 380px, (min-width: 768px) 31vw, 100vw',
 };
-const targetWidths = ratio === 'journey' ? [160, 320, 480, 960, 1600] : [480, 960, 1600, 2400];
 const widths = source
-  ? Array.from(new Set(targetWidths.map((width) => Math.min(width, source.width))))
+  ? Array.from(new Set([480, 960, 1600, 2400].map((width) => Math.min(width, source.width))))
   : [];
 const priority = ratio === 'hero';
 const Wrapper = plain ? 'span' : 'figure';
@@ -35,7 +34,7 @@ const Caption = plain ? 'span' : 'figcaption';
 ---
 
 {image && source && image.alt[lang] && image.alt[lang] !== 'TODO' && (
-  <Wrapper class={className} style={ratio === 'journey' ? { maxInlineSize: `min(100%, ${source.width}px)`, "--photo-ratio": source.width / source.height } : undefined}>
+  <Wrapper class={className}>
     <Picture
       src={source}
       formats={['avif', 'webp']}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "house",
+    "file": "house-film.mp4",
+    "poster": "house-film.jpg",
+    "width": 1280,
+    "height": 720,
+    "status": "pending",
+    "source": "images/minihouse_walkthrough_v11.mp4 (the 17.02 s version of 2026-11-18 07:12), the whole film with a 0.5 s crossfade at the loop; cut by scripts/cut_film.py"
+  },
+  {
+    "id": "living",
+    "file": "living-loop.mp4",
+    "poster": "living-loop.jpg",
+    "width": 960,
+    "height": 640,
+    "status": "pending",
+    "source": "images/minihouse_walkthrough_v11.mp4 shot 2 (4.10-6.95 s), cropped 3:2 at the centre, forward and back; cut by scripts/cut_film.py"
+  },
+  {
+    "id": "bath",
+    "file": "bath-loop.mp4",
+    "poster": "bath-loop.jpg",
+    "width": 720,
+    "height": 900,
+    "status": "pending",
+    "source": "images/minihouse_walkthrough_v11.mp4 shot 4 (10.60-14.10 s), cropped 4:5 at 45 % across, forward and back; cut by scripts/cut_film.py"
+  }
+]

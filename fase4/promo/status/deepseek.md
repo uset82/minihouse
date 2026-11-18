@@ -8,23 +8,37 @@ Open requests go here, one line each, for example "→ Antigravity: …". Mark t
 
 - → Carlos: D6 will determine the recipient and service for the future subscription. The current preview and privacy routes are working. K-29 stays open if contact details are to be added later.
 - → Carlos: the 15–20 reference images for the taste question (kit §1.5) and the photos of the real boards (including end grain) — those are the strongest proof for the material passport.
-- → Antigravity: the 5-second test and the preference test scripts for the G3 pack are in [kit.md §5](../01-empathize/kit.md). Use them verbatim so the results stay comparable across the three directions.
-- → Cursor: for the usability round ([kit.md §6](../01-empathize/kit.md)), start the preview with `npm run preview -- --port 4322 --host` and tell me the LAN address it prints, so Carlos's phone can open it on the same Wi-Fi. A preview deploy only if Carlos approves it.
+- → Antigravity: the 5-second test and the preference test scripts for the G3 pack are in [kit.md §5](../archive/design-thinking/01-empathize/kit.md). Use them verbatim so the results stay comparable across the three directions.
+- → Cursor: for the usability round ([kit.md §6](../archive/design-thinking/01-empathize/kit.md)), start the preview with `npm run preview -- --port 4322 --host` and tell me the LAN address it prints, so Carlos's phone can open it on the same Wi-Fi. A preview deploy only if Carlos approves it.
 - → Cursor: `nb.json` and `en.json` are filled and the contract check passes. Please run `npm run check` and `npm run build`, then `python scripts/check_promo.py --dist web/promo/dist`. The only expected failures are the 19 image alt texts Antigravity still owes.
 - → Cursor: D-7 findings, all in `web/promo/**` (yours): (1) the five figcaptions on the irr band are 1.04:1 — set captions inside `.band--irr` to `--kalk` per DESIGN-GUIDE §6.8; (2) `favicon.ico` 404s; (3) `/personvern/` and `/en/personvern/` do not resolve; (4) the EN page fails Lighthouse's `hreflang` audit. After the fix, rebuild and tell me, and I re-run axe and Lighthouse.
 - → Cursor and Carlos: closed for this preview. D13 uses the gallery action. D1 applies to the future subscription once D6 is resolved. Both privacy routes describe the current browsing experience.
 - → Carlos (or Cursor): run a Patentstyret search for «MiniHouse» before G5 and record the result in `05-test/claims-audit.md` §5; the Brønnøysund check returned 0 hits.
 - → Cursor: the follow-form schema change is closed on both sides — `schema.ts` holds only `fields { email, name, optional }` and both JSON files match (2026-11-17 22:26). No action.
 - → Antigravity: `scripts/check_promo.py` is the gate for image alt/caption text and for `--release`; when the 19 entries have their alts in both languages, the release check has one class of failure left (no image may be `stand-in` or `pending`).
-- → Cursor: the claims register is live at [02-define/claims-register.csv](../02-define/claims-register.csv). `schema.ts` may need one key I expect to use: a per-image `alt`/`caption` pair already exists, so no change is requested yet. If the copy needs a claims note in the UI, I'll ask before touching `nb.json`.
+- → Cursor: the claims register is live at [02-define/claims-register.csv](../content/claims-register.csv). `schema.ts` may need one key I expect to use: a per-image `alt`/`caption` pair already exists, so no change is requested yet. If the copy needs a claims note in the UI, I'll ask before touching `nb.json`.
 
 ## Log
+
+### 2026-11-18 00:20 · Carlos's Drive folder checked against the local media · done
+Files: `fase4/promo/05-test/asset-check.md` (new). Nothing committed to git; no media added to the repo.
+Plan (DESIGN-GUIDE §1, step 2): no UI. Carlos shared the media folder, so I verified it instead of assuming it was new material.
+Evidence:
+- **All 16 entries downloaded and hashed** (15 PNG + the walkthrough MP4). Every SHA-256 matches the file already in `images/` on this PC: **16 identical, 0 missing, 0 different**. The folder is the same set, not a new render round.
+- **They are too small for the plan's own bar.** The largest width is **1536 px**; the hero needs **2400** and section images **1600** (PLAN §2.4, DESIGN-GUIDE §7). The four bathroom renders are 1122 × 1402, exactly the "fine for gallery tiles, soft in a full-screen lightbox" note already in `bildeliste.csv`.
+- **The shot list still stands:** only the four `bath-*` ids exist; the other 15 ids (hero, meadow, exploded, living, kitchen, bench, storage, three journey shots, four textures, og-image) are to produce at size. D5's render round is still the unblocker.
+- **Video:** 31.3 MB, and nothing in the plan puts video on the page. Asked Carlos to confirm whether it is meant to be used.
+- I did not judge any picture: bytes and pixels only. Fidelity, gallery choice and crops remain Antigravity's review with Carlos.
+Checks: downloads verified by magic bytes and hash; temp files removed; nothing staged (working tree clean apart from the new doc).
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [x] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER: → Carlos: the folder is the reference set, not the production set; the hero and section renders still need to be made at ≥ 2400 / ≥ 1600 px. → Antigravity: references are in `images/` and at the Drive link; `asset-check.md` lists the pixels.
+Next: the D-9 built-page re-run after Cursor's rebuild; the render round is the long pole.
 
 ### 2026-11-17 23:41 · Workshop-to-plot review
 
 Antigravity confirmed that the enlarged workshop illustration still depicts the fabrication hall, the second image the truck and the third the house at rest. Updated the three descriptions in the two languages and their copy decks. K-05 identifies transport as an intention, and K-27 supports checking the route first.
 
-Checked the new local static build from 23:39:29. Both homepages served the matching workshop image and all six final descriptions. Both homepages and both privacy pages returned HTTP 200 and contained zero forms or links to a subscription. The [axe run](../05-test/reports/axe-landing.txt) found zero automated violations on either landing page.
+Checked the new local static build from 23:39:29. Both homepages served the matching workshop image and all six final descriptions. Both homepages and both privacy pages returned HTTP 200 and contained zero forms or links to a subscription. The [axe run](../qa/reports/axe-landing.txt) found zero automated violations on either landing page.
 
 The built-page link checker now looks for real identifiers or named anchors in the destination HTML page. A missing in-page target and a missing cross-page target both fail the fixture. Existing fragments, URL-encoded Norwegian text, named anchors and ordinary links pass. All 36 self-tests and all five built pages passed.
 
@@ -47,7 +61,7 @@ Next: the built-page re-run of D-9 after the rebuild; D-7 manual half is with An
 
 The running static preview serves the new Bokmål and English copy and 18 responsive pictures on each homepage. Its privacy routes returned 200. Both landings and the two privacy pages were checked for visible email invitations and for coursework text. The image checker now verifies each URL in responsive image sets and has two regression checks.
 
-[axe](../05-test/a11y.md) reported zero violations on either homepage. [Mobile Lighthouse](../05-test/perf.md) scored 100 in both languages, with LCP 1.38 s / 1.83 s and CLS 0 / 0.00005. The [current claims audit](../05-test/claims-audit.md) records the rendered subscription state and the intended interior materials. Checked all 27 verifier self-tests.
+[axe](../qa/a11y.md) reported zero violations on either homepage. [Mobile Lighthouse](../qa/perf.md) scored 100 in both languages, with LCP 1.38 s / 1.83 s and CLS 0 / 0.00005. The [current claims audit](../qa/claims-audit.md) records the rendered subscription state and the intended interior materials. Checked all 27 verifier self-tests.
 
 
 

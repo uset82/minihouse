@@ -1,76 +1,74 @@
-# Brief · Antigravity · Images, visual design and visual review
+# Brief · Antigravity · Images and visual QA
 
-Revision R1, 2026-11-17. You are one of three agents building the MiniHouse promo website at the same time. Cursor writes the code. DeepSeek writes the words and runs the checks. **You own everything people see that isn't code:** the house in every picture, the style tiles, the wireframes, and the screenshot reviews that decide whether a section is nice enough to ship.
+Revision R2, 2026-11-18. You own everything people see that isn't code: the house in every picture, the alt text, and the screenshot reviews that decide whether a section is good enough to ship. Cursor writes the code, and DeepSeek writes the words and runs the checks.
 
-You were chosen for this lane because you can generate images, drive a browser and see screenshots.
+**Two corrections first.**
 
-**One warning first.** Your earlier renders showed a flat-roofed steel container on stilts. That isn't Carlos's house, and one of those pictures is still live with false claims baked into it. Don't create or reuse anything like it. Every image must match the canonical house and pass the checklist in [PLAN.md §2](../PLAN.md).
+- There is no design-thinking process (D14). The market scan, moodboard, style tiles, crazy 8s, wireframes and test pack are archived in `archive/design-thinking/`. Don't extend them or make new ones.
+- The look is «Patina, made funkier» (G3), not Stavkirke. Your log entry of 2026-11-18 about direction C is marked superseded in `decisions.md`. Review against DESIGN-GUIDE R2 and the reference in `reference/`.
+
+Every image must match the canonical house in [PLAN.md §2](../PLAN.md). Never use the flat-roofed container renders.
 
 ## Read first, in this order
 
 1. `AGENTS.md`, `rules.md`
-2. [PLAN.md](../PLAN.md), the whole plan, especially §2 (canonical house), §8 (visual system) and §12 (claims)
-3. [DESIGN-GUIDE.md](../DESIGN-GUIDE.md), **all of it**. You enforce it.
-4. [agents/README.md](README.md), for ownership, contracts and protocol
-5. `fase4/promo/status/cursor.md`, `status/deepseek.md` and `decisions.md`
-6. The 10 images in `images/`. Look at every one.
+2. [PLAN.md](../PLAN.md) R2, especially §2 (the house) and §7 (images)
+3. [DESIGN-GUIDE.md](../DESIGN-GUIDE.md) R2, **all of it**. You enforce it.
+4. The reference: open [reference/index.html](../reference/index.html)
+5. [agents/README.md](README.md): ownership, contracts and protocol
+6. `status/cursor.md`, `status/deepseek.md` and [decisions.md](../decisions.md)
 
 ## You own
 
-- `fase4/promo/canonical-house.md`, `bildeliste.csv`, `assets-source/**`
-- `fase4/promo/01-empathize/market-scan.md`
-- `fase4/promo/03-ideate/**`, except `card-sort.md`
-- `fase4/promo/review/visual-review.md`, `fase4/promo/05-test/screens/**`
-- `fase4/promo/finn-kit/images/**`
-- `web/promo/src/assets/images/**` and `web/promo/src/content/images.json`, **after** Cursor writes "HANDOVER images"
+- `fase4/promo/canonical-house.md`, `shot-list.md`, `bildeliste.csv`, `assets-source/**`
+- `fase4/promo/review/visual-review.md`, `fase4/promo/qa/screens/**`
+- `scripts/run_visual_qa.py` and `scripts/test_dialog_sticky.py`. On 2026-11-18, Claude Code changed their output folder from `05-test/screens/qa` to `qa/screens/qa`, and nothing else.
+- `web/promo/src/assets/images/**` and `web/promo/src/content/images.json`
 - `fase4/promo/status/antigravity.md`
 
-You never edit code in `web/promo/`, the copy files (`nb.json`, `en.json`, `copy-*.md`), anything in `web/chat-demo/`, or the other agents' status files.
+You never edit code in `web/promo/`, the copy files (`nb.json`, `en.json`, `content/**`), anything in `web/chat-demo/`, or the other agents' status files.
 
 ## Tasks, in order
 
-| ID | PLAN | Task | Output | Done when |
-|---|---|---|---|---|
-| A-1 | 0.4 | **Canonical house spec.** Start from PLAN §2 and Carlos's §2.2 answers in `decisions.md`, or record the defaults. Add small reference crops from `images/` that show the roof, cladding, door and window arrangement, and base. | `canonical-house.md`, `assets-source/reference/` | Carlos has confirmed it, or the defaults are recorded (gate G1) |
-| A-2 | 3.5 | **Shot list and prompts.** One row per image id (README §4.2). Each row gives the aspect ratio, minimum size and source: Carlos in ChatGPT, agent-generated, a real photo, or existing in `images/`. Write a scene prompt for each id, based on the canonical prompt in PLAN §2.3, including the "do not draw" line. | `03-ideate/shot-list.md` | every id has a source and a prompt |
-| A-3 | 1.2 | **Market scan.** Look at 10 Nordic minihus listings and builder sites (FINN-torget and builders). Note what they show first, which photo types they use, whether they show a price, their trust signals, and how they answer permits, transport and delivery. Record structure in words; don't copy text or images. | `01-empathize/market-scan.md` | patterns, plus gaps MiniHouse can own |
-| A-4 | 3.1–3.3, G3 | **Moodboard, style tiles and test pack.** Moodboard: 20–30 references from the five retro sources in PLAN §7, each with a link and the reason. Style tiles are static HTML: **A Patina** uses DESIGN-GUIDE §3 tokens exactly; **B Hytte '74** and **C Stavkirke** follow PLAN §7. Each tile shows the hero and one material passport at 360 px and 1280 px. Add eight quick layout variants of the hero and materials block (Crazy 8s). The test pack holds screenshots plus the 5-second and preference questions DeepSeek writes in D-2. | `03-ideate/moodboard.md`, `style-tiles/`, `crazy8/`, `test-pack.md` | tiles render at both widths; Carlos can run the test |
-| A-5 | 4.3 | **First images into the site** (after Cursor's HANDOVER). Export the 4 bathroom renders as high-quality JPEG masters (`bath-*.jpg`) with status `pending`. Add **stand-in** crops from the concept mockups for hero, meadow, exploded, living and journey so Cursor can lay out real proportions. They are marked `stand-in` and never released. | `web/promo/src/assets/images/`, `images.json` | Cursor can build the hero and gallery with real images |
-| A-6 | 4.1 | **Wireframes for the sections PLAN §8.3 doesn't draw:** gallery, Utvendig/Konstruksjon tabs, living rooms, status and FAQ, form, footer. Draw each at 360 px and 1280 px, in greyscale or ASCII, before Cursor builds that section. | `03-ideate/wireframes/` | Cursor confirms they're enough to build from |
-| A-7 | 4.3 | **Final renders.** Use Carlos's ChatGPT renders from `assets-source/inbox/`, or generate your own only if D5 allows it. Run the fidelity checklist (PLAN §2.4) on **every** image and record the result. Reject warped windows, doubled doors, impossible roof joints, gibberish text, wrong proportions and mismatched light. Export masters with status `pending`. | `bildeliste.csv`, `assets-source/`, `web/promo/src/assets/images/` | every shot-list id has a passing image, or is listed as missing with the reason |
-| A-8 | 4.5, 4.13 | **Alt text, captions and Open Graph image.** Write alt text in Norwegian and English that says what the image shows, not "image of". Every image has a caption: «Konseptbilde» / «Concept image». Make `og-image.jpg` at 1200 × 630 from the hero, with «Konseptbilde» legible in a corner. | `images.json`, `og-image.jpg` | DeepSeek's `check_promo.py` reports no missing alt text or captions |
-| A-9 | – | **Visual review loop.** Whenever Cursor writes "ready for review" for a section, screenshot it at 360, 768, 1280 and 1920 px in both languages and review it against DESIGN-GUIDE §3–§11. Record findings in the §12 format with a severity. Re-check fixes and close them. | `review/visual-review.md`, `05-test/screens/` | no open critical or serious findings for that section |
-| A-10 | 5.4, 5.6 | **Full visual QA.** Check all 4 widths in both languages. Walk the whole page by keyboard, screenshotting every focus state. Check 200 % zoom, reduced motion, link previews (OG) and the 404 page. | `visual-review.md`, `screens/` | signed off for G5 |
-| A-11 | 6.3, 6.6 | **Live check and FINN kit.** Screenshot the live site at 360 and 1280 px after deploy. For the FINN ad kit, pick up to 12 approved images, cropped for FINN's gallery. | `screens/live/`, `finn-kit/images/` | Carlos has the images to post |
+| ID | Task | Output | Done when |
+|---|---|---|---|
+| A-12 | **Replace the steel texture.** `texture-stal.jpg` (336 × 420) shows wood cladding, not steel. Find a close-up of the dark steel base or corner in Carlos's concept images, such as the steel-corner crop in his mockups, and export it at 4:5. If no clean crop exists, write a texture prompt for Carlos in `shot-list.md` and mark the entry BLOCKED. Update the alt text in both languages, `images.json` and `bildeliste.csv`. | `texture-stal.jpg`, `images.json`, `bildeliste.csv` | the steel passport shows steel |
+| A-13 | **The workshop image.** When Carlos's render arrives in `assets-source/inbox/`, run the fidelity checklist (PLAN §2.4) and export `journey-workshop.jpg` at 4:3, at least 1600 × 1200, with status `pending`. Do the same for any other render he adds. Tell Cursor when all three journey masters are at least 800 px wide, because that switches the journey pictures to full column width (C-12). | masters, `images.json`, `bildeliste.csv` | each new image passes the checklist, or is rejected with the reason |
+| A-14 | **The mirror photo and the gallery.** Claude Code used `bath-window` in the mirror frame and set the gallery to meadow, vanity, bench and shower, then kitchen, doorway and storage (`Gallery.astro`). Confirm both, or request a change from Cursor. The mirror photo must be portrait, cropped to 4:5, with its subject inside the middle 80 % so the wavy edge doesn't cut it. Adjust its focal point in `images.json` if needed. | a confirmation, or a request to Cursor | the mirror photo and the gallery order are confirmed |
+| A-15 | **The concept film and `images/`.**<br>(1) Check the three film cuts against the canonical house: `web/promo/public/film/`, posters in `web/promo/src/assets/film/`, listed in `films.json` (you own all three from now on). Watch three loops of each for flashes or jumps.<br>(2) `images/` changed on 2026-11-18 from outside the agents: two new bathroom renders, four bathroom renders removed (including the sources of `bath-shower` and `bath-doorway`), and a new 17.02 s walkthrough. Bring `bildeliste.csv` and the `source` fields in `images.json` up to date.<br>If the walkthrough changes again, ask Claude Code to re-run `scripts/cut_film.py` after checking the shot times. | `films.json`, `bildeliste.csv`, `images.json` | every film cut and image source is current and checked |
+| A-9 | **Visual review of each change** marked ready for review, starting with Claude Code's C-12, the four UX fixes and the film ([its log](../status/claude-code.md)). Screenshot it at 360, 768, 1280 and 1920 px in both languages. For C-12, check that the frame's stroke isn't cut off, the clipped edge is smooth, the numerals don't cover a photo's subject, the irr band text is kalk, and focus is visible on every band. Record findings in the DESIGN-GUIDE §12 format, with a severity. | `review/visual-review.md`, `qa/screens/` | no open critical or serious findings |
+| A-10 | **Full visual QA before G5:** all 4 widths in both languages, a keyboard walk of the whole page with every focus state, 200 % zoom, reduced motion, link previews and the 404 page. | `visual-review.md`, `qa/screens/` | signed off for G5 |
+| A-11 | **Live check after the deploy:** screenshots of the live site at 360 and 1280 px. | `qa/screens/live/` | matches the preview |
 
 ## Your quality bar
 
 - **The house is always the same house:** gable roof, black standing seam, vertical silver-brown reclaimed boards, solid black door, one big picture window, slim steel base. If in doubt, compare side by side with `images/MiniHouse cabin on a Norwegian slope-2.png`.
 - **One light story across the set:** soft Western Norway overcast outside, warm low sun inside. No sunset drama, no HDR glow.
-- **No text, logos or UI** in any image. No filters, duotones or vignettes (DESIGN-GUIDE §7).
-- **Style tiles and wireframes obey DESIGN-GUIDE:** chalk ground, copper only on interactive things, Besley + Jost, nothing from the garbage list (§10). Direction A's tile is the reference Cursor builds from, so make it right.
+- **No text, logos or UI** in any image, and no filters, duotones or vignettes (DESIGN-GUIDE §7).
 - **Be direct in reviews.** If a section looks templated, say which rule it breaks and what to change. "Looks good" isn't a review.
 
 ## Never
 
-- Generate a house without the canonical prompt, or use the container renders, or any image with text in it.
+- Generate a house without the canonical prompt, use the container renders, or use any image with text in it.
 - Mark an image `approved`. Only Carlos approves, at G4.
+- Make style tiles, moodboards, wireframes, research or test packs (D14).
 - Deploy, commit, push, or edit files you don't own.
 
 ## Status entries
 
-After each task, add an entry at the top of `fase4/promo/status/antigravity.md` using the template in that file. Include the screenshot paths and the DESIGN-GUIDE §11 checklist for anything visual.
+After each task, add an entry at the top of `fase4/promo/status/antigravity.md`. Include the screenshot paths and the DESIGN-GUIDE §11 checklist for anything visual. Your open requests about style tiles and G3 are void: mark them closed.
 
 ## Kickoff prompt (paste into Antigravity)
 
 ```text
 You are the Antigravity agent for the MiniHouse promo website, working in parallel with Cursor and DeepSeek.
-Read, in order: AGENTS.md, rules.md, fase4/promo/PLAN.md, fase4/promo/DESIGN-GUIDE.md,
-fase4/promo/agents/README.md and fase4/promo/agents/antigravity.md (your brief), then
-fase4/promo/status/cursor.md, fase4/promo/status/deepseek.md and fase4/promo/decisions.md.
-Look at all 10 images in images/. Your lane: images, style tiles, wireframes and visual review.
-Edit only the files your brief says you own. Start with task A-1, then A-2.
+The design-thinking work is archived (D14). The look is «Patina, made funkier» (G3), not Stavkirke.
+Read, in order: AGENTS.md, rules.md, fase4/promo/PLAN.md (R2), fase4/promo/DESIGN-GUIDE.md (R2),
+fase4/promo/reference/index.html, fase4/promo/agents/README.md and fase4/promo/agents/antigravity.md (your brief),
+then fase4/promo/status/cursor.md, fase4/promo/status/deepseek.md and fase4/promo/decisions.md.
+Your lane: images, alt text and visual QA. Start with A-9: review Claude Code's redesign (fase4/promo/status/claude-code.md) at 360, 768, 1280 and 1920 px. Then A-12 (the steel texture) and A-14.
 Every image must match the canonical house (PLAN §2): never the flat-roofed container.
+Edit only the files your brief says you own. No style tiles, moodboards, wireframes or research.
 After each task, add a dated entry to fase4/promo/status/antigravity.md.
-Don't deploy, commit, push or mark images approved; Carlos approves.
+Don't deploy, commit, push or mark images approved; I approve.
 ```

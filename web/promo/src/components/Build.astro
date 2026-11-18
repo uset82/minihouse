@@ -1,0 +1,35 @@
+---
+import type { Content } from '../content/schema';
+import Figure from './Figure.astro';
+
+interface Props {
+  content: Content;
+  lang: 'nb' | 'en';
+}
+
+/*
+ * «Under kledningen» (DESIGN-GUIDE §6.7): the outside and the construction, shown side by
+ * side from 48rem so the exploded drawing is never hidden behind a tab. The two view titles
+ * reuse the former tab labels (build.tabExterior, build.tabStructure).
+ */
+const { content, lang } = Astro.props;
+---
+
+<section class="build" aria-labelledby="build-title">
+  <div class="wrap">
+    <h2 id="build-title">{content.build.title}</h2>
+    <p class="section-lead">{content.build.lead}</p>
+    <div class="build-pair">
+      <article class="build-view" aria-labelledby="build-exterior">
+        <Figure imageId="meadow-wide" lang={lang} ratio="wide" />
+        <h3 id="build-exterior">{content.build.tabExterior}</h3>
+        <p>{content.build.exterior}</p>
+      </article>
+      <article class="build-view" aria-labelledby="build-structure">
+        <Figure imageId="exploded" lang={lang} ratio="wide" />
+        <h3 id="build-structure">{content.build.tabStructure}</h3>
+        <p>{content.build.structure}</p>
+      </article>
+    </div>
+  </div>
+</section>

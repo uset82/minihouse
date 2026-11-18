@@ -191,6 +191,69 @@ figcaption {
 }
 .passport dt { color: var(--text-soft); font-weight: 500; font-size: var(--size-small); }
 
+/* ---------- Funk 1 + 2: the petrol-tile wall, with the copper mirror hanging on it ---------- */
+.svg-defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.band--irr { background: var(--irr); color: var(--kalk); padding-block: var(--space-6); }
+.band--irr figcaption { color: var(--kalk); }
+.band--irr :focus-visible { outline: var(--focus-ring-dark); }
+.living h2 { font-weight: 800; font-size: var(--size-h1); margin-bottom: var(--space-3); }
+.living .section-lead { margin-bottom: var(--space-5); }
+.living-photo { margin-bottom: var(--space-6); }
+.living-photo img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+
+/* The speilramme: the bathroom mirror's outline, used once on the site. The photo is clipped to the
+   mirror's shape (clip-path, objectBoundingBox units) and the frame is drawn on top in light copper. */
+.mirror { width: 78%; margin-bottom: var(--space-6); }
+.mirror-shape { position: relative; aspect-ratio: 4 / 5; }
+.mirror-shape img { width: 100%; height: 100%; object-fit: cover; clip-path: url(#speilramme); }
+.mirror-frame { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.mirror-frame path { fill: none; stroke: var(--kobber-lys); stroke-width: 30; stroke-linejoin: round; }
+.mirror figcaption { margin-top: var(--space-2); }
+
+/* Accessory removed in the funk critique: the four-room list under the photos. The lead sentence
+   already names the rooms, and on a phone «Oppbevaring» collided with «Bad». */
+
+/* ---------- Funk 3: giant wood-type numbers on the journey ---------- */
+.journey { padding-block: var(--space-6); }
+.journey h2 { font-weight: 700; font-size: var(--size-h2); margin-bottom: var(--space-4); }
+.journey-steps { display: grid; gap: var(--space-6); margin: 0; padding: 0; list-style: none; }
+.numeral {
+  display: block;
+  position: relative;
+  z-index: 1;
+  color: var(--malmfuru);
+  font: 800 var(--size-numeral) / var(--leading-display) var(--font-display);
+  letter-spacing: -0.01em;
+  margin-bottom: calc(-1 * var(--space-5));
+}
+.journey-steps img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.journey-steps h3 { font-weight: 800; font-size: var(--size-h3); margin: var(--space-3) 0 var(--space-1); }
+.journey-steps p { max-width: var(--measure); }
+
+/* ---------- Funk 4: the copper action band (after D6) ---------- */
+.band--kobber { background: var(--kobber); color: var(--kalk); padding-block: var(--space-6); }
+.band--kobber a { color: var(--kalk); }
+.band--kobber a:hover { color: var(--kalk); text-decoration-thickness: 2px; }
+.band--kobber :focus-visible { outline: 3px solid var(--kalk); outline-offset: var(--focus-offset); }
+.follow h2 { font-weight: 800; font-size: var(--size-h1); margin-bottom: var(--space-3); }
+.follow-form { display: grid; gap: var(--space-3); max-width: var(--measure); }
+.field label { display: block; font-weight: 500; margin-bottom: var(--space-1); }
+.field input {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--tjaere);
+  border-radius: var(--radius);
+  background: var(--kalk);
+  color: var(--tjaere);
+  font: inherit;
+}
+.optional { font-weight: 400; }
+.consent { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); }
+.consent input { width: var(--space-4); height: var(--space-4); margin: 0; accent-color: var(--tjaere); }
+.button--on-kobber { border: 0; background: var(--kalk); color: var(--kobber); cursor: pointer; }
+.button--on-kobber:hover { background: var(--kalk); color: var(--tjaere); }
+
 /* ---------- Footer: the steel base ---------- */
 .band--tjaere { background: var(--tjaere); color: var(--kalk); padding-block: var(--space-5); }
 .band--tjaere a { color: var(--action-on-dark); }
@@ -218,6 +281,8 @@ figcaption {
     align-items: start;
   }
   .material-sample { width: 100%; margin-bottom: 0; }
+
+  .journey-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-5); }
 }
 
 /* ---------- 64rem: the hero splits, the photo bleeds to the right edge ---------- */
@@ -242,6 +307,22 @@ figcaption {
       ". actions . figure"
       ". .       . figure";
   }
+  .living-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas:
+      "text  ."
+      "photo mirror";
+    column-gap: var(--space-6);
+    align-items: center;
+  }
+  .living-text { grid-area: text; }
+  .living-photo { grid-area: photo; margin-bottom: var(--space-6); }
+  .mirror { grid-area: mirror; width: 86%; margin-bottom: 0; }
+  .living-photo { margin-bottom: 0; }
+
+  .follow-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--space-6); align-items: start; }
+
   .hero h1 { grid-area: title; }
   .hero-figure { grid-area: figure; margin-bottom: 0; }
   .hero .lead { grid-area: lead; }
@@ -250,7 +331,7 @@ figcaption {
 
 /* ---------- 80rem: more air between sections ---------- */
 @media (min-width: 80rem) {
-  .hero, .materials { padding-block: var(--space-7); }
+  .hero, .materials, .band--irr, .journey, .band--kobber { padding-block: var(--space-7); }
   .band--eik { padding-block: var(--space-5); }
 }
 

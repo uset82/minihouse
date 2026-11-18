@@ -15,7 +15,7 @@ Until the promo site launches (G5), the address shows one quiet, honest page ins
 
 ## What it is
 
-One static HTML page. No JavaScript, no images (none is approved yet; that's G4) and no external requests. Every sentence on it comes from the [claims register](../02-define/claims-register.csv).
+One static HTML page. No JavaScript, no images (none is approved yet; that's G4) and no external requests. Every sentence on it comes from the [claims register](../content/claims-register.csv).
 
 ## Copy: claims-register wording only
 

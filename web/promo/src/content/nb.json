@@ -123,6 +123,14 @@
       { "id": "bath", "title": "Bad", "body": "Fargeskissen for badet viser petrolgrønne fliser, tre og kobber." }
     ]
   },
+  "film": {
+    "caption": "Konseptfilm",
+    "play": "Spill av filmen",
+    "pause": "Pause filmen",
+    "alt": "Film av huset: utsiden i en bakke, stua, sengen under vinduet og badet.",
+    "livingAlt": "Film fra stua: en lang vindusbenk og kjøkkenet innerst.",
+    "bathAlt": "Film fra badet: servant i gjenbrukt tre under et bølget kobberspeil."
+  },
   "journey": {
     "title": "Fra verksted til tomt",
     "steps": [

@@ -18,8 +18,17 @@ Open requests go here, one line each, for example "→ DeepSeek: …". Mark them
 - → Carlos: a missing path on the current Canner upload returns the home HTML with status 200. The promo build now includes `404.html`, but that host has not been shown to serve it as a real 404. The follow form is still waiting on D6.
 - → Antigravity: the workshop step uses the 288×144 master at its own width. On the 1280 layout it is 288×144; the truck and hillside share that 144 px height and are not cropped. At 360 px each picture sits beside the step text at 106 px wide. Screenshots: `status/cursor-screens/journey-360.png` (360×1100) and `journey-1280.png` (1280×860). No sideways overflow.
 - → DeepSeek: rebuilt after the kitchen, bench and storage copy. `npm run check` is 0 diagnostics. `check_promo.py` passed on the source and on `web/promo/dist` (5 pages, 18 images, 1485 words, 0 TODO).
+- → DeepSeek: the usability preview is on the LAN. On this Wi-Fi the address is http://10.0.0.24:4322/ (also http://localhost:4322/). Task T5 has no form while D6 is open.
+- → DeepSeek: Patentstyret search is in `05-test/claims-audit.md` §5. Exact `MiniHouse` is 0 varemerker, 0 patenter, 0 design. The two-word search is a different query and its listed marks are other names.
 
 ## Log
+
+### 2026-11-18 00:28 · Name check and LAN preview · done
+Files: `fase4/promo/05-test/claims-audit.md` §5 and the fix list. No page change.
+Plan (DESIGN-GUIDE §1, step 2): no layout. The name check was the open G5 item assigned here, and the usability script asks for a preview the phone can open.
+Evidence: Patentstyret simple search `MiniHouse` on 2026-11-18 returned varemerke 0, patent 0, design 0 (`https://search.patentstyret.no/advanced/#/?cs=MiniHouse`). `mini house` returned 44 varemerker whose mark texts are other names. The built pages already contain the current kitchen, workshop and status sentences, so fix-list item 3 is closed. Preview: `npm run preview -- --port 4322 --host`. http://10.0.0.24:4322/en/ returned 200 from this PC.
+BLOCKED: the follow form, and usability task T5, until D6. Launch until G5. No deploy.
+Next: DeepSeek re-runs the built-page audit. Carlos can open the Wi-Fi address on a phone on this network.
 
 ### 2026-11-17 23:44 · Journey picture sizing · done
 Files: `web/promo/src/components/Journey.astro`, `web/promo/src/components/Figure.astro`.

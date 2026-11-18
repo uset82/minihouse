@@ -21,19 +21,13 @@ Thumbs.db
 .env.*
 !.env.example
 
-# Promo research: the GitHub repo is public, so raw interview notes and the
-# owner's questionnaire (budget, price ambition) stay on this PC only.
-# Anonymised P1-P5 summaries without initials may be committed.
-fase4/promo/01-empathize/interviews/raw/
-fase4/promo/01-empathize/carlos-interview.md
-
 # Media stays on this PC: renders, photos, screenshots and video are not pushed.
 # The docs still reference their paths; supply the files locally to build.
 images/
 fase4/promo/assets-source/
-fase4/promo/05-test/screens/
+fase4/promo/qa/screens/
 fase4/promo/archive/rejected-renders/
-fase4/promo/03-ideate/style-tiles/img/
+fase4/promo/archive/design-thinking/03-ideate/style-tiles/img/
 fase4/promo/reference/img/
 fase4/promo/status/cursor-screens/
 web/promo/src/assets/images/

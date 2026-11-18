@@ -1,5 +1,5 @@
 :root {
-  /* Core material colours, sampled from images/ (PLAN §8.1) */
+  /* Core material colours, sampled from images/ (PLAN §4) */
   --kalk: #ECEAE4;          /* lime plaster: page ground */
   --tjaere: #241A13;        /* pine tar: text, footer */
   --malmfuru: #9D5F30;      /* heartwood pine: large wood surfaces, numerals ≥ 24px */
@@ -32,6 +32,7 @@
   --size-h3: 1.5rem;                                      /* 24 */
   --size-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);     /* 28 → 36 */
   --size-h1: clamp(2.75rem, 1.9rem + 3.8vw, 4.5rem);      /* 44 → 72 */
+  --size-numeral: clamp(5rem, 3rem + 8vw, 9rem);          /* 80 → 144: journey numerals */
   --leading-text: 1.55;
   --leading-display: 1.08;
   --measure: 64ch;

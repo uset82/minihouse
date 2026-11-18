@@ -232,8 +232,14 @@ body:has(dialog[open]) {
   margin-bottom: var(--space-4);
 }
 
+/* On a phone the house runs edge to edge; the caption keeps the side margin. */
 .hero-figure {
+  margin-inline: calc(-1 * var(--gutter));
   margin-bottom: var(--space-4);
+}
+
+.hero-figure figcaption {
+  padding-inline: var(--gutter);
 }
 
 .hero-figure img {
@@ -334,15 +340,29 @@ figcaption {
   margin-bottom: var(--space-5);
 }
 
+/* Below 64rem each material is one compact row: the sample beside its name and lead, with
+   the tag underneath. From 64rem the rows zig-zag and the tags hang off their samples. */
+.material {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  grid-template-areas:
+    "sample body"
+    "tag    tag";
+  column-gap: var(--space-3);
+  align-items: start;
+}
+
 .material + .material {
   margin-top: var(--space-5);
-  padding-top: var(--space-5);
-  border-top: 1px solid var(--line);
 }
 
 .material-sample {
-  width: 60%;
-  margin-bottom: var(--space-4);
+  grid-area: sample;
+  margin: 0;
+}
+
+.material-body {
+  grid-area: body;
 }
 
 .material-sample img,
@@ -360,22 +380,27 @@ figcaption {
 
 .material-lead {
   max-width: var(--measure);
-  margin-bottom: var(--space-4);
+  font-size: var(--size-small);
 }
 
+/* The materialpass is a timber lot tag: a stub with an eyelet, cut off by a perforation.
+   On a phone it's compact: a narrower stub and one column of labels for every row. */
 .passport {
+  grid-area: tag;
   position: relative;
-  padding-left: var(--space-5);
   max-width: var(--measure);
+  margin-top: var(--space-3);
+  padding-left: var(--space-4);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  background: var(--kalk);
 }
 
 .passport::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: var(--space-5);
+  width: var(--space-4);
   border-right: 1px dashed var(--line);
   pointer-events: none;
 }
@@ -384,7 +409,7 @@ figcaption {
   content: "";
   position: absolute;
   top: var(--space-3);
-  left: var(--space-3);
+  left: calc((var(--space-4) - 10px) / 2);
   width: 10px;
   height: 10px;
   border: 2px solid var(--line);
@@ -393,26 +418,26 @@ figcaption {
 }
 
 .passport-body {
-  padding: 0 var(--space-3) var(--space-3);
+  padding: var(--space-3);
 }
 
 .passport-title {
-  display: list-item;
-  min-height: 48px;
-  padding: var(--space-2) var(--space-3);
-  color: var(--action);
+  margin-bottom: var(--space-2);
   font-weight: 500;
   font-size: var(--size-small);
-  line-height: calc(var(--space-5) - var(--space-2));
-  cursor: pointer;
+}
+
+.passport dl {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: var(--space-3);
 }
 
 .passport dl > div {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
   align-items: baseline;
-  gap: var(--space-3);
-  padding-block: var(--space-1);
 }
 
 .passport dt {
@@ -421,10 +446,14 @@ figcaption {
   font-size: var(--size-small);
 }
 
+.passport dd {
+  font-size: var(--size-small);
+}
+
 .band--tjaere {
   background: var(--tjaere);
   color: var(--kalk);
-  padding-block: var(--space-5);
+  padding-block: var(--space-6);
 }
 
 .band--tjaere a {
@@ -443,7 +472,15 @@ figcaption {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: flex-end;
   gap: var(--space-3) var(--space-5);
+}
+
+/* The steel base carries the name, like a maker's plate on the chassis. */
+.footer-mark {
+  margin-bottom: var(--space-2);
+  font: 800 var(--size-h2) / var(--leading-display) var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 .footer-row ul {
@@ -474,30 +511,44 @@ figcaption {
     margin-top: var(--space-1);
   }
 
-  .material {
-    display: grid;
-    grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-    gap: var(--space-5);
-    align-items: center;
+  /* From 48rem the materials get room again: the lead at body size and the full tag. */
+  .material + .material {
+    margin-top: var(--space-6);
   }
 
-  .material-sample {
-    width: 100%;
-    margin-bottom: 0;
+  .material-lead {
+    font-size: var(--size-body);
   }
 
-  .material--flip {
-    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  .passport {
+    margin-top: var(--space-4);
+    padding-left: var(--space-5);
   }
 
-  .material--flip .material-body {
-    grid-row: 1;
-    grid-column: 1;
+  .passport::before {
+    width: var(--space-5);
   }
 
-  .material--flip .material-sample {
-    grid-row: 1;
-    grid-column: 2;
+  .passport::after {
+    left: var(--space-3);
+  }
+
+  .passport-body {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+  }
+
+  .passport dl {
+    display: block;
+  }
+
+  .passport dl > div {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: var(--space-3);
+    padding-block: var(--space-1);
+  }
+
+  .passport dd {
+    font-size: var(--size-body);
   }
 }
 
@@ -511,21 +562,22 @@ figcaption {
     display: none;
   }
 
+  /* The text keeps the content column; the house bleeds off the right edge of the screen. */
   .hero {
     padding-block: var(--space-5);
   }
 
   .hero .wrap {
-    max-width: calc(var(--max-content) + 2 * var(--gutter));
-    padding-inline: var(--gutter);
+    max-width: none;
+    padding-inline: 0;
   }
 
   .hero-grid {
     display: grid;
     grid-template-columns:
-      0
+      max(var(--gutter), calc((100% - var(--max-content)) / 2))
       minmax(0, 5fr)
-      var(--space-5)
+      var(--space-6)
       minmax(0, 7fr);
     grid-template-rows: 1fr auto auto auto 1fr;
     grid-template-areas:
@@ -546,7 +598,11 @@ figcaption {
 
   .hero-figure {
     grid-area: figure;
-    margin-bottom: 0;
+    margin: 0;
+  }
+
+  .hero-figure figcaption {
+    padding-inline: 0;
   }
 
   .hero .lead {
@@ -599,17 +655,23 @@ figcaption {
   font-size: var(--size-caption);
 }
 
+/* Contact sheet. Phone: one swipe strip of equal height, landscape 4:3 and portrait 4:5.
+   From 48rem: two rows of equal height, each picture at its own proportions (flex-grow = ratio). */
 .gallery-strip {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--space-2);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: var(--space-1);
   padding: var(--space-2) var(--space-1);
 }
 
+.gallery-row {
+  display: contents;
+}
+
 .gallery-tile {
-  flex: 0 0 84%;
+  flex: 0 0 auto;
   min-width: 0;
   scroll-snap-align: start;
   padding: 0;
@@ -625,7 +687,13 @@ figcaption {
 }
 
 .gallery-tile img {
+  width: auto;
+  height: calc(2 * var(--space-7) + var(--space-4));
   aspect-ratio: 4 / 3;
+}
+
+.gallery-tile.is-portrait img {
+  aspect-ratio: 4 / 5;
 }
 
 .ratio-wide,
@@ -638,13 +706,9 @@ figcaption {
   aspect-ratio: 4 / 5;
 }
 
-.ratio-room {
+.ratio-room,
+.ratio-step {
   aspect-ratio: 4 / 3;
-}
-
-.ratio-journey {
-  height: auto;
-  object-fit: contain;
 }
 
 .tile-caption {
@@ -722,35 +786,30 @@ figcaption {
   outline: var(--focus-ring-dark);
 }
 
-.tablist {
-  display: flex;
-  gap: var(--space-4);
-  margin-bottom: var(--space-4);
+/* Under kledningen: the outside and the construction, both always visible. */
+.build-pair {
+  display: grid;
+  gap: var(--space-5);
 }
 
-.tablist button {
-  min-height: 48px;
-  padding: 0;
-  border: 0;
-  border-bottom: 3px solid transparent;
-  background: none;
-  color: var(--text);
-  font: 500 var(--size-body) / var(--leading-display) var(--font-text);
-  cursor: pointer;
+.build-view h3 {
+  margin-top: var(--space-3);
+  font-weight: 800;
+  font-size: var(--size-h3);
 }
 
-.tablist button[aria-selected='true'] {
-  border-bottom-color: var(--action);
+.build-view p {
+  max-width: var(--measure);
+  margin-top: var(--space-1);
 }
 
-.build [role='tabpanel'] p,
-.room p,
 .faq p,
 .page-copy p {
   max-width: var(--measure);
   margin-top: var(--space-3);
 }
 
+/* ---------- Funk 1 + 2: the petrol-tile wall, with the copper mirror hanging on it ---------- */
 .band--irr {
   background: var(--irr);
   color: var(--kalk);
@@ -766,19 +825,189 @@ figcaption {
   color: var(--kalk);
 }
 
-.living-hero {
+.band--irr :focus-visible {
+  outline: var(--focus-ring-dark);
+}
+
+.band--irr.living h2 {
+  font-weight: 800;
+  font-size: var(--size-h1);
+}
+
+.living .section-lead {
   margin-bottom: var(--space-5);
 }
 
-.room-list {
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* The speilramme (DESIGN-GUIDE §6.14): used once. On a phone it hangs below the living-room
+   film, to the right, clear of the film's caption row and its pause button. It holds nothing
+   to press, so clicks pass through it. */
+.mirror {
+  position: relative;
+  z-index: 1;
+  width: 78%;
+  margin: var(--space-4) 0 0 auto;
+  pointer-events: none;
+}
+
+.mirror-shape {
+  position: relative;
+  aspect-ratio: 4 / 5;
+}
+
+.mirror-shape picture,
+.mirror-shape img {
+  width: 100%;
+  height: 100%;
+}
+
+.mirror-shape img {
+  object-fit: cover;
+  clip-path: url(#speilramme);
+}
+
+.mirror-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.mirror-frame path {
+  fill: none;
+  stroke: var(--kobber-lys);
+  stroke-width: 30;
+  stroke-linejoin: round;
+}
+
+/* The caption sits under the right side of the shape, so it can't read as a second caption
+   for the living-room photo. */
+.mirror figcaption {
+  text-align: right;
+}
+
+/* In film mode the bathroom shot plays inside the same clipped shape, above its still. */
+.mirror-shape video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  clip-path: url(#speilramme);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.mirror-shape video.is-playing {
+  opacity: 1;
+}
+
+/* ---------- The concept film (DESIGN-GUIDE §6.15) ----------
+   A still frame (a normal picture with the alt text) with the silent video on top. The video
+   only shows once it plays, so a loading video never covers the still with black. */
+.film-frame {
+  position: relative;
+  aspect-ratio: var(--film-ar);
+  background: var(--tjaere);
+}
+
+.film-frame > picture,
+.film-frame > video {
+  position: absolute;
+  inset: 0;
+}
+
+.film-still,
+.film-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.film-video {
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+
+.film-video.is-playing {
+  opacity: 1;
+}
+
+/* The pause button lives in the caption row, never on the picture. */
+.film-caption {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 var(--space-4);
+  margin-top: 0;
+}
+
+.film-toggle {
+  min-height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--action);
+  font: 500 var(--size-small) / var(--leading-display) var(--font-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.film-toggle:hover {
+  color: var(--action-hover);
+  text-decoration-thickness: 2px;
+}
+
+.band--irr .film-toggle,
+.band--irr .film-toggle:hover {
+  color: var(--kalk);
+  text-decoration-color: var(--kobber-lys);
+}
+
+/* ---------- Funk 3: giant wood-type numerals on the journey ---------- */
+.journey h2 {
+  margin-bottom: var(--space-4);
+}
+
+.journey-steps {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.room h3,
+.numeral {
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin-bottom: calc(-1 * var(--space-5));
+  color: var(--malmfuru);
+  font: 800 var(--size-numeral) / var(--leading-display) var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+.journey-step h3 {
+  margin: var(--space-3) 0 var(--space-1);
+  font-weight: 800;
+  font-size: var(--size-h3);
+}
+
+.journey-step p {
+  max-width: var(--measure);
+}
+
 .faq h2 {
   margin-top: var(--space-3);
   font-weight: 800;
@@ -891,30 +1120,138 @@ figcaption {
 
   .gallery-strip {
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr);
-    gap: var(--space-3);
+    gap: var(--space-4);
     overflow: visible;
     padding: 0;
+  }
+
+  .gallery-row {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  /* Each tile grows by its own width-to-height ratio, so a row shares one height. */
+  .gallery-tile {
+    flex: var(--ar) 1 0;
+  }
+
+  .gallery-tile img,
+  .gallery-tile.is-portrait img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: var(--ar);
+  }
+
+  .journey-steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .mirror {
+    width: 60%;
+  }
+
+  .build-pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 64rem) {
+  /* Gammelt tre, nytt hus: boards stacked in a zig-zag. Sample, words and tag, then the
+     mirror image of it. The tag's stub (--space-5 wide) lies on the sample like a lot tag
+     nailed to a board, and the tag's text lines up with the heading. */
+  .material {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(0, 2fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "sample body ."
+      "sample tag  .";
+    column-gap: var(--space-4);
     align-items: start;
   }
 
-  .gallery-tile img {
-    aspect-ratio: 4 / 3;
+  .material--flip {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 6fr) minmax(0, 4fr);
+    grid-template-areas:
+      ". body sample"
+      ". tag  sample";
   }
 
-  .gallery-tile:nth-child(2) img {
-    aspect-ratio: 4 / 5;
+  .material-sample {
+    grid-area: sample;
+    width: 100%;
+    margin-bottom: 0;
   }
 
-  .gallery-tile:nth-child(3) img {
-    aspect-ratio: 16 / 15;
+  /* Keep the caption clear of the stub, even when a tag runs below its sample. */
+  .material-sample figcaption {
+    padding-right: var(--space-5);
   }
 
+  .material--flip .material-sample figcaption {
+    padding-right: 0;
+    padding-left: var(--space-5);
+  }
 
-  .room-list {
+  .material-body {
+    grid-area: body;
+    padding-top: var(--space-5);
+  }
+
+  .material-lead {
+    margin-bottom: 0;
+  }
+
+  .passport {
+    grid-area: tag;
+    z-index: 1;
+    max-width: none;
+    margin-left: calc(-1 * (var(--space-4) + var(--space-5)));
+  }
+
+  .material--flip .passport {
+    margin-left: calc(-1 * var(--space-4));
+    margin-right: calc(-1 * (var(--space-4) + var(--space-5)));
+    padding-left: 0;
+    padding-right: var(--space-5);
+  }
+
+  .material--flip .passport::before {
+    inset: 0 0 0 auto;
+    border-right: 0;
+    border-left: 1px dashed var(--line);
+  }
+
+  .material--flip .passport::after {
+    left: auto;
+    right: var(--space-3);
+  }
+
+  /* Inne i MiniHouse: heading top left, the photo below it, and the mirror hanging on the
+     right, overlapping the photo by one column. */
+  .living-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-4);
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-4);
+  }
+
+  .living-text {
+    grid-column: 1 / 8;
+    grid-row: 1;
+  }
+
+  .living-photo {
+    grid-column: 1 / 9;
+    grid-row: 2;
+  }
+
+  .living-mirror {
+    grid-column: 8 / 13;
+    grid-row: 1 / 3;
+    align-self: end;
+    width: 100%;
+    margin: 0;
   }
 }
 

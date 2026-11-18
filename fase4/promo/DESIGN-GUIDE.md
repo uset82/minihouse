@@ -1,19 +1,43 @@
 # MiniHouse promo website · Design guide
 
-**For every agent that designs, builds, writes or reviews the promo site: Antigravity, Cursor and DeepSeek.** Revision R1.3, 2026-11-17. Read this before you touch UI, copy or images. It turns the visual system in [PLAN.md §8](PLAN.md) into rules you can check.
+**For every agent that designs, builds, writes or reviews the promo site: Antigravity, Cursor and DeepSeek.** Revision R2.3, 2026-11-18. Read this before you touch UI, copy or images. It holds the visual system, «Patina, made funkier» (G3), as rules you can check. [PLAN.md](PLAN.md) says what gets built and by whom.
 
-**Built reference:** `fase4/promo/reference/` holds direction A built by Claude Code to this guide: header, hero, key facts, the material passport and the footer, at 360 px and 1280 px. Open `index.html`. When this guide and the reference seem to disagree, ask; don't guess.
+**Built reference:** `fase4/promo/reference/` holds the look built by Claude Code to this guide: header, hero, key facts, the material passport, the irr band with the mirror frame, the journey with giant numerals, the copper follow band and the footer. Open `index.html` to see it at 360 px and 1280 px. When this guide and the reference seem to disagree, ask; don't guess.
 
-R1.3 changes: §6.6 now describes the passport as built in the reference: a stub with an eyelet and a perforation, the material name at `--size-h3`, and no hairlines between rows.
+**R2.3 changes, 2026-11-18:** Carlos asked for «an automatic video presentation of the house» that is part of the whole site. The new §6.15 describes it:
 
-R1.2 changes: the call to action is «Følg prosjektet» (D1), and §6.11 is now a follow form (e-mail and optional name), because MiniHouse isn't for sale (D10).
+- his concept film plays by itself, without sound, in the hero;
+- its living-room and bathroom shots play in «Inne i MiniHouse», the bathroom inside the copper mirror;
+- one pause button stops every film.
 
-R1.1 changes:
+§6.8, §6.14, §7, §8 and §10 #19 changed with it.
 
-- Side margins are `--gutter` at every width.
-- §3 now lists the breakpoints and the few values allowed outside `tokens.css`.
-- Every component size in §6 is now given as a token name.
-- No token value changed, so `tokens.css` stays as it is.
+**R2.2 changes, 2026-11-18:** four UX fixes Carlos approved («Yes, fix them»):
+
+- §5: «Inne i MiniHouse» moves up, right after the key facts.
+- §6.6: a compact two-column materials row below `64rem`.
+- §6.7: both construction pictures are shown, and the tabs are gone.
+- §6.2: «Huset» in the menu opens the gallery.
+
+**R2.1 changes, 2026-11-18:** Claude Code built R2 in `web/promo` at Carlos's request ([its log](status/claude-code.md)), and these sections now describe the built page:
+
+- §5: the hero bleed.
+- §6.5: the contact-sheet gallery.
+- §6.6: passports always visible, hanging off their samples.
+- §6.7: the two-column build section.
+- §6.8 and §6.14: the collage, with the mirror overlapping the photo.
+- §6.9: the stand-in rule.
+- §6.12: the footer wordmark.
+
+**R2 changes, 2026-11-18:**
+
+- The look is «Patina, made funkier» (G3), and there is no design-thinking process (D14). References to style tiles, wireframes and test rounds are gone.
+- §2.1 adds the four funk moves. Copper still marks what you can press, with one exception: the mirror frame.
+- §3 adds the token `--size-numeral` (the only token change), the copper-band pairs and the mirror-frame literals.
+- §6.8 (irr band), §6.9 (journey) and §6.11 (follow form in the copper band) are rewritten, and §6.14 (mirror frame) is new.
+- §10 says when a funk move is allowed.
+
+Earlier revisions (R1.1–R1.3, 2026-11-17) set side margins to `--gutter`, listed the allowed literals, made the call to action «Følg prosjektet» and drew the passport as a timber tag.
 
 The working method comes from the `frontend-design` skill that Carlos uses in Claude Code. The original is on this machine, read-only: `C:\Users\carlos\.claude\plugins\cache\claude-plugins-official\frontend-design\1.1.1\skills\frontend-design\SKILL.md`. This guide applies that method to MiniHouse. Where the two differ, this guide wins.
 
@@ -27,7 +51,7 @@ The working method comes from the `frontend-design` skill that Carlos uses in Cl
 4. **Build with tokens only** (§3). No new hex values, font sizes or shadows.
 5. **Critique with screenshots** at 360 px and 1280 px, comparing against this guide. Then remove the least necessary decoration (one thing) before you call it done, and say what you removed.
 
-Spend boldness in **one** place, the material passport (§6.6). Everything around it stays quiet.
+Boldness lives in a few named places: the material passport (§6.6) and the four funk moves (§2.1). Everything around them stays quiet.
 
 ---
 
@@ -39,7 +63,7 @@ Good materials get better with age. Old malmfuru weathers to silver, oak darkens
 - Tar-black is the ink.
 - Oak is the workbench where facts sit.
 - Petrol-green tile is the interior band.
-- Copper is the fittings: **if it's copper, you can press it.**
+- Copper is the fittings: **if it's copper, you can press it.** The one exception is the mirror frame (§2.1).
 - The footer is the steel base that carries everything.
 
 "Modern retro Norwegian" here means 1950s–70s Norwegian craft:
@@ -51,13 +75,26 @@ Good materials get better with age. Old malmfuru weathers to silver, oak darkens
 
 All of it is laid out with modern calm: big photography, few words, generous space.
 
+### 2.1 Made funkier
+
+Carlos asked for a site that is modern and **funky**. The funk comes from four moves, and each one comes from a real material or object of the house:
+
+| # | Move | Where it comes from | Where it's used | Spec |
+|---|---|---|---|---|
+| 1 | The wavy copper mirror frame, «speilramme» | the bathroom's wavy copper mirror | once: the bath photo in the irr band | §6.14 |
+| 2 | A bold irr band | the petrol-green glazed bathroom tile | «Inne i MiniHouse» | §6.8 |
+| 3 | Giant wood-type numerals | 19th-century wood type, cut in old wood | the journey's 1, 2 and 3 | §6.9 |
+| 4 | A copper colour block | the copper fittings: the copper you press | the «Følg prosjektet» band, after D6 | §6.11 |
+
+Each move is used where the table says and nowhere else. A fifth move needs Carlos's OK and a new row here.
+
 ---
 
 ## 3. Tokens: copy these verbatim into `web/promo/src/styles/tokens.css`
 
 ```css
 :root {
-  /* Core material colours, sampled from images/ (PLAN §8.1) */
+  /* Core material colours, sampled from images/ (PLAN §4) */
   --kalk: #ECEAE4;          /* lime plaster: page ground */
   --tjaere: #241A13;        /* pine tar: text, footer */
   --malmfuru: #9D5F30;      /* heartwood pine: large wood surfaces, numerals ≥ 24px */
@@ -90,6 +127,7 @@ All of it is laid out with modern calm: big photography, few words, generous spa
   --size-h3: 1.5rem;                                      /* 24 */
   --size-h2: clamp(1.75rem, 1.4rem + 1.6vw, 2.25rem);     /* 28 → 36 */
   --size-h1: clamp(2.75rem, 1.9rem + 3.8vw, 4.5rem);      /* 44 → 72 */
+  --size-numeral: clamp(5rem, 3rem + 8vw, 9rem);          /* 80 → 144: journey numerals */
   --leading-text: 1.55;
   --leading-display: 1.08;
   --measure: 64ch;
@@ -119,20 +157,22 @@ All of it is laid out with modern calm: big photography, few words, generous spa
 | Foreground / background | Ratio | Use it for |
 |---|---|---|
 | tjære / kalk | 14.17 | body text, inputs |
-| kobber / kalk (both ways) | 4.81 | links, primary buttons, focus ring on light grounds |
+| kobber / kalk (both ways) | 4.81 | links, primary buttons, focus ring on light grounds; on the copper band: kalk text and links, the kalk focus ring, and kobber text on the inverted kalk button |
 | kalk / kobber-mørk | 6.26 | button hover |
 | malmfuru-mørk / kalk | 7.26 | captions, soft text |
 | tjære / eik | 6.07 | key facts, spec table, hairlines on eik |
 | kalk / irr | 7.59 | text and links on the interior band |
 | tjære / kobber-lys | 6.43 | buttons on dark bands |
 | kobber-lys / tjære | 6.43 | links in the footer |
-| kobber-lys button edge / irr | 3.45 | button shape and focus ring on irr: **no text in kobber-lys on irr** |
-| malmfuru / kalk | 4.24 | numerals and display type ≥ 24 px only |
+| kobber-lys button edge / irr | 3.45 | button shape, focus ring and the mirror frame's stroke on irr: **no text in kobber-lys on irr** |
+| malmfuru / kalk | 4.24 | numerals and display type ≥ 24 px only, including the journey numerals |
 | sølvgrå / kalk | 3.27 | hairlines and borders only |
 
 **Never use these pairs:**
 
 - kobber on eik (2.06)
+- kobber on irr (1.58): the mirror frame on irr is kobber-lys, never kobber
+- tjære on kobber (2.95): on the copper band, all text is kalk, error messages included
 - kobber-lys on kalk (2.20)
 - sølvgrå on eik (1.40)
 - any text on malmfuru below 24 px
@@ -152,6 +192,7 @@ CSS custom properties don't work inside `@media`, and a few small values aren't 
 - **`min-height: 48px`** on buttons, inputs and other touch targets.
 - **Show and hide values:** transforms and `0` values that hide or reveal the skip link and the menu sheet.
 - **The punched hole** in the passport tag: 10 px.
+- **The mirror frame's geometry** (§6.14): the path coordinates, in 0–1 units for the clip path and 400 × 500 units for the frame, and `stroke-width: 30` in those SVG units.
 - **Layout units:** percentages, `fr` and aspect ratios.
 - **Translucent colours,** but only through `color-mix()` with a token colour.
 
@@ -161,7 +202,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 
 ## 4. Typography
 
-- **Besley** (display, weights 700–800) for h1–h3, the wordmark, journey numerals and the material names. Besley is a Clarendon revival, the 19th-century wood type: old-wood letters.
+- **Besley** (display, weights 700–800) for h1–h3, the wordmark, the journey numerals (`--size-numeral`) and the material names. Besley is a Clarendon revival, the 19th-century wood type: old-wood letters.
 - **Jost** (text and UI, weights 400/500) for everything else.
 - Self-host both as WOFF2 subsets that include `æøåÆØÅ × ² « »`. Don't load anything from the Google Fonts CDN. Preload Besley 800.
 - Check Jost for `font-variant-numeric: tabular-nums`. If it isn't supported, set numbers in the facts table in Albert Sans and nowhere else.
@@ -185,12 +226,15 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - kalk for reading sections;
   - eik for key facts;
   - irr for living and the bathroom;
+  - kobber for the follow band, once D6 is decided;
+  - in page order: kalk hero, eik facts, irr «Inne i MiniHouse», kalk gallery, then the kalk sections (materials, build, journey, status and FAQ), and the tjære footer ([content/sitemap.md](content/sitemap.md));
   - tjære for the footer.
   - No two neighbouring bands share a colour, except kalk next to kalk with a sølvgrå hairline between them.
 - **Spacing:** section padding is `--space-7` on desktop and `--space-6` on mobile. Use `--space-4` inside groups and `--space-5` between groups.
-- **Images:** photos go edge to edge of their column, with square corners, no frames and no shadows.
-- **Wireframes:** follow the hero, materials and journey wireframes in [PLAN.md §8.3](PLAN.md). Wireframes for the other sections come from Antigravity in `03-ideate/wireframes/`.
-- **Reading order:** the page reads top to bottom, from roof to base. Follow the page map in [PLAN.md §8.6](PLAN.md).
+- **Images:** photos go edge to edge of their column, with square corners, no frames and no shadows. The one exception is the mirror frame (§6.14).
+- **Hero:** from `64rem` the text keeps the content column and the house photo bleeds off the right edge of the screen. Below `64rem` the photo runs edge to edge, and its caption keeps the `--gutter` margin.
+- **Layouts:** copy them from the reference in `reference/`, which shows every section with a fixed design at 360 px and 1280 px.
+- **Reading order:** the page reads top to bottom, from roof to base, in the section order of [content/sitemap.md](content/sitemap.md).
 
 ---
 
@@ -202,13 +246,14 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - Hover: `--kobber-mork`. Focus: `--focus-ring` with `--focus-offset`.
   - No icon, no arrow, no shadow. The label says what happens: «Følg prosjektet».
 - **On tjære or irr bands:** `--kobber-lys` background, `--tjaere` text and `--focus-ring-dark`.
+- **On the copper band (inverted):** `--kalk` background and `--kobber` text; on hover the text turns `--tjaere`. The focus ring is 3 px solid `--kalk` with `--focus-offset`.
 - **Text link.** `--kobber` text, 1 px underline with a 3 px offset; on hover the underline becomes 2 px. On tjære, links are kobber-lys. On irr, links are kalk with a kobber-lys underline.
 - Never append "→" or "»" to a link or button.
 
 ### 6.2 Header
 - The wordmark is "MiniHouse" set in Besley 800 at `--size-h3`. It is text, not an image.
-- Nav: Huset, Materialer, Flytting, Spørsmål. Jost 500 at `--size-small` in tjære. The current page gets a 2 px kobber underline and `aria-current`.
-- On the right sits the primary button «Følg prosjektet». The language link («English» / «Norsk») is a plain text link.
+- Nav: Huset, Materialer, Flytting, Spørsmål. Jost 500 at `--size-small` in tjære. «Huset» opens the gallery «Huset i bilder» (`#bilder`); the wordmark goes to the top. The link for the section in the address gets a 2 px kobber underline and `aria-current`; at the top of the page, none does.
+- On the right sits the primary button «Følg prosjektet». Until D6 is decided there is nothing to follow, so the button isn't shown. The language link («English» / «Norsk») is a plain text link.
 - Mobile: a text button «Meny» opens a full-screen kalk sheet. Close it with «Lukk» or Esc, and return focus to the button.
 - Add a skip link, «Hopp til innhold».
 
@@ -222,8 +267,9 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 - No icons. Statuses are plain words, such as «under utvikling».
 
 ### 6.5 Gallery «Bilder» and lightbox
-- **Panel wall:** on desktop, portrait 4:5 tiles side by side like vertical cladding boards, with `--space-2` gaps. Landscape renders get their own wide row.
-- **Mobile:** a horizontal swipe strip with `scroll-snap` and a visible count, «3 av 12».
+- **A contact sheet.** From `48rem` the pictures sit in rows of equal height at their own proportions, with `--space-2` gaps. Each tile's `flex-grow` is its width-to-height ratio (`--ar`), so nothing is cropped or enlarged. The rows are fixed in `Gallery.astro`, and landscape and portrait alternate.
+- **Pictures:** meadow, vanity, bench and shower; then kitchen, doorway and storage. The kitchen, bench, storage and shower pictures moved here from the old room list (§6.8). The living-room photo isn't repeated here, because the irr band shows it.
+- **Mobile:** one horizontal swipe strip with `scroll-snap` and a visible count, «3 av 7». Every tile is `calc(2 * var(--space-7) + var(--space-4))` high, landscape at 4:3 and portrait at 4:5.
 - Each tile is a `<button>` that opens the lightbox.
 - **Lightbox:** a `<dialog>` with a `color-mix(in srgb, var(--tjaere) 92%, transparent)` backdrop and the image at `contain`, with its caption below.
   - Controls («Forrige», «Neste», «Lukk») in kobber-lys.
@@ -231,7 +277,17 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - Focus is trapped inside, and returns to the tile that opened it.
 
 ### 6.6 Material passport (*materialpass*), the signature element
-- **Layout:** a texture sample (4:5) with its caption on the left, about a third of the content width. On the right: the material name in Besley 800 at `--size-h3`, one lead sentence, then the tag. On mobile the sample sits above, at 60 % width.
+- **Always visible.** The passport is the signature element, so it's never folded behind a toggle.
+- **Layout below `64rem`, one compact row per material:**
+  - The sample (4:5) sits in a `2fr` column beside the material name (Besley 800 at `--size-h3`) and its lead in a `3fr` column, with a `--space-3` gap. The tag runs full width underneath.
+  - **On phones** the tag is compact: a `--space-4` stub with the eyelet centred in it, `--space-3` padding, and one shared label column (`max-content`, using `subgrid`). Values and the material lead are set at `--size-small`, and materials are `--space-5` apart.
+  - **From `48rem`:** the full tag (a `--space-5` stub, 2fr/3fr rows, values at body size), the lead at body size, and `--space-6` between materials.
+  - On a 390 px phone the whole section is 2.7 screens, down from 4.3.
+- **Layout from `64rem`, boards in a zig-zag:**
+  - The columns are `4fr` sample, `6fr` words and tag, and `2fr` space, then the mirror image of it for the next material. The column gap is `--space-4`.
+  - The tag's stub (`--space-5` wide) hangs over the edge of its sample, like a lot tag nailed to a board. The tag's text lines up with the material name.
+  - In mirrored rows the stub and eyelet sit on the right. The tag has a kalk background.
+  - The sample's caption keeps a `--space-5` padding on the stub's side, so a tag never covers it.
 - **The tag** looks like a timber lot tag:
   - a 1 px sølvgrå edge and `--radius`;
   - a stub strip on the left, `--space-5` wide, cut off by a 1 px dashed sølvgrå perforation, with a 10 px eyelet (a 2 px sølvgrå ring) near the top. The hole lives in the stub so it can't be mistaken for a radio button;
@@ -242,45 +298,102 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 - **Order:** malmfuru, eik, kobber, stål, alternating left and right on desktop. On mobile the image sits above the text.
 - **Later (P2), the patina toggle «Ny / 10 år / 100 år»:** a segmented control whose active state is kobber, with a crossfade of `--dur`.
 
-### 6.7 Tabs «Utvendig / Konstruksjon»
-- A WAI-ARIA tablist with arrow-key support.
-- The active tab has a 3 px kobber underline. No pills, no boxes.
+### 6.7 «Under kledningen»: the outside and the construction, side by side
+- No tabs: few people click a second tab, and the exploded drawing is the most interesting technical picture.
+- Two views, stacked on phones and side by side from `48rem` (`--space-5` gap).
+- Each view has its picture (3:2), an h3 in Besley 800 at `--size-h3` («Utvendig», «Konstruksjon»), and its sentence.
+- Built in `web/promo/src/components/Build.astro`, which replaced `BuildTabs.astro` on 2026-11-18.
 
-### 6.8 «Slik bor du i MiniHouse» (irr band)
-- One large interior image (3:2), then the rooms (Kjøkken, Sittebenk, Oppbevaring, Bad) as image (4:3) plus a Besley title at `--size-h3` and two lines of Jost.
-- All text is kalk.
+### 6.8 «Inne i MiniHouse» (irr band, funk move 2)
+- **The wall of petrol-green tile.** A full-bleed `--irr` band. All text, captions included, is `--kalk`, and the focus ring is `--focus-ring-dark`.
+- **Heading:** the h2 in Besley 800 at `--size-h1`, the largest heading on the page after the hero, then the lead sentence.
+- **Pictures, now moving (§6.15):** the living-room shot of the concept film (3:2) with its caption row and pause button, and the bathroom shot inside the mirror frame (§6.14). Without the film media, the still photos `living` and `bath-window` take their places.
+- **Position on the page:** right after the key facts, so the funky peak is the second screen.
+- **Layout, a collage:**
+  - From `64rem`, a 12-column grid with a `--space-4` gap. The heading and lead sit in columns 1–7, and the living film below them in columns 1–8. The mirror spans columns 8–12 over both rows, aligned to the bottom, so it hangs beside the heading and overlaps the film by one column.
+  - Below `64rem`, stack the text and the living film. The mirror follows, right-aligned at 78 % width (60 % from `48rem`), with a `--space-4` gap and no overlap, so it never covers the film's pause button.
+  - The mirror has `pointer-events: none`, because it holds nothing to press.
+- **No room list.** The lead sentence names the rooms. The kitchen, bench, storage and shower pictures live in the gallery (§6.5).
 
-### 6.9 Journey «Fra verksted til tomt» (kalk band)
-- Three steps. Numerals 1, 2, 3 in Besley 800 at `--size-h1` in `--malmfuru`.
-- Each step has an image (4:3) and one sentence.
-- Desktop: 3 columns. Mobile: stacked.
+### 6.9 Journey «Fra verksted til tomt» (kalk band, funk move 3)
+- Three steps in an `<ol>`. Desktop: 3 columns from `48rem`. Mobile: stacked.
+- **Giant numerals:** 1, 2 and 3 in Besley 800 at `--size-numeral`, in `--malmfuru` (4.24:1 on kalk), with `letter-spacing: -0.01em`. Each numeral is an `aria-hidden` span set above its photo with `margin-bottom: calc(-1 * var(--space-5))`, plus `position: relative` and `z-index: 1`, so it overlaps the photo's top edge like a stamp on a crate. The `<ol>` gives the order to screen readers.
+- **Each step:** the numeral, then the photo at full column width (4:3), the title in Besley 800 at `--size-h3`, and one sentence.
+- **Small stand-ins:** the workshop stand-in (288 × 144) is shown enlarged and looks soft until Carlos's render arrives (PLAN §7). That's acceptable in the preview only: a release build rejects stand-ins, and a release image is at least 1600 px wide.
 
 ### 6.10 Status and FAQ «Hvor langt har vi kommet?»
 - One short paragraph on the real status.
 - Then a list of the project phases from PROJECT.md, using honest words: done, in progress, not started.
 - The FAQ uses `<details>`/`<summary>` with summaries in Jost 500 at `--size-lead` and a kobber «+» / «−» marker.
 
-### 6.11 Follow form «Følg prosjektet» (on kalk, never on eik)
+### 6.11 Follow form «Følg prosjektet» (copper band, funk move 4, after D6)
+- **Build it only after D6** names the inbox and the form service. Until then, the section isn't on the page.
 - **Purpose:** visitors leave an e-mail address to get updates about the project. MiniHouse isn't for sale (D10), so the form asks for nothing a sale would need.
+- **The band:** a full-bleed `--kobber` band, the one large copper surface on the page. It's a copper colour block, because the whole band is the action. All text and links are `--kalk` (4.81:1), and the focus ring is 3 px solid `--kalk`. Never put tjære text on it (2.95:1).
+- **Layout:** the h2 in Besley 800 at `--size-h1` and the lead on the left; from `64rem`, the form on the right (`minmax(0, 5fr) minmax(0, 6fr)`, gap `--space-6`). Below `64rem`, the form sits under the text.
 - **Fields:** e-post (required), navn (optional). Collect nothing else.
 - **Consent:** an unticked checkbox, «Ja, send meg oppdateringer om MiniHouse på e-post.», with a link to «Personvern». The privacy page says how often updates come and that every update has an unsubscribe link.
-- **Submit:** the button repeats the action: «Følg prosjektet».
+- **Submit:** the inverted button (§6.1) repeats the action: «Følg prosjektet».
 - Labels sit above the fields, with "(valgfritt)" on optional fields. Never use placeholder-only labels.
-- Inputs: kalk background, 1 px tjære border, `--radius`, `min-height: 48px`.
+- Inputs: kalk background, tjære text, 1 px tjære border, `--radius`, `min-height: 48px`.
 - **Errors:**
-  - Text in tjære, Jost 500, prefixed with «Feil:»; the field border becomes 2 px tjære.
+  - Text in kalk, Jost 500, prefixed with «Feil:»; the field border becomes 2 px tjære.
   - Use `aria-invalid` and `aria-describedby`.
   - The message says how to fix it.
-- **Success:** an irr band with kalk text, «Takk! Du følger nå prosjektet.» Then move focus to that message.
+- **Success:** the form is replaced by «Takk! Du følger nå prosjektet.» in kalk at `--size-lead`. Then move focus to that message.
 
 ### 6.12 Footer, the steel base (tjære band)
-- Contents: contact, «Personvern», «For fagfolk» (links to the docs site and the 3D lab) and the image note «Alle bilder er konseptbilder. Huset er under utvikling.»
+- Contents: the name «MiniHouse» in Besley 800 at `--size-h2`, like a maker's plate on the chassis; contact; «Personvern»; «For fagfolk» (links to the docs site and the 3D lab); and the image note «Alle bilder er konseptbilder. Huset er under utvikling.»
+- Padding `--space-6`. The name and note sit on the left, and the links on the right, aligned to the bottom.
 - Text is kalk; links are kobber-lys.
 
 ### 6.13 Mobile sticky bar
+- Mounted only once the follow form exists (D6).
 - Appears after the hero has scrolled out of view, and hides while the form is visible.
 - A kalk bar with a 1 px sølvgrå top border and a full-width primary button.
 - Respects `env(safe-area-inset-bottom)`.
+
+### 6.14 The mirror frame «speilramme» (funk move 1)
+- **What it is:** the outline of the house's wavy copper bathroom mirror, used **once**, on the bath photo in the irr band (§6.8). It's the only copper on the page that you can't press, and the only framed photo.
+- **The shape:** a closed, gently wavy oval in a 4:5 box. The path is drawn once and kept in `reference/tile-a.html` in two forms:
+  - in 0–1 units for `<clipPath id="speilramme" clipPathUnits="objectBoundingBox">`, defined once per page in a hidden inline `<svg>`;
+  - in 400 × 500 units for the frame overlay, `<svg viewBox="0 0 400 500" aria-hidden="true">`.
+  - Copy both paths exactly. Don't redraw or scale them by hand.
+- **The photo:** a portrait bath photo at 4:5 through the normal image pipeline, with `object-fit: cover` and `clip-path: url(#speilramme)`. Keep its subject inside the middle 80 %, so the wavy edge doesn't cut it. The alt text stays on the image.
+- **The frame:** drawn on top with `fill: none`, `stroke: var(--kobber-lys)`, `stroke-width: 30`, `stroke-linejoin: round` and `overflow: visible`, so the stroke isn't cut off. On irr, kobber-lys measures 3.45:1, a clear shape. Plain kobber measures 1.58:1 and would disappear.
+- **The caption** «Konseptbilde» sits below the frame in kalk, right-aligned under the shape, so it can't be read as a second caption for the living-room photo. This is the one right-aligned text on the page.
+- **Film mode:** with `film="bath"`, the bathroom shot of the concept film plays inside the same clipped shape, above its still frame. The still carries the alt text, and the shared film controller plays and pauses it (§6.15). The caption then reads «Konseptfilm».
+- **Built in** `web/promo/src/components/MirrorFrame.astro`.
+- **No motion of its own.** The frame doesn't wobble, rotate or animate; only the film inside it moves.
+
+### 6.15 The concept film «Konseptfilm» (Carlos, 2026-11-18)
+- **What it is:** Carlos's own walkthrough of the house, `images/minihouse_walkthrough_v11.mp4` (17.02 s, five shots: the hillside, the living room, the bed, the bathroom and a wide bathroom view). It's a rendered concept, never a recording of a built house: caption «Konseptfilm» (claim K-35).
+- **Where it plays:**
+  - the whole film in the hero, instead of the photo, at 16:9, because the house is too wide for a 4:5 phone crop;
+  - the living-room shot in «Inne i MiniHouse»;
+  - the bathroom shot inside the copper mirror.
+  - Everything else stays still.
+- **The cuts:** `scripts/cut_film.py` (ffmpeg) makes them from the master, which is never changed. They are silent H.264 with `+faststart`.
+
+  | File | Size | Length | Loop |
+  |---|---|---|---|
+  | `house-film.mp4` | 1280 × 720, 2.1 MB | 16.5 s | a 0.5 s crossfade at the seam |
+  | `living-loop.mp4` | 960 × 640, 0.56 MB | 5.75 s | forward and back |
+  | `bath-loop.mp4` | 720 × 900, 0.87 MB | 7.0 s | forward and back |
+
+  The posters are the first frames. If the master changes, re-check the shot times (the script refuses a master of a different length).
+- **Markup (`Film.astro`):**
+  - the still is a normal responsive `<Picture>` with the alt text (`film.alt`, `film.livingAlt`, `film.bathAlt`);
+  - the `<video muted playsinline loop preload="none">` lies on top with `aria-hidden="true"`, and only shows once it plays, so a loading video never covers the still with black.
+- **One pause for every film:**
+  - The caption row holds «Konseptfilm» and a copper text button, «Pause filmen» / «Spill av filmen», at least 48 px high. It's never on the picture.
+  - Any button pauses or plays every film, and the choice is kept in `sessionStorage` for the tab, with no cookie (D9).
+  - The mirror has no button of its own: the living film's button sits beside it.
+- **When it plays (`src/scripts/film.ts`):**
+  - It plays by itself unless the visitor prefers reduced motion, has Data Saver on, or paused it earlier in the tab.
+  - If the browser refuses autoplay, the still stays and the button offers «Spill av filmen».
+  - Nothing loads before the window's `load` event; a film loads only when it comes within a quarter screen, and films off screen or in a hidden tab are paused.
+- **Release:** `films.json` holds each cut's status, and a release build fails until Carlos approves them at G4, as with the images. The host must answer byte-range requests (206), which Safari needs for video.
 
 ---
 
@@ -289,16 +402,17 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 - Show only the canonical house (`fase4/promo/canonical-house.md` and [PLAN.md §2](PLAN.md)). **Never** use the flat-roofed container renders.
 - Every image is listed in `web/promo/src/content/images.json` with Norwegian and English alt text, a caption, its source, its status and a focal point.
 - Aspect ratios:
-  - hero 3:2;
-  - the one large living-room image at the top of «Slik bor du i MiniHouse» 3:2 (§6.8);
-  - gallery tiles 4:5;
-  - the room images below it, and the journey images, 4:3;
+  - the hero film 16:9 (the still `hero-slope` at 3:2 only when the film media is missing);
+  - the living-room film in «Inne i MiniHouse» 3:2, and the bath film in the mirror frame 4:5 (§6.8, §6.14, §6.15);
+  - gallery tiles at their own proportions from `48rem`, and 4:3 or 4:5 in the phone strip (§6.5);
+  - the journey images 4:3;
   - textures 4:5;
   - Open Graph image 1200 × 630.
-- No filters, duotones, grain overlays, vignettes, rounded corners, frames or text on images.
+- No filters, duotones, grain overlays, vignettes, rounded corners, frames or text on images. The mirror frame (§6.14) is the one frame.
 - Real photos of Carlos's actual reclaimed boards beat renders for the textures.
 - The hero loads eagerly with `fetchpriority="high"`; everything else lazy-loads. Serve AVIF and WebP with `srcset`, and always set width and height.
 - A build meant for release must contain no images with the status `stand-in` or `pending`.
+- **The film** (§6.15): the cuts are in `web/promo/public/film/`, the posters in `web/promo/src/assets/film/`, and the list in `web/promo/src/content/films.json`. They are media, so they stay out of git.
 
 ---
 
@@ -307,7 +421,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 Allowed, and nothing else:
 
 - the lightbox and menu sheet opening and closing (opacity or transform, `--dur`);
-- the tab panel swap (instant or a 120 ms fade);
+- the concept film (§6.15). It's the one thing that moves by itself: silent and looping, with a pause button beside it. It never plays under reduced motion or Data Saver;
 - the patina crossfade (P2).
 
 Never use scroll-triggered reveals, parallax, hover lifts, auto-playing carousels, count-up numbers or animated gradients. With `prefers-reduced-motion: reduce`, everything is instant.
@@ -320,7 +434,7 @@ Never use scroll-triggered reveals, parallax, hover lifts, auto-playing carousel
 - **English:** mirrors the meaning, not the words.
 - **Actions keep one name through the whole flow.** Button «Følg prosjektet» → submit «Følg prosjektet» → success «Takk! Du følger nå prosjektet.» «Se alle bildene» opens the gallery.
 - **Errors** say what happened and how to fix it, for example «Feil: Skriv inn en e-postadresse, for eksempel navn@epost.no.»
-- **Every factual sentence has a row in [the claims register](PLAN.md)** (PLAN §12, later `02-define/claims-register.csv`). Status words: «konsept», «planlagt», «under utvikling», «ikke bestemt».
+- **Every factual sentence has a row in [the claims register](content/claims-register.csv).** Status words: «konsept», «planlagt», «under utvikling», «ikke bestemt».
 - **Banned words**, unless a specific, documented fact follows them:
   - Norwegian: *revolusjonerende, unik, drømmehjem, sømløs, innovativ, fremtidens, bærekraftig, miljøvennlig, grønn*.
   - English: *revolutionary, unique, dream home, seamless, elevate, discover, unlock, experience, eco-friendly, sustainable, green, game-changing*.
@@ -336,7 +450,7 @@ Each of these marks a page as generated or templated. Antigravity's visual revie
 
 1. A cream background (near `#F4F1EA`) with a high-contrast serif and a terracotta accent. Our ground is chalk `--kalk`, and copper only marks interaction.
 2. A near-black page with one neon accent.
-3. Gradient washes, glassmorphism, blurred blobs, noise overlays and glowing borders.
+3. Gradient washes, glassmorphism, blurred blobs, noise overlays and glowing borders. The mirror frame isn't a blob: it traces a real object in the house, it has a hard copper edge, and it's used once.
 4. A broadsheet look: hairline rules everywhere, dense newspaper columns.
 
 **Layout**
@@ -370,7 +484,11 @@ Each of these marks a page as generated or templated. Antigravity's visual revie
 
 **Accessibility**
 
-19. Removed focus outlines, placeholder-only labels, text under 4.5:1 contrast, autoplaying video.
+19. Removed focus outlines, placeholder-only labels, text under 4.5:1 contrast, video that autoplays with sound or without a pause button beside it.
+
+**Funk**
+
+20. Funk without a source: a wavy shape, a giant number or a colour block that doesn't come from a material or object of the house. A funk move used twice, or outside the place §2.1 gives it, is decoration and goes on this list.
 
 ---
 
@@ -379,7 +497,7 @@ Each of these marks a page as generated or templated. Antigravity's visual revie
 Before you call any section done, check every box in your status entry:
 
 - [ ] Only tokens from `tokens.css`: no new hex values, font sizes, shadows or radii
-- [ ] Only allowed colour pairs (§3); copper only on interactive elements
+- [ ] Only allowed colour pairs (§3); copper only on interactive elements, the copper band and the one mirror frame
 - [ ] All text comes from `nb.json` / `en.json`, nothing hard-coded, and both languages render
 - [ ] Every image comes from `images.json`, with alt text and a caption
 - [ ] Keyboard: every control can be reached in a logical order with a visible focus ring; Esc closes dialogs and sheets
@@ -397,7 +515,7 @@ Antigravity writes visual reviews to `fase4/promo/review/visual-review.md`. Anyo
 
 ```text
 ### VR-012 · Hero · 360 px · serious
-Screenshot: fase4/promo/05-test/screens/2026-11-18_hero_360.png
+Screenshot: fase4/promo/qa/screens/2026-11-18_hero_360.png
 Rule: DESIGN-GUIDE §5 (left-aligned, measure ≤ 64ch)
 What: the lead text is centred and runs to 74 characters per line.
 Fix: left-align it and set max-width: var(--measure).

@@ -123,6 +123,14 @@
       { "id": "bath", "title": "Bathroom", "body": "The bathroom study pairs deep teal tiles with timber and copper." }
     ]
   },
+  "film": {
+    "caption": "Concept film",
+    "play": "Play the film",
+    "pause": "Pause the film",
+    "alt": "Film of the house: outside on a slope, the living room, the bed under the window and the bathroom.",
+    "livingAlt": "Film of the living room: a long window bench and the kitchen at the far end.",
+    "bathAlt": "Film of the bathroom: a reclaimed-wood vanity under a wavy copper mirror."
+  },
   "journey": {
     "title": "From workshop to plot",
     "steps": [

@@ -291,10 +291,16 @@ Fix:
 5. **Contrast and garbage list:** bring every text pair to 4.5:1 or more and remove the §10 items. A uses `tokens.css` verbatim.
 
 **Don't run the G3 test until this is closed.** Five people's time should test real directions.
-Owner: Antigravity · Status: open
+Owner: Antigravity · Status: cancelled 2026-11-18 (D14). There is no G3 test, and the style tiles are archived. Carlos chose «Patina, made funkier».
 
 ### CR-20 · moodboard references can't be opened · minor
 File: `03-ideate/moodboard.md`
 What: it says "25 verified references", but there are only 6 unique links, and most are homepages (digitaltmuseum.no, riksantikvaren.no, aalhytta.no). The specific objects it describes can't be looked at: the 1970s pine daybed, the Cathrineholm pots, the Figgjo glaze, Bonytt 1970–74. Carlos's taste question (kit Q18) needs references he can open and sort.
 Fix: link each reference to the object or collection page you actually looked at (DigitaltMuseum item pages, museum object URLs), or mark it «ingen lenke». Drop "verified" unless every entry has a link.
-Owner: Antigravity · Status: open
+Owner: Antigravity · Status: cancelled 2026-11-18 (D14). The moodboard is archived.
+
+---
+
+## Round 6 (2026-11-18): design-thinking material cancelled
+
+Carlos cancelled the design-thinking process (D14) and chose «Patina, made funkier» (G3). CR-19 and CR-20 are cancelled, not fixed. Their files are in `archive/design-thinking/03-ideate/`. Every finding in this file is now closed or cancelled. New findings follow the R2 plan and DESIGN-GUIDE R2.

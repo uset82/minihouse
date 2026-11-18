@@ -4,6 +4,7 @@ const errors = [];
 const nb = readJson('src/content/nb.json');
 const en = readJson('src/content/en.json');
 const images = readJson('src/content/images.json');
+const films = readJson('src/content/films.json');
 
 validateShape(nb, contentShape, 'nb', errors);
 validateShape(en, contentShape, 'en', errors);
@@ -20,6 +21,13 @@ for (const [index, image] of images.entries()) {
   }
   if (typeof image.file !== 'string' || image.file.length === 0) {
     errors.push(`images[${index}] (${image.id}) has no file`);
+  }
+}
+
+// The concept film's cuts need Carlos's approval at G4, like the images.
+for (const film of films) {
+  if (film.status !== 'approved') {
+    errors.push(`films (${film.id}) status is ${film.status}; a release needs approved`);
   }
 }
 

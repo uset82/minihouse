@@ -72,6 +72,15 @@ export type Content = {
     lead: string;
     rooms: Array<{ id: string; title: string; body: string }>;
   };
+  /** The concept film (DESIGN-GUIDE §6.15): caption, the shared play/pause words, and what each cut shows. */
+  film: {
+    caption: string;
+    play: string;
+    pause: string;
+    alt: string;
+    livingAlt: string;
+    bathAlt: string;
+  };
   journey: {
     title: string;
     steps: Array<{ title: string; body: string }>;

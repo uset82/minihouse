@@ -17,7 +17,7 @@ def test():
                 open_val = d.get_attribute('open')
                 cls = d.get_attribute('class')
                 print(f"Dialog #{i} class='{cls}', open={open_val}")
-            page.screenshot(path='fase4/promo/05-test/screens/qa/dialog-lightbox-open-1280.png')
+            page.screenshot(path='fase4/promo/qa/screens/qa/dialog-lightbox-open-1280.png')
             
             # Press Escape
             page.keyboard.press("Escape")
@@ -38,7 +38,7 @@ def test():
             page_m.wait_for_timeout(600)
             scrolled_hidden = bar.get_attribute('hidden')
             print(f"Scrolled hidden attribute: {scrolled_hidden}")
-            page_m.screenshot(path='fase4/promo/05-test/screens/qa/sticky-cta-scrolled-360.png')
+            page_m.screenshot(path='fase4/promo/qa/screens/qa/sticky-cta-scrolled-360.png')
             
         browser.close()
 
