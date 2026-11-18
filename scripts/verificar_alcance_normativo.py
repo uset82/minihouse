@@ -416,14 +416,14 @@ def main():
         "value available − value required",
         "two rows are positive",
         "stated on the **worst** window",
-        "No row clears the test",
+        "No analysis clears the test",
         "undefined is a legitimate entry",
         "double-counts",
         "regulatory requirement",
         "It is short of margin",
     )
     require("fase1/verificacion-documentacion.md", "short of margin",
-        "2 are positive, 6 negative")
+        "2 are positive, 7 negative")
     require("knowledge/INDEX.md", "| ../fase1/declaracion-de-margenes.md |")
     require("knowledge/comparisons/compliance-matrix.md", "the project is short of margin")
     require("knowledge/comparisons/module-brief.md", "Margin blocker (§2-2(3))")
@@ -431,6 +431,92 @@ def main():
     require("fase1/registro-decisiones.md", "## S.", "R2 deja de ser preferencia")
     require("docs/estado-del-plan.md", "Declaración de márgenes §2-2(3)")
     require("docs/plan-diseno-construccion.md", "Comprar margen donde se pueda")
+
+    # El alcance de la prueba de márgenes lo fija la veiledning de §2-2(3), no el
+    # sentido común: «nødvendig ved mer omfattende analyse». La declaración aplicó
+    # la prueba a quince filas sin clasificarlas nunca, y S030 lo corrige. La
+    # corrección es conservadora: sacar una fila de la prueba no la alivia, y para
+    # las ytelser la mete en un régimen más estricto (dispensación, PBL cap. 19).
+    require(
+        "knowledge/sources/S030.md",
+        "nødvendig ved mer omfattende analyse",
+        "The margin test is scoped by analysis type",
+        "Moving a row out of the margin test does not relieve it",
+        "absolutte krav",
+        "A margin is not a tolerance",
+        "NS 3031:2014",
+    )
+    require(
+        "fase1/declaracion-de-margenes.md",
+        "The margin test applies to nine of these fifteen rows",
+        "two deviations of −500 mm that need a dispensation",
+        "**A margin is not a tolerance",
+        "**absolute requirement**",
+    )
+    require(
+        "fase1/verificacion-incertidumbre.md",
+        "The test does not apply to all fifteen rows",
+        "Of the 9 rows in scope",
+        "outside the margin requirement by analysis type",
+    )
+    require("knowledge/INDEX.md", "| S030 | DIBK")
+    # La ytelsesoversikt de §2-2(4) es el objeto que faltaba, y su hallazgo central es
+    # negativo: ninguna ytelse queda descargada. La guarda impide que el informe pierda
+    # ni las tres categorías prescritas ni la cuarta que las protege de leerse como promesa.
+    require(
+        "fase1/ytelsesoversikt.md",
+        "NOT A COMPLIANCE STATEMENT",
+        "ytelser gitt i forskrift",
+        "preaksepterte ytelser som er brukt",
+        "ytelser som er dokumentert ved analyse",
+        "**Not one ytelse is discharged",
+        "The preaccepted category is empty",
+        "the prescriptive routes assume a foundation and a supply chain",
+        "17 of them close exactly one row",
+    )
+    require(
+        "knowledge/comparisons/compliance-matrix.md",
+        "The ytelsesoversikt exists, and it says the building discharges nothing",
+        "21 distinct decisions",
+    )
+    require("knowledge/INDEX.md", "| ../fase1/ytelsesoversikt.md |")
+    require("docs/plan-diseno-construccion.md", "Ensamblar la ytelsesoversikt de §2-2(4)")
+    require("docs/plan-diseno-construccion.md", "Especificar el ensayo de estanqueidad de §14-3")
+    require("docs/plan-diseno-construccion.md", "Ejecutar el ensayo de estanqueidad")
+    require("fase1/registro-decisiones.md", "## AF.")
+
+    # El ensayo de estanqueidad: la fila 14.5 parecía la más barata y no lo es en
+    # tiempo. La guarda protege las tres cosas que la especificación añade — la
+    # normalización por volumen, el suelo del cerramiento, y que aceptar no es el
+    # límite — y sobre todo que la fila NO se lea como cerrada.
+    require(
+        "fase1/especificacion-ensayo-tetthet.md",
+        "**NO MEASUREMENT EXISTS**",
+        "stays `undetermined`",
+        "0.83 m³/(h·m²)",
+        "A_E/V",
+        "**1.19 h⁻¹**",
+        "the fan stalls",
+        "**1.36**",
+        "113 mm at the limit",
+        "**not held**",
+        "A specification is to a measurement what a screening is to a verification",
+    )
+    require(
+        "knowledge/sources/S031.md",
+        "not acquired",
+        "NS-EN ISO 9972:2015",
+        "**content is not verified**",
+        "No clause number, point count, pressure range",
+    )
+    require("knowledge/INDEX.md", "| S031 | NS-EN ISO 9972:2015")
+    require("knowledge/comparisons/compliance-matrix.md",
+            "The airtightness test is specified, and specifying it turned the row inside out",
+            "**SPECIFIED, NOT PERFORMED")
+    require("fase1/ytelsesoversikt.md", "the measurement itself — the test is specified, not performed")
+    require("fase1/declaracion-de-margenes.md", "The rule is about evidence, not about analysis")
+    require("fase1/registro-decisiones.md", "## AG.")
+
 
     # Condensación del encuentro: §14-3 y §13-13 no cubren la temperatura del acero.
     # La fórmula de f_Rsi se puede invertir por error (0,236 vs 0,765): el autotest
@@ -538,12 +624,15 @@ def main():
         "−498 mm",
         "0 adequate",
     )
-    require("fase1/declaracion-de-margenes.md", "No row clears the test", "−498 mm")
+    require("fase1/declaracion-de-margenes.md", "No analysis clears the test", "−498 mm")
     require(
         "knowledge/comparisons/compliance-matrix.md",
-        "not one row",
+        "not one analysis",
+        "two deviations that need a dispensation",
+        "a **margin is not a tolerance**",
     )
-    require("knowledge/comparisons/module-brief.md", "not one row clears")
+    require("knowledge/comparisons/module-brief.md", "not one analysis clears",
+            "two deviations needing a municipal dispensation")
     require("knowledge/comparisons/known-assumed-unknown.md", "No declared margin is adequate")
     require("knowledge/INDEX.md", "| incertidumbre.json |", "| ../scripts/incertidumbre.py |")
     require("docs/plan-diseno-construccion.md", "adecuación de los márgenes")
@@ -640,7 +729,7 @@ def main():
         "El cálculo 2D ya está hecho y corrige dos cosas",
         "0,80 m²K/W — 20 mm de espuma, no 9",
         "pasar el acero por debajo del suelo",
-        "2 positivas, 6 negativas, 3 indefinidas y 2 nulas",
+        "2 positivas, 7 negativas, 4 indefinidas y 2 nulas",
     )
     require("docs/estado-del-plan.md", "**cálculo 2D**", "0,80 m²K/W — 20 mm de espuma, no 9", "3,01 W/K")
     require(
@@ -818,6 +907,103 @@ def main():
             "18.3 W/K at the §14-3 limits",
             "[the make-up air screen](verificacion-aporte-aire.md)")
     forbid("fase1/verificacion-puente-2d.md", "19.4 W/K")
+
+    # §13-5: el piso no está sobre el terreno, y la cota E/Q hace argumentable la
+    # ruta de «documentado innecesario». El esquisto de alumbre la rompe, y por eso
+    # el signo es un hecho del emplazamiento y no del modelo.
+    require(
+        "fase1/verificacion-radon.md",
+        "SCREENING — CONDITIONAL ON C-01",
+        "§13-5 asks two things, and this building answers them differently",
+        "**\"against the ground\"**",
+        "a radon barrier is an airtightness item, not an Sd item",
+        "C_cabin ≤ E / Q",
+        "**Even the top of that range leaves a bound of 36 Bq/m³",
+        "an open void is not a buffer at all, it is outdoor air",
+        "Alum shale is the exception",
+        "**C-01 decides this question and the arithmetic does not.**",
+        "One drawing answers all three, or none of them is answered.",
+        "the hole the project has just sized is in the other membrane",
+        "§13-5's prescriptive route is **not** discharged",
+    )
+    require(
+        "fase1/declaracion-de-margenes.md",
+        "| 15 | Radon §13-5 |",
+        "**site-set**",
+        "**Row 15 is undefined rather than negative, and the difference matters.**",
+        "overstated the problem by 266 Pa",
+        "Seven are negative, four are undefined",
+    )
+    require(
+        "knowledge/comparisons/compliance-matrix.md",
+        "§13-5 radon: the floor is not on the ground, and the clause assumes it is",
+        "**Alum shale breaks it**",
+        "one drawing answers heat, vapour and radon",
+    )
+    require(
+        "knowledge/comparisons/module-brief.md",
+        "**§13-5 has the same shape.**",
+        "A radon barrier is an **airtightness** item rather than an Sd one",
+    )
+    require(
+        "knowledge/comparisons/known-assumed-unknown.md",
+        "The floor is not on the ground: a ventilated void over the chassis",
+        "**Alum shale breaks the bound**",
+    )
+    require("knowledge/INDEX.md", "| radon.json |",
+            "| ../scripts/radon_check.py |",
+            "| ../fase1/verificacion-radon.md |")
+    require(
+        "docs/plan-diseno-construccion.md",
+        "Y §13-5 tiene la misma forma",
+        "El signo lo fija el emplazamiento (C-01), no el modelo",
+    )
+    require("docs/estado-del-plan.md", "**§13-5 con el piso elevado.**",
+            "Fila 15 de la declaración: **indefinida**")
+    require(
+        "fase1/registro-decisiones.md",
+        "## AC.",
+        "**«contra el terreno»**",
+        "sería el mismo error que citar los 406 Pa contra el tiro",
+    )
+    require("fase1/verificacion-incertidumbre.md",
+            "| 15 | Radon §13-5 |",
+            "the bound is +164 Bq/m³ on ordinary ground and −16 on alum shale")
+    # La fila 15 no puede convertirse en negativa: declarar el esquisto de alumbre
+    # como margen repetiría el error de los 406 Pa.
+    forbid("fase1/declaracion-de-margenes.md", "| 15 | Radon §13-5 | Cabin concentration, Bq/m³ "
+                                               "| **≤ 36** (bound, ordinary ground) | **≤ 200** "
+                                               "| **−16**")
+
+    # El detalle del encuentro: generado desde las constantes del solver, no dibujado
+    # a mano. Es el único sitio donde las tres exigencias de esa esquina se ven juntas.
+    require(
+        "fase1/planos/detalle-encuentro-R0.svg",
+        "NO PARA FABRICACIÓN",
+        "pared 264",
+        "piso 280",
+        "barrera de vapor Sd ≥ 10 m",
+        "barrera cruzada",
+        "barrera intacta",
+        "vista: estado B",
+    )
+    require("fase1/verificacion-puente-2d.md",
+            "[the junction detail](planos/detalle-encuentro-R0.svg)",
+            "turning the corner at (13, −22)")
+    require("fase1/verificacion-radon.md",
+            "[The junction detail](planos/detalle-encuentro-R0.svg)",
+            "the wrapping that brings f_Rsi back to 0.921")
+    require("fase1/registro-decisiones.md", "## AD.", "**cruza ese plano**",
+            "Conceptual, no para fabricación")
+    require("knowledge/comparisons/compliance-matrix.md",
+            "The junction finally has a drawing, and it is generated rather than drawn")
+    require("knowledge/INDEX.md", "| ../scripts/detalle_encuentro.py |",
+            "| ../fase1/planos/detalle-encuentro-R0.svg |")
+    require("docs/estado-del-plan.md", "**El encuentro ya tiene dibujo, y está generado.**")
+    require("docs/plan-diseno-construccion.md", "Ese rincón ya tiene [detalle generado]")
+    # El dibujo no puede volver a ser un SVG escrito a mano: si aparece un plano sin
+    # la línea de estado generada, el detalle ha dejado de venir del solver.
+    forbid("fase1/planos/detalle-encuentro-R0.svg", "CONCEPTUAL — NOT FOR FABRICATION")
 
     # El bucle cerrado de R2: los espesores publicados eran redondos, y la dispensa
     # de 4 400 mm no alcanza. Es una corrección propia y tiene que sobrevivir.

@@ -486,3 +486,106 @@ no resuelve la estufa**, que son dos problemas que la §AA había dejado juntos.
 
 **Estado:** la fila 14 no cambia de valor; cambia de naturaleza. Documento:
 [aporte de aire](verificacion-aporte-aire.md).
+
+## AC. §13-5 pide una barrera «contra el terreno», y este piso no está sobre el terreno (2026-11-18)
+
+La §AA registró que la depresión sostenida activa el mecanismo de §13-5 y que no se evaluaba.
+Lo que sí se puede evaluar sin emplazamiento es la forma del problema — y la forma resulta que
+no es la que el capítulo describe.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿Qué pide exactamente §13-5? | Dos cosas distintas: un **rendimiento** (media anual ≤ **200 Bq/m³**) y una **ruta prescriptiva** (barrera **contra el terreno** + preparación para reducir presión por encima de **100 Bq/m³**, salvo que se documente innecesaria) | No son la misma pregunta y este edificio las responde de forma distinta |
+| ¿Cuál es la frase que decide? | **«contra el terreno»**. El piso está sobre un hueco ventilado sobre el chasis — `envelope_check` ya lo modela como capa ventilada | La ruta prescriptiva describe un detalle que el edificio no contiene. La pregunta es si el hueco **es** la medida o si la barrera hay que construirla igual |
+| ¿Se puede cerrar sin emplazamiento? | **No**, y se dice. Lo que sí se cierra es cuánto margen deja la aritmética | Si el margen es enorme, el emplazamiento importa poco; si es estrecho, lo decide todo |
+| ¿Hay una cota? | Sí: **C ≤ E/Q**. Incluso en el caso patológico en que **cada átomo exhalado bajo la huella llega al interior**, la concentración no pasa de E dividido por el caudal de ventilación | Es independiente del hueco, de la estanqueidad del piso y del detalle del encuentro. Es la cota que hace argumentable la ruta de «documentado innecesario» |
+| ¿Cuánto vale? | **3,6–36 Bq/m³** en terreno ordinario, con 90 m³/h sobre 18 m² de huella | **5,6× por dentro** del límite en el extremo alto de la horquilla. El margen no es un resultado del modelo: es que 90 m³/h pasan por 18 m² |
+| ¿Y el hueco? | Es un volumen tampón, y un hueco abierto no es un tampón: es aire exterior (864 renovaciones/h a 150 mm). Uno **con faldón** renueva 19–32 veces por hora, porque el volumen es pequeño y el perímetro no | El tampón es robusto por geometría. Y hay que **no destruirlo**: un faldón sellado o rellenar el hueco con aislante lo eliminan, y entonces queda la cota |
+| ¿Dónde se acaba? | **Esquisto de alumbre**: a 300 mBq/(m²·s) la cota es **216 Bq/m³**, por encima del límite | El signo es un hecho del emplazamiento, no del modelo. **C-01 decide esto y la aritmética no** |
+| ¿Dónde va la barrera, si se construye? | La ruta prescriptiva **no se descarga**: hasta que haya medición, la barrera se queda. Pero es un requisito de **estanqueidad**, no de Sd — y el Sd ≥ 10 m de la barrera de vapor **no lo satisface por construcción** | Su continuidad es el **encuentro piso-pared**, 18 m del mismo rincón que resolvió el cálculo 2D. Un dibujo contesta calor, vapor y radón, o no contesta ninguno |
+| ¿Y los agujeros? | La entrada de aire de reposición va en el muro, **por encima del piso**: está en la *otra* membrana. El desagüe es la penetración húmeda que pide collarín sellado | El aire de combustión de la estufa se vuelve pregunta de barrera en cuanto se toma de debajo del tablero en vez del muro |
+
+**Estado:** fila 15 de la declaración, **indefinida**, +164 a −16 Bq/m³. No se declara el caso de
+esquisto de alumbre como margen: sería el mismo error que citar los 406 Pa contra el tiro, que
+exageró el problema en 266 Pa. Documento: [radón](verificacion-radon.md).
+
+## AD. El encuentro tiene dibujo, y lo genera el solver (2026-11-18)
+
+Cinco pantallas aterrizan en la misma esquina y ninguna la había dibujado. Los planos de
+`fase1/planos/` están escritos a mano, que es justo el modo de fallo que este proyecto ya ha
+pagado cuatro veces. Así que el detalle se **genera**.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿Qué dibuja? | El encuentro piso-pared del sector de referencia: pared de **264 mm** en 5 capas, piso de **280 mm** en 3, la viga perimetral arropada por debajo, el hueco ventilado y el terreno | Cada cota sale de `puente_2d.WALL_LAYERS` y `FLOOR_LAYERS`. El autotest falla si el dibujo deja de coincidir con ellas |
+| ¿Qué resuelve que la prosa no? | **Si el acero cruza la barrera de vapor.** La barrera gira en **(13, −22)** — detrás del forro, por encima del aislante. La placa ocupa el espesor del piso en la cara interior, así que **cruza ese plano** cuando no va arropada | Arropar no es un grosor de aislante: es una instrucción de dibujo. Quita el puente (0,377 → **0,921**) y deja la barrera continua **de una vez** |
+| ¿Y el hueco? | Se dibuja a 300 mm nominales, marcado **C-05 sin definir** | Es el tampón de radón que §13-5 no puede perder: el dibujo lo deja a la vista para que no se cierre por descuido |
+| ¿Y el desagüe? | Es la única penetración húmeda a través del piso | La entrada de aire de reposición va en el muro, en la otra membrana |
+| ¿Qué NO es? | **Conceptual, no para fabricación.** Perfil del chasis sin definir, R2 sin elegir, nada liberado | El dibujo muestra dónde chocan las exigencias, no un detalle constructivo cerrado |
+
+**Estado:** `fase1/planos/detalle-encuentro-R0.svg`, generado por `scripts/detalle_encuentro.py`,
+check 32. La guarda prohíbe que vuelva a existir un plano del encuentro sin su línea de estado.
+
+## AE. La guía de §2-2 acota la prueba de márgenes, y no la alivia (2026-11-18)
+
+El hueco de procedencia más antiguo del proyecto queda cerrado: la **veiledning** de
+§§2-2/2-3/2-4/4-2 y la introducción del capítulo 2, en [S030](../knowledge/sources/S030.md). Las
+cuatro páginas se renderizan en cliente y cuatro intentos devolvieron sólo navegación; el texto
+estaba en el DOM, colapsado tras un control que no aceptaba clic, y leer el `textContent` de
+`<main>` lo devolvió entero — 50 kB donde `inner_text` daba 2,6 kB.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿La prueba de márgenes se aplica a las quince filas? | **No.** La guía dice «Hvilke sikkerhetsmarginer er lagt til grunn (**nødvendig ved mer omfattende analyse**)», y admite que «en enkel faglig vurdering eller et logisk resonnement» baste | La declaración aplicaba la prueba a quince filas sin clasificarlas nunca. **Nueve** son análisis, **cuatro** ytelser declaradas (2, 3, 4, 10) y **dos** determinaciones (6, 9) |
+| ¿Sacarlas de la prueba las alivia? | **No, al contrario.** Una ytelse declarada se cumple o no se cumple, y §2-2(1) sólo permite desviarse por **dispensación** municipal (PBL cap. 19), con la prueba «klart større fordeler enn ulemper» | Las filas 3 y 4 no son dos márgenes negativos finos: son **dos desviaciones de −500 mm que necesitan dispensación**, que es más difícil de obtener que un margen positivo. La fila 2 tampoco era el margen más fino: es un ancho libre sin acotar |
+| ¿Un margen y una tolerancia son lo mismo? | **No.** La introducción del capítulo 2: «skal disse forstås som **absolutte krav**, så fremt det ikke i forskrift eller i vedtak […] er gitt konkrete toleranser». NS 3420 rige la ejecución **medida**, no el proyecto | Resolver *a* 4000 mm y *a* 0,2202 gasta una tolerancia que nadie ha concedido. Es la versión normativa de la conclusión que la pantalla de adecuación ya había alcanzado por los números |
+| ¿Y §2-2(4)? | La guía prescribe la **ytelsesoversikt** en tres categorías: ytelser dadas en la norma, preaksepterte brukt, y documentadas por análisis; y admite que haga falta **suppleres con planos**, «for eksempel for sikkerhet ved brann» | El objeto **no existe**. §2-2(4) estaba registrado como insatisfecho-hasta-R2, que es cierto del *contenido*, pero la clasificación que necesita es la misma que la del alcance de los márgenes |
+| ¿Qué no cambia? | **Nada del texto vinculante.** S029 sigue siendo la fuente de los requisitos; S030 sólo dice qué significan | Ningún requisito se mueve, ningún margen mejora: **0 adecuados, 5 no adecuados, 4 intesteables** sobre nueve filas |
+
+**Estado:** `CLASS` en `scripts/incertidumbre.py` es la única autoridad de la clasificación, porque
+decide dos cosas a la vez — el alcance de §2-2(3) y las tres categorías de §2-2(4). El autotest
+falla si una fila queda sin clase o si una ytelse sale de la prueba sin decir qué la gobierna.
+
+## AF. La ytelsesoversikt existe, y dice que el edificio no descarga nada (2026-11-18)
+
+§2-2(4) estaba registrado como insatisfecho-hasta-R2. Eso es cierto del **fundamento** —la sección no
+cierra, así que la base no puede ser suficiente— y nunca lo fue del **objeto**, que es lo primero que
+pide un tramitador. El material llevaba quince informes ahí; lo que faltaba era ensamblarlo.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿Cuántas categorías? | Tres, las de la guía: ytelser dadas en la norma, preaksepterte usadas, documentadas por análisis. Más una **cuarta explícita** para lo que no es ytelse | **38 filas**: 27 / **0** / 4 / 7. La cuarta no es un cajón: es lo que impide que la tabla se lea como una promesa de prestaciones que el edificio no debe dar |
+| ¿Por qué no hay ninguna preakseptert? | Porque el edificio no tiene cimentación, ni envolvente montada en obra, ni cubierta convencional | **§2-2(2)(b) no es una opción entre dos: es la única ruta.** Eso sube el listón de §2-2(3) en vez de bajarlo — no hay respaldo en el que una lista sustituya a un argumento |
+| ¿Cuántas ytelser se cumplen? | **Ninguna de las 31.** 9 incumplidas por el cribado, 20 indeterminadas, 2 no aplican | Es lo que significa R0. Un cribado no es una verificación, y las dos filas que se leerían como «cumple» —detección de humo y clase de superficie— son especificaciones que nadie ha escrito |
+| ¿Cuatro decisiones desbloquean el edificio? | **No.** 21 decisiones distintas cierran las filas y **17 cierran exactamente una** | C-01 cierra 4, un producto 3, R2 3, el resto son individuales. El trabajo que queda es mayormente **uno a uno**, con dos palancas reales: el emplazamiento y la sección |
+| ¿Y las que no esperan a una decisión? | Dos esperan a **trabajo**: la estanqueidad de §14-3 nunca se ha medido (§2-4 nombra `tetthetsmåling`) y §15-5 no tiene proyecto de instalación | Se cierran en una tarde, no en una reunión — **corregido en AG**: la estanqueidad es barata en dinero y no en tiempo |
+| ¿Qué garantiza que no derive? | Cada valor se lee de la constante del script que lo posee (`ec.U_LIMITS`, `rc.RADON_LIMIT_BQ`, `fc.R_MAIN_MIN`, `vc.N50_PER_H`, `ic.BACKFLOW_HEAD_MM`) | Una constante no puede moverse sin que la tabla la siga, y el autotest falla si una fila de la declaración deja de estar citada: las dos piezas son un conjunto, no dos listas |
+
+**Estado:** `fase1/ytelsesoversikt.md`, generado por `scripts/ytelsesoversikt.py`, check 33. El
+objeto sigue sin ser el **fundamento** de §2-2(4): es el inventario del que saldrá, y R2 sigue
+siendo el paso que lo produce.
+
+## AG. El ensayo de estanqueidad está especificado, y especificarlo giró la fila (2026-11-18)
+
+La ytelsesoversikt llamó a la fila 14.5 la más barata del documento: n50 ≤ 1,5 h⁻¹ a 50 Pa, un
+ventilador, una tarde. Es cierto en dinero. **No lo es en tiempo**: no se puede presurizar un
+edificio que no existe, así que la tarde no es esta semana sino el final de la fabricación y otra vez
+la entrega. La fila sigue `undetermined`, y lo único que cambia es que el trabajo está especificado
+en vez de nombrado. **Una especificación es a una medición lo que un cribado a una verificación.**
+
+Escribirla cambió tres cosas que la tabla agregada no podía ver.
+
+| Pregunta | Respuesta | Consecuencia |
+|---|---|---|
+| ¿Es difícil el límite? | En caudal absoluto no: **55,4 m³/h** son un extractor de baño. En relativo sí: la envolvente son **66,48 m²** sobre **36,92 m³**, A/V **1,80 m⁻¹** contra ~0,77 de una casa compacta de dos plantas | El mismo 1,5 h⁻¹ exige q50 **0,83 m³/(h·m²)**, **2,3×** más bajo, sobre **61,10 m** de detalle lineal: **0,91 m³/h por metro de junta**. Se alcanza fácil y se falla fácil, y los planos no dicen cuál pasó |
+| ¿Más estanco es siempre mejor? | **No.** §14-3 premia la estanqueidad; el extractor necesita que lo alimenten. En cabina sellada la depresión sube al bajar la fuga: 106 Pa a 1,50, **149 Pa a 1,20**, 151 Pa a 1,19 | Por debajo de **1,19 h⁻¹** el extractor básico de 90 m³/h no se puede entregar con un ventilador de 150 Pa. No es un requisito —con la entrada funcionando se sostienen 10 Pa— es el **caso de fallo**, y por eso la entrada va enclavada y no al criterio del ocupante |
+| Entonces, ¿cuál es el objetivo? | **1,30 h⁻¹**, y es una banda, no un mínimo | Ni el límite ni «tan estanco como se pueda». Con la entrada cerrada, 1,50 deja la cabina a 106 Pa y 1,20 a 149 Pa, que es el techo del ventilador y la inversión del tiro |
+| ¿Aceptar es 1,5? | **No.** La regla de la declaración —un margen es adecuado sólo si es positivo **y mayor que su propia incertidumbre**— aplicada a una medición baja el umbral de aceptación a **1,36** con un ensayo al 10 %, y a 1,43 con uno al 5 % | **La calidad de la medición forma parte de la aceptación**: un ensayo malo puede suspender una cabina construida al objetivo. Se compra un buen ensayo, no una cabina más estanca |
+| ¿Y la entrada de aire? | **113 → 116 mm** en toda la banda | Se dimensiona por el extractor de diseño, no por la fuga, así que **se puede pedir antes de medir**. Es el componente que parecía depender del ensayo y no depende |
+| ¿Qué más mide? | El exponente de fuga que los cribados suponen, n = 0,65 | Entre 0,50 y 0,80 hay **40 Pa** de diferencia en la cifra titular de ventilación. El ensayo sustituye el supuesto en tres cribados a la vez |
+| ¿Y la norma? | **NS-EN ISO 9972:2015**, que sustituyó a NS-EN 13829, **no se tiene** (S031) | No se cita ni un apartado, ni un número de puntos, ni un rango de presión, ni una regla de incertidumbre. Reconstruirlos de memoria es el fallo que las reglas de conocimiento existen para impedir |
+
+**Estado:** `fase1/especificacion-ensayo-tetthet.md`, generado por `scripts/tetthet_test.py`, check 34.
+La fila 14.5 **no se cierra**: sigue `undetermined` por dos motivos independientes — el edificio no
+existe para medirlo y la norma que define el método no se tiene. Nada de esto es una declaración de
+conformidad ni una autorización de fabricación.

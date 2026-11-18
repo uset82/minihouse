@@ -88,8 +88,10 @@ Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Cha
 | Compensation is **arithmetically open and geometrically shut**: +53 mm wall, +65 mm roof, +65 mm floor, and the roof share costs 69 mm of eave height against a 422 mm deficit | derived | puentes_termicas.py + section_feasibility.py |
 | The 0.05 W/m²K benchmark is **mis-specified at 18 m²** — it implies a mean Ψ of 0.0147 W/mK, under half of good practice, and 0.075 W/mK on a 150 m² dwelling. State bridge targets **per metre** | derived | puentes_termicas.py |
 | A 6:2 plan costs about **6 %** more perimeter than a square of the same area, and normalised Ψ″ falls from 0.199 to 0.066 between 18 and 150 m² at constant detailing | derived | puentes_termicas.py |
-| **§2-2(3) has a single margin declaration**: one currency per analysis type, fourteen rows with signs — **2 positive, 7 negative, 3 undefined, 2 zero by construction** | derived | fase1/declaracion-de-margenes.md |
-| **No declared margin is adequate by the declaration's own test** (positive *and* larger than its uncertainty): 0 adequate, 8 not adequate, 5 untestable | derived | incertidumbre.py |
+| **§2-2(3) has a single margin declaration**: one currency per analysis type, fifteen rows with signs — **2 positive, 7 negative, 4 undefined, 2 zero by construction** | derived | fase1/declaracion-de-margenes.md |
+| **No ytelse is discharged at R0**: of the 31 ytelser in the §2-2(4) overview, 0 are met, 9 are not met, 20 undetermined and 2 do not apply | derived | ytelsesoversikt.py |
+| **The preaccepted category is empty**: no foundation, no site-assembled envelope and no conventional roof means no preaccepted route, so every functional requirement is carried by an analysis or a stated number | derived | S030, ytelsesoversikt.py |
+| **No declared margin is adequate by the declaration's own test** (positive *and* larger than its uncertainty): 0 adequate, 5 not adequate, 4 untestable — of the **nine** rows where §2-2(3) requires a margin. The other six are four stated ytelser and two determinations, and the ytelser are in a *stricter* regime, not a laxer one | derived | incertidumbre.py, S030 |
 | The wall U moves **0.051 W/m²K** across the 8–23 % framing band at a fixed 189 mm, so its sign is set by a framing choice; the section moves **139 mm** but stays negative throughout; the bridges move **0.28 W/m²K** across detailing levels and stay above the benchmark | derived | incertidumbre.py |
 | Row 2's **+40 mm** door margin is a nominal leaf size, not a free width — ordinary frame and hinge build-ups spend 30–60 mm, so the sign is unknown | derived | incertidumbre.py |
 | At 23 % timber fraction the section deficit is **−498 mm**, not −422: the published figure is the 15 % mid-band value | derived | incertidumbre.py + section_options.py |
@@ -161,6 +163,15 @@ Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Cha
 | A **room-sealed** stove retires row 14 instead of improving it — the only negative row with a costless resolution | derived from the pressure argument | aporte_aire.py |
 | The make-up air costs **905 W** at 30 K, **1.65×** the fabric loss of 18.3 W/K, so heat recovery is a precondition | derived | aporte_aire.py |
 | The inlet carries **0.8 %** of the barrier's diffusion conductance — a control problem, not a diffusion one | derived | aporte_aire.py |
+| The airtightness limit is **stricter in q50 than it looks in n50**: A/V is **1.80 m⁻¹** against ~0.77 for a compact two-storey house, so 1.5 h⁻¹ demands **0.83 m³/(h·m²)** — 2.3× lower | derived | tetthet_test.py |
+| **The envelope has a floor**: below **1.19 h⁻¹** a sealed cabin cannot be fed by leakage at a 150 Pa fan, so the 90 m³/h basic extract stalls. Not a requirement — the inlet's fault case | derived, fan range generic | tetthet_test.py |
+| The test target is **1.30 h⁻¹**, not the limit and not "as tight as possible": acceptance is **1.36** at a 10 % measurement uncertainty, so a 20 % test fails a cabin built to target | derived | tetthet_test.py |
+| The make-up inlet is **113→116 mm** across the whole airtightness band, so it can be ordered **before** the measurement | derived | tetthet_test.py |
+| The floor is not on the ground: a ventilated void over the chassis, so §13-5's "barrier against the ground" describes a detail the building does not contain | derived from envelope_check + S023 | radon_check.py |
+| Cabin radon concentration is bounded by **E/Q** whatever the void does — **3.6–36 Bq/m³** on ordinary ground against a 200 limit | derived, exhalation rate is a generic range | radon_check.py |
+| **Alum shale breaks the bound**: at 300 mBq/(m²·s) it is **216 Bq/m³**, so the sign is a site fact and C-01 decides it | derived, exhalation is an assumption | radon_check.py |
+| A radon barrier is an **airtightness** item, not an Sd one — the Sd ≥ 10 m vapour barrier does not satisfy it by construction | derived from the transport mechanism | radon_check.py |
+| The radon barrier's continuity is the **floor-to-wall junction**, 18 m of the same corner the 2D screen solved | derived | radon_check.py |
 | Required fraction of the floor reaching 2.2 m free height | §12-7(1)/(2)(d) give no percentage | decides whether 20° is viable at a realistic floor build-up (S025) |
 | Floor build-up above the chassis datum | C-02 | the 154 mm eave allowance at 20°/1100 mm is consumed by it |
 | Whether the plot intersects a mapped flood (1/200) or landslide (1/1000) zone, and the mapped flood level | C-01 site | decides whether the plot survives §7-2/§7-3 at all |
@@ -184,7 +195,8 @@ Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Cha
 | Whether the chimney can keep **two free sides** on an 18 m² plan | plan layout (Fase 2) | a positional constraint competing with clearances and the 45 °C surface limit |
 | The **uncertainty** of each screen's model, needed to judge whether its margin is adequate (§2-2(3)) | responsible designer | the declaration now states every margin with its sign, but most screens do not quantify their own uncertainty, so "adequate" cannot yet be tested |
 | Whether the FDV file is a versioned, site-specific structure or a single binder | documentation architecture | a re-sited building changes premises at every move, and FDV must stay *ajour* |
-| **Veiledning** for §§2-2, 2-3, 2-4 and 4-2 | retrieval | DIBK pages returned navigation only; binding text obtained via Lovdata, guidance not |
+| Whether a move changes n50 at all | first re-test after a deployment | §4-2 makes the test a per-deployment record; the first re-test is also the experiment |
+| **NS-EN ISO 9972:2015** — the airtightness method itself, which §14-3's number presupposes | to acquire (S031) | the test procedure, its point count, pressure range and uncertainty rule cannot be quoted; the specification is written to survive acquisition but a tester needs the document |
 | The **chassis profile** and whether the floor insulation can wrap outside the steel rather than be interrupted by it | Fase 2 (chassis design) | the governing junction is not even geometrically defined, so no Ψ can be calculated |
 | Whether a thermal-bridge target is adopted, and in **which currency** (mean Ψ per metre, or the normalised W/m²K) | responsible designer / Carlos | the 0.05 W/m²K figure is not adoptable at 18 m²; the currency decision has to precede any target |
 | Whether the chassis member is **visible indoors**, under a deck, or wrapped by insulation | Fase 2 (chassis design) | decides whether f_Rsi is 0.236 (condenses below 6 °C) or not governed at all |

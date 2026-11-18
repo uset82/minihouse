@@ -63,6 +63,7 @@ DECLARED = {
     12: None,         # undefined — C-07 missing
     13: -0.80,        # m²K/W — as drawn, with no break, against the 2D requirement
     14: -130.0,       # Pa net draught at the flue, at the achievable pressure
+    15: None,         # undefined — the exhalation rate is a site input
 }
 
 ROWS = (
@@ -93,7 +94,76 @@ ROWS = (
      "the 1D requirement was computed on a surface that stops governing once any break is built"),
     (14, "Ventilation §13-1(1) — flue", "Pa net draught", "model",
      "both the flue's draught and the pressure a fan holds are assumption ranges"),
+    (15, "Radon §13-5", "Bq/m³", "site",
+     "the soil's exhalation rate, which no site has measured"),
 )
+
+# --- The scope of the margin test, which is not all fifteen rows ---------------
+#
+# §2-2(3) reads as though every analysis must state margins. Its guidance
+# qualifies the demand: «Hvilke sikkerhetsmarginer er lagt til grunn (nødvendig
+# ved mer omfattende analyse)» — necessary for a more extensive analysis — and
+# the same guidance says «en enkel faglig vurdering eller et logisk resonnement»
+# may be enough. So the obligation is graded by analysis type, and the
+# declaration has been applying it uniformly to fifteen rows without ever
+# classifying them.
+#
+# The classification is also what §2-2(4)'s overview has to list, in its three
+# categories: ytelser gitt i forskrift, preaksepterte ytelser som er brukt, and
+# ytelser dokumentert ved analyse. One classification, two uses.
+#
+#   ytelse     a stated number in the forskrift, compared against an available
+#              value that is also stated or read off a table. No analysis, so no
+#              §2-2(3) margin. A shortfall is a *deviation*, and §2-2(1)'s
+#              guidance allows one only by municipal dispensation under PBL
+#              ch. 19 — a stricter regime than a negative margin, not a laxer one.
+#   vurdering  a functional requirement met by a determination. Assumptions must
+#              be described and justified; a margin is not required.
+#   analyse    a functional requirement met by a quantitative model. Margin
+#              required, and it must exceed that model's own uncertainty.
+CLASS = {
+    1: "analyse",      # LT computed from glazing area and transmittance
+    2: "ytelse",       # 860 mm free width, stated; the leaf is stated
+    3: "ytelse",       # sill height against a stated aperture figure
+    4: "ytelse",       # aperture size against stated figures
+    5: "analyse",      # eave height from the section solver
+    6: "vurdering",    # freeboard is a project choice; no stated figure
+    7: "analyse",      # U from the parallel-path model
+    8: "analyse",      # mean Ψ″ from the junction inventory
+    9: "vurdering",    # no fraction is specified, so no limit exists
+    10: "ytelse",      # 4000 mm transport envelope, stated
+    11: "analyse",     # the 560 mm minimum is derived, not stated
+    12: "analyse",     # per-leg tension from a structural model
+    13: "analyse",     # f_Rsi from the 1D and 2D solvers
+    14: "analyse",     # net draught from the pressure balance
+    15: "analyse",     # the E/Q bound
+}
+
+# Why a row sits outside the margin requirement — and what governs it instead.
+# Every one of these says the same thing in a different way: out of scope is not
+# out of trouble.
+OUT_OF_SCOPE = {
+    2: ("**a stated ytelse, and the free width is not demonstrated** — 40 mm is inside the "
+        "range of ordinary frame and hinge build-ups and none is specified. If the build-up "
+        "eats it this is a **deviation**, not a thin margin, and §2-2(1) allows one only by "
+        "dispensation"),
+    3: ("**a stated ytelse, breached** — −500 mm on the strictest §11-13 reading. A shortfall "
+        "against a stated number is a **deviation requiring dispensation** under PBL ch. 19, "
+        "whose test is «klart større fordeler enn ulemper»; that is a stricter regime than a "
+        "negative margin"),
+    4: ("**a stated ytelse, breached** — −500 mm on the sum rule. Same instrument as row 3: "
+        "dispensation, not a margin. The two rows move together"),
+    6: ("**a determination, not an analysis** — the freeboard is a project choice, so there is "
+        "nothing to be adequate *to*. What §2-2(3) requires here is that the assumption be "
+        "described and justified, and it is"),
+    9: ("**a determination, not an analysis** — no fraction is specified anywhere, so there is "
+        "no limit to be short of. The duty is to describe and justify the assumption, not to "
+        "state a margin against a number that does not exist"),
+    10: ("**a stated ytelse, met at exactly 4000 mm — zero by construction.** No margin was ever "
+         "available to test: every option was solved *to* the envelope. Under the chapter 2 "
+         "introduction a numeric level is **absolute** unless a tolerance is granted, so this "
+         "is a design that spent an allowance that does not exist"),
+}
 
 
 def sweep_wall():
@@ -188,36 +258,38 @@ def screen():
     for number, name, quantity, kind, source in ROWS:
         margin = declared[number]
         mag = magnitudes.get(number)
-        if margin is None:
+        klass = CLASS[number]
+        if klass != "analyse":
+            # §2-2(3)'s margin demand attaches to analyses: the guidance makes it
+            # «nødvendig ved mer omfattende analyse». Out of scope is not out of
+            # trouble — OUT_OF_SCOPE says what governs the row instead, and for
+            # the stated ytelser that instrument is stricter, not weaker.
+            adequate = None
+            verdict = OUT_OF_SCOPE[number]
+        elif number == 15:
+            # Undefined, not negative: the exhalation rate is a site input, and
+            # declaring the alum-shale case would repeat the 406 Pa error of using
+            # an unrealised case to make the headline worse.
+            adequate = None
+            verdict = ("**undefined** — the exhalation rate is a site input, so the sign is a "
+                       "site fact: the bound is +164 Bq/m³ on ordinary ground and −16 on alum "
+                       "shale, which is C-01's question and not the model's")
+        elif margin is None:
             adequate = None
             verdict = "undefined — no adequacy test is possible"
-        elif number == 10:
-            adequate = False
-            verdict = "**zero by construction** — the option was solved *to* the limit"
         elif number == 7:
             adequate = False
             verdict = ("**zero by construction** — the thickness was solved to hit 0.22 at "
                        "15 %, so the margin is zero there and the band across 8–23 % runs "
                        f"{fmt(mag['from'])} to {fmt(mag['to'])}")
-        elif number in (3, 4):
-            adequate = False
-            verdict = ("**sign set by the interpretation** — −500 mm under the strictest "
-                       "§11-13 reading, +100 mm on V-01 under the minimal one")
         elif number == 11:
             adequate = None
             verdict = "**sign set by the site** — +940 mm on the sewer route, −160 mm on the shallow tank"
-        elif number == 6:
-            adequate = None
-            verdict = "positive, but the number is a project choice, not a requirement"
         elif number == 13:
             adequate = False
             verdict = ("**sign inverted by 2D** — the 1D requirement of 0.358 m²K/W was computed "
                        "on the steel, which stops governing at the first millimetre of pad; the "
                        "corner needs 0.80, so the margin is −0.80 as drawn, not +0.051")
-        elif number == 2:
-            adequate = False
-            verdict = ("**not demonstrated** — 40 mm is inside the range of ordinary "
-                       "frame and hinge build-ups, and none is specified")
         elif number == 14:
             adequate = False
             verdict = (f"**negative across the band** ({fmt(mag['from'])} to "
@@ -238,7 +310,7 @@ def screen():
             adequate = margin > 0
             verdict = "positive" if adequate else "negative"
         rows.append({"number": number, "screen": name, "quantity": quantity,
-                     "kind": kind, "source": source,
+                     "kind": kind, "class": klass, "source": source,
                      "margin": margin, "magnitude": mag,
                      "adequate": adequate, "verdict": verdict})
 
@@ -252,7 +324,11 @@ def screen():
         "counts": {
             "adequate": sum(1 for r in rows if r["adequate"] is True),
             "not_adequate": sum(1 for r in rows if r["adequate"] is False),
-            "untestable": sum(1 for r in rows if r["adequate"] is None),
+            "untestable": sum(1 for r in rows
+                              if r["adequate"] is None and r["class"] == "analyse"),
+            "not_required": sum(1 for r in rows if r["class"] != "analyse"),
+            "by_class": {k: sum(1 for r in rows if r["class"] == k)
+                         for k in ("ytelse", "vurdering", "analyse")},
         },
     }
 
@@ -354,9 +430,45 @@ def markdown(result, source_path):
         "benchmark itself does not bind (it sits in §14-2's route, exempt via §14-5(1)). This "
         "row is the clearest case of a margin that is real and not actionable.",
         "",
-        "## 4. Every row, tested",
+        "## 4. The test does not apply to all fifteen rows, and that is the regulation's doing",
         "",
-        "| # | Screen | Quantity | Kind | Margin | Adequate? | Why |",
+        "§2-2(3) reads as though every analysis must state margins. **Its guidance qualifies the "
+        "demand**: «Hvilke sikkerhetsmarginer er lagt til grunn (*nødvendig ved mer omfattende "
+        "analyse*)» — necessary for a more extensive analysis — and the same guidance says «en "
+        "enkel faglig vurdering eller et logisk resonnement» may be sufficient. So the obligation "
+        "is graded by analysis type, and this declaration has been applying it uniformly to "
+        "fifteen rows without ever classifying them. That was a defect in the declaration, and "
+        "[S030](../knowledge/sources/S030.md) is what exposed it.",
+        "",
+        "| Class | Rows | What §2-2(3) requires | What governs instead |",
+        "|---|---|---|---|",
+        "| **analyse** — a quantitative model produces the available value | "
+        f"{c['by_class']['analyse']} | method suitable and valid, assumptions described and "
+        "justified, **and the necessary safety margin stated** | the adequacy test below |",
+        "| **ytelse** — a stated number compared against a stated value | "
+        f"{c['by_class']['ytelse']} | nothing: there is no analysis | §2-2(1). A shortfall is a "
+        "**deviation**, allowed only by municipal **dispensation** under PBL ch. 19, on a test "
+        "of «klart større fordeler enn ulemper» |",
+        "| **vurdering** — a functional requirement met by a determination | "
+        f"{c['by_class']['vurdering']} | assumptions described and justified; **no margin** | the "
+        "determination itself, which must be reasoned |",
+        "",
+        "**Moving a row out of the margin test does not relieve it, and for the stated ytelser it "
+        "makes the position worse.** A margin is evidence of not having been driven to the limit; "
+        "a stated ytelse has to be met, full stop, and the only instrument for missing it is a "
+        "discretionary municipal dispensation. Rows 3 and 4 are **−500 mm** against a stated "
+        "aperture figure. Under the old framing they were two thin negative margins; under the "
+        "correct one they are **two deviations that need a dispensation** — and row 10's zero is "
+        "not a margin that happens to be zero, it is a dimension solved to an absolute limit.",
+        "",
+        "The same classification is what §2-2(4)'s overview has to list, in its three categories: "
+        "ytelser gitt i forskrift, preaksepterte ytelser som er brukt, and ytelser dokumentert ved "
+        "analyse. One classification, two uses — which is why it lives in `CLASS` in this script "
+        "rather than in prose.",
+        "",
+        "## 5. Every row, tested where the test applies",
+        "",
+        "| # | Screen | Quantity | Class | Margin | Adequate? | Why |",
         "|---|---|---|---|---:|---|---|",
     ]
     for r in rows:
@@ -365,17 +477,31 @@ def markdown(result, source_path):
             mark = "**yes**"
         elif r["adequate"] is False:
             mark = "**no**"
+        elif r["class"] != "analyse":
+            mark = "not required"
         else:
             mark = "untestable"
         lines.append(
-            f"| {r['number']} | {r['screen']} | {r['quantity']} | {r['kind']} | {margin} | "
+            f"| {r['number']} | {r['screen']} | {r['quantity']} | {r['class']} | {margin} | "
             f"{mark} | {r['verdict']} |")
     lines += [
         "",
-        f"**{c['adequate']} adequate, {c['not_adequate']} not adequate, "
-        f"{c['untestable']} untestable.**",
+        f"**Of the {c['by_class']['analyse']} rows in scope: {c['adequate']} adequate, "
+        f"{c['not_adequate']} not adequate, {c['untestable']} untestable.** The other "
+        f"{c['not_required']} are outside the margin requirement by analysis type, and none of "
+        "them is thereby satisfied.",
         "",
-        "## 5. What this changes",
+        "## 6. What this changes",
+        "",
+        "**A margin is not a tolerance, and the project has been spending a tolerance it does not "
+        "have.** The chapter 2 introduction is explicit: «Der lov og forskrift har angitt kravsnivå "
+        "med konkrete tallverdier skal disse forstås som **absolutte krav**, så fremt det ikke i "
+        "forskrift eller i vedtak […] er gitt konkrete toleranser på kravet.» The ordinary "
+        "tolerance rules — NS 3420 — govern the gap between designed and **measured** execution; "
+        "they are not a design allowance to be spent in advance. So every R2 option solved *to* "
+        "4000 mm, and the wall solved to 0.2202 against 0.2200, are designs that presume a "
+        "tolerance nobody has granted. That is the regulation's own version of this screen's "
+        "conclusion, and it arrives at it from the other side.",
         "",
         "**The thinnest positive margin in the project is not demonstrated.** Row 2 reads "
         "**+40 mm** of door free width and the declaration calls it the thinnest positive. It "
@@ -416,7 +542,7 @@ def markdown(result, source_path):
         "never up, so the project has been quoting a mid-band figure in the position where a "
         "worst case belongs. The sign is robust; the magnitude is understated by up to 76 mm.",
         "",
-        "## 6. What this does not settle",
+        "## 7. What this does not settle",
         "",
         "1. **Row 8's model uncertainty is still unquantified.** One junction has now been "
         "calculated and it brackets the generic 0.10 W/mK the bridge screen assumed — 0.027 "
@@ -430,10 +556,12 @@ def markdown(result, source_path):
         "4. **Rows 1, 9 and 12 stay undefined.** A product, a limit and a mass are missing, and "
         "no sweep can substitute for them.",
         "",
-        "## 7. Source and status",
+        "## 8. Source and status",
         "",
         "- Margins and their declared values: `fase1/declaracion-de-margenes.md`.",
         "- §2-2(3)'s four demands: S029.",
+        "- The scope of the margin test, the three analysis classes and the absolute-krav "
+        "reading: [S030](../knowledge/sources/S030.md).",
         "- Sweeps generated here from `envelope_check.py`, `section_options.py` and "
         "`puentes_termicas.py`; none is a measurement.",
         "- SCREENING ONLY — no margin here is certified adequate, and the screen does not "
@@ -467,13 +595,36 @@ def selftest():
     assert all(r["margin"] < 0 for r in bridges), bridges
 
     rows = {r["number"]: r for r in result["rows"]}
-    assert len(rows) == 14
+    assert len(rows) == 15
+    # Every row must be classified, and the classification must be total: a row
+    # without a class would silently escape both the margin test and §2-2(4).
+    assert set(CLASS) == set(rows), (set(CLASS) ^ set(rows))
     # No row may be certified adequate: the declaration's test is positive AND
     # larger than the uncertainty, and no row clears both clauses.
     assert all(r["adequate"] is not True for r in rows.values()), rows
-    # The three computed rows must be marked not adequate, and for the right reason.
-    for n in (2, 5, 7, 8, 10, 13, 14):
-        assert rows[n]["adequate"] is False, (n, rows[n]["verdict"])
+    # The computed rows that are in scope must be marked not adequate.
+    for n in (5, 7, 8, 13, 14):
+        assert rows[n]["class"] == "analyse" and rows[n]["adequate"] is False, (n, rows[n])
+    # The stated ytelser are outside the margin requirement, and moving them out
+    # must not read as relief: each one's verdict has to say what governs instead.
+    # Rows 3 and 4 are breached, so the instrument is dispensation; row 2 is
+    # undemonstrated and would become a breach; row 10 is met but only by
+    # construction, so what governs it is the absolute-krav reading.
+    for n in (2, 3, 4):
+        assert rows[n]["class"] == "ytelse", rows[n]
+        assert rows[n]["adequate"] is None, rows[n]
+        assert "dispensation" in rows[n]["verdict"], (n, rows[n]["verdict"])
+    assert rows[10]["class"] == "ytelse" and rows[10]["adequate"] is None, rows[10]
+    assert "absolute" in rows[10]["verdict"], rows[10]["verdict"]
+    for n in (6, 9):
+        assert rows[n]["class"] == "vurdering", rows[n]
+        assert rows[n]["adequate"] is None, rows[n]
+    # Row 15 is undefined rather than negative: declaring the alum-shale case as
+    # the margin would be the same error as quoting the 406 Pa flue case — using
+    # an unrealised case to make the headline worse.
+    assert rows[15]["adequate"] is None, rows[15]
+    assert "undefined" in rows[15]["verdict"], rows[15]["verdict"]
+    assert "+164" in rows[15]["verdict"] and "−16" in rows[15]["verdict"], rows[15]["verdict"]
     # Row 5 is negative across the band, so it is not adequate but the sign is robust.
     assert "negative across the band" in rows[5]["verdict"], rows[5]["verdict"]
     # Row 7 is zero by construction, and the band around it changes sign.
@@ -483,16 +634,25 @@ def selftest():
     # is the point: any dimension solved *to* a limit has no margin by definition.
     assert sum(1 for r in rows.values() if "zero by construction" in r["verdict"]) == 2
     # Undefined rows must stay undefined rather than acquiring a number.
-    for n in (1, 9, 12):
+    for n in (1, 9, 12, 15):
         assert rows[n]["margin"] is None and rows[n]["adequate"] is None, rows[n]
 
     counts = result["counts"]
     assert counts["adequate"] == 0, counts
-    assert counts["adequate"] + counts["not_adequate"] + counts["untestable"] == 14
+    assert counts["not_adequate"] == 5, counts
+    assert counts["untestable"] == 4, counts
+    assert counts["not_required"] == 6, counts
+    assert (counts["adequate"] + counts["not_adequate"] + counts["untestable"]
+            + counts["not_required"]) == 15, counts
+    # The scope split is the finding: nine analyses, four stated ytelser, two
+    # determinations — and the margin test applies to nine, not fifteen.
+    assert counts["by_class"] == {"analyse": 9, "ytelse": 4, "vurdering": 2}, counts
+    assert counts["by_class"]["analyse"] == counts["not_adequate"] + counts["untestable"]
 
     print("Uncertainty self-test OK: wall sweep monotone and on the limit at 15 %, sign "
           "changes inside the band, section and bridge margins robustly negative, no row "
-          "certified adequate, undefined rows stay undefined")
+          "certified adequate, undefined rows stay undefined, and the margin test scoped to "
+          "the nine analyses rather than all fifteen rows")
 
 
 def main():

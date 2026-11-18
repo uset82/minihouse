@@ -24,7 +24,7 @@ interface Props {
 const { id, label, caption, play, pause, class: className, sizes, priority = false } = Astro.props;
 const film = getFilm(id);
 const widths = film
-  ? Array.from(new Set([480, 960, 1280].map((width) => Math.min(width, film.posterImage.width))))
+  ? Array.from(new Set([480, 960, 1280, 1920].map((width) => Math.min(width, film.posterImage.width))))
   : [];
 ---
 
@@ -52,6 +52,7 @@ const widths = film
         width={film.width}
         height={film.height}
         data-film-src={film.src}
+        data-film-src-wide={film.srcWide}
         aria-hidden="true"
         tabindex="-1"
       ></video>

@@ -58,6 +58,10 @@ An analysis must show the method is **suitable and valid**, the assumptions **de
 | installations chapters 9/15/16/17 | yes | yes | yes | *none stated* |
 | condensation at the junction | yes | yes | yes | *none stated* |
 | 2D conduction at the floor-edge junction | yes | yes | yes | *none stated* |
+| chapter 11 determinations and coupling | yes | yes | yes | 4 |
+| ventilation §13-1(1) and envelope pressure | yes | yes | yes | *none stated* |
+| make-up air sizing and the flue | yes | yes | yes | 14 t |
+| radon §13-5 for a floor off the ground | yes | yes | yes | 3 |
 | lift geometry | yes | yes | yes | *none stated* |
 
 The **Limits** sections these reports already carry are therefore not good manners — they are §2-2(3) work. The weakest column is the last one. Three different kinds of margin are in use and none is presented as *the* margin the analysis relies on:
@@ -68,7 +72,7 @@ The **Limits** sections these reports already carry are therefore not good manne
 
 §2-2(3) asks for one coherent statement of what margin is being relied on and why it is enough. **That statement now exists**: [declaración de márgenes](../fase1/declaracion-de-margenes.md) fixes one currency per analysis type and states every margin with its sign.
 
-It does not deliver the answer the project wanted. Of the 13 rows it tabulates, **2 are positive, 6 negative, 3 undefined and 2 zero by construction** — and one of the positive rows is a project choice rather than a regulatory number. So §2-2(3)'s fourth demand cannot be satisfied by writing a number down: the project is not short of a margin statement, it is **short of margin**.
+It does not deliver the answer the project wanted. Of the 15 rows it tabulates, **2 are positive, 7 negative, 4 undefined and 2 zero by construction** — and one of the positive rows is a project choice rather than a regulatory number. So §2-2(3)'s fourth demand cannot be satisfied by writing a number down: the project is not short of a margin statement, it is **short of margin**.
 
 Two consequences follow, and they are why the declaration is gated rather than merely filed:
 

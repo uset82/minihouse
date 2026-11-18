@@ -110,6 +110,7 @@
       "screen": "Daylight §13-7",
       "quantity": "LT",
       "kind": "input",
+      "class": "analyse",
       "source": "LT and frame factor are both unselected",
       "margin": null,
       "magnitude": null,
@@ -121,39 +122,43 @@
       "screen": "Fire ch. 11 — door",
       "quantity": "free width, mm",
       "kind": "construction",
+      "class": "ytelse",
       "source": "the frame, hinge and stop build-up that turns a 900 mm leaf into a free width",
       "margin": 40.0,
       "magnitude": null,
-      "adequate": false,
-      "verdict": "**not demonstrated** — 40 mm is inside the range of ordinary frame and hinge build-ups, and none is specified"
+      "adequate": null,
+      "verdict": "**a stated ytelse, and the free width is not demonstrated** — 40 mm is inside the range of ordinary frame and hinge build-ups and none is specified. If the build-up eats it this is a **deviation**, not a thin margin, and §2-2(1) allows one only by dispensation"
     },
     {
       "number": 3,
       "screen": "Fire ch. 11 — escape sill",
       "quantity": "sill, mm",
       "kind": "interpretation",
+      "class": "ytelse",
       "source": "which of the three §11-13 readings applies",
       "margin": -500.0,
       "magnitude": null,
-      "adequate": false,
-      "verdict": "**sign set by the interpretation** — −500 mm under the strictest §11-13 reading, +100 mm on V-01 under the minimal one"
+      "adequate": null,
+      "verdict": "**a stated ytelse, breached** — −500 mm on the strictest §11-13 reading. A shortfall against a stated number is a **deviation requiring dispensation** under PBL ch. 19, whose test is «klart større fordeler enn ulemper»; that is a stricter regime than a negative margin"
     },
     {
       "number": 4,
       "screen": "Fire ch. 11 — escape size",
       "quantity": "h+w, mm",
       "kind": "interpretation",
+      "class": "ytelse",
       "source": "which of the three §11-13 readings applies",
       "margin": -500.0,
       "magnitude": null,
-      "adequate": false,
-      "verdict": "**sign set by the interpretation** — −500 mm under the strictest §11-13 reading, +100 mm on V-01 under the minimal one"
+      "adequate": null,
+      "verdict": "**a stated ytelse, breached** — −500 mm on the sum rule. Same instrument as row 3: dispensation, not a margin. The two rows move together"
     },
     {
       "number": 5,
       "screen": "Room height §12-7",
       "quantity": "eave, mm",
       "kind": "input",
+      "class": "analyse",
       "source": "the timber fraction, which is width ÷ centres and not yet chosen",
       "margin": -422.0,
       "magnitude": {
@@ -171,17 +176,19 @@
       "screen": "Natural hazards ch. 7",
       "quantity": "freeboard, mm",
       "kind": "interpretation",
+      "class": "vurdering",
       "source": "the freeboard is a project choice, not a regulatory figure",
       "margin": 300.0,
       "magnitude": null,
       "adequate": null,
-      "verdict": "positive, but the number is a project choice, not a requirement"
+      "verdict": "**a determination, not an analysis** — the freeboard is a project choice, so there is nothing to be adequate *to*. What §2-2(3) requires here is that the assumption be described and justified, and it is"
     },
     {
       "number": 7,
       "screen": "Envelope §14-3 — wall U",
       "quantity": "W/m²K",
       "kind": "input",
+      "class": "analyse",
       "source": "the stud fraction at a fixed insulation thickness",
       "margin": 0.0,
       "magnitude": {
@@ -199,6 +206,7 @@
       "screen": "Thermal bridges",
       "quantity": "Ψ″ W/m²K",
       "kind": "model",
+      "class": "analyse",
       "source": "only one junction has been calculated, and the mean Ψ″ still rests on a generic range",
       "margin": -0.16,
       "magnitude": {
@@ -216,28 +224,31 @@
       "screen": "Integrated section",
       "quantity": "% of width",
       "kind": "interpretation",
+      "class": "vurdering",
       "source": "no fraction is specified, so there is no limit to be short of",
       "margin": null,
       "magnitude": null,
       "adequate": null,
-      "verdict": "undefined — no adequacy test is possible"
+      "verdict": "**a determination, not an analysis** — no fraction is specified anywhere, so there is no limit to be short of. The duty is to describe and justify the assumption, not to state a margin against a number that does not exist"
     },
     {
       "number": 10,
       "screen": "R2 options",
       "quantity": "transport, mm",
       "kind": "judgement",
+      "class": "ytelse",
       "source": "the 100 mm reserve is a project allowance, not a measurement",
       "margin": 0.0,
       "magnitude": null,
-      "adequate": false,
-      "verdict": "**zero by construction** — the option was solved *to* the limit"
+      "adequate": null,
+      "verdict": "**a stated ytelse, met at exactly 4000 mm — zero by construction.** No margin was ever available to test: every option was solved *to* the envelope. Under the chapter 2 introduction a numeric level is **absolute** unless a tolerance is granted, so this is a design that spent an allowance that does not exist"
     },
     {
       "number": 11,
       "screen": "Installations — drain",
       "quantity": "cover, mm",
       "kind": "site",
+      "class": "analyse",
       "source": "ground level, which no survey has fixed",
       "margin": -160.0,
       "magnitude": null,
@@ -249,6 +260,7 @@
       "screen": "Lift geometry",
       "quantity": "per-leg tension",
       "kind": "input",
+      "class": "analyse",
       "source": "C-07: the equipment masses and positions",
       "margin": null,
       "magnitude": null,
@@ -260,6 +272,7 @@
       "screen": "Condensation at the junction",
       "quantity": "m²K/W",
       "kind": "model",
+      "class": "analyse",
       "source": "the 1D requirement was computed on a surface that stops governing once any break is built",
       "margin": -0.8,
       "magnitude": null,
@@ -271,6 +284,7 @@
       "screen": "Ventilation §13-1(1) — flue",
       "quantity": "Pa net draught",
       "kind": "model",
+      "class": "analyse",
       "source": "both the flue's draught and the pressure a fan holds are assumption ranges",
       "margin": -130.0,
       "magnitude": {
@@ -282,11 +296,29 @@
       },
       "adequate": false,
       "verdict": "**negative across the band** (−85.5 to −130) — and the only negative row whose resolution is not a number: a room-sealed stove removes the coupling instead of shrinking it, so the row is **retired** rather than made positive"
+    },
+    {
+      "number": 15,
+      "screen": "Radon §13-5",
+      "quantity": "Bq/m³",
+      "kind": "site",
+      "class": "analyse",
+      "source": "the soil's exhalation rate, which no site has measured",
+      "margin": null,
+      "magnitude": null,
+      "adequate": null,
+      "verdict": "**undefined** — the exhalation rate is a site input, so the sign is a site fact: the bound is +164 Bq/m³ on ordinary ground and −16 on alum shale, which is C-01's question and not the model's"
     }
   ],
   "counts": {
     "adequate": 0,
-    "not_adequate": 9,
-    "untestable": 5
+    "not_adequate": 5,
+    "untestable": 4,
+    "not_required": 6,
+    "by_class": {
+      "ytelse": 4,
+      "vurdering": 2,
+      "analyse": 9
+    }
   }
 }

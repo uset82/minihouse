@@ -1,0 +1,526 @@
+{
+  "state": "SCREENING — §2-2(4) OVERVIEW, NOT A COMPLIANCE STATEMENT",
+  "rows": [
+    {
+      "id": "7.1",
+      "provision": "§7-2",
+      "ytelse": "Flood — safety class",
+      "value": "F2 (1/200)",
+      "category": "forskrift",
+      "decl": [
+        6
+      ],
+      "status": "undetermined",
+      "closed_by": "C-01",
+      "evidence": "The class is fixed by the regulation and does not depend on the site; whether the site is in it does. Flood datum and freeboard are the site inputs (cribado-riesgos-naturales.md)"
+    },
+    {
+      "id": "7.2",
+      "provision": "§7-3",
+      "ytelse": "Landslide — safety class",
+      "value": "S2 (1/1000)",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "C-01",
+      "evidence": "Quick-clay regime below the marine limit is a siting gate, not a design value; no ground investigation exists"
+    },
+    {
+      "id": "9.1",
+      "provision": "§9-2",
+      "ytelse": "Hazardous substances in products",
+      "value": "no manufacturer-free route",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "C-08 (testing)",
+      "evidence": "The reclaimed timber has no documented compliance instrument; §2-3(1)'s guidance names prøvning as the route, so this is a testing question (verificacion-instalaciones.md)"
+    },
+    {
+      "id": "9.2",
+      "provision": "§9-6 / §9-8",
+      "ytelse": "Waste plan and 70 wt% sorting",
+      "value": ">10 t, or >300 m²",
+      "category": "forskrift",
+      "decl": [],
+      "status": "not applicable to this building",
+      "closed_by": "—",
+      "evidence": "Area limbs unreachable at 18 m²; the tonnage limb is crossed only by aggregation with a demolition, so the duty applies iff the project dismantles a source building"
+    },
+    {
+      "id": "9.3",
+      "provision": "§9-10",
+      "ytelse": "Wood-stove emissions",
+      "value": "5 g/kg (catalyst), 10 g/kg (other)",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "stove product",
+      "evidence": "Applies if a stove is fitted, which the room-sealed decision (row 14) makes more likely, not less"
+    },
+    {
+      "id": "11.1",
+      "provision": "§11-4(3) no. 4",
+      "ytelse": "Loadbearing capacity, main system",
+      "value": "R 15",
+      "category": "forskrift",
+      "decl": [],
+      "status": "**not met** by the screening",
+      "closed_by": "R2 + C-06",
+      "evidence": "No. 4 overrides Table 1's R 30 for BKL 1 + risk class 4. A 48 mm rafter keeps 32 % of its modulus under charring; parity needs 98 mm stock (determinacion-cubierta-incendio.md)"
+    },
+    {
+      "id": "11.2",
+      "provision": "§11-8",
+      "ytelse": "Fire-cell separation",
+      "value": "EI 30",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "whether a technical cupboard is a fire cell (S024 records it as open)",
+      "evidence": "One dwelling unit in one cell; the open question is whether the technical cupboard must be separated"
+    },
+    {
+      "id": "11.3",
+      "provision": "§11-9",
+      "ytelse": "Surface classes, wall and ceiling",
+      "value": "D-s2,d0",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "the §11-13 determination (rows 2/3/4)",
+      "evidence": "B-s1,d0 applies only inside a rømningsvei. A cell with no rømningsvei is still a cell, so D-s2,d0 governs and the reclaimed timber stays exposed (determinacion-estrategia-incendio.md)"
+    },
+    {
+      "id": "11.4",
+      "provision": "§11-9",
+      "ytelse": "Roof covering",
+      "value": "BROOF(t2)",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "product",
+      "evidence": "A product property of the standing-seam sheet, not a design value"
+    },
+    {
+      "id": "11.5",
+      "provision": "§11-13",
+      "ytelse": "Escape window — aperture",
+      "value": "600 h × 500 w, sum ≥ 1500 mm",
+      "category": "forskrift",
+      "decl": [
+        3,
+        4
+      ],
+      "status": "**not met** by the screening",
+      "closed_by": "the aperture table (R0)",
+      "evidence": "V-03 gives 500 × 500, sum 1000. The deficit is −500 mm on the sum rule, the largest dimensional gap in the project (verificacion-ventanas.md)"
+    },
+    {
+      "id": "11.6",
+      "provision": "§11-13",
+      "ytelse": "Escape window — sill",
+      "value": "≤ 1000 mm",
+      "category": "forskrift",
+      "decl": [
+        3
+      ],
+      "status": "**not met** by the screening",
+      "closed_by": "the aperture table (R0)",
+      "evidence": "V-03 at 1500 mm, V-02 at 1100; V-01 alone qualifies at 900 mm"
+    },
+    {
+      "id": "11.7",
+      "provision": "§11-14",
+      "ytelse": "Door free width in a rømningsvei",
+      "value": "860 mm",
+      "category": "forskrift",
+      "decl": [
+        2
+      ],
+      "status": "undetermined",
+      "closed_by": "a door schedule with the free width dimensioned",
+      "evidence": "A 900 mm leaf is not a free width; ordinary sets spend 30–60 mm on frame, hinge and stop, and none is specified"
+    },
+    {
+      "id": "11.8",
+      "provision": "§11-12",
+      "ytelse": "Smoke detection",
+      "value": "≥ 60 dB, 4 zones",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "specification",
+      "evidence": "A specification item with no dimensional consequence, which is why it has not been written yet"
+    },
+    {
+      "id": "11.9",
+      "provision": "§11-6 / §11-17",
+      "ytelse": "Separation and fire-service access",
+      "value": "8 m separation; 50 m access",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "C-01",
+      "evidence": "Both are properties of the pitch, not of the module"
+    },
+    {
+      "id": "12.1",
+      "provision": "§12-7(2)(c)",
+      "ytelse": "Room height",
+      "value": "2.2 m",
+      "category": "forskrift",
+      "decl": [
+        5
+      ],
+      "status": "**not met** by the screening",
+      "closed_by": "R2",
+      "evidence": "1778 mm at the eave at 20° / 1100 mm stack, so −422 mm. §12-7(2)(a)'s 2.4 m is exempt; (2)(c) sets 2.2 m for this building type (verificacion-altura-libre.md)"
+    },
+    {
+      "id": "12.2",
+      "provision": "§12-7(2)(d)",
+      "ytelse": "Relief for parts of a room",
+      "value": "no fraction given",
+      "category": "utenfor",
+      "decl": [
+        9
+      ],
+      "status": "undetermined",
+      "closed_by": "a determination",
+      "evidence": "Parts of the room may be lower «der dette ikke påvirker rommets bruksformål». How much is a determination, not a number, so it cannot be measured — only argued"
+    },
+    {
+      "id": "13.1",
+      "provision": "§13-1(1)",
+      "ytelse": "Ventilation adapted to the pollution load",
+      "value": "documented quantities required",
+      "category": "analyse",
+      "decl": [
+        14
+      ],
+      "status": "**not met** by the screening",
+      "closed_by": "a room-sealed stove (row 14) and the make-up air inlet",
+      "evidence": "The quantities are produced — 52 m³/h governing supply, 90 basic and 108–216 boosted extract — but the extract depressurises a sealed cabin to 106–140 Pa and reverses the flue by −130 Pa (verificacion-ventilacion.md)"
+    },
+    {
+      "id": "13.2",
+      "provision": "§13-5",
+      "ytelse": "Radon — annual average",
+      "value": "≤ 200 Bq/m³",
+      "category": "forskrift",
+      "decl": [
+        15
+      ],
+      "status": "undetermined",
+      "closed_by": "C-01",
+      "evidence": "Bounded by C ≤ E/Q at 3.6–36 Bq/m³ on ordinary ground; alum shale at 300 mBq/(m²·s) breaks it at 216 (verificacion-radon.md)"
+    },
+    {
+      "id": "13.3",
+      "provision": "§13-5",
+      "ytelse": "Radon barrier against the ground",
+      "value": "plus pressure reduction above 100 Bq/m³",
+      "category": "forskrift",
+      "decl": [
+        15
+      ],
+      "status": "not applicable to this building",
+      "closed_by": "—",
+      "evidence": "The prescriptive route describes a floor on the ground. This one sits on a ventilated void over the chassis, so the route describes a detail the building does not contain — which is why the bound, not a membrane, is the instrument"
+    },
+    {
+      "id": "13.4",
+      "provision": "§13-7",
+      "ytelse": "Daylight — light transmittance",
+      "value": "0.510 at ff 1.00",
+      "category": "analyse",
+      "decl": [
+        1
+      ],
+      "status": "undetermined",
+      "closed_by": "glazing",
+      "evidence": "The requirement is a function; 0.510 is the minimum LT that delivers the required glass area, so it is the project's instrument and it moves with the frame factor (verificacion-luz-diurna.md)"
+    },
+    {
+      "id": "13.5",
+      "provision": "§13-13",
+      "ytelse": "Vapour resistance of the barrier",
+      "value": "Sd ≥ 10 m",
+      "category": "analyse",
+      "decl": [
+        13
+      ],
+      "status": "undetermined",
+      "closed_by": "the barrier product and the junction detail",
+      "evidence": "A function in the forskrift; 10 m is the project's instrument. Its continuity is the floor-to-wall junction, where the steel crosses the plane when it is not wrapped (detalle-encuentro-R0.svg)"
+    },
+    {
+      "id": "13.6",
+      "provision": "§13-4",
+      "ytelse": "Thermal indoor climate",
+      "value": "operative temperature, no number",
+      "category": "analyse",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "R2 and the heating choice",
+      "evidence": "Not analysed. The envelope and junction screens cover the fabric; the comfort quantity needs the heating system, which is not chosen"
+    },
+    {
+      "id": "13.7",
+      "provision": "§13-15",
+      "ytelse": "Wet room",
+      "value": "applies",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "the plan",
+      "evidence": "A bathroom is in the R0 plan; the wet-room build-up is not designed"
+    },
+    {
+      "id": "14.1",
+      "provision": "§14-3",
+      "ytelse": "Wall U-value",
+      "value": "≤ 0.22 W/m²K",
+      "category": "forskrift",
+      "decl": [
+        7
+      ],
+      "status": "**not met** by the screening",
+      "closed_by": "a timber fraction below 15 %, or more wool",
+      "evidence": "189 mm gives 0.2202 against 0.2200 — solved *to* the limit, so the margin is zero by construction and the band across 8–23 % changes sign"
+    },
+    {
+      "id": "14.2",
+      "provision": "§14-3",
+      "ytelse": "Roof U-value",
+      "value": "≤ 0.18 W/m²K",
+      "category": "forskrift",
+      "decl": [],
+      "status": "**not met** by the screening",
+      "closed_by": "R2",
+      "evidence": "278 mm at 15 %; clear field passes, studs do not. Solved to the limit like the wall (verificacion-envolvente.md)"
+    },
+    {
+      "id": "14.3",
+      "provision": "§14-3",
+      "ytelse": "Floor U-value",
+      "value": "≤ 0.18 W/m²K",
+      "category": "forskrift",
+      "decl": [],
+      "status": "**not met** by the screening",
+      "closed_by": "R2",
+      "evidence": "281 mm at 15 %; same construction as the roof"
+    },
+    {
+      "id": "14.4",
+      "provision": "§14-3",
+      "ytelse": "Window and door U-value",
+      "value": "≤ 1.20 W/m²K",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "product",
+      "evidence": "No glazing selected. This is the row that also holds the daylight and the escape-window deficits, so one product decision moves three"
+    },
+    {
+      "id": "14.5",
+      "provision": "§14-3",
+      "ytelse": "Airtightness",
+      "value": "n50 ≤ 1.5 h⁻¹ at 50 Pa",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "the measurement itself — the test is specified, not performed",
+      "evidence": "Used as a design value by the ventilation and radon screens. The test is now specified (especificacion-ensayo-tetthet.md) but no measurement exists, and the standard that defines the method is not held (S031)"
+    },
+    {
+      "id": "15.1",
+      "provision": "§15-3",
+      "ytelse": "Flue and chimney",
+      "value": "T400, 2 free sides, feiing access",
+      "category": "forskrift",
+      "decl": [
+        14
+      ],
+      "status": "undetermined",
+      "closed_by": "product",
+      "evidence": "The chimney chain is checked; the draught it produces is the negative margin in row 14, which a room-sealed stove removes"
+    },
+    {
+      "id": "15.2",
+      "provision": "§15-6 / §15-8",
+      "ytelse": "Backflow head",
+      "value": "900.00 m",
+      "category": "forskrift",
+      "decl": [
+        11
+      ],
+      "status": "**not met** by the screening",
+      "closed_by": "C-01 and the foundation",
+      "evidence": "+940 mm on the sewer route, −160 mm on a shallow sealed tank. The 0.90 m is a minimum burial depth, not a clearance"
+    },
+    {
+      "id": "15.3",
+      "provision": "§15-5",
+      "ytelse": "Internal water installation",
+      "value": "38 / 55 °C, 20 / 50 mm air gaps",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "the services design",
+      "evidence": "A specification item; no distribution system is designed"
+    },
+    {
+      "id": "4.1",
+      "provision": "§4-1",
+      "ytelse": "FDV documentation",
+      "value": "must exist at ferdigattest, ajour, as built",
+      "category": "forskrift",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "a written file",
+      "evidence": "§4-1(2)'s exemption is rejected for this building (6 of 6 categories). §4-2 puts the duty to keep it updated on the owner, and a cabin that moves meets that condition routinely"
+    },
+    {
+      "id": "X1",
+      "provision": "§14-2 (exempt)",
+      "ytelse": "Ψ″ benchmark of 0.05 W/m²K",
+      "value": "does not bind",
+      "category": "utenfor",
+      "decl": [
+        8
+      ],
+      "status": "not applicable to this building",
+      "closed_by": "—",
+      "evidence": "The figure sits in §14-2's route, exempt via §14-5(1). At 18 m² it implies a mean Ψ of 0.0147 W/mK, under half of good practice, so it is not adoptable as a target (verificacion-puentes-termicas.md)"
+    },
+    {
+      "id": "X2",
+      "provision": "S022 (road transport)",
+      "ytelse": "Overall height",
+      "value": "4000 mm",
+      "category": "utenfor",
+      "decl": [
+        10
+      ],
+      "status": "met at the limit, no margin",
+      "closed_by": "R2",
+      "evidence": "Not a TEK17 ytelse at all — a road-transport constraint from Directive 96/53/EC. Every R2 option was solved *to* it, so it has no margin"
+    },
+    {
+      "id": "X3",
+      "provision": "project",
+      "ytelse": "R2 dimensional reserve",
+      "value": "100 mm",
+      "category": "utenfor",
+      "decl": [
+        10
+      ],
+      "status": "undetermined",
+      "closed_by": "R2",
+      "evidence": "A project allowance, not a regulatory number; it destroys two of the four R2 options"
+    },
+    {
+      "id": "X4",
+      "provision": "project",
+      "ytelse": "Flood freeboard",
+      "value": "300 mm",
+      "category": "utenfor",
+      "decl": [
+        6
+      ],
+      "status": "undetermined",
+      "closed_by": "C-01",
+      "evidence": "A project choice above the flood datum. The class is the margin; the freeboard is a decision"
+    },
+    {
+      "id": "X5",
+      "provision": "lifting",
+      "ytelse": "Per-leg sling tension",
+      "value": "accessory capacity",
+      "category": "utenfor",
+      "decl": [
+        12
+      ],
+      "status": "undetermined",
+      "closed_by": "C-07",
+      "evidence": "Governed by the lift plan and the equipment's rated capacity, not by TEK17. No mass inventory exists, so no tension can be stated"
+    },
+    {
+      "id": "X6",
+      "provision": "S014",
+      "ytelse": "Material factor on soil strength",
+      "value": "γ_m = 1.4",
+      "category": "utenfor",
+      "decl": [],
+      "status": "undetermined",
+      "closed_by": "the National Annex",
+      "evidence": "A partial factor on the slope-stability model, not a margin on the F2/S2 class; applying it as one double-counts"
+    }
+  ],
+  "counts": {
+    "rows": 38,
+    "by_category": {
+      "forskrift": 27,
+      "preakseptert": 0,
+      "analyse": 4,
+      "utenfor": 7
+    },
+    "by_status": {
+      "undetermined": 25,
+      "not applicable to this building": 3,
+      "**not met** by the screening": 9,
+      "met at the limit, no margin": 1
+    },
+    "undetermined": 25,
+    "not_met": 9,
+    "not_applicable": 3,
+    "cited_declaration_rows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "ytelser_only": {
+      "met by the screening": 0,
+      "**not met** by the screening": 9,
+      "undetermined": 20,
+      "not applicable to this building": 2,
+      "met at the limit, no margin": 0
+    },
+    "closures": {
+      "distinct": 21,
+      "closing_one": 17,
+      "largest": [
+        {
+          "decision": "C-01",
+          "rows": 4
+        },
+        {
+          "decision": "product",
+          "rows": 3
+        },
+        {
+          "decision": "R2",
+          "rows": 3
+        },
+        {
+          "decision": "the aperture table (R0)",
+          "rows": 2
+        }
+      ]
+    }
+  }
+}

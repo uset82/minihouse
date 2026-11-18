@@ -90,6 +90,60 @@
       "label": "installations chapters 9/15/16/17"
     },
     {
+      "file": "fase1/verificacion-condensacion-union.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "condensation at the junction"
+    },
+    {
+      "file": "fase1/verificacion-puente-2d.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "2D conduction at the floor-edge junction"
+    },
+    {
+      "file": "fase1/determinacion-estrategia-incendio.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": "4",
+      "label": "chapter 11 determinations and coupling"
+    },
+    {
+      "file": "fase1/verificacion-ventilacion.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": null,
+      "label": "ventilation §13-1(1) and envelope pressure"
+    },
+    {
+      "file": "fase1/verificacion-aporte-aire.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": "14 t",
+      "label": "make-up air sizing and the flue"
+    },
+    {
+      "file": "fase1/verificacion-radon.md",
+      "exists": true,
+      "state": true,
+      "limits": true,
+      "basis": true,
+      "margin": "3",
+      "label": "radon §13-5 for a floor off the ground"
+    },
+    {
       "file": "knowledge/comparisons/lift-geometry-screen.md",
       "exists": true,
       "state": true,
@@ -211,10 +265,10 @@
       "tally": true
     },
     "tally": {
-      "rows": 13,
+      "rows": 15,
       "positive": 2,
-      "negative": 6,
-      "undefined": 3,
+      "negative": 7,
+      "undefined": 4,
       "zero": 2,
       "unclassified": []
     }

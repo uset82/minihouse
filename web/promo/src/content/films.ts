@@ -16,11 +16,13 @@ type FilmEntry = {
   poster: string;
   width: number;
   height: number;
+  /** Optional sharper file for wide screens; same edit and aspect ratio. */
+  wide?: { file: string; width: number; height: number };
   status: FilmStatus;
   source: string;
 };
 
-export type Film = FilmEntry & { src: string; posterImage: ImageMetadata };
+export type Film = FilmEntry & { src: string; srcWide?: string; posterImage: ImageMetadata };
 
 const posters = import.meta.glob<{ default: ImageMetadata }>('../assets/film/*.{jpg,jpeg,png,webp}', {
   eager: true,
@@ -30,5 +32,12 @@ const posters = import.meta.glob<{ default: ImageMetadata }>('../assets/film/*.{
 export function getFilm(id: FilmId): Film | undefined {
   const entry = (entries as FilmEntry[]).find((film) => film.id === id);
   const posterImage = entry ? posters[`../assets/film/${entry.poster}`]?.default : undefined;
-  return entry && posterImage ? { ...entry, src: `/film/${entry.file}`, posterImage } : undefined;
+  return entry && posterImage
+    ? {
+      ...entry,
+      src: `/film/${entry.file}`,
+      ...(entry.wide ? { srcWide: `/film/${entry.wide.file}` } : {}),
+      posterImage,
+    }
+    : undefined;
 }

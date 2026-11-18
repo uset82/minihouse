@@ -30,6 +30,7 @@ const store = (value: 'playing' | 'paused') => {
 
 if (videos.length > 0) {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const wideScreen = window.matchMedia('(min-width: 64rem)');
   const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
   const choice = stored();
   let playing = choice === 'playing' || (choice === null && !reduceMotion.matches && connection?.saveData !== true);
@@ -45,7 +46,12 @@ if (videos.length > 0) {
     for (const video of videos) {
       const show = playing && near.has(video) && document.visibilityState === 'visible';
       if (show) {
-        if (!video.getAttribute('src')) video.src = video.dataset.filmSrc ?? '';
+        // Choose once, when the film loads: the sharper hero cut from 64rem up.
+        if (!video.getAttribute('src')) {
+          video.src = (wideScreen.matches && video.dataset.filmSrcWide
+            ? video.dataset.filmSrcWide
+            : video.dataset.filmSrc) ?? '';
+        }
         video.play().then(
           () => video.classList.add('is-playing'),
           (error: unknown) => {

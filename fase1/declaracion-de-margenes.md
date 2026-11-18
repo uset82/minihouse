@@ -8,7 +8,7 @@ is a measurement, and the declaration is void as soon as R2 is chosen and the ge
 method is *suitable and valid*, the assumptions are *described*, the assumptions are
 *justified*, and the **necessary safety margins are stated**. The audit in
 [`documentacion_check.py`](../scripts/documentacion_check.py) found the first three met across
-all thirteen screening reports and the fourth met by only three, in three different currencies.
+all fifteen screening reports and the fourth met by only three, in three different currencies.
 This document replaces those three partial statements with one position.
 
 It reaches a conclusion the project has been avoiding: **it is not short of a margin
@@ -18,7 +18,7 @@ statement. It is short of margin.**
 
 ## 1. What the word has been doing
 
-Three different things have been called "a margin" in this repository, and they are not
+Four different things have been called "a margin" in this repository, and they are not
 interchangeable:
 
 | Called a margin | What it actually is | Why it is not a margin |
@@ -26,6 +26,7 @@ interchangeable:
 | The **4.00 m** general height value (S022) | A regulatory screening value | It is the *limit*, not an allowance against it. Using it as a design dimension leaves zero |
 | The **100 mm** R2 reserve | A dimensional allowance | This one is a genuine margin — and the R2 solver shows it destroys two of four options |
 | The **1.4** material factor (natural hazards) | A partial factor on soil strength | It is not a margin on the hazard class, and applying it as one double-counts |
+| The **NS 3420** construction tolerance | A **granted** permission to deviate from an absolute number | It exists only where the forskrift or a vedtak grants it, and it governs **measured execution**, not design. Spending it in advance is not a margin — see below |
 
 A margin is therefore defined here operationally, so that it can be checked:
 
@@ -37,29 +38,69 @@ is positive and larger than that uncertainty. Where a quantity cannot be fixed y
 is **undefined** — and undefined is a legitimate entry that must not be filled with a
 plausible number.
 
+**A margin is not a tolerance, and the difference is not pedantry.** The chapter 2 introduction
+states that where the forskrift gives a requirement level as a concrete number, it is to be read
+as an **absolute requirement** — «så fremt det ikke i forskrift eller i vedtak […] er gitt
+konkrete toleranser på kravet» ([S030](../knowledge/sources/S030.md)). The ordinary tolerance
+rules govern the gap between what is designed and what is **measured**, after the fact. So a
+margin is the designer's own allowance, chosen and declared; a tolerance is a permission
+somebody else grants, and this project has been granted none. **Every R2 option solved *to*
+4000 mm, and the wall solved to 0.2202 against 0.2200, are designs that have spent an allowance
+that does not exist** — which is the regulation's own route to the conclusion this document
+reaches from the numbers.
+
 ---
 
 ## 2. Every screen, with its margin
 
+**The margin test applies to nine of these fifteen rows, and this document did not say so until
+now.** §2-2(3) reads as though every analysis must state margins; its guidance qualifies the
+demand — «Hvilke sikkerhetsmarginer er lagt til grunn (*nødvendig ved mer omfattende analyse*)» —
+and allows that «en enkel faglig vurdering eller et logisk resonnement» may be enough. The duty
+is therefore graded by analysis type, and applying it uniformly to fifteen rows was a defect in
+this document rather than a demand of the regulation. [S030](../knowledge/sources/S030.md) is
+what exposed it.
+
+| Class | Rows | What §2-2(3) requires | What governs instead |
+|---|---|---|---|
+| **analyse** — a quantitative model produces the available value | **9**: 1, 5, 7, 8, 11, 12, 13, 14, 15 | method suitable and valid, assumptions described and justified, **and the necessary safety margin stated** | the adequacy test in §8 |
+| **ytelse** — a stated number compared against a stated value | **4**: 2, 3, 4, 10 | nothing: there is no analysis | §2-2(1). A shortfall is a **deviation**, allowed only by municipal **dispensation** under PBL ch. 19, on a test of «klart større fordeler enn ulemper» |
+| **vurdering** — a functional requirement met by a determination | **2**: 6, 9 | assumptions described and justified; **no margin** | the determination itself, which must be reasoned |
+
+**Moving a row out of the margin test does not relieve it, and for the stated ytelser it makes
+the position worse.** A margin is evidence of not having been driven to the limit; a stated
+ytelse has to be met, and the only instrument for missing it is a discretionary municipal
+dispensation. So rows 3 and 4 are not two thin negative margins — they are
+**two deviations of −500 mm that need a dispensation**, and a dispensation is harder to obtain
+than a positive margin, not easier. Row 2 is not the project's thinnest positive margin either:
+it is a stated ytelse whose free width has never been dimensioned, and if the frame build-up
+eats the 40 mm it becomes a third deviation. Row 10's zero is not a margin that happens to be
+zero; it is a dimension solved to an absolute limit.
+
+The same classification is what §2-2(4)'s overview must list in its three categories, so it is
+kept in one place — `CLASS` in [`incertidumbre.py`](../scripts/incertidumbre.py) — and the two
+uses cannot drift apart.
+
 | # | Screen | Governing quantity | Available | Required | Margin | Verdict |
 |---|---|---|---:|---:|---:|---|
 | 1 | Daylight §13-7 | Light transmittance LT | product not chosen | 0.510 (ff 1.00) – 0.638 (ff 0.80) | **undefined** | waits on glazing |
-| 2 | Fire ch. 11 — door | Free width | 900 mm leaf | 860 mm | **+40 mm** | **positive, thinnest in the project** |
-| 3 | Fire ch. 11 — escape window sill | Sill height, worst window | 1500 mm (V-03) · 1100 (V-02) · 900 (V-01) | ≤1000 mm | **−500 / −100 / +100 mm** | **negative on two of three** |
-| 4 | Fire ch. 11 — escape window size | h / w / h+w, worst window | 500 / 500 / 1000 mm (V-03) | 600 / 500 / 1500 mm | **−100 / 0 / −500 mm** | **negative** |
+| 2 | Fire ch. 11 — door | Free width | 900 mm leaf | 860 mm | **+40 mm** | **ytelse** — positive, but not a margin: the free width is a nominal leaf and no frame build-up is specified |
+| 3 | Fire ch. 11 — escape window sill | Sill height, worst window | 1500 mm (V-03) · 1100 (V-02) · 900 (V-01) | ≤1000 mm | **−500 / −100 / +100 mm** | **ytelse** — negative on two of three: a **deviation**, not a margin |
+| 4 | Fire ch. 11 — escape window size | h / w / h+w, worst window | 500 / 500 / 1000 mm (V-03) | 600 / 500 / 1500 mm | **−100 / 0 / −500 mm** | **ytelse** — negative: the same deviation as row 3, and the two move together |
 | 5 | Room height §12-7 | Eave height at 20°, 1100 mm stack | 1778 mm | 2200 mm | **−422 mm**, band −358 to −498 | **negative** |
-| 6 | Natural hazards ch. 7 | Freeboard above flood datum | 300 mm | no regulatory figure | +300 mm | positive but a **project choice**, not a regulatory number |
+| 6 | Natural hazards ch. 7 | Freeboard above flood datum | 300 mm | no regulatory figure | +300 mm | **vurdering** — positive but a **project choice**, so there is nothing to be adequate *to* |
 | 7 | Envelope §14-3 — wall U | W/m²K | 0.2202 at the solved 189 mm | 0.22 | **0 mm by construction**; band +0.024 to −0.027 | **zero by construction**, and the band changes sign |
 | 8 | Thermal bridges | Ψ″ W/m²K | 0.210 ordinary detailing | 0.05 (voluntary) | **−0.160** | **negative** against a non-binding benchmark; one junction now calculated, 0.027 wrapped to 0.195 unwrapped |
-| 9 | Integrated section | Width reaching 2.2 m | ~24 % | no fraction given | **undefined** | no limit exists to measure against |
-| 10 | R2 options | Transport envelope | 4000 mm | 4000 mm | **0 mm**, then **−100 mm** with the reserve | **zero by construction**; the R2-D dispensation is itself **22 mm short** at a 15 % timber fraction |
+| 9 | Integrated section | Width reaching 2.2 m | ~24 % | no fraction given | **undefined** | **vurdering** — no limit exists to measure against |
+| 10 | R2 options | Transport envelope | 4000 mm | 4000 mm | **0 mm**, then **−100 mm** with the reserve | **ytelse** — zero by construction; the R2-D dispensation is itself **22 mm short** at a 15 % timber fraction |
 | 11 | Installations — drain | Cover above main crown | +940 / −160 mm | 560 mm minimum | +940 / **−160 mm** | **site-dependent, negative on one route** |
 | 12 | Lift geometry | Per-leg tension | undefined | accessory capacity | **undefined** | C-07 missing |
 | 13 | Condensation at the junction | Added resistance m²K/W | 0.000 bare / 0.409 with a 6 mm pad | **0.80** (2D) | **−0.80 / −0.39** | **negative**, and the 1D requirement of 0.358 was 0.44 too small |
 | 14 | Ventilation §13-1(1) — flue | Net draught at the flue, Pa | **−130 Pa** at the highest pressure the extract can hold | **> 0 Pa** | **−130 Pa** | **negative — the flue reverses; only a room-sealed stove retires it** |
+| 15 | Radon §13-5 | Cabin concentration, Bq/m³ | **≤ 36** (bound, ordinary ground) | **≤ 200** | **undefined**, +164 to −16 | **site-set** — comfortable on ordinary ground, over the limit on alum shale |
 
 **Tally: two rows are positive, and one of those is a project choice rather than a regulatory
-number.** Seven are negative, three are undefined, and **two are zero by construction**. The fire
+number.** Seven are negative, four are undefined, and **two are zero by construction**. The fire
 margins do not offset anything outside chapter 11.
 
 Rows 3 and 4 are stated on the **worst** window, not the best one, because that is how a
@@ -96,6 +137,8 @@ inlet cannot hold a set pressure at all. A **room-sealed** stove removes the cou
 shrinking it, because its flue is balanced against the outside and the cabin's pressure never
 enters the draught. So this row does not become positive — **it stops being a margin** — and that
 is a specification decision, not a calculation. Until it is taken, the row stands at **−130 Pa**.
+
+**Row 15 is undefined rather than negative, and the difference matters.** [The radon screen](verificacion-radon.md) shows that this floor is not on the ground — it sits on a ventilated void over the chassis — and that the cabin concentration is bounded above by `E / Q` whatever the void does. On ordinary ground that bound is **36 Bq/m³** against a 200 limit, a margin of **+164**. On alum shale it is **216**, a margin of **−16**. The sign is therefore a property of the site, not of the model, and the exhalation rate is an input no site has measured — so the margin is **undefined**, the same way row 1 waits on glazing and row 12 on C-07. Declaring the alum-shale case as the margin would repeat the error already corrected on row 14, where quoting the 406 Pa case against the flue overstated the problem by 266 Pa.
 
 What does **not** move with that answer is §11-9's surface class. A fire cell that contains no
 rømningsvei is still a fire cell, so **D-s2,d0** governs walls and ceiling whatever §11-13
@@ -226,10 +269,11 @@ that row 13's moisture strategy depends on. **Rows 13 and 14 are the same drawin
 ## 7. What follows
 
 1. **§2-2(3) cannot be satisfied by writing a number down.** The demand is for margins that are
-   *necessary* — that is, evidence the design has not been driven to the limit. Six negative,
-   two zero by construction and three undefined entries are the opposite of that evidence, and
-   [the adequacy screen](verificacion-incertidumbre.md) shows that **not one row clears the
-   declaration's own test** of being positive and larger than its uncertainty.
+   *necessary* — that is, evidence the design has not been driven to the limit. Seven negative,
+   two zero by construction and four undefined entries are the opposite of that evidence, and
+   [the adequacy screen](verificacion-incertidumbre.md) shows that of the **nine** rows that are
+   analyses, **not one clears the declaration's own test** of being positive and larger than its
+   uncertainty.
 2. **R2 stops being a preference and becomes a regulatory requirement.** The binding dimension
    has no margin because every R2 option was solved **to** 4000 mm. Choosing an option that
    deliberately gives some back — a shallower pitch, a lower stack, or a dispensation — is what
@@ -246,52 +290,72 @@ that row 13's moisture strategy depends on. **Rows 13 and 14 are the same drawin
 
 ---
 
-## 8. Is any margin adequate? The answer is none
+## 8. Is any margin adequate? Of the nine analyses, none
 
 §1 defines a margin as adequate only when it is positive **and larger than the uncertainty of the
 model that produced it**. [The adequacy screen](verificacion-incertidumbre.md) populates that
-column and runs the test. It separates four kinds of uncertainty — model, input, interpretation
-and construction — because only the second can be reduced by gathering data.
+column and runs the test — and, since [S030](../knowledge/sources/S030.md), runs it **only on the
+nine rows where §2-2(3) requires a margin**. It separates four kinds of uncertainty — model,
+input, interpretation and construction — because only the second can be reduced by gathering
+data.
 
-**No row clears the test.** Eight fail it outright; the other five cannot be judged, because
-two of them have their sign set outside the model and three have no number at all:
+**No analysis clears the test: five fail it outright and four cannot be judged**, because two
+have their sign set outside the model and two have no number at all:
 
 | Row | Declared | Why it is not adequate |
 |---|---|---|
-| 2 — door free width | +40 mm | **not demonstrated.** 40 mm is the leaf minus a frame and hinge build-up nobody has specified; ordinary door sets spend 30–60 mm on it, so the sign is unknown |
-| 3, 4 — escape windows | −500 mm | **sign set by the interpretation**: −500 under the strictest reading, +100 on V-01 under the minimal one |
 | 5 — room height | −422 mm | **negative across the whole band** (−358 to −498), so the sign is robust — but the published figure is mid-band, not the worst case |
 | 7 — wall U | 0 by construction | the thickness was **solved** to hit 0.22, so the margin is zero by definition; the band across 8–23 % runs +0.024 to −0.027 |
 | 8 — thermal bridges | −0.160 | **negative at every detailing level** (−0.067 to −0.347), but the magnitude moves by a factor of three. One junction is now calculated and brackets the generic 0.10 the sweep assumed |
-| 10 — R2 transport | 0 | **zero by construction** — every option was solved *to* 4000 mm |
-| 11 — drain cover | −160 mm | **sign set by the site**, not by the model |
 | 13 — condensation | −0.80 | **the sign was inverted by 2D.** The 1D requirement of 0.358 was computed on a surface that stops governing at the first millimetre of pad; the corner needs 0.80 |
-| 6 — flood freeboard | +300 mm | positive, but the number is a **project choice**, not a requirement, so there is nothing to be adequate *to* |
-| 1, 9, 12 | undefined | a product, a limit and a mass are missing. No sweep substitutes for them |
+| 14 — flue | −130 Pa | **negative across the whole band** (−85.5 to −130) and the only row whose resolution is a specification rather than a number |
+| 1 — daylight | undefined | the glazing is not chosen. No sweep substitutes for a product |
+| 11 — drain cover | −160 mm | **sign set by the site**, not by the model: +940 mm on the sewer route, −160 mm on the shallow tank |
+| 12 — lift | undefined | C-07: the equipment masses and positions are missing |
+| 15 — radon | undefined | the exhalation rate is a site input, so the sign is a fact about C-01 |
+
+The six rows outside the margin requirement are **not thereby adequate**. §2 says what governs
+each: a stated ytelse must be met, and where it is not the instrument is dispensation.
 
 Three findings follow that this document did not previously carry.
 
-**The thinnest positive margin is not a margin.** Row 2's +40 mm is a nominal leaf size, not a
-free width. It is the only positive row that is not a project choice, and it rests on a
-dimension no drawing gives.
+**The project's thinnest positive margin is not a margin at all.** Row 2's +40 mm is a nominal
+leaf size, not a free width, and the free width is what §12-13 states. It is the one positive row
+that is not a project choice, and it rests on a dimension no drawing gives — which is why it now
+sits outside the margin test rather than at the top of it: an undimensioned ytelse is not a thin
+margin, it is an unmet requirement waiting for a door schedule.
 
 **Two rows are zero by construction, and only one was admitted.** The transport envelope was
-flagged; the wall U was not. Both are dimensions **solved to their limit**, which means the
-margin is zero because of how the design was produced, not because the design happens to land
-there. That is one failure mode, and it should be named once.
+flagged; the wall U was not. Both are dimensions **solved to their limit**, so the margin is zero
+because of how the design was produced, not because the design happens to land there. One of them
+is an analysis (row 7) and one is a stated ytelse (row 10), and the failure mode is identical
+across the two classes — which is why it should be named once, here, rather than twice.
 
 **The section's −422 mm is mid-band.** Every value from 8 % to 23 % timber fraction is negative,
 so the timber fraction cannot rescue the section — it is a lever on the *size* of the deficit,
 not on its sign. But the R2 report's sensitivity table runs down to 8 % and never up, so −422 mm
 is the 15 % value being quoted where a worst case belongs. At 23 % the deficit is **−498 mm**.
 
+**The rule is about evidence, not about analysis, and it has just acquired a measurement to
+govern.** §14-3's airtightness is a stated ytelse, so it never enters this declaration. But when
+[its test was specified](especificacion-ensayo-tetthet.md), the definition in §1 applied to the
+measurement unchanged: an n50 of 1.5 measured to ±10 % does not demonstrate 1.5 — it demonstrates
+1.5 ± 0.15 — so the acceptance threshold is **1.36**, not the limit. That is the first use of the
+definition outside the analysis set, and it is consistent with it: what the rule demands is that a
+number exceed its own uncertainty, whether the number came from a model or from an instrument. It
+is also the reason a poor test can fail a compliant building, which is a property of the evidence
+rather than of the building.
+
 ## 9. Limits
 
 - No margin here is a measurement. Every "available" value is a screening value from the report
   named in the source list.
-- **Construction tolerance is absent from every row.** It is the fourth kind of uncertainty and
-  no detail or specification exists to carry it. The adequacy screen records the absence rather
-  than filling it.
+- **Construction tolerance is absent from every row**, and the absence is now a clause question
+  rather than an oversight. It is the fourth kind of uncertainty, no detail or specification
+  exists to carry it, and — since [S030](../knowledge/sources/S030.md) — there is **no general
+  tolerance to appeal to**: a numeric requirement level is absolute unless the forskrift or a
+  vedtak grants one, and the ordinary rules govern measured execution rather than design. The
+  adequacy screen records the absence rather than filling it.
 - Rows 3 and 4 assume the R0 aperture table and the **strictest** reading of §11-13. Under the
   minimal reading — the door to grade is a safe place — they would be positive on V-01 alone.
   The declaration states the strictest because that is the reading the design will be built to,
@@ -326,4 +390,5 @@ junction](verificacion-puente-2d.md), [ventilation](verificacion-ventilacion.md)
 [integrated section](verificacion-seccion.md), [R2 options](opciones-seccion-R2.md),
 [installations](verificacion-instalaciones.md),
 [lift geometry](../knowledge/comparisons/lift-geometry-screen.md). Gate:
-[S029](../knowledge/sources/S029.md).*
+[S029](../knowledge/sources/S029.md); scope of the margin test and the
+absolute-krav reading: [S030](../knowledge/sources/S030.md).*

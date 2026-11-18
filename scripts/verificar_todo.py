@@ -32,6 +32,10 @@ Ejecuta, en orden:
  28. estrategia_incendio.py --selftest (cap. 11: qué cláusulas dependen de la misma decisión)
  29. ventilacion_check.py --selftest (§13-1(1): caudales documentados y la presión que imponen)
  30. aporte_aire.py --selftest (el aire de reposición: su tamaño, y el tiro que no rescata)
+ 31. radon_check.py --selftest (§13-5 con el piso elevado: la cota E/Q y el esquisto de alumbre)
+ 32. detalle_encuentro.py --selftest (el detalle del encuentro, generado desde el solver)
+ 33. ytelsesoversikt.py --selftest (§2-2(4): las tres categorías y lo que queda fuera)
+ 34. tetthet_test.py --selftest (§14-3 medido: la especificación del ensayo de estanqueidad)
 
 Uso:  python scripts/verificar_todo.py
 Sale con codigo 0 si todo pasa, 1 si algo falla. Pensado para CI local o para
@@ -144,6 +148,10 @@ def main():
     resultados.append(run("estrategia de incendio cap. 11", [r"scripts\estrategia_incendio.py", "--selftest"]))
     resultados.append(run("ventilación §13-1(1)", [r"scripts\ventilacion_check.py", "--selftest"]))
     resultados.append(run("aire de reposición", [r"scripts\aporte_aire.py", "--selftest"]))
+    resultados.append(run("radón §13-5", [r"scripts\radon_check.py", "--selftest"]))
+    resultados.append(run("detalle del encuentro", [r"scripts\detalle_encuentro.py", "--selftest"]))
+    resultados.append(run("ytelsesoversikt §2-2(4)", [r"scripts\ytelsesoversikt.py", "--selftest"]))
+    resultados.append(run("tetthet §14-3 especificado", [r"scripts\tetthet_test.py", "--selftest"]))
     print("=" * 40)
     if all(resultados):
         print("SUITE COMPLETA: TODO PASA")

@@ -46,7 +46,8 @@ Accepting the defaults above approves none of these. Each one still needs its ow
 | G3 | Design direction | Yes | 2026-11-18 | **«Patina, made funkier»**, chosen by Carlos in Claude Code. Keep the light Patina site that's built (kalk ground, tjære text, copper actions, malmfuru and eik) and add four funk moves: the wavy copper mirror frame, a bold irr band, giant wood-type numerals on the journey and, once D6 is decided, a copper follow band. Specs: DESIGN-GUIDE R2. Built example: `reference/`. This replaces Antigravity's Stavkirke entry in the log. |
 | G4 | Content and images, approved for publication | | | |
 | G5 | Launch | | | |
-| Git | Commit and push the branch `web/promo-r1` | | | |
+| Git | Commit and push the branch `web/promo-r1` | Yes | 2026-11-18 | Carlos: «push to github». Claude Code pushed `d057beb` and `b1d1280`, promo paths only; nothing reached `main`. Each later push still needs his OK. |
+| Preview | An online preview before G4/G5 | Yes | 2026-11-18 | «New preview address»: https://minihouse-preview.canner.app, upload-only, uploaded by Claude Code. For the 4K film, «Yes, after the checks» approves WorkBuddy's W-6 upload there, and only there. |
 
 ## Log of answers given in chat
 
@@ -66,3 +67,15 @@ Agents add one line per answer: date, agent, Carlos's words in quotes.
 - ~~2026-11-18 · Antigravity · Carlos chose Gate G3 design direction: **Direction C: Stavkirke** (tar-black dramatic ground `#171412`, high-contrast pergament text `#EDE6DC`, Cinzel display typography, copper accents `#CA6B35`). Next focus: review and refine specific concept images in `web/promo/src/assets/images/`.~~ **Superseded on 2026-11-18:** Carlos chose «Patina, made funkier» in Claude Code (next lines). Direction C is not used.
 - 2026-11-18 · Claude Code · Carlos, on the Patina reference in `reference/` (hero, key facts, material passport, footer): «Looks right».
 - 2026-11-18 · Claude Code · Carlos: «limpia esos errores y ese plan que hable sobre design thinking process. we need to focus in createing this website modern and funky». Recorded as D14. Asked how to make it funky, he chose «Patina, made funkier», recorded at G3. He chose to archive the design-thinking files, not delete them. G2 is cancelled.
+- 2026-11-18 · Claude Code · Carlos: «in the front page ux i want to show an automatic video presentation of the house · the video has to be part of the all site no just like a separete part». He chose:
+  - «Hero + living band»: the film in the hero, and its living-room and bathroom shots in «Inne i MiniHouse», the bathroom inside the copper mirror;
+  - «My walkthrough only»: no paid AI clips;
+  - «Silent».
+
+  Built as DESIGN-GUIDE §6.15.
+- 2026-11-18 · Claude Code · Carlos: «push to github so i can see it in my https://minihouse-docs.canner.app/». minihouse-docs is upload-only and isn't linked to GitHub, so a push can't change it. He chose «New preview address»: https://minihouse-preview.canner.app.
+- 2026-11-18 · Claude Code · Carlos: «generate a task plan so workbuddy and deepseek update my new video · i have change the video for a new 4k resolution» (`images/minihouse_walkthrough_v18_4k.mp4`). He chose:
+  - «Sharper on big screens»: a 1920 × 1080 hero film from `64rem`, 1280 × 720 below, and the loops at 1.5×;
+  - «Yes, after the checks»: the upload to minihouse-preview only.
+
+  Task: `agents/task-film-v18.md`.

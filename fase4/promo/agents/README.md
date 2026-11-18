@@ -12,6 +12,7 @@ The briefs:
 - [Cursor](cursor.md): code
 - [Antigravity](antigravity.md): images and visual QA
 - [DeepSeek](deepseek.md): words and checks
+- WorkBuddy has no standing brief. It joins for single tasks, the current one being [task-film-v18.md](task-film-v18.md): the 4K film.
 
 ---
 
@@ -23,6 +24,7 @@ The briefs:
 | **Antigravity** | images, alt text and visual QA. It can see screenshots. | A-9: review Claude Code's C-12 at 4 widths, then A-12 |
 | **DeepSeek** | copy, the claims register and the automated checks. It **can't see images**, so it never judges visuals. | D-12: paths and the token check, then D-11 |
 | **Codex** | supervisor, if Carlos uses it | follows this file; edits only what its task names |
+| **WorkBuddy** | the project's engineering agent (`.workbuddy-ai/`). It runs scripts and sees its output through Playwright screenshots. | [task-film-v18.md](task-film-v18.md): W-1 to W-7, moving the film to the 4K master |
 | **Claude Code** | `PLAN.md`, `DESIGN-GUIDE.md`, the briefs, `reference/` and its review. On 2026-11-18, at Carlos's request, it also built C-12 in `web/promo`: see [its log](../status/claude-code.md). | – |
 | **Carlos** | decisions, renders and photos | D6, then G4 and G5 (§5) |
 
@@ -42,6 +44,7 @@ The critical path is D6 (the follow form), the new images, G4, G5 and then the d
 | `web/promo/src/assets/images/**`, `web/promo/src/content/images.json` | Antigravity | read only |
 | The concept film: `web/promo/public/film/**`, `web/promo/src/assets/film/**`, `web/promo/src/content/films.json` | Antigravity (made by Claude Code on 2026-11-18) | read only |
 | `scripts/cut_film.py` | Claude Code | read only; ask Claude Code to re-run it when the walkthrough changes |
+| **While [task-film-v18.md](task-film-v18.md) is open:** `scripts/cut_film.py`, the film cuts and posters, `films.json`, `films.ts`, `Film.astro`, `src/scripts/film.ts`, `archive/film-v11/`, `status/workbuddy.md` | WorkBuddy, instead of the owners above; the task lists DeepSeek's part | read only; Cursor and Antigravity leave these files alone until the task is closed |
 | `fase4/promo/review/claude-code-review.md` | Claude Code | read only; each owner fixes findings in its own files |
 | `web/promo/**`, apart from the files listed for Antigravity and DeepSeek | Cursor | read only |
 | `web/promo-holding/**`, and the `web/chat-demo` files named in [task-holding-page.md](task-holding-page.md) | Cursor | read only |

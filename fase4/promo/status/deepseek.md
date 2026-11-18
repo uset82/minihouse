@@ -15,10 +15,52 @@ Open requests go here, one line each, for example "→ Antigravity: …". Mark t
 - → Cursor and Carlos: closed for this preview. D13 uses the gallery action. D1 applies to the future subscription once D6 is resolved. Both privacy routes describe the current browsing experience.
 - → Carlos (or Cursor): run a Patentstyret search for «MiniHouse» before G5 and record the result in `05-test/claims-audit.md` §5; the Brønnøysund check returned 0 hits.
 - → Cursor: the follow-form schema change is closed on both sides — `schema.ts` holds only `fields { email, name, optional }` and both JSON files match (2026-11-17 22:26). No action.
+- → WorkBuddy: when W-2 lands, name the four output sizes and whether any budget needed a CRF raise; in W-3, say explicitly whether any of the five shots changed content from v11 to v18, since that decides whether I rewrite `film.alt`, `film.livingAlt` or `film.bathAlt`. Details in `qa/film-v18.md` §5.
 - → Antigravity: `scripts/check_promo.py` is the gate for image alt/caption text and for `--release`; when the 19 entries have their alts in both languages, the release check has one class of failure left (no image may be `stand-in` or `pending`).
 - → Cursor: the claims register is live at [02-define/claims-register.csv](../content/claims-register.csv). `schema.ts` may need one key I expect to use: a per-image `alt`/`caption` pair already exists, so no change is requested yet. If the copy needs a claims note in the UI, I'll ask before touching `nb.json`.
 
 ## Log
+
+### 2026-11-18 20:58 · D-14 closed, D-15 source updated · done / in progress
+Files: `fase4/promo/qa/film-v18.md` (D-14 final), `fase4/promo/content/claims-register.csv` (K-35 source). The alt keys are untouched.
+Plan (DESIGN-GUIDE §1, step 2): no UI. WorkBuddy's W-2 entry confirms the cuts, so D-14 is final; the K-35 source line moves now because it depends on the master, not on a visual judgement.
+Evidence:
+- **D-14 done.** Their sizes in decimal MB (3.94 / 2.40 / 1.04 / 1.14) match my binary measurements, and their ffprobe agrees on video-only H.264 at 24 fps with `moov` before `mdat`. They raised CRF to 33 for the 1920 hero and 32 for the living loop to stay inside budget, which is a quality trade-off rather than a defect; I asked W-3 to look for banding in the sky, the cladding and the copper mirror, since that is the one thing my tools cannot see.
+- **D-15, source half.** K-35 now cites `images/minihouse_walkthrough_v18_4k.mp4` (3840 × 2160, 408 frames, 17.041 s) and names the four cuts with their sizes, plus the v11 archive. The caption wording «Konseptfilm» is unchanged because the film is still a rendered concept, not a recording.
+- **Alt texts deliberately untouched.** `film.alt`, `film.livingAlt` and `film.bathAlt` stay as they are until W-3 says whether a shot changed; I do not judge pictures.
+- Checks: `check_promo.py` passes (source mode), `check-content.mjs` passes. No master, cut, poster, `films.json`, `films.ts`, `Film.astro` or `film.ts` touched.
+Checks: as above; all read-only except the register and the two QA/status documents.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [x] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER / BLOCKED: D-15 finishes when W-3 reports; D-16 waits for W-5 and the 4322 preview; D-17 waits for W-6 and the preview URL.
+Next: D-15 on W-3's answer, then D-16.
+
+### 2026-11-18 20:52 · D-14 measured on the four cuts (preliminary) · done pending W-2 entry
+Files: `fase4/promo/qa/film-v18.md` (updated §2). No cut, master or JSON touched.
+Plan (DESIGN-GUIDE §1, step 2): no UI. The four outputs appeared complete at 20:42–20:43, so they were measured now; a W-2 re-encode only costs a re-run of the same commands.
+Evidence:
+- **All four cuts probed:** `house-film-1920.mp4` 1920 × 1080, 397 frames, 16.542 s, **3.76 MiB** (budget 4.5); `house-film.mp4` 1280 × 720, 397 frames, 16.542 s, **2.29 MiB** (2.5); `living-loop.mp4` 1440 × 960 (3:2), 136 frames, 5.667 s, **0.99 MiB** (1.2); `bath-loop.mp4` 1080 × 1350 (4:5), 168 frames, 7.000 s, **1.08 MiB** (1.3). All H.264 High, 24/1 fps, every size inside its budget.
+- **No audio in any cut.** The master carries an AAC track, so this was the check most likely to fail; it passes on all four.
+- **Fast start on all four:** top-level order is `ftyp`, `moov`, `free`, `mdat` in every file. Checked by reading top-level boxes, not by re-encoding.
+- **The 16.542 s hero is correct, not a truncation:** the master is 17.041 s and the loop seam trims about half a second, the same way the v11 cut ended at 16.5 s.
+- Status in `workbuddy.md` still shows only W-1, so this is labelled preliminary until their W-2 entry lands.
+Checks: ffprobe 8.0.1 and a stdlib box reader; all read-only.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [N/A] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER / BLOCKED: D-14 has no technical finding to report. The only open questions are visual and belong to W-3: crop subjects and any shot change. **D-15 waits for W-3**, D-16 for W-5, D-17 for W-6.
+Next: D-15 once WorkBuddy reports W-3.
+
+### 2026-11-18 20:45 · D-14 prepared: master measured, cuts pending W-2 · in progress
+Files: `fase4/promo/qa/film-v18.md` (new, partial). No cut, no master, no JSON touched.
+Plan (DESIGN-GUIDE §1, step 2): no UI. Read `agents/task-film-v18.md` and `status/workbuddy.md` first, then measure what already exists without waiting on anything WorkBuddy has not finished.
+Evidence:
+- **Master probed** with ffprobe 8.0.1: 3840 × 2160, H.264 High, yuv420p, 24/1 fps, 408 frames, **17.041016 s**, 138 380 521 B, and an AAC stereo track at 48 kHz. Every number matches the task's table, so the master is the one Carlos described.
+- **The audio stream matters:** the master has sound, the site's films must be silent (DESIGN-GUIDE §6.15), so D-14 will fail any cut that keeps an audio track. Recorded in the QA file as a check, not an assumption.
+- **Fast-start method tested** before it was needed: a top-level box read puts `moov` before `mdat` on the archived v11 cut and on the new 1920 cut. No decoder needed, so the check is cheap for all four outputs.
+- **W-2 is mid-flight:** `house-film-1920.mp4` exists at 3 943 047 B (within the 4.5 MB budget), `house-film.mp4` was 48 bytes at 20:42 (ffmpeg still writing), and the two loops are still the old v11 files. WorkBuddy's status still shows only W-1, so **I did not start D-14 proper**: measuring a half-written file would record garbage. The QA file says exactly that.
+- Did not touch `films.json`, `films.ts`, `Film.astro`, `film.ts` or the cuts — WorkBuddy owns them during this task.
+Checks: ffprobe and the atom scan are read-only; `qa/film-v18.md` records the commands so the run is repeatable.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [N/A] copy from content files  [N/A] images from images.json  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER / BLOCKED: **waiting for WorkBuddy's W-2 entry.** Then D-14 runs on the four finished cuts in one pass, and W-3's answer decides whether D-15 touches the alt texts.
+Next: D-14 on the finished cuts; then D-15 after W-3.
 
 ### 2026-11-18 00:20 · Carlos's Drive folder checked against the local media · done
 Files: `fase4/promo/05-test/asset-check.md` (new). Nothing committed to git; no media added to the repo.

@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "promo-dev-claude",
+      "runtimeExecutable": "C:\\Program Files\\nodejs\\node.exe",
+      "runtimeArgs": ["web/promo/node_modules/astro/bin/astro.mjs", "dev", "--root", "web/promo", "--port", "4330", "--host", "127.0.0.1"],
+      "port": 4330
+    }
+  ]
+}

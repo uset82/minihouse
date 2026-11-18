@@ -27,7 +27,7 @@ statement. Turning that into a pass/fail now would encode the problem.
 
 That statement now exists: `fase1/declaracion-de-margenes.md` fixes the
 currency per analysis type and states every margin with its sign. So the gate
-moves to the declaration itself — it must exist, cover all fourteen screens, and
+moves to the declaration itself — it must exist, cover all fifteen screens, and
 keep the four positions that make it honest (the operational definition, the
 legitimacy of "undefined", the double-counting warning, and R2 as a
 requirement rather than a preference). What the declaration then *says* is not
@@ -68,6 +68,7 @@ SCREENS = (
     ("fase1/determinacion-estrategia-incendio.md", "chapter 11 determinations and coupling"),
     ("fase1/verificacion-ventilacion.md", "ventilation §13-1(1) and envelope pressure"),
     ("fase1/verificacion-aporte-aire.md", "make-up air sizing and the flue"),
+    ("fase1/verificacion-radon.md", "radon §13-5 for a floor off the ground"),
     ("knowledge/comparisons/lift-geometry-screen.md", "lift geometry"),
 )
 
@@ -521,12 +522,12 @@ def selftest():
     # The tally is parsed from the declaration, so it cannot summarise an old version.
     # If a row changes sign this fails and the summary has to be re-read, not re-typed.
     t = decl["tally"]
-    assert t["rows"] == 14, t
+    assert t["rows"] == 15, t
     assert not t["unclassified"], f"rows with no readable verdict: {t['unclassified']}"
-    assert (t["positive"], t["negative"], t["undefined"], t["zero"]) == (2, 7, 3, 2), t
+    assert (t["positive"], t["negative"], t["undefined"], t["zero"]) == (2, 7, 4, 2), t
     print("Documentation self-test OK: state declarations, §2-2 gate classification, "
-          "§4-1 exemption test, margin detection and a 14-row declaration tally of "
-          "2 positive / 7 negative / 3 undefined / 2 zero all pass")
+          "§4-1 exemption test, margin detection and a 15-row declaration tally of "
+          "2 positive / 7 negative / 4 undefined / 2 zero all pass")
 
 
 def main():

@@ -61,28 +61,45 @@ The distinction matters because only the second kind can be reduced by gathering
 
 **Span: 0.2800 W/m²K.** Negative at every level, so the sign is robust — but the magnitude moves by a factor of three, and the benchmark itself does not bind (it sits in §14-2's route, exempt via §14-5(1)). This row is the clearest case of a margin that is real and not actionable.
 
-## 4. Every row, tested
+## 4. The test does not apply to all fifteen rows, and that is the regulation's doing
 
-| # | Screen | Quantity | Kind | Margin | Adequate? | Why |
+§2-2(3) reads as though every analysis must state margins. **Its guidance qualifies the demand**: «Hvilke sikkerhetsmarginer er lagt til grunn (*nødvendig ved mer omfattende analyse*)» — necessary for a more extensive analysis — and the same guidance says «en enkel faglig vurdering eller et logisk resonnement» may be sufficient. So the obligation is graded by analysis type, and this declaration has been applying it uniformly to fifteen rows without ever classifying them. That was a defect in the declaration, and [S030](../knowledge/sources/S030.md) is what exposed it.
+
+| Class | Rows | What §2-2(3) requires | What governs instead |
+|---|---|---|---|
+| **analyse** — a quantitative model produces the available value | 9 | method suitable and valid, assumptions described and justified, **and the necessary safety margin stated** | the adequacy test below |
+| **ytelse** — a stated number compared against a stated value | 4 | nothing: there is no analysis | §2-2(1). A shortfall is a **deviation**, allowed only by municipal **dispensation** under PBL ch. 19, on a test of «klart større fordeler enn ulemper» |
+| **vurdering** — a functional requirement met by a determination | 2 | assumptions described and justified; **no margin** | the determination itself, which must be reasoned |
+
+**Moving a row out of the margin test does not relieve it, and for the stated ytelser it makes the position worse.** A margin is evidence of not having been driven to the limit; a stated ytelse has to be met, full stop, and the only instrument for missing it is a discretionary municipal dispensation. Rows 3 and 4 are **−500 mm** against a stated aperture figure. Under the old framing they were two thin negative margins; under the correct one they are **two deviations that need a dispensation** — and row 10's zero is not a margin that happens to be zero, it is a dimension solved to an absolute limit.
+
+The same classification is what §2-2(4)'s overview has to list, in its three categories: ytelser gitt i forskrift, preaksepterte ytelser som er brukt, and ytelser dokumentert ved analyse. One classification, two uses — which is why it lives in `CLASS` in this script rather than in prose.
+
+## 5. Every row, tested where the test applies
+
+| # | Screen | Quantity | Class | Margin | Adequate? | Why |
 |---|---|---|---|---:|---|---|
-| 1 | Daylight §13-7 | LT | input | undefined | untestable | undefined — no adequacy test is possible |
-| 2 | Fire ch. 11 — door | free width, mm | construction | +40 | **no** | **not demonstrated** — 40 mm is inside the range of ordinary frame and hinge build-ups, and none is specified |
-| 3 | Fire ch. 11 — escape sill | sill, mm | interpretation | −500 | **no** | **sign set by the interpretation** — −500 mm under the strictest §11-13 reading, +100 mm on V-01 under the minimal one |
-| 4 | Fire ch. 11 — escape size | h+w, mm | interpretation | −500 | **no** | **sign set by the interpretation** — −500 mm under the strictest §11-13 reading, +100 mm on V-01 under the minimal one |
-| 5 | Room height §12-7 | eave, mm | input | −422 | **no** | **negative across the band** (−358 to −498) — sign robust, magnitude not |
-| 6 | Natural hazards ch. 7 | freeboard, mm | interpretation | +300 | untestable | positive, but the number is a project choice, not a requirement |
-| 7 | Envelope §14-3 — wall U | W/m²K | input | +0 | **no** | **zero by construction** — the thickness was solved to hit 0.22 at 15 %, so the margin is zero there and the band across 8–23 % runs +0.0236 to −0.0274 |
-| 8 | Thermal bridges | Ψ″ W/m²K | model | −0.16 | **no** | **negative across the band** (−0.0669 to −0.347) — sign robust, magnitude not |
-| 9 | Integrated section | % of width | interpretation | undefined | untestable | undefined — no adequacy test is possible |
-| 10 | R2 options | transport, mm | judgement | +0 | **no** | **zero by construction** — the option was solved *to* the limit |
-| 11 | Installations — drain | cover, mm | site | −160 | untestable | **sign set by the site** — +940 mm on the sewer route, −160 mm on the shallow tank |
-| 12 | Lift geometry | per-leg tension | input | undefined | untestable | undefined — no adequacy test is possible |
-| 13 | Condensation at the junction | m²K/W | model | −0.8 | **no** | **sign inverted by 2D** — the 1D requirement of 0.358 m²K/W was computed on the steel, which stops governing at the first millimetre of pad; the corner needs 0.80, so the margin is −0.80 as drawn, not +0.051 |
-| 14 | Ventilation §13-1(1) — flue | Pa net draught | model | −130 | **no** | **negative across the band** (−85.5 to −130) — and the only negative row whose resolution is not a number: a room-sealed stove removes the coupling instead of shrinking it, so the row is **retired** rather than made positive |
+| 1 | Daylight §13-7 | LT | analyse | undefined | untestable | undefined — no adequacy test is possible |
+| 2 | Fire ch. 11 — door | free width, mm | ytelse | +40 | not required | **a stated ytelse, and the free width is not demonstrated** — 40 mm is inside the range of ordinary frame and hinge build-ups and none is specified. If the build-up eats it this is a **deviation**, not a thin margin, and §2-2(1) allows one only by dispensation |
+| 3 | Fire ch. 11 — escape sill | sill, mm | ytelse | −500 | not required | **a stated ytelse, breached** — −500 mm on the strictest §11-13 reading. A shortfall against a stated number is a **deviation requiring dispensation** under PBL ch. 19, whose test is «klart større fordeler enn ulemper»; that is a stricter regime than a negative margin |
+| 4 | Fire ch. 11 — escape size | h+w, mm | ytelse | −500 | not required | **a stated ytelse, breached** — −500 mm on the sum rule. Same instrument as row 3: dispensation, not a margin. The two rows move together |
+| 5 | Room height §12-7 | eave, mm | analyse | −422 | **no** | **negative across the band** (−358 to −498) — sign robust, magnitude not |
+| 6 | Natural hazards ch. 7 | freeboard, mm | vurdering | +300 | not required | **a determination, not an analysis** — the freeboard is a project choice, so there is nothing to be adequate *to*. What §2-2(3) requires here is that the assumption be described and justified, and it is |
+| 7 | Envelope §14-3 — wall U | W/m²K | analyse | +0 | **no** | **zero by construction** — the thickness was solved to hit 0.22 at 15 %, so the margin is zero there and the band across 8–23 % runs +0.0236 to −0.0274 |
+| 8 | Thermal bridges | Ψ″ W/m²K | analyse | −0.16 | **no** | **negative across the band** (−0.0669 to −0.347) — sign robust, magnitude not |
+| 9 | Integrated section | % of width | vurdering | undefined | not required | **a determination, not an analysis** — no fraction is specified anywhere, so there is no limit to be short of. The duty is to describe and justify the assumption, not to state a margin against a number that does not exist |
+| 10 | R2 options | transport, mm | ytelse | +0 | not required | **a stated ytelse, met at exactly 4000 mm — zero by construction.** No margin was ever available to test: every option was solved *to* the envelope. Under the chapter 2 introduction a numeric level is **absolute** unless a tolerance is granted, so this is a design that spent an allowance that does not exist |
+| 11 | Installations — drain | cover, mm | analyse | −160 | untestable | **sign set by the site** — +940 mm on the sewer route, −160 mm on the shallow tank |
+| 12 | Lift geometry | per-leg tension | analyse | undefined | untestable | undefined — no adequacy test is possible |
+| 13 | Condensation at the junction | m²K/W | analyse | −0.8 | **no** | **sign inverted by 2D** — the 1D requirement of 0.358 m²K/W was computed on the steel, which stops governing at the first millimetre of pad; the corner needs 0.80, so the margin is −0.80 as drawn, not +0.051 |
+| 14 | Ventilation §13-1(1) — flue | Pa net draught | analyse | −130 | **no** | **negative across the band** (−85.5 to −130) — and the only negative row whose resolution is not a number: a room-sealed stove removes the coupling instead of shrinking it, so the row is **retired** rather than made positive |
+| 15 | Radon §13-5 | Bq/m³ | analyse | undefined | untestable | **undefined** — the exhalation rate is a site input, so the sign is a site fact: the bound is +164 Bq/m³ on ordinary ground and −16 on alum shale, which is C-01's question and not the model's |
 
-**0 adequate, 9 not adequate, 5 untestable.**
+**Of the 9 rows in scope: 0 adequate, 5 not adequate, 4 untestable.** The other 6 are outside the margin requirement by analysis type, and none of them is thereby satisfied.
 
-## 5. What this changes
+## 6. What this changes
+
+**A margin is not a tolerance, and the project has been spending a tolerance it does not have.** The chapter 2 introduction is explicit: «Der lov og forskrift har angitt kravsnivå med konkrete tallverdier skal disse forstås som **absolutte krav**, så fremt det ikke i forskrift eller i vedtak […] er gitt konkrete toleranser på kravet.» The ordinary tolerance rules — NS 3420 — govern the gap between designed and **measured** execution; they are not a design allowance to be spent in advance. So every R2 option solved *to* 4000 mm, and the wall solved to 0.2202 against 0.2200, are designs that presume a tolerance nobody has granted. That is the regulation's own version of this screen's conclusion, and it arrives at it from the other side.
 
 **The thinnest positive margin in the project is not demonstrated.** Row 2 reads **+40 mm** of door free width and the declaration calls it the thinnest positive. It is 40 mm because a 900 mm leaf is 40 mm wider than the 860 mm requirement — but the requirement is on the **free** width, and the free width is the leaf minus the frame, hinge and stop build-up. Nothing in the repository says what that build-up is. Ordinary timber door sets spend 30–60 mm on it. So the margin is somewhere between +10 mm and −20 mm, and the sign is unknown.
 
@@ -94,16 +111,17 @@ This does not mean the door fails. It means **the one margin the declaration cal
 
 **Row 5 survives, but the published number is mid-band.** Every value from 8 % to 23 % is negative, so the timber fraction cannot rescue the section — it is a lever on the *size* of the deficit, not on its sign. But −422 mm is the 15 % value, and at 23 % the deficit is **−498 mm**. The R2 report's sensitivity table runs down to 8 % and never up, so the project has been quoting a mid-band figure in the position where a worst case belongs. The sign is robust; the magnitude is understated by up to 76 mm.
 
-## 6. What this does not settle
+## 7. What this does not settle
 
 1. **Row 8's model uncertainty is still unquantified.** One junction has now been calculated and it brackets the generic 0.10 W/mK the bridge screen assumed — 0.027 wrapped, 0.195 unwrapped — but the mean Ψ″ rests on 61.10 m of inventory of which one junction is solved. A bound there is honest; a number would not be. Row 13 is no longer in this position: it has a 2D answer, and the answer reversed its sign.
 2. **Construction tolerance is absent everywhere.** No row carries it, because no detail and no specification exist. It is the fourth kind and it is entirely missing.
 3. **Row 11's site uncertainty is not an interval.** Ground level is a survey result, not a distribution.
 4. **Rows 1, 9 and 12 stay undefined.** A product, a limit and a mass are missing, and no sweep can substitute for them.
 
-## 7. Source and status
+## 8. Source and status
 
 - Margins and their declared values: `fase1/declaracion-de-margenes.md`.
 - §2-2(3)'s four demands: S029.
+- The scope of the margin test, the three analysis classes and the absolute-krav reading: [S030](../knowledge/sources/S030.md).
 - Sweeps generated here from `envelope_check.py`, `section_options.py` and `puentes_termicas.py`; none is a measurement.
 - SCREENING ONLY — no margin here is certified adequate, and the screen does not release any geometry.

@@ -75,6 +75,8 @@ Variant **E** puts the same 10 mm plate below the floor, outside the insulation.
 
 So the design answer is the one the project already suspected and had never priced: **run the insulation outside the steel.** It needs no pad, no extra material and no thickness, and it recovers the whole of the loss.
 
+That is a drawing instruction rather than an insulation thickness, and [the junction detail](planos/detalle-encuentro-R0.svg) is generated from this module's own constants so the two cannot disagree. It shows the barrier turning the corner at (13, −22) and the plate crossing that plane when it is not wrapped — which is why the same drawing decision settles the thermal bridge and the barrier's continuity at once.
+
 ## 8. What it costs to get it wrong
 
 | | Ψ W/mK | × 18 m of floor perimeter |

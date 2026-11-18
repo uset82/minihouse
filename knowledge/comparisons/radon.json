@@ -1,0 +1,480 @@
+{
+  "state": "SCREENING — CONDITIONAL ON C-01. Not a radon assessment, not a site classification, not a compliance statement.",
+  "limits": {
+    "annual_average_bq": 200.0,
+    "action_level_bq": 100.0
+  },
+  "volume_m3": 36.9,
+  "ventilation_m3h": 90.0,
+  "floor_pressure_pa": 7.1,
+  "envelope_leakage_m3h": 15.6,
+  "floor_is_on_ground": false,
+  "void": {
+    "height_mm": [
+      150.0,
+      300.0,
+      450.0
+    ],
+    "cases": [
+      {
+        "label": "open perimeter",
+        "gap_mm": 20.0,
+        "driving": "wind"
+      },
+      {
+        "label": "skirted, 5 mm gap",
+        "gap_mm": 5.0,
+        "driving": "stack"
+      }
+    ]
+  },
+  "bounds": [
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "exhalation_bq_h": 324.0,
+      "bound_bq": 3.6,
+      "vs_limit": 55.6,
+      "vs_action": 27.8
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "exhalation_bq_h": 1296.0,
+      "bound_bq": 14.4,
+      "vs_limit": 13.9,
+      "vs_action": 6.9
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "exhalation_bq_h": 3240.0,
+      "bound_bq": 36.0,
+      "vs_limit": 5.6,
+      "vs_action": 2.8
+    }
+  ],
+  "rows": [
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "open perimeter",
+      "void_height_mm": 150.0,
+      "void_ach": 864.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 0.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 83282.6
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "open perimeter",
+      "void_height_mm": 150.0,
+      "void_ach": 864.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 0.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 27797.9
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "open perimeter",
+      "void_height_mm": 300.0,
+      "void_ach": 432.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 0.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 83282.6
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "open perimeter",
+      "void_height_mm": 300.0,
+      "void_ach": 432.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 0.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 27797.9
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "open perimeter",
+      "void_height_mm": 450.0,
+      "void_ach": 288.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 0.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 83282.6
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "open perimeter",
+      "void_height_mm": 450.0,
+      "void_ach": 288.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 0.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 27797.9
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 150.0,
+      "void_ach": 32.3,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 3.7,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 3164.1
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 150.0,
+      "void_ach": 32.3,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 3.5,
+      "cabin_bq": 0.2,
+      "margin_to_limit": 1091.7
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 300.0,
+      "void_ach": 22.8,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 2.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 4451.7
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 300.0,
+      "void_ach": 22.8,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 2.5,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 1520.9
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 450.0,
+      "void_ach": 18.6,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 2.1,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 5439.7
+    },
+    {
+      "exhalation_mbq_m2s": 5.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 450.0,
+      "void_ach": 18.6,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 2.1,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 1850.3
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "open perimeter",
+      "void_height_mm": 150.0,
+      "void_ach": 864.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 0.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 20820.7
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "open perimeter",
+      "void_height_mm": 150.0,
+      "void_ach": 864.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 0.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 6949.5
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "open perimeter",
+      "void_height_mm": 300.0,
+      "void_ach": 432.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 0.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 20820.7
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "open perimeter",
+      "void_height_mm": 300.0,
+      "void_ach": 432.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 0.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 6949.5
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "open perimeter",
+      "void_height_mm": 450.0,
+      "void_ach": 288.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 0.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 20820.7
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "open perimeter",
+      "void_height_mm": 450.0,
+      "void_ach": 288.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 0.6,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 6949.5
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 150.0,
+      "void_ach": 32.3,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 14.6,
+      "cabin_bq": 0.3,
+      "margin_to_limit": 791.0
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 150.0,
+      "void_ach": 32.3,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 14.1,
+      "cabin_bq": 0.7,
+      "margin_to_limit": 272.9
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 300.0,
+      "void_ach": 22.8,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 10.4,
+      "cabin_bq": 0.2,
+      "margin_to_limit": 1112.9
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 300.0,
+      "void_ach": 22.8,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 10.1,
+      "cabin_bq": 0.5,
+      "margin_to_limit": 380.2
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 450.0,
+      "void_ach": 18.6,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 8.5,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 1359.9
+    },
+    {
+      "exhalation_mbq_m2s": 20.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 450.0,
+      "void_ach": 18.6,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 8.3,
+      "cabin_bq": 0.4,
+      "margin_to_limit": 462.6
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "open perimeter",
+      "void_height_mm": 150.0,
+      "void_ach": 864.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 1.4,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 8328.3
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "open perimeter",
+      "void_height_mm": 150.0,
+      "void_ach": 864.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 1.4,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 2779.8
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "open perimeter",
+      "void_height_mm": 300.0,
+      "void_ach": 432.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 1.4,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 8328.3
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "open perimeter",
+      "void_height_mm": 300.0,
+      "void_ach": 432.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 1.4,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 2779.8
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "open perimeter",
+      "void_height_mm": 450.0,
+      "void_ach": 288.0,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 1.4,
+      "cabin_bq": 0.0,
+      "margin_to_limit": 8328.3
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "open perimeter",
+      "void_height_mm": 450.0,
+      "void_ach": 288.0,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 1.4,
+      "cabin_bq": 0.1,
+      "margin_to_limit": 2779.8
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 150.0,
+      "void_ach": 32.3,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 36.5,
+      "cabin_bq": 0.6,
+      "margin_to_limit": 316.4
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 150.0,
+      "void_ach": 32.3,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 35.3,
+      "cabin_bq": 1.8,
+      "margin_to_limit": 109.2
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 300.0,
+      "void_ach": 22.8,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 26.0,
+      "cabin_bq": 0.4,
+      "margin_to_limit": 445.2
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 300.0,
+      "void_ach": 22.8,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 25.3,
+      "cabin_bq": 1.3,
+      "margin_to_limit": 152.1
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 450.0,
+      "void_ach": 18.6,
+      "floor_leak_share": 0.1,
+      "q_floor_m3h": 1.56,
+      "void_bq": 21.2,
+      "cabin_bq": 0.4,
+      "margin_to_limit": 544.0
+    },
+    {
+      "exhalation_mbq_m2s": 50.0,
+      "void": "skirted, 5 mm gap",
+      "void_height_mm": 450.0,
+      "void_ach": 18.6,
+      "floor_leak_share": 0.3,
+      "q_floor_m3h": 4.67,
+      "void_bq": 20.8,
+      "cabin_bq": 1.1,
+      "margin_to_limit": 185.0
+    }
+  ],
+  "worst_ordinary": {
+    "exhalation_mbq_m2s": 50.0,
+    "void": "skirted, 5 mm gap",
+    "void_height_mm": 150.0,
+    "void_ach": 32.3,
+    "floor_leak_share": 0.3,
+    "q_floor_m3h": 4.67,
+    "void_bq": 35.3,
+    "cabin_bq": 1.8,
+    "margin_to_limit": 109.2
+  },
+  "alum_shale": {
+    "exhalation_mbq_m2s": 300.0,
+    "bound_bq": 216.0,
+    "exceeds_limit": true
+  },
+  "critical_exhalation_mbq_m2s": 278.0,
+  "critical_action_mbq_m2s": 139.0,
+  "prescriptive": {
+    "barrier_required": true,
+    "preparation_required": true,
+    "documented_unnecessary_route": true,
+    "why_still_required": "no site, so no exhalation rate and no measurement; the route is available and unsupported until C-01"
+  },
+  "junction": {
+    "length_m": 18.0,
+    "note": "the barrier must be continuous across the floor-to-wall junction, which is the same corner the 2D screen solved and the one place the steel crosses the line"
+  }
+}
