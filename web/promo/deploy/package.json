@@ -1,0 +1,12 @@
+{
+  "name": "minihouse-promo-site",
+  "private": true,
+  "type": "module",
+  "description": "The built MiniHouse promo site with a small static server (byte ranges, MIME types, real 404). Made by `npm run bundle` in web/promo.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node serve.mjs"
+  }
+}

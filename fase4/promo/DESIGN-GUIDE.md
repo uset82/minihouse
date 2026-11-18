@@ -393,7 +393,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - It plays by itself unless the visitor prefers reduced motion, has Data Saver on, or paused it earlier in the tab.
   - If the browser refuses autoplay, the still stays and the button offers «Spill av filmen».
   - Nothing loads before the window's `load` event; a film loads only when it comes within a quarter screen, and films off screen or in a hidden tab are paused.
-- **Release:** `films.json` holds each cut's status, and a release build fails until Carlos approves them at G4, as with the images. The host must answer byte-range requests (206), which Safari needs for video.
+- **Release:** `films.json` holds each cut's status, and a release build fails until Carlos approves them at G4, as with the images. The host must answer byte-range requests (206), which Safari needs for video. Canner's built-in static server doesn't, so the upload is `npm run bundle`, which adds `web/promo/deploy/serve.mjs`: byte ranges, `video/mp4` and `image/avif` types, a real 404, and no dotfiles.
 
 ---
 

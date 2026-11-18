@@ -11,6 +11,7 @@
     "build": "astro build",
     "build:release": "node scripts/release-check.mjs && astro build",
     "preview": "astro preview",
+    "bundle": "node scripts/bundle.mjs",
     "check": "astro check && node scripts/check-content.mjs",
     "astro": "astro"
   },

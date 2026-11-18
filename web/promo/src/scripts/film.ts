@@ -49,8 +49,9 @@ if (videos.length > 0) {
         video.play().then(
           () => video.classList.add('is-playing'),
           (error: unknown) => {
-            // Autoplay refused by the browser: show the still and offer «Spill av filmen».
-            if (error instanceof DOMException && error.name === 'NotAllowedError' && playing) {
+            // Autoplay refused, or the film can't play here at all: keep the still and
+            // offer «Spill av filmen». An AbortError only means a pause came first.
+            if (error instanceof DOMException && error.name !== 'AbortError' && playing) {
               playing = false;
               update();
             }

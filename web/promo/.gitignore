@@ -1,5 +1,7 @@
 # build output
 dist/
+# upload for Canner (npm run bundle)
+.bundle/
 # generated types
 .astro/
 

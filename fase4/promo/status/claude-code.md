@@ -13,6 +13,28 @@ Only Claude Code writes this file; the other agents and Carlos read it. Put the 
 
 ## Log
 
+### 2026-11-18 19:45 · Pushed to GitHub, and an online preview at minihouse-preview.canner.app · done
+
+Carlos: «push to github so i can see it in my https://minihouse-docs.canner.app/».
+
+- **Git.** Commit `d057beb` on `web/promo-r1` holds only the promo paths: `fase4/promo`, `web/promo`, three promo scripts and `.gitignore`. 100 files, no media, and a scan found no private data. It's pushed to `origin/web/promo-r1`. The other sessions' work (`fase1`, `knowledge`, `docs`, structural scripts) was left alone and uncommitted.
+- **Why the push alone doesn't show it.**
+  - `minihouse-docs` is upload-only (the documentation site from `fase4/sitio`), so a push never changes it.
+  - `minihouse` builds only from `main`, and the push to the branch triggered nothing; the holding page is still live.
+  - Media is git-ignored, so a build from GitHub would have no pictures anyway.
+- **Carlos chose a new preview address.** `canner init --slug minihouse-preview` ran from a scratch folder, so the repo's `canner.json` (slug `minihouse`) is unchanged. The upload went to https://minihouse-preview.canner.app.
+- **Canner's built-in static server** (the first upload, `c396129a`) answered the film without byte ranges (200 instead of 206) and served MP4 and AVIF as `application/octet-stream`, so Safari couldn't play the film. New: `web/promo/deploy/serve.mjs` and `deploy/package.json`, plus `npm run bundle` (`scripts/bundle.mjs`, writing the git-ignored `.bundle/`). The server is Node standard library only. It serves byte ranges (206 and 416), the right file types, `index.html` for folders, a real 404 with `404.html`, and hashed-asset caching.
+- **Incident, fixed in minutes.** On the first upload with that server (`ab0b83b4`), Canner wrote `.env.production` into the app folder, and the server served it: `/.env.production` returned 200, 166 bytes.
+  - The project has no environment variables of its own (`canner env list`: none), so the file held only Canner's five built-in defaults, not a key or password.
+  - The server now refuses any path with a part starting with `.`, and `node_modules`. It was redeployed about three minutes after the first upload, and `/.env.production` now returns 404.
+- **The film script.** It now also falls back to the still, offering «Spill av filmen», when a browser can't play the film at all; before, it did that only when autoplay was refused.
+
+Evidence on the live preview:
+- `/`, `/en/` and both privacy pages return 200.
+- The films are `video/mp4`, and `curl -r 0-1` gives 206 with `Content-Range`.
+- `/finnes-ikke` returns 404. `/.env.production`, `/package.json` and `/serve.mjs` return 404.
+- Playwright at 390 × 844: the hero film plays by itself in Chrome (2.75 s, then 4.25 s) and in WebKit, Safari's engine (1.8 s, then 3.3 s), with no overflow.
+
 ### 2026-11-18 07:30 · The concept film, part of the whole page · ready for review
 
 Carlos: «in the front page ux i want to show an automatic video presentation of the house · the video has to be part of the all site no just like a separete part». He attached `images/` and his plan `minihouse-presentation-plan.pdf`. That plan targets the old chat-demo app, whose files don't exist here; its rules were carried over.

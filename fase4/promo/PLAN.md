@@ -197,15 +197,16 @@ The file ownership, contracts and protocol are in [agents/README.md](agents/READ
 3. **G5:** Carlos approves the launch.
 4. **Deploy,** by Cursor with Carlos's OK:
    1. Move the lab to `minihouse-lab` first.
-   2. Run `npm run build:release` with the system Node.
-   3. Upload `web/promo/dist` with `canner deploy --slug=minihouse --follow`. **Never use `canner redeploy`** ([despliegue-web.md](../../docs/despliegue-web.md)).
+   2. Run `npm run build:release`, then `npm run bundle`, with the system Node. The bundle adds `deploy/serve.mjs`, a small server with byte ranges, the right file types and a real 404. Canner's own static server has none of these, and Safari can't play the film without byte ranges.
+   3. From `web/promo/.bundle`, run `canner deploy --slug=minihouse --follow`. **Never use `canner redeploy`** ([despliegue-web.md](../../docs/despliegue-web.md)).
 5. **After the deploy:** check every route and image, the link previews and the 404 page. Then DeepSeek updates the Fase 4 boxes in PROJECT.md with the evidence.
-   - **The film needs byte ranges.** Check that `curl -r 0-1 https://minihouse.canner.app/film/house-film.mp4` returns 206 with `video/mp4`; Safari won't play video without it. The local preview already does.
+   - **The film needs byte ranges.** Check that `curl -r 0-1 https://minihouse.canner.app/film/house-film.mp4` returns 206 with `video/mp4`, and that `/.env.production` returns 404. The bundle's server does both on the preview.
 6. **Git:** only on `web/promo-r1`, only the promo files, and only when Carlos says so.
 
 Where things live:
 
 - `minihouse.canner.app`: the promo site. It shows the holding page until G5.
+- `minihouse-preview.canner.app`: a preview of the promo site, so Carlos can see it online before G4 and G5. It was created on 2026-11-18 at his request, is upload-only, and is not linked to GitHub. Anyone with the link can open it. Update it from `web/promo/.bundle` with `canner deploy --slug=minihouse-preview --follow`.
 - `minihouse-lab.canner.app`: the chat and the 3D lab, after the move.
 - `minihouse-docs.canner.app`: the documentation site.
 
