@@ -1,7 +1,7 @@
 """FluidBridge run_project_script: organize imported Fit2 STEP solids, then save once.
 
 Activate a never-saved MiniHouse_Frames_Fit2_Work containing the assembled STEP,
- or an empty design of that name to import the 14 step_parts in assembly coordinates.
+or an empty design of that name to import the 14 step_parts in assembly coordinates.
 No documents are opened, activated or closed. On failure no save is retried;
 discard a partial work import before trying again. No feature history is rebuilt.
 """
