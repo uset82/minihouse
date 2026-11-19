@@ -1,5 +1,46 @@
 # Performance · D13 photo landing
 
+## R3 build · D-27 (2026-11-19)
+
+Build measured: `web/promo/dist`, **built 2026-11-19 01:51**, 7 pages, served on `http://127.0.0.1:4322`. Lighthouse 13.6.0, mobile emulation and the desktop preset, system Node v22.22.0. Reports: `qa/reports/lighthouse-r3-{home,story}-{mobile,desktop}.json`.
+
+```powershell
+npx lighthouse http://127.0.0.1:4322/           --output=json --output-path=fase4/promo/qa/reports/lighthouse-r3-home-mobile.json    --chrome-flags="--headless=new --no-sandbox" --quiet
+npx lighthouse http://127.0.0.1:4322/           --preset=desktop --output=json --output-path=fase4/promo/qa/reports/lighthouse-r3-home-desktop.json   --chrome-flags="--headless=new --no-sandbox" --quiet
+npx lighthouse http://127.0.0.1:4322/historien/ --output=json --output-path=fase4/promo/qa/reports/lighthouse-r3-story-mobile.json  --chrome-flags="--headless=new --no-sandbox" --quiet
+npx lighthouse http://127.0.0.1:4322/historien/ --preset=desktop --output=json --output-path=fase4/promo/qa/reports/lighthouse-r3-story-desktop.json --chrome-flags="--headless=new --no-sandbox" --quiet
+```
+
+| | `/` phone | `/` desktop | `/historien/` phone | `/historien/` desktop |
+|---|---:|---:|---:|---:|
+| Performance | **0.97** | **1.00** | **1.00** | **1.00** |
+| Accessibility / best practices / SEO | 1 / 1 / 1 | 1 / 1 / 1 | 1 / 1 / 1 | 1 / 1 / 1 |
+| LCP | **2.3 s** | **0.5 s** | **0.8 s** | **0.5 s** |
+| CLS | **0** | **0.009** | **0** | **0.005** |
+| TBT | 150 ms | 0 ms | 20 ms | 0 ms |
+| Transfer | 2 795 KB | 6 436 KB | 285 KB | 310 KB |
+| JavaScript | 1 765 B | 1 765 B | 1 419 B | 1 419 B |
+
+**Largest paint, and what it is:**
+
+| Run | LCP element |
+|---|---|
+| `/` phone | the house film's poster, `figure.film > div.film-frame > picture > img.film-still` |
+| `/` desktop | the same poster |
+| `/historien/` phone | a paragraph, `div.story-open … div.story-col > p` (text, not a picture) |
+| `/historien/` desktop | the stone photo, `div.story-photo > figure > picture > img.ratio-wide` (`midtun-stone`) |
+
+All three D-27 gates pass: axe 0 violations (see [a11y.md](a11y.md)), LCP at most 2.5 s on mobile, CLS at most 0.1.
+
+**Two notes for the record, neither a failure:**
+
+1. **LCP on the phone home page is 2.3 s, 0.2 s inside the gate.** The largest paint is the **poster** of the house film, so the film itself still does not delay the paint (its requests start after `load`). It was 1.7 s on the 23:27 build; the R3 home page carries the gable photo as well, and this run read 2 795 KB. Worth watching, not worth changing now.
+2. **The Midtun film is not on the story page**, because `images/midtun_teachers_residence_clean_4k.mp4` does not exist yet (G-16 blocked). So the film still is *not* the largest paint there: it is text on the phone and the stone photo on the desktop. The card's expectation for that case is recorded in [story.md](story.md) §8.4.
+
+---
+
+## Earlier runs
+
 Lighthouse 13.6.0 measured the local static pages on 17 November 2026 at 23:27 and 23:28 Europe/Oslo. Both runs used the mobile form factor and simulated throttling.
 
 | Metric | Bokmål | English |

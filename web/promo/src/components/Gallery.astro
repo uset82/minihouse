@@ -12,13 +12,13 @@ interface Props {
 
 /*
  * «Huset i bilder» (DESIGN-GUIDE §6.5): a contact sheet. From 48rem the pictures sit in
- * two rows of equal height at their own proportions, so nothing is cropped or enlarged.
+ * two rows of three, equal height at their own proportions, so nothing is cropped or enlarged.
  * Below 48rem the same tiles form one swipe strip. Landscape and portrait alternate.
  */
 const { content, lang } = Astro.props;
 const rows: ImageId[][] = [
-  ['meadow-wide', 'bath-vanity', 'bench', 'bath-shower'],
-  ['kitchen', 'bath-doorway', 'storage'],
+  ['meadow-wide', 'bath-shower', 'bench'],
+  ['kitchen', 'bath-window', 'storage'],
 ];
 const masters = import.meta.glob<{ default: ImageMetadata }>('../assets/images/*.{jpg,jpeg,png,webp}');
 const ratioOf = async (id: ImageId) => {
@@ -54,6 +54,7 @@ const sheet = (
         </div>
       ))}
     </div>
+    <p class="gallery-note">{content.gallery.note}</p>
   </div>
   <dialog class="lightbox" aria-labelledby="gallery-title">
     <div class="lightbox-stage"></div>

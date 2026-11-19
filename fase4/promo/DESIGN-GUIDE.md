@@ -1,8 +1,17 @@
 # MiniHouse promo website · Design guide
 
-**For every agent that designs, builds, writes or reviews the promo site: Antigravity, Cursor and DeepSeek, and Grok or WorkBuddy when a task brings them in.** Revision R2.4, 2026-11-18. Read this before you touch UI, copy or images. It holds the visual system, «Patina, made funkier» (G3), as rules you can check. [PLAN.md](PLAN.md) says what gets built and by whom.
+**For every agent that designs, builds, writes or reviews the promo site: Antigravity, Cursor and DeepSeek, and Grok or WorkBuddy when a task brings them in.** Revision R2.5, 2026-11-19. Read this before you touch UI, copy or images. It holds the visual system, «Patina, made funkier» (G3), as rules you can check. [PLAN.md](PLAN.md) says what gets built and by whom.
 
 **Built reference:** `fase4/promo/reference/` holds the look built by Claude Code to this guide: header, hero, key facts, the material passport, the irr band with the mirror frame, the journey with giant numerals, the copper follow band and the footer. Open `index.html` to see it at 360 px and 1280 px. When this guide and the reference seem to disagree, ask; don't guess.
+
+**R2.5 changes, 2026-11-19:** Carlos's real photos and his Midtun film arrive (D16), and the landing page gets a review pass ([agents/task-landing-r3.md](agents/task-landing-r3.md)):
+
+- §6.3: real photos carry what they show and who took it, never «Konseptbilde».
+- §6.5: the gallery has 6 pictures, with two of the three mirror pictures out and the bathroom window in, and one note under the sheet instead of a caption under every tile.
+- §6.6: from `64rem` the materials are shorter: narrower samples, and tags with two pairs per row.
+- §6.12: the footer note and a «Historien» link.
+- §6.16: the film and the photos of the old house. The home section gets the gable photo.
+- §7: the rules for real photos.
 
 **R2.4 changes, 2026-11-18:** Carlos asked for his story «Hvordan ideen oppstod» as its own page, in his own Norwegian, built by Grok and DeepSeek ([agents/task-story-page.md](agents/task-story-page.md)).
 
@@ -273,6 +282,8 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 ### 6.3 Captions
 - Jost at `--size-caption` in `--malmfuru-mork`, **below** the image, never on top of it.
 - Every image of the house carries «Konseptbilde» in Norwegian or «Concept image» in English.
+- **Real photos** (`kind: "photo"`, D16) carry what they show, then the credit: «Blyglassvinduet i lærerboligen. Foto: Joran Ingvaldsen» / "The stained-glass window in the residence. Photo: Joran Ingvaldsen". Never «Konseptbilde» on a photo, and never a photo without «Foto:».
+- **The gallery** is the one exception to a caption under every picture: one note sits under the sheet (§6.5).
 
 ### 6.4 Key facts (eik band)
 - A `<dl>`: labels in Jost 500 at `--size-small`, values in Jost 400 at `--size-body` with tabular figures, all in tjære.
@@ -281,8 +292,14 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 
 ### 6.5 Gallery «Bilder» and lightbox
 - **A contact sheet.** From `48rem` the pictures sit in rows of equal height at their own proportions, with `--space-2` gaps. Each tile's `flex-grow` is its width-to-height ratio (`--ar`), so nothing is cropped or enlarged. The rows are fixed in `Gallery.astro`, and landscape and portrait alternate.
-- **Pictures:** meadow, vanity, bench and shower; then kitchen, doorway and storage. The kitchen, bench, storage and shower pictures moved here from the old room list (§6.8). The living-room photo isn't repeated here, because the irr band shows it.
-- **Mobile:** one horizontal swipe strip with `scroll-snap` and a visible count, «3 av 7». Every tile is `calc(2 * var(--space-7) + var(--space-4))` high, landscape at 4:3 and portrait at 4:5.
+- **Pictures (R2.5):** meadow, shower and bench; then kitchen, bathroom window and storage. That's 6 in two rows of 3, each row landscape, portrait, landscape.
+  - Out: the vanity (`bath-vanity`) and the doorway (`bath-doorway`), which both show the wavy copper mirror. It already shows in the hero film, the mirror frame (§6.14) and the copper sample, and a funk move needs scarcity. The shower is now the one gallery picture with the mirror.
+  - The living-room photo isn't repeated here either, because the irr band shows it.
+- **One note instead of 6 captions:**
+  - Each tile keeps its «Konseptbilde» caption in the markup with `display: none`, because the lightbox reads its text.
+  - A visually-hidden pattern would push the phone strip sideways, since the tiles aren't positioned.
+  - Under the sheet: one line, `gallery.note` («Alle bildene her er konseptbilder.»), in Jost at `--size-caption` in `--text-soft`, `--space-3` below the last row.
+- **Mobile:** one horizontal swipe strip with `scroll-snap` and a visible count, «3 av 6». Every tile is `calc(2 * var(--space-7) + var(--space-4))` high, landscape at 4:3 and portrait at 4:5.
 - Each tile is a `<button>` that opens the lightbox.
 - **Lightbox:** a `<dialog>` with a `color-mix(in srgb, var(--tjaere) 92%, transparent)` backdrop and the image at `contain`, with its caption below.
   - Controls («Forrige», «Neste», «Lukk») in kobber-lys.
@@ -297,7 +314,11 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - **From `48rem`:** the full tag (a `--space-5` stub, 2fr/3fr rows, values at body size), the lead at body size, and `--space-6` between materials.
   - On a 390 px phone the whole section is 2.7 screens, down from 4.3.
 - **Layout from `64rem`, boards in a zig-zag:**
-  - The columns are `4fr` sample, `6fr` words and tag, and `2fr` space, then the mirror image of it for the next material. The column gap is `--space-4`.
+  - The columns are `3fr` sample, `7fr` words and tag, and `2fr` space, then the mirror image of it for the next material. The column gap is `--space-4`. (Until R2.5 they were `4fr 6fr 2fr`, and the section took 2.9 screens at 1280 × 900.)
+  - The tag's `<dl>` shows two label–value pairs per row: Materiale and Opprinnelse, then Tidligere bruk and Brukes til, then Behandling and Status, with a `--space-4` gap between the pairs and `--space-1` between the rows.
+  - Materials are `--space-5` apart from `64rem`.
+  - At 1280 px, each material is at most 395 px tall and the section at most 2050 px. That's 21 % shorter than R2.4's 510 and 2584 px. The 3fr sample is 288 × 360 px, and with its caption, about 390 px is the floor.
+  - Check 1024 px too: the value columns are narrow there, and «dokumenteres per parti» may wrap. Two lines are fine.
   - The tag's stub (`--space-5` wide) hangs over the edge of its sample, like a lot tag nailed to a board. The tag's text lines up with the material name.
   - In mirrored rows the stub and eyelet sit on the right. The tag has a kalk background.
   - The sample's caption keeps a `--space-5` padding on the stub's side, so a tag never covers it.
@@ -356,7 +377,12 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 - **Success:** the form is replaced by «Takk! Du følger nå prosjektet.» in kalk at `--size-lead`. Then move focus to that message.
 
 ### 6.12 Footer, the steel base (tjære band)
-- Contents: the name «MiniHouse» in Besley 800 at `--size-h2`, like a maker's plate on the chassis; contact; «Personvern»; «For fagfolk» (links to the docs site and the 3D lab); and the image note «Alle bilder er konseptbilder. Huset er under utvikling.»
+- **Contents:**
+  - the name «MiniHouse» in Besley 800 at `--size-h2`, like a maker's plate on the chassis;
+  - contact;
+  - the links «Historien» (first, since R2.5), «Personvern» and «For fagfolk» (the docs site and the 3D lab);
+  - the image note «Bildene av MiniHouse er konseptbilder. Huset er under utvikling.»
+- **The note changed in R2.5.** Until then it said «Alle bilder er konseptbilder». That is no longer true now that the story page shows real photos of the old house (D16).
 - Padding `--space-6`. The name and note sit on the left, and the links on the right, aligned to the bottom.
 - Text is kalk; links are kobber-lys.
 
@@ -385,6 +411,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - the whole film in the hero, instead of the photo, at 16:9, because the house is too wide for a 4:5 phone crop;
   - the living-room shot in «Inne i MiniHouse»;
   - the bathroom shot inside the copper mirror.
+  - **On the story page (R2.5),** Carlos's Midtun film (§6.16) plays with the same rules and the same shared button. It isn't a concept film, so its caption credits Carlos.
   - Everything else stays still.
 - **The cuts:** `scripts/cut_film.py` (ffmpeg) makes them from the master, which is never changed. It reads the master's width and height with ffprobe, so the 3:2 and 4:5 crops land on the same subjects at any resolution. They are silent H.264 with `+faststart` and a GOP of 48.
 
@@ -394,6 +421,10 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   | `house-film.mp4` | 1280 × 720, 2.40 MB | 16.54 s | a 0.5 s crossfade at the seam; smaller screens |
   | `living-loop.mp4` | 1440 × 960, 1.04 MB | 5.67 s | forward and back |
   | `bath-loop.mp4` | 1080 × 1350, 1.14 MB | 7.00 s | forward and back |
+  | `midtun-film-1920.mp4` (R2.5, story page) | 1920 × 1080, at most 14 MB | about 71.9 s | a 0.5 s crossfade at the seam; screens from `64rem` |
+  | `midtun-film.mp4` (R2.5, story page) | 1280 × 720, at most 8 MB | about 71.9 s | a 0.5 s crossfade at the seam; smaller screens |
+
+  **The Midtun cuts** come only from Carlos's clean master, `images/midtun_teachers_residence_clean_4k.mp4` (no burned-in titles, D16), at 30 fps with a GOP of 60. The command is `python scripts/cut_film.py midtun`, which never re-encodes the house cuts. Their sizes go in this table once they're made.
 
   The posters are the first frame of each film's largest cut, so the hero poster comes from the 1920 cut (402 KB; the loops are 236 KB and 122 KB). The script refuses a master whose length differs from 17.04 s; re-check the shot times if the master changes.
 - **The sharper desktop film:** the hero `<video>` carries `data-film-src-wide`, and the controller loads `house-film-1920.mp4` when `matchMedia('(min-width: 64rem)')` matches. The living and bath loops keep one file each; nothing else in the shared controller changes.
@@ -416,15 +447,29 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - His Norwegian ([agents/task-story-page.md](agents/task-story-page.md), Appendix A) is published as he wrote it, and the English follows his English.
   - It's signed «Av Carlos» / "By Carlos".
   - The words are the `story.*` group in `nb.json` / `en.json`. The page is built in `web/promo/src/components/Story.astro` and `src/styles/story.css`.
-- **The idea: words first, the house last.** The site has no pictures of the old teachers' residence and never borrows any, so the story opens in type. The house appears only at the end, as the payoff of the motto: old materials, new homes.
+- **The idea since R2.5: the first life, then the second.** Carlos's film and photos (D16) show the old teachers' residence for real: its first life, before the question. The MiniHouse concept images come after the question, as the second life, and the house appears at the end as the payoff of the motto: old materials, new homes. (Before R2.5 the page opened in type only, because it had no pictures of the old house.)
 - **One loud moment: the question on the old wood.** «Hvorfor skal materialenes levetid ta slutt bare fordi bygningen de kommer fra, blir revet?» sits on a full-bleed `--malmfuru` band, the heartwood of the boards the story is about (funk move 5, §2.1). Everything else on the page stays quiet.
 - **Top to bottom:**
   1. **The opening (kalk).**
      - The h1 `story.title` in Besley 800 at `--size-h1`.
      - The byline `story.byline` in Jost 500 at `--size-small` in `--malmfuru-mork`.
      - The lead `story.lead` in Jost 400 at `--size-lead`.
-     - Then `story.intro[]`, and the reference line: `story.reference.label` followed by a copper text link (`story.reference.link`), external, in the same tab, with no icon.
+     - Then `story.intro[0]`, the sentence that names the house.
+     - **The Midtun film (R2.5)**, full bleed, outside the text column:
+       - Carlos's clean film (D16), 16:9, through `Film.astro` (`id="midtun"`), silent and looping, controlled by the shared «Pause filmen» button (§6.15);
+       - its caption row (`story.film.caption`, then the button) lines up with the content column;
+       - `--space-6` above and below;
+       - its still frame loads eagerly, because it's in the first screen on desktop.
+     - Then `story.intro[1]` («Det var en vakker, gammel bygning …»).
+     - **The trio (R2.5):** the stained-glass window, the stove and the stone slabs, across the full content width (not the text column):
+       - from `48rem`, in one row at their own proportions (3:2, 3:4, 3:2), all the same height, `--space-2` apart;
+       - below `48rem`, stacked at their own proportions;
+       - `--space-6` above and below.
+
+       They belong here, with the old building's character. After the question they would read as MiniHouse materials (K-37).
+     - Then `story.intro[2]`, and the reference line: `story.reference.label` followed by a copper text link (`story.reference.link`), external, in the same tab, with no icon.
      - Then `story.noticed[]`, whose last sentence ends in a colon and leads into the band.
+       - **Between `noticed[1]` and `noticed[2]`, the timber pair (R2.5):** the 1887 board and the old nail, both 3:2, side by side from `48rem` across the full content width (not the text column), `--space-4` apart, and stacked below `48rem`, with `--space-6` above and below.
      - The text sits in columns 1–8 from `64rem` and is never wider than `--measure`.
   2. **The question band (malmfuru), full bleed.**
      - `story.question` in Besley 800 in `--kalk`, at `--size-h2` below `48rem` and `--size-h1` from `48rem`, with `--leading-display`, `letter-spacing: -0.01em` and `text-wrap: balance`, in columns 1–10.
@@ -435,6 +480,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
      - `story.origin` at `--size-lead`.
      - Then the three `story.sections[]`, each an h2 in Besley 800 at `--size-h2` followed by its paragraphs.
      - In the first section, the drawing `exploded` (3:2) sits beside the text from `64rem` (text in columns 1–7, picture in 8–12) and under it on smaller screens, with «Konseptbilde» below it.
+     - From here on, only concept images: the second life. No real photo comes after the question band.
   4. **The ending (kalk).**
      - The house, `hero-slope`, at 3:2 in columns 1–8 from `64rem` (the `wide` size, up to 800 px) and full width below, lazy-loaded, with «Konseptbilde» below.
      - Then `story.closing` at `--size-lead`.
@@ -448,23 +494,26 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - a kalk band with a sølvgrå hairline above;
   - the h2 `story.teaser.title` in Besley 800 at `--size-h2`;
   - one or two sentences, `story.teaser.body`, at `--size-lead` in columns 1–7;
-  - the copper text link `story.teaser.link` («Les historien») to the story page.
+  - the copper text link `story.teaser.link` («Les historien») to the story page;
+  - **since R2.5, Carlos's gable photo** (`midtun-gable`, 4:5, «Lærerboligen under rivingen, april 2026. Foto: Carlos»): columns 9–12 from `48rem`, top-aligned with the h2, with the text in columns 1–7; below `48rem`, under the link at full width. It's the one real photo on the home page.
 
-  No picture and no band colour. It names no emergency use (D11).
+  No band colour. It names no emergency use (D11).
 - **The header** gets a fifth link, «Historien» (§6.2).
 - **Markup:**
   - one h1; the story is an `<article>` with h2 sections;
   - the question, the follow-up and the motto are `<p>` elements;
   - pictures come through `Figure.astro` (`ratio="wide"`), with the alt text and captions from `images.json`;
+  - the photo pair and the trio render only when their photos resolve, as `Gallery.astro` does, so a missing master never leaves an empty gap. Without the film or the photos, the text columns still sit `--space-4` apart;
   - the page has its own `<title>` and description (`story.meta`), and `hreflang` points to its twin.
 - **Never on this page:**
   - a drop cap or giant initial (wood-type giants belong to the journey, move 3);
   - numbered markers or a timeline;
   - a quote card with big quotation marks;
   - stats, icons or emoji;
-  - the irr band or the film;
+  - the irr band, or the house film (the Midtun film is this page's film);
   - italics or colour for emphasis;
-  - any picture of the old building, until Carlos supplies his own photos and approves them;
+  - pictures from other sites, and photos showing people or number plates (D16);
+  - text burned into the film (D16: the clean version only);
   - generated images;
   - scroll effects.
 - **Claims:** the story says Carlos saw how good the old timber was. It never says MiniHouse uses timber from Øvsttunvegen, and nothing on the site may imply it. Reclaimed timber stays out of the load-bearing structure (K-06). Emergency housing appears on this page only (D11 as amended).
@@ -484,6 +533,11 @@ Anything else needs a token. If a value seems missing, ask in your status file r
   - Open Graph image 1200 × 630.
 - No filters, duotones, grain overlays, vignettes, rounded corners, frames or text on images. The mirror frame (§6.14) is the one frame.
 - Real photos of Carlos's actual reclaimed boards beat renders for the textures.
+- **Real photos (R2.5, D16)** appear only when Carlos has cleared them.
+  - Today that means his phone photos and Joran Ingvaldsen's four, and only of the old residence.
+  - They are `kind: "photo"` in `images.json`, with a caption that says what they show and «Foto: …» (§6.3).
+  - **Their file data is removed** on the site copies: EXIF, camera, name, phone number and place. The site copy is at most 2400 px on its long side.
+  - **Never:** photos from other sites, photos where a person can be recognised, or a readable number plate.
 - The hero loads eagerly with `fetchpriority="high"`; everything else lazy-loads. Serve AVIF and WebP with `srcset`, and always set width and height.
 - A build meant for release must contain no images with the status `stand-in` or `pending`.
 - **The film** (§6.15): the cuts are in `web/promo/public/film/`, the posters in `web/promo/src/assets/film/`, and the list in `web/promo/src/content/films.json`. They are media, so they stay out of git.
@@ -495,7 +549,7 @@ Anything else needs a token. If a value seems missing, ask in your status file r
 Allowed, and nothing else:
 
 - the lightbox and menu sheet opening and closing (opacity or transform, `--dur`);
-- the concept film (§6.15). It's the one thing that moves by itself: silent and looping, with a pause button beside it. It never plays under reduced motion or Data Saver;
+- the films (§6.15, and the Midtun film on the story page, §6.16). They're the only things that move by themselves: silent and looping, with a pause button beside them. They never play under reduced motion or Data Saver;
 - the patina crossfade (P2).
 
 Never use scroll-triggered reveals, parallax, hover lifts, auto-playing carousels, count-up numbers or animated gradients. With `prefers-reduced-motion: reduce`, everything is instant.

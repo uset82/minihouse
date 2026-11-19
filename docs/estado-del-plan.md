@@ -1,6 +1,6 @@
 # Estado del plan · puerta por puerta
 
-2026-11-18 · Generado por la sesión lead (DSH). Verificación completa: `python scripts/verificar_todo.py` → **TODO PASA** (36 comprobaciones, exit 0). Este documento es el mapa honesto de qué está hecho, qué falta y quién lo desbloquea. No marca casillas de PROJECT.md: eso exige cumplir el criterio completo.
+2026-11-19 · `python scripts/verificar_todo.py`: **36 of 37 checks passed; only the Markdown link check failed** (exit 1). Of 910 local link occurrences checked across 183 Markdown files, five were broken, all in `documents/task-landing-r3.md`: `README.md`, `../DESIGN-GUIDE.md`, `../decisions.md` and `task-story-page.md` (twice). No promotional pages were edited for this review. The regulatory guard and all three R0 CAD self-tests passed; none of those tests establishes physical fit.
 
 ## Fase 0 · Contexto — CERRADA ✅
 
@@ -47,7 +47,7 @@
 
 | Casilla | Hecho | Falta (dueño) |
 | --- | --- | --- |
-| Intercambio Autodesk de prueba | Autodesk NO instalado (verificado); sustituto IFC ejecutado: [12 miembros round-trip OK](../fase2/registro-intercambio.md) | Robot + Advance Steel (**licencia/Carlos**) |
+| Autodesk exchange | [IFC round-trip record](../fase2/registro-intercambio.md); separate STEP imports in Fusion 2706.1.17 for the R0 prototypes (decisions AJ–AL). | Robot–Advance Steel SMLX exchange still unverified; a Fusion import does not test this route. |
 | Cálculo + verificación independiente | [barras3d.py](../scripts/barras3d.py) reproduce el informe; [D001 simbólico](../knowledge/derivations/D001.md) coincide; [esqueleto R1](../fase2/miembros-R1-opciones.md) da nudos/barras por pendiente | Masas reales, NA noruego (**compra**), geometría congelada y secciones |
 | Alternativas izaje arriba/abajo | [A–F en malla canónica @1200](../fase2/comparativa-izaje-R0-resultados.csv), equilibrio verificado; candidato inset 20% P272 registrado; [pantalla geométrica de eslingas](../knowledge/comparisons/lift-geometry-screen.md) normalizada por W | Modelo real con uniones, masa/CG, H de eslingas, dinámica y grúa |
 | Revisión con ingeniero responsable | — | **Ingeniero responsable** (p. ej. candidatos Bergen del informe) |
@@ -56,7 +56,8 @@
 
 | Casilla | Hecho | Falta |
 | --- | --- | --- |
-| Unión piloto + planos | [Modelo del marco 6 × 3 m](../fase1/modelo-marco-R0.md) a 1:40 (150 × 75 mm) con cuatro miembros numerados, canales U para la pared sándwich y cuatro travesaños; [cupón de la unión](../fase1/prototipo-union-atornillada-R0.md) para montaje y llave | Sección de acero real, clase de pernos y clase de ejecución (**Carlos/ingeniero**); imprimir y medir; el detalle térmico queda reabierto |
+| Rectangular frame R0 / flat coupon | [Frame](../fase1/modelo-marco-R0.md): 150 × 75 mm plan, 48 imported bodies; [earlier flat coupon](../fase1/prototipo-union-atornillada-R0.md): 32 bodies. | `frame_model.py` places `member(3)` at `B - W` instead of `L - W`, **75 mm inboard**. The envelope and body count did not verify the corners. Do not print this frame as proof of fit. |
+| Combined joint R0 | Fusion project `MiniHouse Combined Joint R0`, saved document `MiniHouse_Combined_Joint_R0`: 67 bodies (51 print shells, 12 hardware references for **four** fasteners, four wall strips). Print parts: 150 × 150 × 11 mm; STEP with references: 150 × 150 × 34 mm. Seven descriptive parameters; [AL result and evidence](../fase1/registro-decisiones.md#al-result-2026-11-19-fusion-exchange-confirmed-physical-fit-not-demonstrated). | **Fit blocked in CAD:** the circular Ø10.2 mm pocket cannot seat an AF10 nut (11.55 mm across corners); member 4's notch ends at the bolt centre and cannot fully seat the Ø6 mm shank. Do not print this R0 as proof of fit. No physical assembly or measurements. Steel section, fastener class and thermal detail remain open. |
 | Instrumentación/criterios | [Protocolo E-1…E-5](../fase3/protocolo-ensayos-R0.md) con estructura de aceptación previa | Valores de aceptación (**ingeniero**), empresa de ensayo (**contratación**) |
 | Ejecutar pruebas | — | Prototipo físico + taller + izaje competente |
 | Archivos de taller liberados | — | Liberación del RIB (rules.md §5) |

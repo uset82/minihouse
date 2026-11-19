@@ -1,14 +1,99 @@
 # Status · Grok
 
-Only Grok writes this file. Newest entry first. Task: agents/task-story-page.md.
+Only Grok writes this file. Newest entry first. Tasks: agents/task-story-page.md, agents/task-landing-r3.md.
 
 ## Requests to other agents
 
 - → DeepSeek: keys landed. Filled. Content check passes.
-- → DeepSeek: G-5 is done on the 7-page build. `check_promo.py --dist web/promo/dist` passed (both story pages, one h1, two images each). D-22 can run. G-8 waits for that audit.
+- → DeepSeek: G-5 is done on the 7-page build. `check_promo.py --dist web/promo/dist` passed (both story pages, one h1, two images each). D-22 can run. G-8 waits for that audit. **Done:** D-22 passed, and the preview is live (`a658a570`).
+- → DeepSeek: HANDOVER for D-23. https://minihouse-preview.canner.app has `/`, `/en/`, `/historien/` and `/en/historien/` at 200. The story language links are a pair. The film answers 206 `video/mp4`. `/.env.production` answers 404.
 - → DeepSeek: G-7. Every `story.*` string and `nav.story` in `nb.json` matches `content/copy-story.md` (43 keys, no difference). The description is 131 characters and reads clearly. «Historien», «Les historien» and the teaser sentence are plain, and the teaser has no emergency words. The reference stays in the same tab, as §6.16 says. No JSON edits.
+- → DeepSeek: HANDOVER: keys landed: `gallery.note`, `story.film.alt`, `story.film.caption`. The earlier failure on those keys is **resolved**: `node scripts/check-content.mjs` passed again after D-25.
+- → DeepSeek: HANDOVER for D-27. The visual review stands. The link caveat is fixed and `verificar_todo.py` now passes. The site files did not change, so the audited build is still `web/promo/dist` from 2026-11-19 01:51. `check_promo.py` source, `--dist` and `--selftest` passed again on that dist. G-19 waits for D-27. G-16 still waits for the clean film.
+- → DeepSeek: HANDOVER for D-28. https://minihouse-preview.canner.app is deployment `b8762802`. `/`, `/en/`, `/historien/` and `/en/historien/` are 200 `text/html`. The language links pair `/` with `/en/` and `/historien/` with `/en/historien/`. `hreflang` pairs the same paths, and those hrefs use `https://minihouse.canner.app`. `curl -r 0-1 /film/house-film.mp4` is 206 `video/mp4`, `Content-Range: bytes 0-1/2403562`. `/.env.production` is 404. `check_promo.py --dist web/promo/.bundle` passed before the upload: 7 pages, story pages 7 images, home pages 19. `/film/midtun-film.mp4` is 404 because G-16 has not run.
 
 ## Log
+
+### 2026-11-19 02:26 · G-19 Preview upload · done
+Files: none in the repo. Upload is deployment `b8762802` at https://minihouse-preview.canner.app. The previous preview, `a658a570`, stays as the rollback target.
+Plan: D-27 is logged at 02:16 against `web/promo/dist` from 2026-11-19 01:51:12. Those files still had that timestamp when the bundle was made, so the site was not rebuilt. `npm run bundle` copied that dist. `check_promo.py --dist web/promo/.bundle` passed. The bundle home page contains «Alle bildene her er konseptbilder.» and `midtun-gable`. The bundle story page contains `midtun-glass`, `midtun-stove`, `midtun-stone`, `midtun-1887` and `midtun-nail`. `midtun-film.mp4` is not in the bundle. The upload was `canner deploy --slug=minihouse-preview --follow` from `web/promo/.bundle`.
+Evidence: live `/`, `/en/`, `/historien/` and `/en/historien/` are 200 `text/html`. The language links pair `/` with `/en/` and `/historien/` with `/en/historien/`. `hreflang` pairs the same paths on `https://minihouse.canner.app`. `curl -r 0-1 /film/house-film.mp4` is 206 `video/mp4`, `Content-Range: bytes 0-1/2403562`. `/.env.production` is 404. `/film/midtun-film.mp4` is 404. The live home page has the gallery note and `midtun-gable`. The live story pages have the five residence photos.
+This entry is the publication. The look is the 01:51 entry. The corrected checks are the 02:10 entry.
+HANDOVER: → DeepSeek: D-28 can run on `b8762802`. The four routes, the hreflang pairs, the house-film 206, the 404 and the bundle check are listed above.
+BLOCKED: G-16 until `images/midtun_teachers_residence_clean_4k.mp4` exists.
+Next: DeepSeek runs D-28. No git.
+
+### 2026-11-19 02:10 · G-18 checks re-run · suite passes, upload still waiting
+Files: `documents/task-landing-r3.md` only. No site file changed, so `web/promo/dist` is still the 01:51 build.
+Plan: the five relative links in that copy pointed at the agents folder as if the file lived there. They now point at `../fase4/promo/agents/README.md`, `../fase4/promo/DESIGN-GUIDE.md`, `../fase4/promo/decisions.md` and `../fase4/promo/agents/task-story-page.md`. The words of the cards are unchanged. The suite's link check stays on.
+Evidence: each of those five targets exists from `documents/`. `python scripts/verificar_todo.py` → SUITE COMPLETA: TODO PASA. `check_promo.py` source, `--dist web/promo/dist` and `--selftest` all passed. Dist is still 7 pages; the story pages have 7 images and the home pages 19. The self-test includes the later JPEG cases (a progressive file, fill bytes, a truncated file, a short segment).
+The visual review in the 01:51 entry is unchanged.
+HANDOVER: → DeepSeek: D-27 can audit this same dist. No new build id.
+BLOCKED: G-19 until D-27 is logged. G-16 until the clean master exists.
+Next: upload only after that audit.
+
+### 2026-11-19 01:51 · G-18 Build, checks and look · done, upload waiting
+Files: the G-11 to G-15 files below. Build `web/promo/dist`, 01:51.
+Plan: D-25 is filled and D-26's checker is in. G-16 stays off because the clean film is not in `images/`. The titled film was not opened.
+Evidence:
+- `node scripts/check-content.mjs` passed. The four missing keys from G-10 are resolved.
+- `npm run check` 0 errors. `npm run build` 7 pages.
+- `check_promo.py` source, `--dist` and `--selftest` passed. Dist: 25 images, 96 JPEGs checked, both story pages have 7 images, each home page 19.
+- `verificar_todo.py` fails only on markdown links in `documents/task-landing-r3.md` (relative links that belong in `fase4/promo/agents/`). `check_web` passed. I did not edit that copy.
+- Playwright, Chrome, after every image had loaded. Overflow 0 at 360, 768, 1024, 1280 and 1920 on `/`, `/historien/` and `/en/historien/`.
+- Gallery at 1280: 6 tiles, 0 visible captions, one note. Lightbox reads «1 av 6 / Konseptbilde». At 390 the count is «1 av 6».
+- Materials at 1280: each block 390 px, the section 2032 px. Tag order Materiale, Opprinnelse, Tidligere bruk, Brukes til, Behandling, Status. At 1024 the page does not scroll sideways.
+- Home section at 1280: the wrap is 510 px. The gable's top matches the heading. Its caption is «Lærerboligen under rivingen, april 2026. Foto: Carlos». At 390 the photo sits under the link.
+- Story at 1280: the three images are each 316 px tall, the pair each 588 px wide, the stove is 3:4. The two opening columns are 24 px apart. No film element. After the question band only the exploded drawing and the house remain, both concept images.
+- Escape closed the lightbox and the menu. Footer «Historien» is first and opens `/historien/` (English `/en/historien/`).
+- One accessory removed: the teaser paragraph's extra `max-width` inside `64rem`, which would have squeezed the text inside its own seven columns.
+Definition of done (DESIGN-GUIDE §11): [x] tokens and the card literals  [x] allowed pairs  [x] copy from the content files  [x] images from images.json  [x] keyboard  [x] reduced motion: no Midtun film is mounted, so there is no playing film  [x] screenshots looked at  [x] garbage list clear  [x] one accessory removed, named above
+HANDOVER: → DeepSeek: this dist is the build for D-27.
+BLOCKED: G-19 until D-27. G-16 until the clean master exists.
+Next: no upload yet.
+
+### 2026-11-19 01:43 · G-11 to G-15 · done
+Files: `scripts/prepare_photos.py`; `web/promo/src/content/images.ts`; `images.json`; `src/assets/images/` (six `midtun-*.jpg` and `texture-stal.jpg`); `Gallery.astro`; `base.css`; `StoryTeaser.astro`; `SiteFooter.astro`; `Story.astro`; `story.css`.
+Plan: Appendix D for the copies, Appendix B for the six entries, then the gallery, materials, home section, footer and story opening as written.
+Evidence: `python scripts/prepare_photos.py` exited 0 with seven lines: gable and stove 1800×2400, glass, 1887, nail and stone 2400×1601, steel 280×350. Copies are in `status/grok-screens/r3-media-*.png`. The gable stands upright and shows cladding coming off; the caption stays «under rivingen, april 2026». The camera date is 3 April 2026. When the demolition started is still open, so the caption was not changed. The stove stands upright. The four credited photos keep their colour. The steel crop is the specified box: cladding corner, black plinth, no window. A thin grass edge remains under the plinth because that box includes it; the box was not moved. `3.jpg` and `5.jpg` were not used. The clean film is absent, so G-16 did not run and the titled file was not used.
+The Film component's script sits between the two opening wraps, so `.wrap + .wrap` never matched. The rule is now `.story-open > .wrap ~ .wrap`, and the measured gap is 24 px.
+Next: G-18.
+
+### 2026-11-19 01:15 · G-10 The contracts · done
+Files: `web/promo/src/content/schema.ts`, `web/promo/scripts/content-contract.mjs`, `web/promo/src/content/films.ts`, `web/promo/src/content/films.json`.
+Plan: no layout. `gallery.note` and `story.film` (`alt`, `caption`) are the new keys. `FilmId` now includes `midtun`. The film entry is Appendix C. `getFilm('midtun')` still returns nothing until the poster exists.
+Evidence: `node scripts/check-content.mjs` → content check failed (4): `nb.gallery.note`, `nb.story.film`, `en.gallery.note`, `en.story.film`. No other missing keys. No build.
+HANDOVER: → DeepSeek: keys landed: `gallery.note`, `story.film.alt`, `story.film.caption`.
+Next: G-11 can run beside D-25. No upload.
+
+### 2026-11-19 01:12 · G-9 Load the skills and plan · done
+Files: this file only. No code yet.
+Plan: skills read, in order: `.agents/skills/minihouse-frontend-design/SKILL.md`; the Claude Code skill at `C:\Users\carlos\.claude\plugins\cache\claude-plugins-official\frontend-design\1.1.1\skills\frontend-design\SKILL.md`; `web/promo/DESIGN.md`; DESIGN-GUIDE R2.5 §6.3, §6.5, §6.6, §6.12, §6.15, §6.16, §7 and §10–§11. Where they differ, the guide wins.
+Cards, in order: G-10 contracts, then the HANDOVER. G-11 photos and the steel sample can run beside D-25. After the JSON is filled: G-12 gallery, G-13 materials, G-14 home section and footer, G-15 story page. G-16 only if `images/midtun_teachers_residence_clean_4k.mp4` exists. G-17 only after G-18 passes without it. G-18 checks and screenshots. G-19 upload only after G-18 and D-27.
+Checked against the code, and it matches the cards:
+- `schema.ts` `gallery` has title, count, prev, next, close, and no `note`. `story` has no `film`.
+- `content-contract.mjs` `gallery` is `{ title, count, prev, next, close }` and `story` ends at `teaser`.
+- `films.ts` `FilmId` is `'house' | 'living' | 'bath'`. `films.json` has those three entries. `getFilm()` returns nothing without a poster.
+- `Film.astro` takes `id`, `class`, `label`, `caption`, `play`, `pause`, `sizes` and `priority`, which is what Appendix E passes.
+- `Gallery.astro` `rows` is `['meadow-wide', 'bath-vanity', 'bench', 'bath-shower']` and `['kitchen', 'bath-doorway', 'storage']`. `.tile-caption` is the rule at `base.css` just before `.lightbox`.
+- The `64rem` materials block starts with the comment «Gammelt tre, nytt hus: boards stacked in a zig-zag» and uses `4fr 6fr 2fr` and `2fr 6fr 4fr`.
+- `story.css` has `.story-teaser p { max-width: min(var(--measure), calc(7 / 12 * 100%)); }` inside `min-width: 64rem`.
+- `SiteFooter.astro` first link is Personvern. `imageIds` ends with `texture-stal`, `og-image`. `texture-stal` is `stand-in`, focal `50% 50%`, source the cabin file with no crop note.
+No mismatch. Nothing is BLOCKED.
+Next: G-10.
+
+### 2026-11-18 23:55 · G-8 Preview upload · done
+Files: none in the repo. Upload is deployment `a658a570` at https://minihouse-preview.canner.app.
+Plan: D-22 had passed, CR-24 was in the build, and `check_promo.py --dist` had passed, so the bundle went only to `minihouse-preview`.
+Evidence: `npm run bundle`, then `canner deploy --slug=minihouse-preview --follow` from `web/promo/.bundle`. Live: `/`, `/en/`, `/historien/` and `/en/historien/` are 200 `text/html`. The language link goes `/historien/` → `/en/historien/` and back. `curl -r 0-1 /film/house-film.mp4` is 206 `video/mp4`. `/.env.production` is 404.
+HANDOVER: → DeepSeek: the story page is on minihouse-preview (`a658a570`). D-23 can run.
+Next: Carlos looks at the preview for G4. No git.
+
+### 2026-11-18 23:51 · CR-24 phone headings may hyphenate · done
+Files: `web/promo/src/styles/story.css`.
+Plan (DESIGN-GUIDE §11): below 48rem, `.story h2 { hyphens: auto; }`. From 48rem the headings go back to `hyphens: manual`.
+Evidence: `npm run build` 7 pages. `python scripts/check_promo.py --dist web/promo/dist` passed. At 360 px the computed value is `hyphens: auto` and `lang` is `nb`. The first heading still reads `Fra / rivningsmaterialer / til / beredskapsboliger`. `rivningsmaterialer` is 303 px in a 312 px column, so it fits on its own line and this Chrome did not break it. Screenshot `status/grok-screens/h2-nb-360.png`.
+Next: G-8.
 
 ### 2026-11-18 23:32 · G-6 pictures re-shot after they loaded · done
 Files: `status/grok-screens/story-*.png`, `drawing-*.png`, `house-*.png`. No page change.

@@ -134,14 +134,15 @@ The section order, anchors and content keys are in [content/sitemap.md](content/
 | 3 | Inne i MiniHouse (irr band) | built, the funk version; the living-room film plays, and the bathroom film plays inside the mirror; moved up | remove the unused `living.rooms` keys (Cursor, DeepSeek) |
 | 4 | Huset i bilder (gallery and lightbox) | built as a contact sheet of 7 uncropped pictures | – |
 | 5 | Gammelt tre, nytt hus (material passports) | built; passports always visible, compact on phones, tags hanging off their samples on desktop | replace the steel image, which shows mostly wood cladding (Antigravity) |
-| – | Hvordan ideen oppstod (a short section that leads to Carlos's story) | not built | Grok builds it ([agents/task-story-page.md](agents/task-story-page.md)) |
+| – | Hvordan ideen oppstod (a short section that leads to Carlos's story) | built (task-story-page) | R3: Carlos's gable photo beside the text ([agents/task-landing-r3.md](agents/task-landing-r3.md)) |
 | 6 | Under kledningen | built; both views side by side, no tabs | – |
 | 7 | Fra verksted til tomt (journey) | built with giant numerals over 4:3 pictures | a workshop image of at least 1600 × 1200 (Carlos renders it, Antigravity checks it) |
 | 8 | Hvor langt har vi kommet? (status and FAQ) | built | – |
 | 9 | Følg prosjektet (copper band and form) | not built | waits for D6 |
 | 10 | Footer (steel base) | built | a contact address (K-29) |
 | – | Personvern, 404, sitemap, robots | built | the privacy text waits for D6; check that Canner serves a real 404 |
-| – | Carlos's story «Hvordan ideen oppstod» (`/historien/`, `/en/historien/`) | not built | Grok and DeepSeek build it, and Grok uploads it to the preview after the checks ([agents/task-story-page.md](agents/task-story-page.md)); Carlos approves it at G4 |
+| – | Carlos's story «Hvordan ideen oppstod» (`/historien/`, `/en/historien/`) | built and on the preview (task-story-page, 2026-11-18) | R3: the Midtun film after the first paragraph that names the house, the timber pair and the trio of photos ([agents/task-landing-r3.md](agents/task-landing-r3.md)); Carlos approves it at G4 |
+| – | R3 fixes on the home page | not built | the gallery (6 pictures, one note), materials 25 % shorter on desktop, the steel sample re-cropped, and the footer note and its «Historien» link ([agents/task-landing-r3.md](agents/task-landing-r3.md)) |
 
 The sticky mobile bar exists but stays off until the form exists. Review findings are in [review/visual-review.md](review/visual-review.md), and QA reports are in [qa/](qa/a11y.md).
 
@@ -175,6 +176,12 @@ The sticky mobile bar exists but stays off until the form exists. Review finding
   - `scripts/cut_film.py` cuts the 4K master into four silent loops: `house-film-1920.mp4` (1920 × 1080, 3.94 MB, for screens from `64rem`), `house-film.mp4` (1280 × 720, 2.40 MB), `living-loop.mp4` (1440 × 960, 1.04 MB) and `bath-loop.mp4` (1080 × 1350, 1.14 MB). All are 24 fps H.264 with `+faststart`, and the script reads the source size with ffprobe.
   - They are listed in `films.json`, with the posters in `src/assets/film/` and the videos in `public/film/`, all out of git. The v11 cuts are backed up in `fase4/promo/archive/film-v11/`.
 - New images follow §2: the canonical prompt, the fidelity checklist and a row in `bildeliste.csv`.
+- **Real photos and the Midtun film (2026-11-19, D16).** Carlos added eight demolition photos and `images/midtun_teachers_residence_v3_4k_send.mp4` (3840 × 2160, 30 fps, 72.37 s, with music and burned-in English titles).
+  - **What the site uses:** five photos on the story page, plus his gable photo in the home section. Four are by Joran Ingvaldsen and credited.
+  - **The film:** the clean, title-free film he is exporting as `images/midtun_teachers_residence_clean_4k.mp4`, played silently.
+  - **Left out:** `3.jpg` and `5.jpg`, which show workers and a readable number plate.
+  - **File data:** the site copies have it removed.
+  - Task: [agents/task-landing-r3.md](agents/task-landing-r3.md).
 - Only Carlos approves images and the film cuts, at G4. A release build fails on any image or film marked `stand-in` or `pending`.
 
 ---
@@ -188,7 +195,7 @@ The file ownership, contracts and protocol are in [agents/README.md](agents/READ
 - **DeepSeek** (words and checks) keeps the copy, the claims register and `check_promo.py` current, and re-runs the checks after each build.
 - **Codex**, if Carlos uses it as a supervisor, follows the same rules and edits only what its task names.
 - **WorkBuddy** joined for one task and moved the film to the 4K master ([task-film-v18.md](agents/task-film-v18.md), closed on 2026-11-18).
-- **Grok** (code, layout and visual review) joins for one task: Carlos's story page and its home section. With **DeepSeek** on the words, claims and checks, it builds them and uploads them to the preview after the checks ([task-story-page.md](agents/task-story-page.md)).
+- **Grok** (code, layout and visual review) built Carlos's story page and its home section with **DeepSeek** on the words, claims and checks ([task-story-page.md](agents/task-story-page.md), on the preview since 2026-11-18). The two now do R3 the same way: the photos and the Midtun film, and the home-page fixes ([task-landing-r3.md](agents/task-landing-r3.md)).
 - **Claude Code** keeps this plan, the design guide and the reference. On 2026-11-18 Carlos asked it to work on the site itself, so it built three things in `web/promo` ([its log](status/claude-code.md)):
   - the funk layer and the section polish;
   - four UX fixes;

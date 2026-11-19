@@ -16,11 +16,107 @@ Open requests go here, one line each, for example "→ Antigravity: …". Mark t
 - → Carlos (or Cursor): run a Patentstyret search for «MiniHouse» before G5 and record the result in `05-test/claims-audit.md` §5; the Brønnøysund check returned 0 hits.
 - → Cursor: the follow-form schema change is closed on both sides — `schema.ts` holds only `fields { email, name, optional }` and both JSON files match (2026-11-17 22:26). No action.
 - → WorkBuddy: when W-2 lands, name the four output sizes and whether any budget needed a CRF raise; in W-3, say explicitly whether any of the five shots changed content from v11 to v18, since that decides whether I rewrite `film.alt`, `film.livingAlt` or `film.bathAlt`. Details in `qa/film-v18.md` §5.
-- → Grok: the G-8 upload is missing the two story routes. `web/promo/.bundle` has no `historien/` and `check_promo.py --dist web/promo/.bundle` counts 5 pages, so the preview answers 404 for `/historien/` and `/en/historien/`. Run `cd web/promo && npm run bundle` from the current build and redeploy to `minihouse-preview`; tell me the deployment id and I re-run D-23. Also: `hreflang` points at `minihouse.canner.app` from the preview — decide with Carlos whether that is intended.
+- → Grok: D-27 was logged at **02:16**, so the gate you named for **G-19** is open. `grok.md` still ends at 02:10 and the preview still serves the pre-R3 bundle (no `gallery.note`, no `midtun-gable`, no credits on `/historien/`). Publish and log the deployment id; D-28 is queued and I run it immediately after.
+- → Grok: **the corrected verifier is ready** (D-26, 2026-11-19 02:10), and **your R3 build passes D-27** (02:16): axe 0 violations on `/` and `/historien/`, LCP 2.3 s and 0.8 s on the phone, CLS 0. The checker now refuses a photo caption that says «Konseptbilde» or "Concept image" in **either** language, and it reads every JPEG segment, including an Exif block after a progressive scan. Two watch items, neither blocking: the home page's largest paint is the film **poster** at 2.3 s, and the story page carries no film until the clean master exists.
+- → Carlos: **the clean Midtun film is still the only thing missing.** `images/` holds only `midtun_teachers_residence_v3_4k_send.mp4`, the version with burned-in titles that D16 forbids cutting. Without `images/midtun_teachers_residence_clean_4k.mp4` the story page ships without the film; the slot appears by itself once the poster exists.
+- → Grok: do not cut from the v3 master. Wait for the clean file; the six photos are in `images.json` and pass the checker.
+- → Carlos: only one thing is still open on the photos, the exact first day of the demolition. The gable caption «Lærerboligen under rivingen, april 2026» stands on the evidence (the picture shows the dismantling under way, camera 3 April 2026), so nothing on the page changes when you confirm it.
+- → Grok: **done** (2026-11-19). My 23:54 report was a timing artefact: it ran one minute before G-8's upload `a658a570`. D-23r found all four routes at 200 and the bundle at 7 pages.
 - → Antigravity: `scripts/check_promo.py` is the gate for image alt/caption text and for `--release`; when the 19 entries have their alts in both languages, the release check has one class of failure left (no image may be `stand-in` or `pending`).
 - → Cursor: the claims register is live at [02-define/claims-register.csv](../content/claims-register.csv). `schema.ts` may need one key I expect to use: a per-image `alt`/`caption` pair already exists, so no change is requested yet. If the copy needs a claims note in the UI, I'll ask before touching `nb.json`.
 
 ## Log
+
+### 2026-11-19 02:24 · D-28 queued: G-19 is not registered and the preview still serves the pre-R3 build
+Files: none yet; this entry only.
+Plan: D-28 runs on the **new** deployment, so it cannot start while the preview is still the older build. I verified that rather than assume it.
+Evidence (2026-11-19 02:22–02:24):
+- `grok.md` still ends at **02:10 «G-18 checks re-run · upload still waiting»**, with `BLOCKED: G-19 until D-27 is logged`. No G-19 entry and no new deployment id.
+- Live preview, `Invoke-WebRequest` (the `curl -s` capture returned 2 bytes and was discarded): `/` **200**, 41 554 bytes, **no** `gallery.note`, **no** `midtun-gable`, **no** new footer note; `/historien/` **200**, 14 330 bytes, **0** `midtun-` references and **no** credits. The deployed build is the **pre-R3** one (`a658a570`, the same bundle D-23r checked).
+- So the R3 build at `web/promo/dist` (01:51:12) is not on the preview yet. D-27's reports stay bound to that build as the card requires.
+Queue for D-28, ready to run the moment G-19 is registered: the four routes (`/`, `/en/`, `/historien/`, `/en/historien/`), each page's language link, `206 video/mp4` on the film that exists (`house-film*.mp4`, `living-loop.mp4`, `bath-loop.mp4`), `404` on `/.env.production`, `check_promo.py --dist web/promo/.bundle` on the published bundle, and an R3 content proof: six-tile gallery with its one note, the gable photo on the home page, and seven images on each story page. Then the deployment id and results go into `qa/story.md` §9 and the handover to Carlos for G4.
+HANDOVER → Grok: D-27 has been logged since 02:16, so the G-19 gate you named is open. Publish and log the deployment id; I run D-28 immediately after.
+Next: D-28 on the new deployment.
+
+### 2026-11-19 02:16 · D-27 audits on the R3 build · done
+Files: `fase4/promo/qa/story.md` (§8 new), `qa/perf.md` (R3 section), `qa/a11y.md` (R3 section), `qa/reports/axe-r3.{txt,json}`, `qa/reports/lighthouse-r3-{home,story}-{mobile,desktop}.json`.
+Plan: audit the delivered build, not the source. **Build identified: `web/promo/dist`, 2026-11-19 01:51:12, 7 pages**, served on `127.0.0.1:4322`; routes measured **`/` and `/historien/`**.
+Evidence:
+- **Claims audit** (`story.md` §8.1): the gallery note is true of a gallery that holds only renders (K-20); the footer note is now correct because the story's photos are real (K-20, K-19); the gable caption stands on the evidence (K-45, K-36); the three home «Konseptfilm» captions are right for the house film (K-35); the five story photo captions are credited and carry no claim about where the materials went (K-45, K-36/K-37/K-46); the two story «Konseptbilde» are the renders. **No «Konseptfilm» on the story page**, which is right for a real film (K-47).
+- **axe:** **0 violations** on `/` and `/historien/` (axe-core 4.14.1, `axe-r3.txt`/`.json`).
+- **Lighthouse 13.6.0:** `/` phone **perf 0.97, LCP 2.3 s, CLS 0**, desktop 1.00 / 0.5 s / 0.009; `/historien/` phone **1.00 / 0.8 s / 0**, desktop 1.00 / 0.5 s / 0.005. Accessibility, best practices and SEO 100 in all four runs. **Gates: 0 axe, LCP ≤ 2.5 s mobile, CLS ≤ 0.1 — all pass.**
+- **Largest paint:** `/` phone and desktop: the house film's **poster** `img.film-still`; `/historien/` phone: a **paragraph**; `/historien/` desktop: `midtun-stone`. So the film still is **not** the largest paint on the story page — there is no Midtun film there, because the clean master does not exist.
+- Not judged: whether the photos show what their alt texts say, the 4:5 gable crop, the contact-sheet reading. That is G-18's screenshots and Carlos's G4.
+HANDOVER → Grok: **the R3 build passes D-27.** Two watch items, neither blocking: the home phone LCP is the film poster at 2.3 s (0.2 s inside the gate), and the story page has no film until the clean master exists.
+Next: D-28 after G-19.
+
+### 2026-11-19 02:10 · D-26 corrections: cross-language captions and a whole-file JPEG walk · done
+Files: `scripts/check_promo.py`.
+Plan: the two holes a reviewer could drive through. A photo caption could say "Concept image" in Norwegian and pass, and the JPEG walker stopped at the first scan, so an Exif block after it went unseen.
+Evidence:
+- **(1) Captions.** `caption_kind_errors()` now refuses **both** «Konseptbilde» and "Concept image" in **both** fields of a photo, whatever the field language, and keeps the per-language credit («Foto:» / "Photo:"). Three new cases: «Konseptbilde» in the English field, "Concept image" in the Norwegian field, and a photo whose Norwegian field carries the English credit — all fail now.
+- **(2) JPEG walker.** `jpeg_metadata_problems()` walks the **whole** file: it skips fill bytes (FF FF), honours stuffed bytes (FF 00) and restart markers (FF D0-D7) inside entropy data, and resumes parsing after each scan, so an APP1 or APP13 **between progressive scans** is found. A truncated file, a segment cut short and a malformed structure each produce their own error instead of being ignored.
+- **(3) Tests.** A valid **progressive** JPEG with Exif after the first scan fails as `["APP1 Exif"]`; fill bytes before APP13 still report it; a truncated file reports both its Exif and the truncation. The XMP, APP13, COM and APP2 cases are kept. **68 self-tests, all pass.**
+- **File walk** now uses `rglob`, so subdirectories under `assets/images`, `assets/film` and `dist/_astro` are covered.
+- **Run on the delivered build:** source run **all checks passed** (25 images, 28 JPEGs); `--dist web/promo/dist` **all checks passed**, **7 pages**, **96 JPEG files** scanned for Exif, XMP and IPTC.
+Checks: `--selftest` 68/68 · source · `--dist` on the R3 build.
+HANDOVER → Grok: **the corrected verifier is ready** and the R3 build passes it.
+
+### 2026-11-19 01:47 · D-26 checker · done (dist re-run pending G-18)
+Files: `scripts/check_promo.py` only.
+Plan (DESIGN-GUIDE §1, step 2): no UI. The captions and the photo files are what Carlos's photos changed, so the verifier has to police both.
+Evidence:
+- **(a) Captions by kind, per language.** `caption_kind_errors()`: a `photo` caption must carry «Foto:» (nb) and "Photo:" (en) and may not say «Konseptbilde»/"Concept image"; a `render` or `texture` must say them. Grok's six photos were already in `images.json` when this ran, and **all 25 entries pass**, so nothing of his needs rewording.
+- **(b) No file data in the pictures.** `jpeg_metadata_problems()` walks the JPEG segments; `check_image_metadata()` scans `src/assets/images/`, `src/assets/film/` and, with `--dist`, `dist/_astro/`. It fails on APP1 Exif, APP1 XMP and any APP13 IPTC, and allows COM (ffmpeg writes one on the posters) and APP2 colour profiles. **28 JPEG files checked, 0 problems.**
+- **(c) Self-tests.** 18 new assertions, **60 in total, all pass**: a credited photo passes; a photo without «Foto:» or without "Photo:" fails; a photo saying «Konseptbilde» fails; a render with «Konseptbilde» passes and without it fails; a texture without "Concept image" fails; and the JPEG cases: clean (COM + APP2) passes, APP1 Exif fails, APP1 XMP fails, APP13 fails, Exif+IPTC both reported, a non-JPEG refused.
+- Source run passes; `--dist` passes **on the current build**, which predates R3 (no `gallery.note`, no Midtun film in `dist`). The card's deliverable is that it passes on G-18's build, so I re-run it the moment that build exists.
+Checks: `--selftest` 60/60, source run, `--dist web/promo/dist`.
+HANDOVER → Grok: **the verifier is ready.** Enter Appendix B as written (no rewording), and make sure G-18's build carries the six photos and the film poster, because `--dist` scans `_astro` for their metadata too.
+Next: D-27 as soon as G-18 lands.
+
+### 2026-11-19 01:44 · D-24 completed: the six English alt texts, the gable evidence, the 32 strings
+Files: `fase4/promo/content/copy-story.md` (§6.2 alt texts both languages, §6.3 captions, §6.4 checks), `fase4/promo/content/claims-register.csv` (K-45 notes).
+Evidence:
+- **The six English alt texts are in §6.2**, copied from Appendix B, each row linked to its claims (K-45 everywhere; K-36 on the gable, K-46 on «1887», K-37 on the stone). §6.3 holds the six captions with their credits.
+- **The 32 documented strings verified end to end:** 8 JSON strings (Appendix A) and 24 photo strings (Appendix B) compared against the deck, `nb.json`/`en.json` and `images.json` — **32 checked, 0 failures**. Grok's `images.json` matches Appendix B exactly.
+- **The gable observation is updated.** The photo shows the dismantling under way and the camera records **2026-04-03**, which supports «Lærerboligen under rivingen, april 2026». The caption stands and there is no «før rivingen» variant. **Only the exact first day of the demolition stays open** with Carlos, and nothing on the page changes when he gives it. K-45's notes now say this.
+- **«1887»:** the alt text and the caption describe the pencil inscription on the board and date nothing else (K-46).
+- **Carlos's story did not change:** the 84 earlier strings still hold. The only strings that are not verbatim from Appendix A are the ones I wrote (meta description, teaser body, film alt, film caption) and the one merge the task allows (change #3, `en.intro[1]` = the two paragraphs joined, verified equal).
+Checks: `check_promo.py` source run passes; `check-content.mjs` passes.
+HANDOVER: no wording change for Grok. → Grok: the deck now documents your `images.json` entries as entered.
+
+### 2026-11-19 01:24 · D-25 Fill the JSON · done
+Files: `web/promo/src/content/nb.json`, `en.json`.
+Plan: Grok's G-10 HANDOVER landed at 01:15, so the four keys could be filled. The words are from Appendix A, unchanged (D-24 found nothing to reword).
+Evidence:
+- `gallery.note` «Alle bildene her er konseptbilder.» / "All the pictures here are concept images."
+- `footer.imagesNote` «Bildene av MiniHouse er konseptbilder. Huset er under utvikling.» / "The pictures of MiniHouse are concept images. The house is under development." It replaces «Alle bilder er konseptbilder …», which stopped being true once the story page shows real photos (K-20).
+- `story.film.alt` and `story.film.caption` as in the deck §6.1, with the credit line and never «Konseptfilm» (K-47).
+- `git diff` shows only those keys. No story sentence of Carlos's changed.
+Checks: `node web/promo/scripts/check-content.mjs` → **content check passed**; `check_promo.py` → all checks passed.
+HANDOVER → Grok: **JSON filled.** G-12, G-14 and G-15 can render `gallery.note`, the new footer note and `story.film`.
+Next: D-26 (captions by kind, no file data in the JPEGs, self-tests).
+
+### 2026-11-19 01:21 · D-24 Copy deck §6, claims, sitemap · done
+Files: `fase4/promo/content/copy-story.md` (§6 new), `fase4/promo/content/claims-register.csv` (K-45–K-47 new, K-20 narrowed, K-37 note extended), `fase4/promo/content/sitemap.md` (§2 gallery, home section, story page, footer; §4 `gallery.note`, `story.film`).
+Plan (DESIGN-GUIDE §1, step 2): no UI. Words from Appendices A and B, one claim row each, no visual judgement.
+Evidence:
+- **Norwegian review: no change.** All 16 nb strings read as plain Bokmål. All 32 strings (nb and en) pass `check_promo.py`'s word rules filed under both `story.*` and `gallery.*`: 0 hits, so «grønn» and "green" are out. **No "→ Grok: replace"**; Appendix B goes in as written.
+- **Register:** **K-45** (six real photos, credits, never 3.jpg or 5.jpg), **K-46** (1887 in pencil on a board), **K-47** (Carlos's film, never «Konseptfilm»). **K-20** narrowed to «Bildene av MiniHouse er konseptbilder.», with the home gallery's «Alle bildene her er konseptbilder.» as an allowed form, since that gallery shows only renders. **K-37's never-claim** now covers the photos and the film too: timber, stone, glass, stove. 47 rows, unique ids, legal statuses, and every K-id cited in the deck exists.
+- **The gable date can't be checked from the project's sources.** The camera date is 2026-04-03, and the reference page (page 1 of 7, the only page read) gives the demolition only as "2026". «under rivingen, april 2026» therefore rests on Carlos's account (D16). I kept it and did not switch to «før rivingen», because nothing says the work hadn't started. Question to Carlos below.
+- **K-46 source:** the task quotes the reference page as «the historic 1887 building». That phrase is not on the page I read, so K-46 cites the line that is: «Ca. 1887 Huset bygges som et landsted …». The caption dates nothing but the pencil writing.
+- No photographer data in any file: the credit is the name only.
+Checks: register parses; `check_promo.py` source run passes.
+Definition of done (DESIGN-GUIDE §11, for anything visual): [N/A] tokens only  [N/A] allowed pairs  [x] copy from content files  [N/A] images from images.json (Grok's)  [N/A] keyboard  [N/A] reduced motion  [N/A] 360/1280 screenshots  [x] garbage list clear  [N/A] one accessory removed
+HANDOVER: → Grok: no wording change; enter Appendix B exactly. → Carlos: did the demolition start before 3 April 2026? If not, the gable caption should read «Lærerboligen før rivingen, april 2026».
+Next: D-25, since G-10's HANDOVER has landed.
+
+### 2026-11-19 01:13 · D-23r Story page live check, re-run · done
+Files: `fase4/promo/qa/story.md` (§6 corrected, §7 new).
+Plan: re-run D-23 against Grok's G-8 deployment `a658a570`. The 23:54 run came one minute before that upload.
+Evidence: `/`, `/en/`, `/historien/`, `/en/historien/` all **200** `text/html`; `/film/house-film.mp4` with `-r 0-1` **206** `video/mp4`; `/.env.production` **404**. `hreflang`: each page names its twin (`/` ↔ `/en/`, `/historien/` ↔ `/en/historien/`), and the language links match. `check_promo.py --dist web/promo/.bundle`: **7 pages, all checks passed**. My 23:54 "BLOCKED" was a timing artefact, and §6 now says so.
+HANDOVER → Carlos: the story page is live at https://minihouse-preview.canner.app/historien/ and /en/historien/ for G4.
+Next: D-24.
 
 ### 2026-11-18 23:54 · D-23 live check · BLOCKED: the preview does not carry the story pages
 Files: `fase4/promo/qa/story.md` (§6 the live check, §7 what remains).

@@ -284,7 +284,7 @@
       "nb": "Konseptbilde av materialuttrykket",
       "en": "Concept image of the material finish"
     },
-    "source": "images/Weathered timber cabin with a glowing interior.png",
+    "source": "images/Weathered timber cabin with a glowing interior.png, crop x 1024 y 480 w 280 h 350: the front-right corner with the dark steel plinth across the bottom fifth",
     "focal": "50% 50%"
   },
   {
@@ -301,6 +301,102 @@
       "en": "Concept image"
     },
     "source": "images/Weathered timber cabin with a glowing interior.png",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "midtun-gable",
+    "file": "midtun-gable.jpg",
+    "kind": "photo",
+    "status": "pending",
+    "alt": {
+      "nb": "Gavlen på den gamle lærerboligen under rivingen. Kledningen er delvis tatt av, og et blyglassvindu sitter fortsatt i veggen.",
+      "en": "The gable of the old teachers' residence during the demolition. Part of the cladding is off, and a stained-glass window is still in the wall."
+    },
+    "caption": {
+      "nb": "Lærerboligen under rivingen, april 2026. Foto: Carlos",
+      "en": "The teachers' residence during the demolition, April 2026. Photo: Carlos"
+    },
+    "source": "images/IMG_1343.jpg, Carlos's phone photo (2026-04-03), upright, file data removed, 1800 x 2400",
+    "focal": "50% 38%"
+  },
+  {
+    "id": "midtun-1887",
+    "file": "midtun-1887.jpg",
+    "kind": "photo",
+    "status": "pending",
+    "alt": {
+      "nb": "Gamle bord med blyantskrift i løkkeskrift. Årstallet 1887 står skrevet på det midterste bordet.",
+      "en": "Old boards with looping pencil writing. The year 1887 is written on the middle board."
+    },
+    "caption": {
+      "nb": "Årstallet 1887, skrevet med blyant på et bord i lærerboligen. Foto: Joran Ingvaldsen",
+      "en": "The year 1887, written in pencil on a board in the residence. Photo: Joran Ingvaldsen"
+    },
+    "source": "images/0V0A2394.jpg, photo by Joran Ingvaldsen, used with permission (D16), converted to sRGB, file data removed, 2400 x 1601",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "midtun-nail",
+    "file": "midtun-nail.jpg",
+    "kind": "photo",
+    "status": "pending",
+    "alt": {
+      "nb": "En rusten, firkantet spiker stikker skrått opp av et gammelt trestykke.",
+      "en": "A rusty square nail sticks out at an angle from an old piece of timber."
+    },
+    "caption": {
+      "nb": "En gammel spiker i treverket. Foto: Joran Ingvaldsen",
+      "en": "An old nail in the timber. Photo: Joran Ingvaldsen"
+    },
+    "source": "images/0V0A2535.jpg, photo by Joran Ingvaldsen, used with permission (D16), converted to sRGB, file data removed, 2400 x 1601",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "midtun-glass",
+    "file": "midtun-glass.jpg",
+    "kind": "photo",
+    "status": "pending",
+    "alt": {
+      "nb": "Et blyglassvindu med trær, skyer, en seilbåt, et fyrtårn og en soloppgang rundt en stor rute i ravfarget glass.",
+      "en": "A stained-glass window with trees, clouds, a sailing boat, a lighthouse and a sunrise around a large amber pane."
+    },
+    "caption": {
+      "nb": "Blyglassvinduet i lærerboligen. Foto: Joran Ingvaldsen",
+      "en": "The stained-glass window in the residence. Photo: Joran Ingvaldsen"
+    },
+    "source": "images/0V0A2359.jpg, photo by Joran Ingvaldsen, used with permission (D16), converted to sRGB, file data removed, 2400 x 1601",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "midtun-stove",
+    "file": "midtun-stove.jpg",
+    "kind": "photo",
+    "status": "pending",
+    "alt": {
+      "nb": "En gammel komfyr i støpejern foran en pipe der pussen er slått av og teglsteinen ligger bar.",
+      "en": "An old cast-iron cooking stove in front of a chimney with the plaster knocked off and the bricks bare."
+    },
+    "caption": {
+      "nb": "Den gamle komfyren under rivingen. Foto: Carlos",
+      "en": "The old stove during the demolition. Photo: Carlos"
+    },
+    "source": "images/6.jpg, Carlos's phone photo, file data removed, 1800 x 2400",
+    "focal": "50% 50%"
+  },
+  {
+    "id": "midtun-stone",
+    "file": "midtun-stone.jpg",
+    "kind": "photo",
+    "status": "pending",
+    "alt": {
+      "nb": "Stabler med flate steinheller på paller i gresset, med et anleggsgjerde bak.",
+      "en": "Stacks of flat stone slabs on pallets in the grass, with a site fence behind."
+    },
+    "caption": {
+      "nb": "Steinheller som ble tatt vare på under rivingen. Foto: Joran Ingvaldsen",
+      "en": "Stone slabs saved during the demolition. Photo: Joran Ingvaldsen"
+    },
+    "source": "images/0V0A2667.jpg, photo by Joran Ingvaldsen, used with permission (D16), converted to sRGB, file data removed, 2400 x 1601",
     "focal": "50% 50%"
   }
 ]

@@ -76,5 +76,6 @@
     "EN 1993-1-8",
     "thermal bridge"
   ],
-  "step_solids": 48
+  "step_solids": 48,
+  "step_backend": "OCCT STEP export; Fusion import verified on 2706.1.17"
 }

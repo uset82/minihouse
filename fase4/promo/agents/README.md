@@ -13,7 +13,7 @@ The briefs:
 - [Antigravity](antigravity.md): images and visual QA
 - [DeepSeek](deepseek.md): words and checks
 - WorkBuddy has no standing brief. It joins for single tasks, most recently [task-film-v18.md](task-film-v18.md): the 4K film (closed on 2026-11-18).
-- Grok has no standing brief either. It joins DeepSeek for [task-story-page.md](task-story-page.md): Carlos's story page «Hvordan ideen oppstod».
+- Grok has no standing brief either. It joined DeepSeek for [task-story-page.md](task-story-page.md), Carlos's story page, and now for [task-landing-r3.md](task-landing-r3.md): his photos and Midtun film, and the R3 fixes on the home page.
 
 ---
 
@@ -23,10 +23,10 @@ The briefs:
 |---|---|---|
 | **Cursor** | the code in `web/promo/`, the image pipeline, deploys and git (each with Carlos's OK) | C-12b: review Claude Code's C-12 and remove `living.rooms` from the schema |
 | **Antigravity** | images, alt text and visual QA. It can see screenshots. | A-9: review Claude Code's C-12 at 4 widths, then A-12 |
-| **DeepSeek** | copy, the claims register and the automated checks. It **can't see images**, so it never judges visuals. | D-16 and D-17 of the film task if they're open, then [task-story-page.md](task-story-page.md): D-18 to D-23; D-12 and D-11 after |
+| **DeepSeek** | copy, the claims register and the automated checks. It **can't see images**, so it never judges visuals. | [task-landing-r3.md](task-landing-r3.md): the D-23 re-run first, then D-24 to D-28; D-12 and D-11 after |
 | **Codex** | supervisor, if Carlos uses it | follows this file; edits only what its task names |
 | **WorkBuddy** | the project's engineering agent (`.workbuddy-ai/`). It runs scripts and sees its output through Playwright screenshots. | none: [task-film-v18.md](task-film-v18.md) (W-1 to W-7) closed on 2026-11-18 |
-| **Grok** | the xAI Grok CLI (`grok`), started in the repo root with the folder trusted. It edits code, runs the build and Playwright, and can look at screenshots. It never generates images for this site. | [task-story-page.md](task-story-page.md): G-1 to G-8, Carlos's story page |
+| **Grok** | the xAI Grok CLI (`grok`), started in the repo root with the folder trusted. It edits code, runs the build and Playwright, and can look at screenshots. It never generates images for this site. | [task-landing-r3.md](task-landing-r3.md): G-9 to G-17 (the story page was G-1 to G-8) |
 | **Claude Code** | `PLAN.md`, `DESIGN-GUIDE.md`, the briefs, `reference/` and its review. On 2026-11-18, at Carlos's request, it also built C-12 in `web/promo`: see [its log](../status/claude-code.md). | – |
 | **Carlos** | decisions, renders and photos | D6, then G4 and G5 (§5) |
 
@@ -46,7 +46,7 @@ The critical path is D6 (the follow form), the new images, G4, G5 and then the d
 | `web/promo/src/assets/images/**`, `web/promo/src/content/images.json` | Antigravity | read only |
 | The concept film: `web/promo/public/film/**`, `web/promo/src/assets/film/**`, `web/promo/src/content/films.json` | Antigravity (made by Claude Code on 2026-11-18) | read only |
 | `scripts/cut_film.py` | Claude Code | read only; ask Claude Code to re-run it when the walkthrough changes |
-| **While [task-story-page.md](task-story-page.md) is open** (paths in `web/promo/`):<br>• new: `src/pages/historien.astro`, `src/pages/en/historien.astro`, `src/components/Story.astro`, `src/components/StoryTeaser.astro`, `src/styles/story.css`;<br>• edits: `src/content/schema.ts`, `scripts/content-contract.mjs`, `src/layouts/Base.astro`, `src/content/locale-paths.ts`, `src/components/SiteHeader.astro`, both `index.astro` files, and only the header rules in `src/styles/base.css`;<br>• `status/grok.md` and `status/grok-screens/` | Grok, instead of Cursor. DeepSeek keeps its own files, listed in the task | read only; Cursor and Antigravity leave these files alone until the task is closed |
+| **While [task-landing-r3.md](task-landing-r3.md) is open** (paths in `web/promo/` unless noted). It follows [task-story-page.md](task-story-page.md), whose files Grok keeps:<br>• the story files: `src/pages/historien.astro`, `src/pages/en/historien.astro`, `src/components/Story.astro`, `src/components/StoryTeaser.astro`, `src/styles/story.css`;<br>• code: `src/content/schema.ts`, `scripts/content-contract.mjs`, `src/layouts/Base.astro`, `src/content/locale-paths.ts`, `src/components/SiteHeader.astro`, `src/components/SiteFooter.astro`, `src/components/Gallery.astro`, both `index.astro` files, and in `src/styles/base.css` only the gallery, materials (from `64rem`) and header rules;<br>• images and film: `src/content/images.ts`, the six new `midtun-*` entries and the `texture-stal` entry in `src/content/images.json`, the matching masters in `src/assets/images/`, `src/content/films.json`, `src/content/films.ts`, `src/assets/film/**`, `public/film/**`, and the repo's `scripts/cut_film.py`;<br>• `status/grok.md` and `status/grok-screens/` | Grok, instead of Cursor, Antigravity and Claude Code. DeepSeek keeps its own files, listed in the task | read only; Cursor and Antigravity leave these files alone until the task is closed |
 | `fase4/promo/review/claude-code-review.md` | Claude Code | read only; each owner fixes findings in its own files |
 | `web/promo/**`, apart from the files listed for Antigravity, DeepSeek and Claude Code | Cursor | read only |
 | `web/promo-holding/**`, and the `web/chat-demo` files named in [task-holding-page.md](task-holding-page.md) | Cursor | read only |
@@ -96,7 +96,7 @@ The key groups are listed in [content/sitemap.md](../content/sitemap.md) §4.
 - Only Cursor runs `npm install`, `npm run dev` (port **4321**) and `npm run build`, always with the system Node (`C:\Program Files\nodejs`).
 - When a change is ready for review, Cursor runs `npm run build && npm run preview -- --port 4322` and says so in its status file.
 - Antigravity takes screenshots on 4321 or 4322, and DeepSeek runs its checks against 4322. Nobody else starts a server on these ports.
-- **While [task-story-page.md](task-story-page.md) is open,** Grok runs `npm run check`, `npm run build` and the 4322 preview in Cursor's place. It adds no dependencies, and it never stops a server it didn't start.
+- **While [task-landing-r3.md](task-landing-r3.md) is open** (it follows task-story-page), Grok runs `npm run check`, `npm run build` and the 4322 preview in Cursor's place. It adds no dependencies, and it never stops a server it didn't start.
 
 ---
 

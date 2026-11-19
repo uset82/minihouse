@@ -1,11 +1,14 @@
 # MiniHouse · Known / Assumed / Unknown register
 
-Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Chapter 11, 12 and 7 retrievals, and the envelope screening. Maps to rules.md §2 (measured / manufacturer / assumed) and §3 (provenance + condition of application).
+Baseline: 2026-11-17. R0 prototype exchange and fit findings updated 2026-11-19. Includes the knowledge acquisition plan, the Chapter 11, 12 and 7 retrievals, and the envelope screening. Maps to rules.md §2 (measured / manufacturer / assumed) and §3 (provenance + condition of application).
 
 ## KNOWN (verified at primary source or derived and checked)
 
 | Item | Basis | Where |
 |---|---|---|
+| Combined R0 STEP imported and saved in Fusion 2706.1.17 | `MiniHouse Combined Joint R0` / `MiniHouse_Combined_Joint_R0`; seven descriptive parameters. Four print parts (51 shells) span 150 × 150 × 11 mm. Twelve reference solids represent **four** fasteners; four more represent wall strips. Including references: 67 bodies, 150 × 150 × 34 mm. | [AL, canonical archive and screenshot](../../fase1/registro-decisiones.md#al-result-2026-11-19-fusion-exchange-confirmed-physical-fit-not-demonstrated) |
+| Rectangular frame R0 fails right-corner alignment | `member(3)` uses `B - W` (67 mm) instead of `L - W` (142 mm), placing it 75 mm inboard. A 150 × 75 mm outline and 48 imported bodies do not establish assembly. | [Frame generator](../../scripts/frame_model.py) |
+| Combined R0 fails two nominal hardware fits | The pocket is circular Ø10.2 mm; a hex AF10 nut measures 11.55 mm across corners. Member 4's open notch ends at the bolt centreline, leaving solid material within the Ø6 mm shank footprint. Neither the nut nor the shank can fully seat as modelled. | [Joint generator](../../scripts/combined_joint_prototype.py), `build_ply` and `half_polygon` |
 | Beam formulas M_A, M_mid, δ_mid (ideal symmetric overhang) | SymPy derivation, numbers reproduced | D001, verify_beam.py |
 | Sling geometry T=V/sinα, H=V·cotα and 4-leg indeterminacy | derived + numeric check | D003, verify_rigging.py |
 | EN 1993 part identities (1-2 fire, 1-8 joints, 1-9 fatigue…) | JRC official page | S004, C001 |
@@ -211,8 +214,9 @@ Date: 2026-11-17. Status after executing the knowledge acquisition plan, the Cha
 | Whether the sandwich-panel interface needs its own detail | C-02 build-up | the 34 mm slot only locates the test article; it is not a scaled wall build-up |
 | Woven flat bar versus the wrapped-steel junction previously priced at Ψ +0.027 | Fase 2 junction detail | the thermal-bridge answer is **re-opened**, not carried over |
 | Whether the U-channel fin height and slot width are buildable with the chosen sandwich panel | C-02 build-up | the 5.6 mm slot is a printed-model value, not a specified wall thickness |
-| Whether the full frame is printed as one piece or as four members plus crossmembers | Carlos / print test | the 3MF currently has five separate objects; assembly sequence is untested |
-| Autodesk exchange test result | no product access | interface stays pending |
+| Physical assembly, seating of real hardware and wrench access | A corrected revision, verified corner and seat geometry, then a measured bench test | Do not print the rectangular frame R0 or combined joint R0 as proof of fit. Neither was printed, assembled or measured. |
+| Suitability of the combined joint's 47.6 mm locating gap for an actual wall | C-02 wall build-up | The gap and reference strips show intended wall position, not panel specification or fit. |
+| Robot–Advance Steel exchange | Test with those applications and the intended SMLX route | Fusion STEP imports (48 frame, 32 flat coupon, 67 combined) establish visibility only; they do not validate this exchange or release a design. |
 
 ## State
 

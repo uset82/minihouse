@@ -24,6 +24,12 @@ export const imageIds = [
   'texture-kobber',
   'texture-stal',
   'og-image',
+  'midtun-gable',
+  'midtun-1887',
+  'midtun-nail',
+  'midtun-glass',
+  'midtun-stove',
+  'midtun-stone',
 ] as const;
 
 export type ImageId = (typeof imageIds)[number];

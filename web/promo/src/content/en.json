@@ -52,7 +52,8 @@
     "count": "{current} of {total}",
     "prev": "Previous",
     "next": "Next",
-    "close": "Close"
+    "close": "Close",
+    "note": "All the pictures here are concept images."
   },
   "build": {
     "title": "Beneath the cladding",
@@ -250,7 +251,7 @@
     "pro": "For professionals",
     "docs": "Documentation",
     "lab": "3D lab",
-    "imagesNote": "Every image is a concept image. The house is under development."
+    "imagesNote": "The pictures of MiniHouse are concept images. The house is under development."
   },
   "privacy": {
     "title": "Privacy",
@@ -329,6 +330,10 @@
       "title": "How the idea started",
       "body": "The story behind MiniHouse starts on a demolition site in Bergen, with old timber that was still in good condition.",
       "link": "Read the story"
+    },
+    "film": {
+      "alt": "Film of the teachers' residence at Øvsttunvegen: the house and Midtun school from the air, the stained-glass window, the year 1887 on a board, the old stove and the demolition.",
+      "caption": "Film: Carlos. Photos in the film: Joran Ingvaldsen and Carlos."
     }
   }
 }

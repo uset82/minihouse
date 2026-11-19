@@ -13,6 +13,48 @@ Only Claude Code writes this file; the other agents and Carlos read it. Put the 
 
 ## Log
 
+### 2026-11-19 · Design review of the preview, and the R3 task for Grok and DeepSeek · done
+
+Carlos asked for a designer's list of changes to the landing page, and for his Midtun film on `/historien/`. He attached eight demolition photos and `images/midtun_teachers_residence_v3_4k_send.mp4`.
+
+**Measured on the live preview:**
+- Home is 8.9 screens at 1280 × 900 and 11 at 390 × 844.
+- Materials take 2584 px on desktop.
+- The gallery has 7 «Konseptbilde» captions.
+- The wavy mirror shows about five times.
+- The steel sample shows grass.
+- The footer note would be false once real photos are on the site.
+
+**Found in the media:**
+- **Photo rights:** the four Canon photos carry the photographer's copyright tag (Joran Ingvaldsen), stored with his phone number.
+- **The film:** 72.37 s, 4K, 30 fps, with music and 11 burned-in English titles. Two have no source: «1926» and «Kalfaret».
+- **Privacy:** `3.jpg` shows a worker and a readable number plate.
+
+**Carlos's answers (D16):**
+- all the pictures are cleared, with credits;
+- a clean film without titles;
+- silent, by itself;
+- no photos with people.
+
+**New:** [agents/task-landing-r3.md](../agents/task-landing-r3.md), with Grok's G-9 to G-19 and DeepSeek's D-23r and D-24 to D-28. It has exact markup, CSS, JSON entries, the photo script and done-when numbers.
+
+**Corrected after a Plan reviewer agent checked every card against the code:**
+- **Materials:** the CSS goes in the `64rem` block, because `48rem` sets `display: block`. The targets become 395 and 2050 px.
+- **Gallery:**
+  - the tile captions use `display: none`, because a visually-hidden pattern would scroll the phone strip sideways;
+  - the rows alternate, with `bath-window` replacing `bath-doorway`.
+- **Steel crop:** x 1024, y 480, 280 × 350.
+- **Photos:** converted from Adobe RGB to sRGB. I dry-ran the script in memory: no file data survives.
+- **The trio** moves before the question band.
+- **The film cuts:** a `MASTERS` dict, a CRF ceiling of 34, `-map_metadata -1`, and checks for black frames and privacy.
+- **The checker:** it scans APP1 and APP13 segments.
+
+**Updated:** DESIGN-GUIDE R2.5 (§6.3, §6.5, §6.6, §6.12, §6.15, §6.16, §7, §8), `web/promo/DESIGN.md`, PLAN §5, §7 and §8, the README ownership row, and `decisions.md` (D16 and the "Preview (R3)" approval).
+
+**Checks:** `check_promo.py` passes, and `verificar_todo.py` prints **SUITE COMPLETA: TODO PASA** (890 links).
+
+Nothing is committed, and no code or media changed.
+
 ### 2026-11-18 23:45 · Review of the story page before G-5 (round 7) · done
 
 I read Grok's G-1 to G-4 and DeepSeek's D-18 to D-20, and measured the page on my own `astro dev` server (port 4330, no build) at 360, 1024 and 1280 px.

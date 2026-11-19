@@ -553,13 +553,55 @@ def main():
         "1 → 2 → 3 → 4 → 1",
         "EN 1993-1-8",
         "thermal bridge",
+        "Fusion import verified on 2706.1.17",
+        "frame.f3d",
     )
     require("knowledge/comparisons/frame-model.json",
-            '"real_mm": [6000.0, 3000.0]',
-            '"model_mm": [150.0, 75.0]',
+            '"real_mm"', "6000.0", "3000.0",
+            '"model_mm"', "150.0", "75.0",
             '"clear_slot_mm": 5.6')
     require("fase1/registro-decisiones.md", "## AI.")
+    require("fase1/registro-decisiones.md", "## AJ.",
+            "48 bodies", "32 bodies", "FluidBridge/2.0")
+    require("fase1/registro-decisiones.md", "## AK.",
+            "MiniHouse Frame R0", "guardado", "no gobiernan")
+    require("scripts/fusion_project_setup.py", "run_project_script",
+            "not for fabrication")
+    require("scripts/ocp_step.py", "cadquery-ocp", "Fusion-importable STEP")
     require("scripts/verificar_todo.py", "36. frame_model.py --selftest")
+
+    # Artículo combinado: M6 real + aletas + unión dividida. La guarda impide
+    # que el hueco de 47,6 mm se lea como muro sándwich definido (C-02 abierto).
+    require("knowledge/comparisons/weave-closure-options.md",
+            "CONCEPTUAL — NOT FOR FABRICATION", "Split lap",
+            "Welded corner", "not held", "No clause number")
+    require(
+        "fase1/prototipo-combinado-R0.md",
+        "CONCEPTUAL — NOT FOR FABRICATION",
+        "assembly sequence, M6 fit, wrench access and fin/slot coexistence only",
+        "no strength claim",
+        "1 → 2 → 3 → 4 → 1",
+        "split lap",
+        "47.6 mm",
+        "C-02",
+        "not printed, not measured",
+        "EN 1993-1-8",
+        "NS-EN 1090-2",
+        "thermal bridge",
+    )
+    require("knowledge/comparisons/combined-joint-prototype.json",
+            '"status": "CONCEPTUAL — NOT FOR FABRICATION"',
+            '"threaded_ply": 4',
+            '"closure": "split lap"',
+            '"clear_slot_mm": 47.6',
+            '"step_solids": 67')
+    require("fase1/registro-decisiones.md", "## AL.",
+            "unión dividida", "Esquina soldada", "No se cita ningún número de cláusula")
+    require("scripts/verificar_todo.py", "37. combined_joint_prototype.py --selftest")
+    require("scripts/fusion_import_combined.py", "importToNewDocument",
+            "MiniHouse_Combined_Joint_R0")
+    require("scripts/fusion_project_combined.py", "run_project_script",
+            "MiniHouse Combined Joint R0")
 
 
     # Condensación del encuentro: §14-3 y §13-13 no cubren la temperatura del acero.

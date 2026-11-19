@@ -1,0 +1,25 @@
+MINIHOUSE / FIT1 — FULL BASE FRAME
+Conceptual tabletop fit test. Not for fabrication, lifting or load testing.
+
+OPEN / PRINT
+Open MiniHouse_Frame_Fit1.f3d in Fusion, or find MiniHouse_Frame_Fit1 in the MiniHouse Frame R0 project. This revision has four named rails with recessed digits in their floors and four loose transverse pieces. They are separate editable solids, not steel sections or hardware specifications.
+
+Open MiniHouse_Frame_Fit1_A1mini.3mf as geometry in Bambu Studio. Select A1 mini, a suitable profile for the actual nozzle and filament, millimetres and 100% scale. Keep the eight pieces separate and preserve the flat-base, fins-up layout. Decline merging the meshes into one part if prompted. The print footprint is 150 x 140 mm, height 12 mm, before supports/brim; the assembled footprint is 150 x 75 mm. No G-code or machine-specific settings are embedded. Check the first layer and collision-free placement in Preview. Each rail has one upper tongue whose underside is 2.2 mm above the bed. Use removable build-plate support under each of these four tongues; remove support completely before fitting. Preview the holes and small engraved digits. Do not print the assembled STEP as one object. No physical print or slicing run has been verified.
+
+HARDWARE (MODEL ONLY)
+Use four real M6 through-bolts, four matching loose nuts, and flat washers chosen to fit the 14 mm corner pads. Select a length that passes through the 4 mm outer stack, washers and the entire nut thread. No captive pockets or printed threads. Test without preload; do not torque metal hardware against plastic. Leave the underside accessible. A 16 mm outside-diameter straight socket envelope is checked from above; an actual socket's size, handle swing and finger access still need a bench check.
+
+BENCH SEQUENCE — PLAN VIEW (X along the 150 mm rails; Y up the 75 mm ends)
+1. Set out 1 left, 2 top, 3 right, 4 bottom. Lay 2 over 1 at upper left, then 3 over 2 at upper right. Leave bolts out while aligning.
+2. Keep rail 4 parallel to the bottom edge. Starting just outside the frame, slide it inward from below in plan (positive Y), not down from above: its left tongue slides under 1, right tongue over 3. No bolt is in the path. The nominal separation between opposing tongue faces is 0.4 mm, not an allowance to tighten away. Stop if anything needs bending or force.
+3. Drop the four loose crossmembers into the seats on 2 and 4. These are layout pieces, not a prototype of a steel floor connection. Insert the four bolts by hand and loosely retain them. Check all four corners before fitting a wall sample.
+4. Try a flat 10.0 mm scrap in the 10.8 mm clear channel between fins. This sample tests insertion only. Do not derive house wall thickness by multiplying this gap by 40. The user's paper reference also shows depth below the channel; this first model tests the top U and corners, not a final box-girder section.
+5. Repeat three assembly/disassembly cycles. Log actual hole diameters vs nominal 6.6 mm, rail 4 insertion without flex, wrench access, panel fit and both rectangular diagonals (compare them before and after retaining the bolts). Record where it binds or racks. Do not treat a single bolt at a corner as an engineered moment joint.
+
+WHAT WAS CHECKED DIGITALLY
+Four corner bolt axes; no solid overlap in the 28 pairs of parts; conservative continuous sweep of rail 4 past the other three; eight closed mesh objects with separate plate footprints; 150 x 75 x 12 mm in Fusion. Plan only represents 6 x 3 m at 1:40. Rail widths, fins, clearances and hardware are exaggerated on purpose. Native Fusion and print-source solid volumes were compared individually. Neither assembly under real print tolerances nor stiffness, thermal performance, drainage or galvanic isolation is established.
+
+DESIGN REFERENCES
+SteelConstruction.info, Simple connections: https://steelconstruction.info/Simple_connections — erection clearance and tool access are reasons to compare site-bolted plates; it does not rate this woven corner. A detachable closure plate is a fallback if adjacent walls prevent the last rail's sideways insertion. Welding changes the disassembly question.
+Bambu Lab A1 mini technical specs, 180 x 180 x 180 mm: https://bambulab.com/uk/a1-mini/tech-specs
+For an aluminium-faced insulated wall in Norway the actual base detail still needs a specified panel, thermal separation and continuous insulation, water management, air seal and isolation of dissimilar metals. Install walls after closing the model frame. Compare manufacturer-specific plinth drawings, e.g. Ruukki SP2D PIR Energy external wall details; these are not a specification for an aluminium wall or this frame.

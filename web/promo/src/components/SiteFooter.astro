@@ -12,6 +12,7 @@ const path = Astro.url.pathname;
 const otherLang = lang === 'en' ? 'nb' : 'en';
 const otherHref = localePaths(path)[otherLang];
 const privacy = lang === 'en' ? '/en/personvern/' : '/personvern/';
+const story = lang === 'en' ? '/en/historien/' : '/historien/';
 ---
 
 <footer class="band--tjaere">
@@ -22,6 +23,7 @@ const privacy = lang === 'en' ? '/en/personvern/' : '/personvern/';
       <p>{content.footer.imagesNote}</p>
     </div>
     <ul>
+      <li><a href={story}>{content.nav.story}</a></li>
       <li><a href={privacy}>{content.footer.privacy}</a></li>
       <li><a href="https://minihouse-docs.canner.app">{content.footer.pro}</a></li>
       <li><a href={otherHref} lang={otherLang} hreflang={otherLang} data-keep-hash>{content.nav.language}</a></li>

@@ -119,5 +119,6 @@
     "NS-EN 1090-2",
     "thermal bridge"
   ],
+  "step_backend": "OCCT STEP export; Fusion import verified on 2706.1.17",
   "step_solids": 32
 }

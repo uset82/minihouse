@@ -609,9 +609,9 @@ prototipo, no una forma de dibujar el croquis más bonita.
 | ¿Y el panel sándwich? | La ranura de **34 mm** es un hueco de localización, **no** un sándwich a escala | C-02 sigue abierto. Sustituir la base por planchas trenzadas **reabre** el detalle del encuentro aislado (Ψ +0,027 con acero envuelto); no lo resuelve |
 
 **Estado:** `fase1/prototipo-union-atornillada-R0.md`, generado por `scripts/bolted_lap_prototype.py`,
-check 35. Cuatro STL, un 3MF y un STEP con 32 sólidos (20 impresos, 12 de referencia). La importación
-en Fusion **no se ha verificado aquí**. Nada de esto es liberación para fabricación ni autorización
-de izaje.
+check 35. Cuatro STL, un 3MF y un STEP con 32 sólidos (20 impresos, 12 de referencia). El STEP
+se importa en Fusion 2706.1.17 como **32 bodies** (ver §AJ). Nada de esto es liberación para
+fabricación ni autorización de izaje.
 
 ## AI. El croquis era el marco, no sólo la unión (2026-11-18)
 
@@ -630,8 +630,91 @@ El cupón sigue sirviendo para la unión; la respuesta al encargo es el modelo d
 | ¿Valida algo más? | Sólo disposición, canal y secuencia; tornillos y taladros del marco son **esquemáticos** | El M6 real está en el cupón. Sin sección de acero, clase de perno, soldadura ni EXC; EN 1993-1-8 sigue PENDING |
 
 **Estado:** `fase1/modelo-marco-R0.md`, generado por `scripts/frame_model.py`, check 36. Cuatro STL de
-miembros, uno de travesaños, 3MF de cinco objetos y STEP con paredes y pernos de referencia. La
-importación en Fusion **no está verificada**. Dos defectos de triangulación se corregieron en la
-misma pasada: primero una cuña junto a cada taladro, después el extremo lejano de los miembros
-largos recortado por muestrear sólo el círculo; ahora se añaden los cuatro rayos a las esquinas y
-el autotest comprueba el área de cada placa. Nada es liberación para fabricación ni izaje.
+miembros, uno de travesaños, 3MF de cinco objetos y STEP con paredes y pernos de referencia. El STEP
+se importa en Fusion 2706.1.17 como **48 bodies**, con caja 150 × 75 × 12 mm, y se entrega además
+`frame.f3d` (ver §AJ). Dos defectos de triangulación se corregieron en la misma pasada: primero una
+cuña junto a cada taladro, después el extremo lejano de los miembros largos recortado por muestrear
+sólo el círculo; ahora se añaden los cuatro rayos a las esquinas y el autotest comprueba el área de
+cada placa. Nada es liberación para fabricación ni izaje.
+
+## AJ. Fusion importado: el STEP solo no bastaba (2026-11-19)
+
+El extremo MCP nativo `127.0.0.1:27182` está inerte; el puente vivo es FluidBridge/2.0 en
+`127.0.0.1:7800`, dentro de Fusion 2706.1.17. Se añadió el comando `import_step` al bridge local
+para importar sin el diálogo modal. El primer STEP, escrito sólo con biblioteca estándar, creaba
+documento y componentes pero **0 bodies**: le faltaban producto/representación, y después se
+encontraron también `LINE` con `DIRECTION` en lugar de `VECTOR`, unidades complejas inválidas y
+una ocurrencia de ensamblaje con siete argumentos. Alinear eso con un STEP exportado por el propio
+Fusion no fue suficiente.
+
+La causa decisiva fue la forma de la representación: OCCT escribe un
+`ADVANCED_BREP_SHAPE_REPRESENTATION` por sólido y Fusion sólo materializa el primero. La solución
+está en `scripts/ocp_step.py`: OCCT genera la geometría B-rep válida y se reenvuelve en **un solo**
+producto con **una sola** representación que lista todos los sólidos. Verificado en vivo:
+
+| Archivo | Resultado en Fusion |
+|---|---|
+| `fase1/prototipo/marco-R0/frame.step` | **48 bodies**, 1 componente, caja 150 × 75 × 12 mm |
+| `fase1/prototipo/joint.step` | **32 bodies**, 1 componente |
+| `fase1/prototipo/marco-R0/frame.f3d` | archivo nativo Fusion exportado desde el documento importado |
+
+`cadquery-ocp` es una dependencia **opcional** instalada en `.tmp/ocp` (ignorado por git); sin ella
+los generadores caen al writer estándar y marcan el STEP como **no verificado en Fusion**. La
+importación demuestra que la geometría es visible, **no** que sea una pieza válida para fabricar:
+no hay sección de acero, clase de perno, soldadura, EXC, resistencia ni puente térmico resuelto.
+
+## AK. Proyecto limpio de Fusion para el marco (2026-11-19)
+
+Se cerraron los 21 documentos de depuración y se creó un proyecto de datos de Fusion con el nombre
+**MiniHouse Frame R0** y propósito declarado «conceptual 1:40 printable frame mock-up… not for
+fabrication». El documento se llama `MiniHouse_Frame_R0`, está **guardado** en ese proyecto, y
+contiene **48 bodies**, 1 componente y cinco parámetros descriptivos: `FrameLength_mm` 6000,
+`FrameWidth_mm` 3000, `PrintScale` 40, `WallSlot_mm` 5,6 y `FrameBodies` 48. Estos parámetros
+**documentan** el modelo: no gobiernan la geometría B-rep importada.
+
+| Entrega | Estado |
+|---|---|
+| Proyecto Fusion `MiniHouse Frame R0` | creado; documento `MiniHouse_Frame_R0` guardado |
+| `fase1/prototipo/marco-R0/MiniHouse_Frame_R0.f3d` | archivo nativo del proyecto limpio (1,07 MB) |
+| `fase1/prototipo/joint.f3d` | archivo nativo del cupón de unión (32 bodies) |
+
+`scripts/fusion_project_setup.py` reproduce la operación mediante `run_project_script` con
+`root` apuntando a este repositorio: el `PROJECT_ROOT` por defecto del bridge apunta a otro
+proyecto (`drywallcutter`), así que hay que pasar `root` explícitamente. Nada de esto cambia el
+límite de autoridad: la visibilidad en Fusion no es una verificación estructural ni una
+liberación para fabricación o izaje.
+
+## AL. Cómo cerrar el trenzado: unión dividida, no flexión (2026-11-19)
+
+Carlos pidió un solo artículo impreso que pruebe a la vez los tornillos M6 reales y el canal con
+dos aletas y hueco para sándwich. Antes de dibujar geometría se compararon cuatro formas de cerrar
+el ciclo **1 → 2 → 3 → 4 → 1** en `knowledge/comparisons/weave-closure-options.md`: unión
+dividida, placa de cierre extraíble, unión con ranura larga y esquina soldada. Criterios: montaje
+con miembros rígidos, acceso a llave Ø24, número de piezas, consecuencia térmica (sólo declarada),
+fidelidad al croquis y imprimibilidad en 180³.
+
+| Opción | Resultado R0 |
+|---|---|
+| **Unión dividida** — un miembro se parte en dos lengüetas en una esquina y se atornilla al que cruza | **Elegida**: abre el ciclo sin quitar tornillos ni añadir una quinta pieza; mantiene los cuatro números y los cuatro solapes visibles |
+| Placa de cierre extraíble | Segunda: también funciona con barras rígidas, pero añade pieza, pila y una placa visible |
+| Ranura larga | Posible, pero debilita el miembro y puede imprimirse ovalada; no se elige |
+| Esquina soldada | **Fuera de alcance R0**: elimina la pregunta atornillada y exigiría decisiones de soldadura/EXC que no corresponden a este proyecto |
+
+La razón decisiva es que las aletas endurecen la lámina: el cupón plano podía enhebrar la lámina
+**4** flexionándola, pero el artículo combinado no debe depender de esa flexión. La unión dividida
+no demuestra montaje de acero real: sección, clase de perno, apriete y clase de ejecución siguen
+sin definir. El detalle térmico del encuentro **sigue reabierto**; Ψ +0,027 con acero envuelto no
+se hereda. No se cita ningún número de cláusula ni se afirma cumplimiento. Nada es liberación para
+fabricación ni autorización de izaje (rules.md §5).
+
+### AL result (2026-11-19): Fusion exchange confirmed; physical fit not demonstrated
+
+Fusion 2706.1.17 imported the combined STEP and saved `MiniHouse_Combined_Joint_R0` in project `MiniHouse Combined Joint R0`. The seven parameters describe the imported geometry; they do not drive it. The four numbered print parts comprise **51 shells**, with a combined envelope of **150 × 150 × 11 mm**. The STEP adds **12 hardware reference solids for four fasteners** (one shank, head and nut per fastener) and **four wall reference strips**: **67 bodies**, **150 × 150 × 34 mm** including references. The 47.6 mm wall slot is a locating gap, not the C-02 wall thickness. Evidence: [canonical Fusion archive](prototipo/union-combinada-R0/MiniHouse_Combined_Joint_R0.f3d) and [local viewport screenshot](prototipo/union-combinada-R0/fusion-screenshot.png).
+
+| R0 geometry reviewed | Finding | Consequence |
+|---|---|---|
+| Rectangular frame, [`frame_model.py`, `member(3)`](../scripts/frame_model.py) | The right member starts at `B - W` (x = 67 mm), not `L - W` (x = 142 mm): **75 mm inboard**. The long members still give the expected 150 × 75 mm plan envelope. | The right-hand corner holes do not align. The 48-body import and overall envelope in AJ/AK are valid exchange results, not evidence of an assembled frame. |
+| Combined joint, [`combined_joint_prototype.py`, `build_ply`](../scripts/combined_joint_prototype.py) | The boss has a **circular Ø10.2 mm** pocket, not a hexagonal AF10.2 seat. An AF10 hex nut spans `10 / cos(30°)` ≈ **11.55 mm** across corners. | The nut cannot seat. The nominal 0.2 mm difference from the width across flats is not clearance. |
+| Combined joint, `half_polygon` on member 4 | The notch ends at the bolt centreline. A centred **Ø6 mm** shank extends **3 mm** past that end into solid material. | The shank cannot seat fully at the 4/1 crossing. Choosing a split lap did not establish that this implementation closes. |
+
+**Decision:** retain both R0 models as CAD records; do not print either as proof of fit. No physical print, assembly, wrench-access test or measurement is recorded. Check corner alignment and full hardware seating on revised geometry before a bench test. No fabrication or lift release.

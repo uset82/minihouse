@@ -6,7 +6,7 @@
 import type { ImageMetadata } from 'astro';
 import entries from './films.json';
 
-export type FilmId = 'house' | 'living' | 'bath';
+export type FilmId = 'house' | 'living' | 'bath' | 'midtun';
 
 export type FilmStatus = 'approved' | 'pending' | 'stand-in';
 

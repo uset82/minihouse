@@ -393,6 +393,147 @@ def check_content(promo: Path, release: bool = False) -> tuple[list[str], list[s
     return errors, notes
 
 
+CREDIT_WORD = {"nb": "Foto:", "en": "Photo:"}
+CONCEPT_WORD = {"nb": "Konseptbilde", "en": "Concept image"}
+# A photo may carry neither wording, whatever the language of the field.
+PHOTO_FORBIDDEN = ("Konseptbilde", "Concept image")
+
+
+def caption_kind_errors(identifier: str, kind: str, caption: dict) -> list[str]:
+    """D-26(a): a photo is credited «Foto:» / "Photo:" and never a concept wording.
+
+    For a photo both concept words are refused in both fields, so a mixed caption
+    («Konseptbilde» in English, "Concept image" in Norwegian) fails too. A render or
+    a texture must carry the concept wording of its own language.
+    """
+    errors: list[str] = []
+    texts = {
+        language: caption.get(language)
+        for language in ("nb", "en")
+        if isinstance(caption.get(language), str) and caption.get(language).strip() not in ("", "TODO")
+    }
+    if kind == "photo":
+        for language, text in texts.items():
+            if CREDIT_WORD[language] not in text:
+                errors.append(f"images: {identifier} caption.{language} is a photo and must carry «{CREDIT_WORD[language]}»")
+            lowered = text.lower()
+            for forbidden in PHOTO_FORBIDDEN:
+                if forbidden.lower() in lowered:
+                    errors.append(f"images: {identifier} caption.{language} is a photo and may not say «{forbidden}»")
+    else:
+        for language, text in texts.items():
+            if CONCEPT_WORD[language].lower() not in text.lower():
+                errors.append(f"images: {identifier} caption.{language} is a {kind} and must say «{CONCEPT_WORD[language]}»")
+    return errors
+
+
+def jpeg_metadata_problems(data: bytes) -> list[str]:
+    """D-26(b): the segments that would publish the photographer's own data.
+
+    Walks the whole file, so an APP1 or APP13 after a scan is found too (progressive
+    JPEGs carry metadata between scans). Entropy-coded data is skipped byte by byte,
+    honouring stuffed bytes (FF 00), restart markers (FF D0-D7) and fill bytes (FF FF).
+    A truncated or malformed structure is reported as an error rather than ignored.
+    APP1 with an Exif or XMP header and any APP13 (IPTC) are the failures; a COM
+    comment (ffmpeg writes one on the posters) and APP2 colour profiles are allowed.
+    """
+    problems: list[str] = []
+    if not data.startswith(b"\xff\xd8"):
+        return ["not a JPEG"]
+    total = len(data)
+    index = 2
+    while True:
+        if index >= total:
+            problems.append("truncated JPEG: no EOI")
+            break
+        if data[index] != 0xFF:
+            problems.append("invalid JPEG: expected a marker")
+            break
+        while index < total and data[index] == 0xFF:  # fill bytes
+            index += 1
+        if index >= total:
+            problems.append("truncated JPEG: marker cut off")
+            break
+        marker = data[index]
+        index += 1
+        if marker == 0xD9:  # EOI
+            break
+        if marker == 0x00:
+            problems.append("invalid JPEG: stuffed byte outside entropy data")
+            break
+        if marker == 0x01 or 0xD0 <= marker <= 0xD7:  # TEM and restart markers stand alone
+            continue
+        if index + 2 > total:
+            problems.append("truncated JPEG: segment length cut off")
+            break
+        length = int.from_bytes(data[index:index + 2], "big")
+        if length < 2:
+            problems.append("invalid JPEG: segment length below 2")
+            break
+        end = index + length
+        if end > total:
+            problems.append("truncated JPEG: segment runs past the end")
+            break
+        segment = data[index + 2:end]
+        if marker == 0xE1:
+            if segment.startswith(b"Exif\x00\x00"):
+                problems.append("APP1 Exif")
+            elif segment.startswith(b"http://ns.adobe.com/xap/1.0/"):
+                problems.append("APP1 XMP")
+        elif marker == 0xED:
+            problems.append("APP13 IPTC")
+        index = end
+        if marker != 0xDA:  # not a scan: the next byte starts a new marker
+            continue
+        while True:  # skip entropy-coded data up to the next real marker
+            if index >= total:
+                problems.append("truncated JPEG: scan data runs past the end")
+                return problems
+            if data[index] != 0xFF:
+                index += 1
+                continue
+            if index + 1 >= total:
+                problems.append("truncated JPEG: scan data runs past the end")
+                return problems
+            following = data[index + 1]
+            if following == 0x00 or 0xD0 <= following <= 0xD7:  # stuffed byte or restart
+                index += 2
+                continue
+            if following == 0xFF:  # fill byte
+                index += 1
+                continue
+            break
+    return problems
+
+
+def check_image_metadata(promo: Path, dist: Path | None) -> tuple[list[str], list[str]]:
+    """D-26(b): every JPEG the site serves must be free of Exif, XMP and IPTC."""
+    errors: list[str] = []
+    notes: list[str] = []
+    roots = [promo / "src" / "assets" / "images", promo / "src" / "assets" / "film"]
+    scanned = 0
+    for root in roots:
+        if not root.is_dir():
+            continue
+        for file in sorted(root.rglob("*")):
+            if not file.is_file() or file.suffix.lower() not in (".jpg", ".jpeg"):
+                continue
+            scanned += 1
+            for problem in jpeg_metadata_problems(file.read_bytes()):
+                errors.append(f"images: {file.relative_to(promo).as_posix()} carries {problem}")
+    if dist is not None:
+        astro = dist / "_astro"
+        if astro.is_dir():
+            for file in sorted(astro.rglob("*")):
+                if not file.is_file() or file.suffix.lower() not in (".jpg", ".jpeg"):
+                    continue
+                scanned += 1
+                for problem in jpeg_metadata_problems(file.read_bytes()):
+                    errors.append(f"dist: {file.relative_to(dist).as_posix()} carries {problem}")
+    notes.append(f"images: {scanned} JPEG files checked for Exif, XMP and IPTC")
+    return errors, notes
+
+
 def check_images(promo: Path, release: bool) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     notes: list[str] = []
@@ -420,8 +561,11 @@ def check_images(promo: Path, release: bool) -> tuple[list[str], list[str]]:
                 text = value.get(language) if isinstance(value, dict) else None
                 if not isinstance(text, str) or text.strip() == "" or text == "TODO":
                     errors.append(f"images: {identifier} has no {field}.{language}")
-        if image.get("kind") not in kinds:
+        kind = image.get("kind")
+        if kind not in kinds:
             errors.append(f"images: {identifier} has an invalid kind")
+        elif isinstance(image.get("caption"), dict):
+            errors.extend(caption_kind_errors(identifier, kind, image["caption"]))
         status = image.get("status")
         if status not in statuses:
             errors.append(f"images: {identifier} has an invalid status")
@@ -862,6 +1006,106 @@ def selftest() -> int:
         abs(contrast_ratio("#ECEAE4", "#9D5F30") - 4.24) < RATIO_TOLERANCE,
     )
 
+    # D-26(a): captions by kind, per language.
+    photo_ok = {"nb": "Blyglassvinduet i lærerboligen. Foto: Joran Ingvaldsen",
+                "en": "The stained-glass window in the residence. Photo: Joran Ingvaldsen"}
+    check("captions: a credited photo passes", caption_kind_errors("p", "photo", photo_ok) == [])
+    check(
+        "captions: a photo without Foto: fails",
+        caption_kind_errors("p", "photo", {"nb": "Blyglassvinduet.", "en": photo_ok["en"]}) != [],
+    )
+    check(
+        "captions: a photo without Photo: fails",
+        caption_kind_errors("p", "photo", {"nb": photo_ok["nb"], "en": "The window."}) != [],
+    )
+    check(
+        "captions: a photo saying Konseptbilde fails",
+        caption_kind_errors("p", "photo", {"nb": "Konseptbilde. Foto: Carlos", "en": photo_ok["en"]}) != [],
+    )
+    check(
+        "captions: «Konseptbilde» in the English field of a photo fails",
+        caption_kind_errors("p", "photo", {"nb": photo_ok["nb"], "en": "Konseptbilde. Photo: Carlos"}) != [],
+    )
+    check(
+        "captions: \u201cConcept image\u201d in the Norwegian field of a photo fails",
+        caption_kind_errors("p", "photo", {"nb": "Concept image. Foto: Carlos", "en": photo_ok["en"]}) != [],
+    )
+    check(
+        "captions: a photo mixing the credit languages still fails",
+        caption_kind_errors("p", "photo", {"nb": "Blyglassvinduet. Photo: Joran Ingvaldsen", "en": photo_ok["en"]}) != [],
+    )
+    render_ok = {"nb": "Konseptbilde.", "en": "Concept image."}
+    check("captions: a render with Konseptbilde passes", caption_kind_errors("r", "render", render_ok) == [])
+    check(
+        "captions: a render without Konseptbilde fails",
+        caption_kind_errors("r", "render", {"nb": "Huset.", "en": "Concept image."}) != [],
+    )
+    check(
+        "captions: a texture without Concept image fails",
+        caption_kind_errors("t", "texture", {"nb": "Konseptbilde.", "en": "Timber."}) != [],
+    )
+
+    # D-26(b): JPEG segments, whole file, including after a scan.
+    def segment(marker: int, payload: bytes) -> bytes:
+        return b"\xff" + bytes([marker]) + (len(payload) + 2).to_bytes(2, "big") + payload
+
+    # Entropy data with a stuffed byte (FF 00) and a restart marker (FF D0).
+    entropy = b"\x12\x34\xff\x00\x56\xff\xd0\x78\x9a"
+    sos = segment(0xDA, b"\x01\x02\x03")
+    eoi = b"\xff\xd9"
+
+    def jpeg(*parts: bytes) -> bytes:
+        return b"\xff\xd8" + b"".join(parts) + eoi
+
+    clean = jpeg(segment(0xFE, b"Lavc encoder"), segment(0xE2, b"ICC_PROFILE\x00"), sos, entropy)
+    check("jpeg: a clean file passes", jpeg_metadata_problems(clean) == [], str(jpeg_metadata_problems(clean)))
+    exif = jpeg(segment(0xE1, b"Exif\x00\x00MM\x00*"), sos, entropy)
+    check("jpeg: APP1 Exif fails", jpeg_metadata_problems(exif) == ["APP1 Exif"])
+    xmp = jpeg(segment(0xE1, b"http://ns.adobe.com/xap/1.0/\x00<x/>"), sos, entropy)
+    check("jpeg: APP1 XMP fails", jpeg_metadata_problems(xmp) == ["APP1 XMP"])
+    iptc = jpeg(segment(0xED, b"Photoshop 3.0\x00"), sos, entropy)
+    check("jpeg: APP13 IPTC fails", jpeg_metadata_problems(iptc) == ["APP13 IPTC"])
+    both = jpeg(segment(0xE1, b"Exif\x00\x00"), segment(0xED, b"Photoshop 3.0\x00"), sos, entropy)
+    check(
+        "jpeg: Exif and IPTC are both reported",
+        jpeg_metadata_problems(both) == ["APP1 Exif", "APP13 IPTC"],
+        str(jpeg_metadata_problems(both)),
+    )
+    # A progressive file: the Exif segment sits after the first scan, past the
+    # stuffed byte and the restart marker, so a walker that stops at SOS misses it.
+    progressive = jpeg(sos, entropy, segment(0xE1, b"Exif\x00\x00II*\x00"), sos, entropy)
+    check(
+        "jpeg: Exif after the first scan of a progressive file fails",
+        jpeg_metadata_problems(progressive) == ["APP1 Exif"],
+        str(jpeg_metadata_problems(progressive)),
+    )
+    # Fill bytes before a marker must not hide it either.
+    filled = jpeg(sos, b"\x11\xff\xff\xff" + segment(0xED, b"Photoshop 3.0\x00")[1:])
+    check(
+        "jpeg: fill bytes before APP13 still report it",
+        jpeg_metadata_problems(filled) == ["APP13 IPTC"],
+        str(jpeg_metadata_problems(filled)),
+    )
+    truncated = b"\xff\xd8" + segment(0xE1, b"Exif\x00\x00") + sos + entropy
+    check(
+        "jpeg: a truncated file reports its Exif and the truncation",
+        "APP1 Exif" in jpeg_metadata_problems(truncated)
+        and any("truncated" in problem for problem in jpeg_metadata_problems(truncated)),
+        str(jpeg_metadata_problems(truncated)),
+    )
+    cut_segment = b"\xff\xd8" + b"\xff\xe1\x00\x30" + b"Exif"
+    check(
+        "jpeg: a segment cut short is an error",
+        any("truncated" in problem for problem in jpeg_metadata_problems(cut_segment)),
+        str(jpeg_metadata_problems(cut_segment)),
+    )
+    check(
+        "jpeg: a malformed structure is an error",
+        any("invalid" in problem for problem in jpeg_metadata_problems(b"\xff\xd8\x00\x00")),
+        str(jpeg_metadata_problems(b"\xff\xd8\x00\x00")),
+    )
+    check("jpeg: a non-JPEG is refused", jpeg_metadata_problems(b"GIF89a") == ["not a JPEG"])
+
     print()
     if failures:
         print(f"selftest FAILED ({len(failures)})")
@@ -899,6 +1143,7 @@ def main(argv: list[str]) -> int:
         check_design_parity(args.promo),
         check_content(args.promo, args.release),
         check_images(args.promo, args.release),
+        check_image_metadata(args.promo, args.dist),
     ):
         errors.extend(collected_errors)
         notes.extend(collected_notes)

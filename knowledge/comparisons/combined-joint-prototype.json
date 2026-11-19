@@ -1,0 +1,85 @@
+{
+  "status": "CONCEPTUAL — NOT FOR FABRICATION",
+  "scope": "assembly sequence, M6 fit, wrench access and fin/slot coexistence only",
+  "no_claim": "no strength claim",
+  "printer": {
+    "model": "Bambu A1 mini",
+    "bed_mm": [
+      180.0,
+      180.0,
+      180.0
+    ]
+  },
+  "scale": {
+    "layout": "joint region only, about 1:2 of a nominal 100 mm bar",
+    "hardware": "M6 at real size",
+    "section": "exaggerated to print, not to scale",
+    "statement": "hybrid mock-up: joint-region footprint at ~1:2, full-size M6 hardware, channel section exaggerated to print; neither a scaled frame nor a specified steel section"
+  },
+  "size_mm": [
+    150.0,
+    150.0,
+    11.0
+  ],
+  "step_bbox_mm": [
+    150.0,
+    150.0,
+    34.0
+  ],
+  "bed_margins_mm": [
+    15.0,
+    15.0,
+    84.5
+  ],
+  "hardware": {
+    "bolt_d_mm": 6.0,
+    "hole_d_mm": 6.4,
+    "nut_af_mm": 10.0,
+    "pocket_af_mm": 10.2,
+    "boss_d_mm": 20.0,
+    "boss_h_mm": 5.5,
+    "wrench_d_mm": 24.0,
+    "wrench_h_mm": 18.0
+  },
+  "channel": {
+    "bar_width_mm": 50.0,
+    "fin_thickness_mm": 1.2,
+    "fin_height_mm": 7.0,
+    "clear_slot_mm": 47.6,
+    "wall_reference": "C-02 build-up OPEN; locating gap only"
+  },
+  "weave": {
+    "cycle": [
+      1,
+      2,
+      3,
+      4,
+      1
+    ],
+    "vertical_order": null,
+    "threaded_ply": 4,
+    "closure": "split lap",
+    "split_ply": 4,
+    "split_crossing_mm": [
+      120.0,
+      30.0
+    ],
+    "corner_keep_out_mm": 14.0
+  },
+  "clearances": {
+    "hole_clearance_mm": 0.4,
+    "nut_seat_clearance_mm": 0.2,
+    "ligament_mm": 21.8,
+    "edge_margin_mm": 15.0,
+    "min_wrench_spare_mm": 2.0
+  },
+  "shells": {
+    "printed": 51,
+    "wall_references": 4,
+    "bolt_references": 12
+  },
+  "step_solids": 67,
+  "step_backend": "OCCT STEP export; Fusion import verified on 2706.1.17",
+  "print_and_measurement": "not printed, not measured",
+  "neighbors": "EN 1993-1-8 PENDING; NS-EN 1090-2 not held; thermal bridge re-opened; no weld, EXC or lift claim"
+}

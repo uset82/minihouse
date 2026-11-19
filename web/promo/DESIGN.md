@@ -61,7 +61,8 @@ None: no shadows, blur, gradients or glows. Depth comes from full-width bands of
 - **Bands:** each section is one full-width band in one material colour. Neighbours never share a colour, except kalk next to kalk with a sølvgrå hairline between them.
 - **Material passport:** a timber lot tag with a perforated stub and an eyelet, the signature element.
 - **Images:** edge to edge of their column, with square corners and no frames. The caption sits below: «Konseptbilde».
-- **The film:** silent, with one shared «Pause filmen» button in the caption row.
+- **Real photos** of the old teachers' residence (story page and its home section): the same quiet frame as other images, with a caption that says what they show and who took it («… Foto: Joran Ingvaldsen»). Never «Konseptbilde» on a photo, and never a photo without its credit.
+- **The films:** the house film, and Carlos's Midtun film on the story page. Silent, with one shared «Pause filmen» button in the caption row.
 
 ## Do's and Don'ts
 

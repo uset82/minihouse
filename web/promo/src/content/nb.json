@@ -52,7 +52,8 @@
     "count": "{current} av {total}",
     "prev": "Forrige",
     "next": "Neste",
-    "close": "Lukk"
+    "close": "Lukk",
+    "note": "Alle bildene her er konseptbilder."
   },
   "build": {
     "title": "Under kledningen",
@@ -250,7 +251,7 @@
     "pro": "For fagfolk",
     "docs": "Dokumentasjon",
     "lab": "3D-lab",
-    "imagesNote": "Alle bilder er konseptbilder. Huset er under utvikling."
+    "imagesNote": "Bildene av MiniHouse er konseptbilder. Huset er under utvikling."
   },
   "privacy": {
     "title": "Personvern",
@@ -329,6 +330,10 @@
       "title": "Hvordan ideen oppstod",
       "body": "Historien bak MiniHouse starter på en riveplass i Bergen, med gammelt treverk som fortsatt var i god stand.",
       "link": "Les historien"
+    },
+    "film": {
+      "alt": "Film fra lærerboligen i Øvsttunvegen: huset og Midtun skole sett fra luften, blyglassvinduet, årstallet 1887 i et bord, den gamle komfyren og rivingen.",
+      "caption": "Film: Carlos. Foto i filmen: Joran Ingvaldsen og Carlos."
     }
   }
 }

@@ -30,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from bolted_lap_prototype import (  # noqa: E402
     Shell, StepWriter, circle, extrude_region, write_3mf, write_stl,
 )
+import ocp_step  # noqa: E402
 
 STATUS = "CONCEPTUAL — NOT FOR FABRICATION"
 SCOPE = "frame layout and channel geometry only"
@@ -216,8 +217,8 @@ def markdown(rec):
         "## 2. Scale, declared",
         "",
         "Plan dimensions are **1:40**: 6000 × 3000 mm becomes **150 × 75 mm**, fitting an "
-        "A1 mini bed of 180 mm with 15 mm and 52.5 mm margins per axis. The **section is "
-        "not to scale** — a 2 mm base and 7 mm fins are used so the channel can be printed. "
+        f"A1 mini bed of 180 mm with margins {rec['bed_margins_mm']} mm (x, y, z). The "
+        "**section is not to scale** — a 2 mm base and 7 mm fins are used so the channel can be printed. "
         "The frame-scale holes are schematic; the real M6 lap is tested separately in "
         "`bolted_lap_prototype.py`.",
         "",
@@ -246,7 +247,10 @@ def markdown(rec):
         "- `fase1/prototipo/marco-R0/crossmembers.stl` — the four crossmembers.",
         "- `fase1/prototipo/marco-R0/frame_3mf.3mf` — five print objects.",
         "- `fase1/prototipo/marco-R0/frame.step` — frame plus reference walls and bolts; "
-        "Fusion import **not verified here**.",
+        f"{rec.get('step_backend', 'stdlib STEP export; Fusion import not verified')}.",
+        "- `fase1/prototipo/marco-R0/frame.f3d` — native Fusion archive exported after "
+        "importing the STEP: 48 bodies, 150 × 75 mm. It is a viewing/handoff file, "
+        "not a released design.",
         "",
         f"{STATUS}. The model proves the layout, the channel and the assembly sequence only. "
         f"{NO_CLAIM}: nothing here sizes steel, bolts or welds. No steel grade, bolt class, "
@@ -271,6 +275,14 @@ def selftest():
     assert len(g["cross"]) == 4 and [x * SCALE for x in CROSS_X] == [1200.0, 2400.0, 3600.0, 4800.0]
     assert all(s.watertight() for s in g["printed"])
     assert all(s.watertight() for s in g["walls"] + g["bolts"])
+    from collections import Counter as _Counter
+    for sh in g["printed"] + g["walls"] + g["bolts"]:
+        directed = _Counter()
+        for a, b, c in sh.oriented_triangles():
+            for u, v in ((a, b), (b, c), (c, a)):
+                directed[(u, v)] += 1
+        for (u, v), n in directed.items():
+            assert n == 1 and directed[(v, u)] == 1, (sh.name, u, v, n)
     for ply in range(1, 5):
         for sh in g["plies"][ply]:
             if "_base" not in sh.name:
@@ -300,7 +312,12 @@ def selftest():
             assert "3D/3dmodel.model" in z.namelist()
         step = td / "a.step"
         solids = StepWriter().write(step, g["printed"] + g["walls"] + g["bolts"])
-        assert solids == step.read_text(encoding="utf-8").count("MANIFOLD_SOLID_BREP(")
+        step_txt = step.read_text(encoding="utf-8")
+        assert solids == step_txt.count("MANIFOLD_SOLID_BREP(")
+        assert step_txt.count("SHAPE_DEFINITION_REPRESENTATION(") == solids + 1
+        assert "NEXT_ASSEMBLY_USAGE_OCCURRENCE(" in step_txt
+        assert "FACE_OUTER_BOUND(" in step_txt
+        assert "AUTOMOTIVE_DESIGN { 1 0 10303 214 3 1 1 }" in step_txt
     print(f"Frame self-test OK: {g['size']} mm from 6000×3000 at 1:40, "
           f"{len(g['printed'])} printed shells, closed weave cycle, "
           f"{rec['channel']['clear_slot_mm']:.1f} mm wall slot.")
@@ -323,8 +340,14 @@ def main():
         write_stl(out / f"ply{i}.stl", g["plies"][i])
     write_stl(out / "crossmembers.stl", g["cross"])
     write_3mf(out / "frame_3mf.3mf", {**{i: g["plies"][i] for i in range(1, 5)}, 5: g["cross"]})
-    rec["step_solids"] = StepWriter().write(out / "frame.step",
-                                            g["printed"] + g["walls"] + g["bolts"])
+    shells = g["printed"] + g["walls"] + g["bolts"]
+    if ocp_step.available():
+        rec["step_solids"] = ocp_step.write_step(out / "frame.step", shells)
+        rec["step_backend"] = "OCCT STEP export; Fusion import verified on 2706.1.17"
+    else:
+        rec["step_solids"] = StepWriter().write(out / "frame.step", shells)
+        rec["step_backend"] = "stdlib STEP fallback; Fusion import NOT verified"
+        print("WARNING: OCCT not installed; frame.step may import as empty components in Fusion.")
     Path(a.out_md).write_text(markdown(rec), encoding="utf-8")
     Path(a.out_json).write_text(json.dumps(rec, indent=2, ensure_ascii=False) + "\n",
                                 encoding="utf-8")

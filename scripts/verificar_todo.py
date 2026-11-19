@@ -38,6 +38,7 @@ Ejecuta, en orden:
  34. tetthet_test.py --selftest (§14-3 medido: la especificación del ensayo de estanqueidad)
  35. bolted_lap_prototype.py --selftest (unión trenzada atornillada: malla, STEP y acceso a la llave)
  36. frame_model.py --selftest (marco 6 × 3 m a escala 1:40, canales U y travesaños)
+ 37. combined_joint_prototype.py --selftest (unión combinada: M6 real + aletas + unión dividida)
 
 Uso:  python scripts/verificar_todo.py
 Sale con codigo 0 si todo pasa, 1 si algo falla. Pensado para CI local o para
@@ -156,6 +157,7 @@ def main():
     resultados.append(run("tetthet §14-3 especificado", [r"scripts\tetthet_test.py", "--selftest"]))
     resultados.append(run("prototipo unión atornillada", [r"scripts\bolted_lap_prototype.py", "--selftest"]))
     resultados.append(run("modelo del marco 6x3 a escala", [r"scripts\frame_model.py", "--selftest"]))
+    resultados.append(run("unión combinada M6 + aletas", [r"scripts\combined_joint_prototype.py", "--selftest"]))
     print("=" * 40)
     if all(resultados):
         print("SUITE COMPLETA: TODO PASA")

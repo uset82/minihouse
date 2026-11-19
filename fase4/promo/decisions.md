@@ -2,7 +2,7 @@
 
 **Owner: Carlos.** Write your answer in the "Answer" column. Writing "OK" accepts the recommendation. You can also tell any agent your answer: it adds your words here with the date, after re-reading this file. The agents read this file before every task.
 
-## Decisions D1–D15
+## Decisions D1–D16
 
 | ID | Question | Recommended | Answer | Date |
 |---|---|---|---|---|
@@ -21,6 +21,7 @@
 | D13 | What should the team deliver now? | – | **A working landing page that shows the MiniHouse concept.** Show the exterior, living space and materials in Bokmål and English. Use copper, natural heartwood pine and European oak as the visual direction. The design-thinking coursework belongs to a separate project. | 2026-11-17 |
 | D14 | Does the site work follow a design-thinking process? | – | **No.** "Design thinking process" was Carlos's separate course, not part of MiniHouse. There are no interviews, personas, card sorts, preference or usability tests, style-tile rounds or brief gate (G2). The team builds the site, modern and funky, in the look chosen at G3. Accessibility, performance and visual checks stay, because they are quality checks. The old research and ideation files are in `archive/design-thinking/`: don't use them. | 2026-11-18 |
 | D15 | Carlos's story «Hvordan ideen oppstod» on the site | his own page, in his words, signed | **Yes.** It gets a page of its own, `/historien/` and `/en/historien/`.<br>• His Norwegian is published as he wrote it, and the English follows his English.<br>• Signed «Av Carlos».<br>• «Keep my words»: his two «bærekraftig» and the English "sustainable" (twice) and "experience" stay, as the only exceptions to the banned words.<br>Grok and DeepSeek build it (`agents/task-story-page.md`). Spec: DESIGN-GUIDE §6.16. | 2026-11-18 |
+| D16 | Real photos and the Midtun film on the site | – | **Yes, with credits.** Carlos may publish all of these:<br>• his phone photos (`IMG_1343.jpg`, `6.jpg`), credited «Foto: Carlos»;<br>• Joran Ingvaldsen's four photos (`0V0A2359`, `0V0A2394`, `0V0A2535`, `0V0A2667`), credited «Foto: Joran Ingvaldsen»;<br>• his whole film.<br>Left out: `3.jpg` and `5.jpg`, which show workers and a readable number plate.<br>**The film:** Carlos exports a clean version without the burned-in English titles, as `images/midtun_teachers_residence_clean_4k.mp4`. It plays silently by itself, like the house film, and the music is left out.<br>**The pictures' file data is removed** on the site copies, because the photographer's files hold his name and phone number.<br>Task: `agents/task-landing-r3.md`. | 2026-11-19 |
 
 ## Canonical house questions (PLAN §2.2)
 
@@ -49,6 +50,7 @@ Accepting the defaults above approves none of these. Each one still needs its ow
 | G5 | Launch | | | |
 | Git | Commit and push the branch `web/promo-r1` | Yes | 2026-11-18 | Carlos: «push to github». Claude Code pushed `d057beb` and `b1d1280`, promo paths only; nothing reached `main`. Each later push still needs his OK. |
 | Preview | An online preview before G4/G5 | Yes | 2026-11-18 | «New preview address»: https://minihouse-preview.canner.app, upload-only, uploaded by Claude Code. For the 4K film, «Yes, after the checks» approves WorkBuddy's W-6 upload there, and only there. |
+| Preview (R3) | Grok's upload of the R3 landing page, the photos and the Midtun film to minihouse-preview | Yes | 2026-11-19 | Carlos approved the R3 plan in Claude Code, which includes this upload. It's for `agents/task-landing-r3.md` only, after every check in that task passes, and only to minihouse-preview. Nothing is committed or pushed. |
 | Preview (story) | Grok's upload of the site with Carlos's story page to minihouse-preview | Yes | 2026-11-18 | «Yes, after the checks»: task G-8 in `agents/task-story-page.md`, only after every check in that task passes, and only to minihouse-preview. minihouse.canner.app and minihouse-docs stay untouched, and nothing is committed or pushed. |
 
 ## Log of answers given in chat
@@ -88,3 +90,10 @@ Agents add one line per answer: date, agent, Carlos's words in quotes.
   - «Yes, after the checks»: the preview upload, row "Preview (story)".
 
   He approved the plan in Claude Code. That plan adds funk move 5, his question on a malmfuru band (DESIGN-GUIDE §2.1). Task: `agents/task-story-page.md`. Design system for the agents: `web/promo/DESIGN.md`, which is what the "/design style" means here.
+- 2026-11-19 · Claude Code · Carlos: «go into https://minihouse-preview.canner.app using your skills and agents as designer … make a list of changes to improve the landing page so later on grok and deepseek will execute … add the video in the https://minihouse-preview.canner.app/historien/». He attached eight demolition photos and `images/midtun_teachers_residence_v3_4k_send.mp4`. He chose:
+  - «My phone photos», «Ingvaldsen's four photos» and «The whole Midtun film»;
+  - «A clean version»: the film without titles;
+  - «Silent, by itself»;
+  - «Leave them out»: no photos with people or a number plate.
+
+  He approved the R3 plan, upload included. Recorded as D16. Task: `agents/task-landing-r3.md`.

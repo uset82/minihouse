@@ -134,3 +134,53 @@ Carlos answered «Keep my words», so these stay exactly as written and are the 
 1. **«tiny homes»** in section 2's English first paragraph is his own phrase, and it is kept. On the Norwegian side the same paragraph says «små hus». Nothing to change unless he wants the two languages to match.
 2. **His English "experience"** in "That experience made me ask myself a simple question:" is the only other "experience" on the site. It stays because he asked to keep his words; the checker allows it only under `story.*`.
 3. **The reference link opens in the same tab** (DESIGN-GUIDE §6.16). If he prefers a new tab, that is a design decision for Grok, not a copy change.
+
+## 6 · R3: the photos, the Midtun film and the home fixes (2026-11-19)
+
+Task D-24 ([task-landing-r3.md](../agents/task-landing-r3.md)), decision D16. Carlos's story text above does not change. The new words come from Appendix A (my JSON keys) and Appendix B (Grok's `images.json` entries).
+
+**Review result: no change to the Norwegian.** All 16 Norwegian strings read as plain, correct Bokmål. All 32 strings (nb and en) pass `check_promo.py`'s word rules, under the story and under the home gallery, so «grønn» and "green" are out. So there is **no "→ Grok: replace … with …"**, and Appendix B goes into `images.json` exactly as written.
+
+### 6.1 · My JSON keys (D-25)
+
+| Key | Norwegian | English | Claims |
+|---|---|---|---|
+| `gallery.note` | Alle bildene her er konseptbilder. | All the pictures here are concept images. | **K-20** (the home gallery shows only renders) |
+| `footer.imagesNote` | Bildene av MiniHouse er konseptbilder. Huset er under utvikling. | The pictures of MiniHouse are concept images. The house is under development. | **K-20**, **K-19** |
+| `story.film.alt` | Film fra lærerboligen i Øvsttunvegen: huset og Midtun skole sett fra luften, blyglassvinduet, årstallet 1887 i et bord, den gamle komfyren og rivingen. | Film of the teachers' residence at Øvsttunvegen: the house and Midtun school from the air, the stained-glass window, the year 1887 on a board, the old stove and the demolition. | **K-47**, **K-46**, **K-36** |
+| `story.film.caption` | Film: Carlos. Foto i filmen: Joran Ingvaldsen og Carlos. | Film: Carlos. Photos in the film: Joran Ingvaldsen and Carlos. | **K-47** |
+
+The film's caption is a credit, not «Konseptfilm»: this film shows the real house (K-47 vs K-35). `story.film.alt` describes shots I can't see. It stands until Grok's G-16 says the clean film shows something different (Appendix A).
+
+### 6.2 · The six photos: alt texts (Grok enters them in `images.json`)
+
+Copied from Appendix B, both languages, each linked to its claims. The alt text says what the picture shows; the caption below says the same in one line and carries the credit.
+
+| id | Alt nb | Alt en | Claims |
+|---|---|---|---|
+| `midtun-gable` | Gavlen på den gamle lærerboligen under rivingen. Kledningen er delvis tatt av, og et blyglassvindu sitter fortsatt i veggen. | The gable of the old teachers' residence during the demolition. Part of the cladding is off, and a stained-glass window is still in the wall. | **K-45**, **K-36** (dismantling in progress is visible in the photo) |
+| `midtun-1887` | Gamle bord med blyantskrift i løkkeskrift. Årstallet 1887 står skrevet på det midterste bordet. | Old boards with looping pencil writing. The year 1887 is written on the middle board. | **K-45**, **K-46** |
+| `midtun-nail` | En rusten, firkantet spiker stikker skrått opp av et gammelt trestykke. | A rusty square nail sticks out at an angle from an old piece of timber. | **K-45** |
+| `midtun-glass` | Et blyglassvindu med trær, skyer, en seilbåt, et fyrtårn og en soloppgang rundt en stor rute i ravfarget glass. | A stained-glass window with trees, clouds, a sailing boat, a lighthouse and a sunrise around a large amber pane. | **K-45** |
+| `midtun-stove` | En gammel komfyr i støpejern foran en pipe der pussen er slått av og teglsteinen ligger bar. | An old cast-iron cooking stove in front of a chimney with the plaster knocked off and the bricks bare. | **K-45** |
+| `midtun-stone` | Stabler med flate steinheller på paller i gresset, med et anleggsgjerde bak. | Stacks of flat stone slabs on pallets in the grass, with a site fence behind. | **K-45**, **K-37** (46 t of stone saved) |
+
+### 6.3 · The six photos: captions (the credit lines)
+
+| id | Caption nb | Caption en | Claims |
+|---|---|---|---|
+| `midtun-gable` | Lærerboligen under rivingen, april 2026. Foto: Carlos | The teachers' residence during the demolition, April 2026. Photo: Carlos | **K-45**, **K-36** |
+| `midtun-1887` | Årstallet 1887, skrevet med blyant på et bord i lærerboligen. Foto: Joran Ingvaldsen | The year 1887, written in pencil on a board in the residence. Photo: Joran Ingvaldsen | **K-45**, **K-46** |
+| `midtun-nail` | En gammel spiker i treverket. Foto: Joran Ingvaldsen | An old nail in the timber. Photo: Joran Ingvaldsen | **K-45** |
+| `midtun-glass` | Blyglassvinduet i lærerboligen. Foto: Joran Ingvaldsen | The stained-glass window in the residence. Photo: Joran Ingvaldsen | **K-45** |
+| `midtun-stove` | Den gamle komfyren under rivingen. Foto: Carlos | The old stove during the demolition. Photo: Carlos | **K-45** |
+| `midtun-stone` | Steinheller som ble tatt vare på under rivingen. Foto: Joran Ingvaldsen | Stone slabs saved during the demolition. Photo: Joran Ingvaldsen | **K-45**, **K-37** |
+
+Every caption ends in a credit and none says «Konseptbilde», which `check_promo.py` now enforces for `kind: "photo"` (D-26). The alt texts describe what each photo shows; I can't see the pictures, so they rest on the photographers' and Claude Code's reading, and Grok's G-18 confirms them.
+
+### 6.4 · Checks made for D-24
+
+- **The gable photo's date: the caption stands.** The picture shows the dismantling under way (the cladding partly off, the stained-glass window still in the wall), and the camera records **2026-04-03**. That evidence supports «under rivingen, april 2026», so the caption does not change and there is no «før rivingen» version. The only thing still open is the **exact day the demolition started**; when Carlos gives it, the deck and K-45 record it, and nothing on the page needs to change.
+- **K-37's never-claim holds.** No caption, alt text or film line says or suggests that MiniHouse uses the timber, stone, glass or stove from Øvsttunvegen. «Steinheller som ble tatt vare på» says the stone was saved, not where it went.
+- **No photographer data.** The credit is the name only, «Foto: Joran Ingvaldsen». No phone number or file data appears in this deck or the register, and `check_promo.py` now fails any JPEG the site serves that carries Exif, XMP or IPTC (D-26b).
+- **«1887».** The caption and the alt text say only what the photo shows: the inscription «1887» written in pencil on a board in the residence. They do not date the timber, the house or the boards. The reference page gives «ca. 1887» for the house (K-46). The task quotes the page as «the historic 1887 building», but that phrase isn't on the one page I read, so K-46 cites the line that is.

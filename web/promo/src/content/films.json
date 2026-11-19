@@ -30,5 +30,19 @@
     "height": 1350,
     "status": "pending",
     "source": "images/minihouse_walkthrough_v18_4k.mp4 shot 4 (10.60-14.10 s), cropped 4:5 at 45 % across, forward and back; cut by scripts/cut_film.py"
+  },
+  {
+    "id": "midtun",
+    "file": "midtun-film.mp4",
+    "poster": "midtun-film.jpg",
+    "width": 1280,
+    "height": 720,
+    "wide": {
+      "file": "midtun-film-1920.mp4",
+      "width": 1920,
+      "height": 1080
+    },
+    "status": "pending",
+    "source": "images/midtun_teachers_residence_clean_4k.mp4 (Carlos's film without titles, 3840 x 2160, 30 fps, 72.37 s), the whole film with a 0.5 s crossfade at the loop; cut by scripts/cut_film.py midtun"
   }
 ]

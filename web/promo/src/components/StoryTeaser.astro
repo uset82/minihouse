@@ -1,5 +1,6 @@
 ---
 import type { Content } from '../content/schema';
+import Figure from './Figure.astro';
 import '../styles/story.css';
 
 interface Props {
@@ -12,9 +13,12 @@ const href = lang === 'en' ? '/en/historien/' : '/historien/';
 ---
 
 <section class="story-teaser" aria-labelledby="story-teaser-title">
-  <div class="wrap">
-    <h2 id="story-teaser-title">{content.story.teaser.title}</h2>
-    <p>{content.story.teaser.body}</p>
-    <a href={href}>{content.story.teaser.link}</a>
+  <div class="wrap story-teaser-grid">
+    <div class="story-teaser-text">
+      <h2 id="story-teaser-title">{content.story.teaser.title}</h2>
+      <p>{content.story.teaser.body}</p>
+      <a href={href}>{content.story.teaser.link}</a>
+    </div>
+    <Figure imageId="midtun-gable" lang={lang} class="story-teaser-photo" ratio="tile" />
   </div>
 </section>

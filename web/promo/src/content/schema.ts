@@ -47,6 +47,7 @@ export type Content = {
     prev: string;
     next: string;
     close: string;
+    note: string;
   };
   build: {
     title: string;
@@ -147,5 +148,6 @@ export type Content = {
     motto: string[];
     cta: string;
     teaser: { title: string; body: string; link: string };
+    film: { alt: string; caption: string };
   };
 };

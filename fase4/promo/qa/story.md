@@ -119,7 +119,96 @@ So there are two separate findings:
 
 **HANDOVER → Carlos:** the story page is **not** on minihouse-preview yet, so there is nothing for G4 to look at there. Grok needs one more bundle-and-deploy; when the two story routes answer 200, I re-run this section and hand it over again. The page in the local build is as described in §1–§4.
 
-## 7 · D-23b, to finish after the corrected upload
+**Correction (2026-11-19):** the run above came one minute before Grok's G-8 upload (23:55, deployment `a658a570`), so it measured the previous deployment. The finding about the bundle was a timing artefact, not a defect. §7 is the valid result.
 
-Re-run: the four status codes, the `hreflang` pairs on both story pages, and `check_promo.py --dist web/promo/.bundle` (expect 7 pages). Record the deployment id Grok reports.
+## 7 · D-23r · live check, re-run · **pass**
+
+2026-11-19 01:12, against <https://minihouse-preview.canner.app> (deployment `a658a570`), `curl` 8.x:
+
+| Route | Result |
+|---|---|
+| `/` | **200** `text/html; charset=utf-8` |
+| `/en/` | **200** `text/html; charset=utf-8` |
+| `/historien/` | **200** `text/html; charset=utf-8` |
+| `/en/historien/` | **200** `text/html; charset=utf-8` |
+| `/film/house-film.mp4`, `-r 0-1` | **206** `video/mp4` |
+| `/.env.production` | **404** |
+
+**`hreflang`:** each page names its own twin.
+
+| Page | `nb` | `en` | `x-default` | Language link |
+|---|---|---|---|---|
+| `/`, `/en/` | `/` | `/en/` | `/` | `/` ↔ `/en/` |
+| `/historien/`, `/en/historien/` | `/historien/` | `/en/historien/` | `/historien/` | `/historien/` ↔ `/en/historien/` |
+
+The absolute URLs point at `minihouse.canner.app`, the production host, from the preview. That is the intended canonical address, so it is a note, not a defect.
+
+**`check_promo.py --dist web/promo/.bundle`:** **7 pages, all checks passed**. Both story pages have `lang` right, one `h1` and two images.
+
+**HANDOVER → Carlos:** the story page is live on <https://minihouse-preview.canner.app/historien/> and <https://minihouse-preview.canner.app/en/historien/>, ready for you to look at for G4. The claims audit, axe and Lighthouse are in §1–§4.
+
+## 8 · D-27 · R3 build audited
+
+**Build identified:** `web/promo/dist`, file time **2026-11-19 01:51:12**, 7 pages, served on `http://127.0.0.1:4322`. Routes measured: **`/` and `/historien/`** (the card's two), both languages checked for the claims, both form factors for the tools. Tools: axe-core 4.14.1, Lighthouse 13.6.0, `check_promo.py`.
+
+### 8.1 · The new words, and their rows
+
+| Where | Text rendered | Row | Verdict |
+|---|---|---|---|
+| Home, gallery | «Alle bildene her er konseptbilder.» / "All the pictures here are concept images." | **K-20** | true: that gallery shows only renders |
+| Home, footer | «Bildene av MiniHouse er konseptbilder. Huset er under utvikling.» / "The pictures of MiniHouse are concept images. The house is under development." | **K-20**, **K-19** | narrower than before, and now correct: the story page's photos are real |
+| Home, story section | «Lærerboligen under rivingen, april 2026. Foto: Carlos» | **K-45**, **K-36** | the photo shows the dismantling under way; camera 2026-04-03 |
+| Home, films | «Konseptfilm» ×3 with «Spill av filmen» | **K-35** | the house film is a render, so the caption is right |
+| Home, materials | «Konseptbilde av materialuttrykket» ×4 | **K-20** | textures, not photos |
+| Story, trio | «Blyglassvinduet i lærerboligen. Foto: Joran Ingvaldsen» · «Den gamle komfyren under rivingen. Foto: Carlos» · «Steinheller som ble tatt vare på under rivingen. Foto: Joran Ingvaldsen» | **K-45**; the stone also **K-37** | credited, and no claim about where the materials went |
+| Story, pair | «Årstallet 1887, skrevet med blyant på et bord i lærerboligen…» · «En gammel spiker i treverket…» | **K-45**, **K-46** | describes the inscription and the nail; dates nothing else |
+| Story, pictures | «Konseptbilde» ×2 (`exploded`, `hero-slope`) | **K-20** | renders of MiniHouse |
+| Story | **no «Konseptfilm»** | **K-47** | correct: the Midtun film is real, so it must never carry that caption, and it is not on the page (§8.4) |
+
+The six photo captions and their alt texts were verified string by string against Appendix B and `images.json`: **32 strings, 0 differences** (deck §6.2–§6.3).
+
+**What the page still never says:** that MiniHouse uses the timber, stone, glass or stove from Øvsttunvegen (K-37); that the house is built or tested (K-19); any price, date, weight or U-value. No caption carries a photographer's phone number or file data, and `check_promo.py` now refuses a served JPEG that does.
+
+### 8.2 · axe
+
+**0 violations on `/` and on `/historien/`**, axe-core 4.14.1, ChromeDriver 157.0.8103.51. Reports: `qa/reports/axe-r3.txt`, `axe-r3.json`. Details in [a11y.md](a11y.md).
+
+### 8.3 · Lighthouse
+
+Full table in [perf.md](perf.md). Headline: `/` phone **LCP 2.3 s**, CLS 0, perf 0.97; `/` desktop LCP 0.5 s, perf 1; `/historien/` phone **LCP 0.8 s**, CLS 0, perf 1; `/historien/` desktop LCP 0.5 s, perf 1. Accessibility, best practices and SEO are 100 on all four runs.
+
+**Gates:** axe 0 ✓ · LCP ≤ 2.5 s on mobile ✓ (2.3 s on the home page, 0.8 s on the story) · CLS ≤ 0.1 ✓.
+
+### 8.4 · The two gaps that are not failures
+
+1. **The Midtun film is not on the story page**, so the film still is not the largest paint: it is text on the phone and `midtun-stone` on the desktop. Cause: `images/midtun_teachers_residence_clean_4k.mp4` does not exist; only the titled v3 is on disk, which D16 forbids cutting. When Carlos exports the clean master, G-16 makes the cuts, `getFilm('midtun')` starts returning the poster, and I re-run this section.
+2. **The home page's LCP is the film poster at 2.3 s**, 0.2 s inside the mobile gate. Recorded in [perf.md](perf.md) as a watch item.
+
+### 8.5 · What I did not judge
+
+Whether the six photos show what their alt texts describe, whether the gable crop works at 4:5, and whether the gallery now reads as a contact sheet. Those are Grok's G-18 screenshots and Carlos's G4.
+
+2026-11-19 01:12, against <https://minihouse-preview.canner.app> (deployment `a658a570`), `curl` 8.x:
+
+| Route | Result |
+|---|---|
+| `/` | **200** `text/html; charset=utf-8` |
+| `/en/` | **200** `text/html; charset=utf-8` |
+| `/historien/` | **200** `text/html; charset=utf-8` |
+| `/en/historien/` | **200** `text/html; charset=utf-8` |
+| `/film/house-film.mp4`, `-r 0-1` | **206** `video/mp4` |
+| `/.env.production` | **404** |
+
+**`hreflang`:** each page names its own twin.
+
+| Page | `nb` | `en` | `x-default` | Language link |
+|---|---|---|---|---|
+| `/`, `/en/` | `/` | `/en/` | `/` | `/` ↔ `/en/` |
+| `/historien/`, `/en/historien/` | `/historien/` | `/en/historien/` | `/historien/` | `/historien/` ↔ `/en/historien/` |
+
+The absolute URLs point at `minihouse.canner.app`, the production host, from the preview. That is the intended canonical address, so it is a note, not a defect.
+
+**`check_promo.py --dist web/promo/.bundle`:** **7 pages, all checks passed**. Both story pages have `lang` right, one `h1` and two images.
+
+**HANDOVER → Carlos:** the story page is live on <https://minihouse-preview.canner.app/historien/> and <https://minihouse-preview.canner.app/en/historien/>, ready for you to look at for G4. The claims audit, axe and Lighthouse are in §1–§4.
 

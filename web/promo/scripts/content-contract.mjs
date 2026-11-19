@@ -30,7 +30,7 @@ export const contentShape = {
   },
   hero: { title: '', lead: '', cta: '', gallery: '', caption: '' },
   facts: { items: [{ label: '', value: '' }] },
-  gallery: { title: '', count: '', prev: '', next: '', close: '' },
+  gallery: { title: '', count: '', prev: '', next: '', close: '', note: '' },
   build: {
     title: '',
     lead: '',
@@ -94,6 +94,7 @@ export const contentShape = {
     motto: [''],
     cta: '',
     teaser: { title: '', body: '', link: '' },
+    film: { alt: '', caption: '' },
   },
 };
 

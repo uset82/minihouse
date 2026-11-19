@@ -1,0 +1,15 @@
+[1mRunning axe-core 4.14.1 in chrome-headless[22m
+[1m[22m
+[1mTesting [4m[34mhttp://127.0.0.1:4322/[39m[24m[22m ... please wait, this may take a minute.
+[32m 0 violations found![39m
+[1m[22m
+[1mTesting [4m[34mhttp://127.0.0.1:4322/historien/[39m[24m[22m ... please wait, this may take a minute.
+[32m 0 violations found![39m
+[1mTesting complete of 2 pages[22m
+[1m[22m
+Saved file at C:\Users\carlos\PROYECTOS\minihouse\fase4\promo\qa\reports\axe-r3.json 
+
+[3mPlease note that only 20% to 50% of all accessibility issues can automatically be detected. [23m
+[3mManual testing is always required. For more information see:[23m
+[3m[4m[34mhttps://dequeuniversity.com/class/testing[39m[24m[23m
+[3m[23m

@@ -140,6 +140,10 @@
   margin-top: var(--space-4);
 }
 
+.story-teaser-photo {
+  margin-top: var(--space-5);
+}
+
 @media (min-width: 48rem) {
   .story h2 {
     hyphens: manual;
@@ -172,10 +176,6 @@
   .story-house {
     max-width: calc(8 / 12 * 100%);
   }
-
-  .story-teaser p {
-    max-width: min(var(--measure), calc(7 / 12 * 100%));
-  }
 }
 
 @media (min-width: 80rem) {
@@ -184,5 +184,70 @@
   .story-band,
   .story-teaser {
     padding-block: var(--space-7);
+  }
+}
+
+@media (min-width: 48rem) {
+  .story-teaser-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-4);
+    align-items: start;
+  }
+
+  .story-teaser-text {
+    grid-column: 1 / 8;
+  }
+
+  .story-teaser-photo {
+    grid-column: 9 / 13;
+    margin-top: 0;
+  }
+}
+
+/* R3 (DESIGN-GUIDE §6.16): the Midtun film, the trio and the pair, all in the first life. */
+.story-film {
+  margin-block: var(--space-6);
+}
+
+.story-film .film-caption {
+  max-width: calc(var(--max-content) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Without the film (or without a photo block), the text columns still keep their gap. */
+.story-open > .wrap ~ .wrap,
+.story-col + .story-col {
+  margin-top: var(--space-4);
+}
+
+.story-photos {
+  margin-block: var(--space-6);
+}
+
+.story-photos--pair,
+.story-photos--row {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.story-photo img {
+  aspect-ratio: var(--ar);
+}
+
+@media (min-width: 48rem) {
+  .story-photos--pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .story-photos--row {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .story-photo {
+    flex: var(--ar) 1 0;
+    min-width: 0;
   }
 }

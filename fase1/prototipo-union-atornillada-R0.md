@@ -48,7 +48,7 @@ Measure on the printed part: actual hole diameter at each lap; inter-ply gap; as
 - `scripts/bolted_lap_prototype.py` — generator and self-test.
 - `fase1/prototipo/ply1.stl` … `ply4.stl` — four print bodies; PETG, 0.4 mm nozzle.
 - `fase1/prototipo/joint_3mf.3mf` — multi-object print file.
-- `fase1/prototipo/joint.step` — faceted STEP with four plies and reference bolts. Fusion import has **not** been verified here; do not call it a validated CAD part.
+- `fase1/prototipo/joint.step` — STEP with four plies and reference bolts; OCCT STEP export; Fusion import verified on 2706.1.17 Do not call it a validated CAD part.
 - `knowledge/comparisons/bolted-lap-prototype.json` — the same numbers, machine readable.
 
 ## 7. Boundaries

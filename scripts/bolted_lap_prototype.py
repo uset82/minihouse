@@ -14,10 +14,12 @@ access. It emits:
 
   * four STL bodies (one per numbered ply), each a set of watertight shells;
   * one multi-object 3MF with the four print bodies;
-  * one faceted STEP assembly with the four plies and reference M6 bolts;
+  * one STEP assembly with the four plies and reference M6 bolts;
   * a readable Markdown assembly/measurement sheet and a JSON record.
 
-It is a stdlib-only generator. No CAD library or Fusion connector is assumed.
+STL and 3MF generation is stdlib-only. STEP uses an optional OCCT backend when
+available so Fusion imports real solids; without it a stdlib fallback is written
+and flagged as unverified. No Fusion connector or CAD library is assumed.
 The print proves assembly sequence, hole alignment, wrench clearance and
 disassembly. It proves NOTHING about steel or bolt capacity, preload, corrosion,
 thermal bridging or Norwegian code compliance. EN 1993-1-8 and NS-EN 1090-2
@@ -39,6 +41,9 @@ import tempfile
 import zipfile
 from collections import Counter, defaultdict, deque
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import ocp_step  # noqa: E402
 
 # --- dimensions, all in mm ---------------------------------------------------
 BED = (180.0, 180.0, 180.0)      # Bambu A1 mini, verified bed volume
@@ -225,6 +230,45 @@ class Shell:
             for e in ((a, b), (b, c), (c, a)):
                 counts[frozenset(e)] += 1
         return all(n == 2 for n in counts.values())
+
+    def oriented_triangles(self):
+        """Consistent, outward-facing winding — required by a STEP closed shell.
+
+        Watertightness only proves each edge is used twice. A STEP B-rep also
+        needs the two uses to have opposite direction; otherwise Fusion creates
+        the component but silently drops every body.
+        """
+        if not self.tris:
+            return []
+        neighbours = defaultdict(list)
+        for i, (a, b, c) in enumerate(self.tris):
+            for u, v in ((a, b), (b, c), (c, a)):
+                neighbours[frozenset((u, v))].append((i, u, v))
+        flip = {}
+        queue = [0]
+        flip[0] = False
+        while queue:
+            i = queue.pop()
+            a, b, c = self.tris[i]
+            directed = ((c, b), (a, c), (b, a)) if flip[i] else ((a, b), (b, c), (c, a))
+            for u, v in directed:
+                for j, p, q in neighbours[frozenset((u, v))]:
+                    if j in flip:
+                        continue
+                    flip[j] = (p, q) == (u, v)   # same direction -> reverse neighbour
+                    queue.append(j)
+        out = []
+        for i, (a, b, c) in enumerate(self.tris):
+            out.append((c, b, a) if flip.get(i, False) else (a, b, c))
+        volume = 0.0
+        for a, b, c in out:
+            pa, pb, pc = self.verts[a], self.verts[b], self.verts[c]
+            volume += (pa[0] * (pb[1] * pc[2] - pb[2] * pc[1])
+                       + pa[1] * (pb[2] * pc[0] - pb[0] * pc[2])
+                       + pa[2] * (pb[0] * pc[1] - pb[1] * pc[0])) / 6.0
+        if volume < 0:
+            out = [(a, c, b) for a, b, c in out]
+        return out
 
 
 def ray_rectangle(cx, cy, angle, x0, y0, x1, y1):
@@ -447,11 +491,12 @@ def geometry():
 
 # --- writers ----------------------------------------------------------------
 def write_stl(path, shells):
-    tris = [t for s in shells for t in s.tris]
+    oriented = [s.oriented_triangles() for s in shells]
+    tris = [t for group in oriented for t in group]
     data = bytearray(b"MiniHouse woven lap prototype - conceptual not for fabrication".ljust(80, b" ")[:80])
     data += struct.pack("<I", len(tris))
-    for shell in shells:
-        for a, b, c in shell.tris:
+    for shell, group in zip(shells, oriented):
+        for a, b, c in group:
             pa, pb, pc = shell.verts[a], shell.verts[b], shell.verts[c]
             n = unit(cross3(sub(pb, pa), sub(pc, pa)))
             data += struct.pack("<12fH", *n, *pa, *pb, *pc, 0)
@@ -539,16 +584,26 @@ class StepWriter:
         return self.directions[key]
 
     def edge(self, p, q):
-        key = (tuple(round(float(c), 6) for c in p), tuple(round(float(c), 6) for c in q))
+        pk = tuple(round(float(c), 6) for c in p)
+        qk = tuple(round(float(c), 6) for c in q)
+        key = frozenset((pk, qk))
         if key not in self.edges:
-            v1, v2 = self.vertex(p), self.vertex(q)
-            line = self.add(f"LINE('',#{self.point(p)},#{self.direction(sub(q, p))})")
-            self.edges[key] = self.add(f"EDGE_CURVE('',#{v1},#{v2},#{line},.T.)")
-        return self.edges[key]
+            canonical = (pk, qk) if pk <= qk else (qk, pk)
+            a, b = canonical
+            v1, v2 = self.vertex(a), self.vertex(b)
+            delta = sub(b, a)
+            # LINE takes a VECTOR (direction + magnitude), not a bare DIRECTION.
+            vec = self.add("VECTOR('',#{},{:.6f})".format(
+                self.direction(delta), norm(delta)))
+            line = self.add(f"LINE('',#{self.point(a)},#{vec})")
+            self.edges[key] = (self.add(f"EDGE_CURVE('',#{v1},#{v2},#{line},.T.)"),
+                               canonical)
+        ent, canonical = self.edges[key]
+        return ent, (".T." if (pk, qk) == canonical else ".F.")
 
     def shell(self, sh):
         faces = []
-        for a, b, c in sh.tris:
+        for a, b, c in sh.oriented_triangles():
             pa, pb, pc = sh.verts[a], sh.verts[b], sh.verts[c]
             nv = unit(cross3(sub(pb, pa), sub(pc, pa)))
             xv = unit(sub(pb, pa))
@@ -557,9 +612,9 @@ class StepWriter:
             plane = self.add("PLANE('',#{})".format(placement))
             loop = []
             for p, q in ((pa, pb), (pb, pc), (pc, pa)):
-                e = self.edge(p, q)
-                loop.append(self.add(f"ORIENTED_EDGE('',*,*,#{e},.T.)"))
-            bound = self.add("FACE_BOUND('',#{},.T.)".format(
+                e, sense = self.edge(p, q)
+                loop.append(self.add(f"ORIENTED_EDGE('',*,*,#{e},{sense})"))
+            bound = self.add("FACE_OUTER_BOUND('',#{},.T.)".format(
                 self.add("EDGE_LOOP('',({}))".format(",".join(f"#{x}" for x in loop)))))
             faces.append(self.add(f"ADVANCED_FACE('',#{bound},#{plane},.T.)"))
         return self.add("CLOSED_SHELL('',({}))".format(",".join(f"#{f}" for f in faces)))
@@ -568,19 +623,116 @@ class StepWriter:
         s = self.shell(sh)
         return self.add(f"MANIFOLD_SOLID_BREP('{sh.name}',#{s})")
 
-    def write(self, path, shells):
+    def write(self, path, shells, name="MiniHouse conceptual model"):
+        """Write a faceted AP214 STEP with a real product/representation chain.
+
+        A bare MANIFOLD_SOLID_BREP is legal-looking but an importer has no
+        PRODUCT to attach it to.  Fusion creates a document and an empty
+        component from that.  Every solid therefore gets the full chain:
+
+        PRODUCT -> PRODUCT_DEFINITION_FORMATION -> PRODUCT_DEFINITION
+                -> PRODUCT_DEFINITION_SHAPE -> SHAPE_DEFINITION_REPRESENTATION
+                -> ADVANCED_BREP_SHAPE_REPRESENTATION -> MANIFOLD_SOLID_BREP
+
+        The parts are collected under one assembly PRODUCT through
+        NEXT_ASSEMBLY_USAGE_OCCURRENCE so the tree is navigable.
+        """
         stamp = datetime.datetime.now().replace(microsecond=0).isoformat()
         head = [
             "ISO-10303-21;", "HEADER;",
-            "FILE_DESCRIPTION(('MiniHouse conceptual woven lap prototype'),'2;1');",
-            f"FILE_NAME('bolted_lap_prototype.step','{stamp}',('Inge'),('MiniHouse'),"
+            "FILE_DESCRIPTION(('MiniHouse conceptual woven frame'),'2;1');",
+            f"FILE_NAME('{Path(path).name}','{stamp}',('Inge'),('MiniHouse'),"
             "'stdlib faceted export','conceptual - not for fabrication','');",
-            "FILE_SCHEMA(('AUTOMOTIVE_DESIGN_CC2'));", "ENDSEC;", "DATA;"
+            "FILE_SCHEMA(('AUTOMOTIVE_DESIGN { 1 0 10303 214 3 1 1 }'));", "ENDSEC;", "DATA;"
         ]
-        solids = [self.solid(sh) for sh in shells]
+
+        def step_string(text):
+            return str(text).replace("\\", "\\\\").replace("'", "").replace("\n", " ")
+
+        app_ctx = self.add(
+            "APPLICATION_CONTEXT('Core Data for Automotive Mechanical Design Process')")
+        proto = self.add(
+            f"APPLICATION_PROTOCOL_DEFINITION('international standard','automotive_design',2009,#{app_ctx})")
+        product_ctx = self.add(f"PRODUCT_CONTEXT('part definition',#{app_ctx},'mechanical')")
+        def_ctx = self.add(
+            f"PRODUCT_DEFINITION_CONTEXT('part definition',#{proto},'design')")
+        length_unit = self.add(
+            "(LENGTH_UNIT() NAMED_UNIT(*) SI_UNIT(.MILLI.,.METRE.))")
+        angle_unit = self.add(
+            "(NAMED_UNIT(*) PLANE_ANGLE_UNIT() SI_UNIT($,.RADIAN.))")
+        solid_angle = self.add(
+            "(NAMED_UNIT(*) SI_UNIT($,.STERADIAN.) SOLID_ANGLE_UNIT())")
+        uncertainty = self.add(
+            f"UNCERTAINTY_MEASURE_WITH_UNIT(LENGTH_MEASURE(1.E-07),#{length_unit},"
+            "'distance_accuracy_value','')")
+        geom_ctx = self.add(
+            "(GEOMETRIC_REPRESENTATION_CONTEXT(3) "
+            f"GLOBAL_UNCERTAINTY_ASSIGNED_CONTEXT((#{uncertainty})) "
+            f"GLOBAL_UNIT_ASSIGNED_CONTEXT((#{length_unit},#{angle_unit},#{solid_angle})) "
+            "REPRESENTATION_CONTEXT('','3D'))")
+
+        assembly_name = step_string(name)
+        assembly = self.add(
+            f"PRODUCT('{assembly_name}','{assembly_name}',$,(#{product_ctx}))")
+        assembly_form = self.add(
+            f"PRODUCT_DEFINITION_FORMATION('',$,#{assembly})")
+        assembly_def = self.add(
+            f"PRODUCT_DEFINITION('{assembly_name}','{assembly_name}',#{assembly_form},#{def_ctx})")
+
+        styled = []
+        colour = self.add("COLOUR_RGB('conceptual',0.780000,0.780000,0.780000)")
+        fill_colour = self.add(f"FILL_AREA_STYLE_COLOUR('',#{colour})")
+        fill = self.add(f"FILL_AREA_STYLE('',(#{fill_colour}))")
+        surface_fill = self.add(f"SURFACE_STYLE_FILL_AREA(#{fill})")
+        side = self.add(f"SURFACE_SIDE_STYLE('',(#{surface_fill}))")
+        usage = self.add(f"SURFACE_STYLE_USAGE(.BOTH.,#{side})")
+        style = self.add(f"PRESENTATION_STYLE_ASSIGNMENT((#{usage}))")
+
+        sols = []
+        reps = []
+        placements = []
+        origin = self.point((0, 0, 0))
+        z_axis = self.direction((0, 0, 1))
+        x_axis = self.direction((1, 0, 0))
+        for sh in shells:
+            brep = self.solid(sh)
+            styled.append(self.add(f"STYLED_ITEM('',(#{style}),#{brep})"))
+            rep = self.add(
+                f"ADVANCED_BREP_SHAPE_REPRESENTATION('',(#{brep}),#{geom_ctx})")
+            reps.append(rep)
+            placement = self.add(
+                f"AXIS2_PLACEMENT_3D('',#{origin},#{z_axis},#{x_axis})")
+            placements.append(placement)
+            label = step_string(sh.name)
+            product = self.add(f"PRODUCT('{label}','{label}',$,(#{product_ctx}))")
+            formation = self.add(
+                f"PRODUCT_DEFINITION_FORMATION('',$,#{product})")
+            definition = self.add(
+                f"PRODUCT_DEFINITION('{label}','{label}',#{formation},#{def_ctx})")
+            shape = self.add(f"PRODUCT_DEFINITION_SHAPE('',$,#{definition})")
+            part_rep = self.add(
+                f"SHAPE_REPRESENTATION('',(#{placement}),#{geom_ctx})")
+            self.add(f"SHAPE_DEFINITION_REPRESENTATION(#{shape},#{part_rep})")
+            self.add(
+                "NEXT_ASSEMBLY_USAGE_OCCURRENCE('{0}','{0}','{0}',#{1},#{2},'{0}')".format(
+                    label, assembly_def, definition))
+            sols.append(brep)
+
+        root_shape = self.add(f"PRODUCT_DEFINITION_SHAPE('',$,#{assembly_def})")
+        root_rep = self.add("SHAPE_REPRESENTATION('',({}),#{})".format(
+            ",".join(f"#{p}" for p in placements), geom_ctx))
+        self.add(f"SHAPE_DEFINITION_REPRESENTATION(#{root_shape},#{root_rep})")
+        for rep in reps:
+            self.add(
+                f"SHAPE_REPRESENTATION_RELATIONSHIP('SRR','None',#{root_rep},#{rep})")
+
+        self.add(
+            "MECHANICAL_DESIGN_GEOMETRIC_PRESENTATION_REPRESENTATION('',({}),#{})".format(
+                ",".join(f"#{i}" for i in styled), geom_ctx))
+
         tail = ["ENDSEC;", "END-ISO-10303-21;"]
         Path(path).write_text("\n".join(head + self.lines + tail) + "\n", encoding="utf-8")
-        return len(solids)
+        return len(sols)
 
 
 # --- reports ----------------------------------------------------------------
@@ -696,8 +848,9 @@ def markdown(rec):
         "- `scripts/bolted_lap_prototype.py` — generator and self-test.",
         "- `fase1/prototipo/ply1.stl` … `ply4.stl` — four print bodies; PETG, 0.4 mm nozzle.",
         "- `fase1/prototipo/joint_3mf.3mf` — multi-object print file.",
-        "- `fase1/prototipo/joint.step` — faceted STEP with four plies and reference bolts. "
-        "Fusion import has **not** been verified here; do not call it a validated CAD part.",
+        "- `fase1/prototipo/joint.step` — STEP with four plies and reference bolts; "
+        f"{rec.get('step_backend', 'stdlib STEP export; Fusion import not verified')} "
+        "Do not call it a validated CAD part.",
         "- `knowledge/comparisons/bolted-lap-prototype.json` — the same numbers, machine readable.",
         "",
         "## 7. Boundaries",
@@ -733,6 +886,13 @@ def selftest():
     assert max(g["size"]) <= 180.0 and min(g["margins"]) >= 10.0
     assert all(s.watertight() for s in g["printed"])
     assert all(s.watertight() for s in g["bolts"])
+    for sh in g["printed"] + g["bolts"]:
+        directed = Counter()
+        for a, b, c in sh.oriented_triangles():
+            for u, v in ((a, b), (b, c), (c, a)):
+                directed[(u, v)] += 1
+        for (u, v), n in directed.items():
+            assert n == 1 and directed[(v, u)] == 1, (sh.name, u, v, n)
     txt = markdown(rec)
     for needle in NEEDLES:
         assert needle in txt, needle
@@ -751,6 +911,18 @@ def selftest():
         step_txt = step.read_text(encoding="utf-8")
         assert nsol == step_txt.count("MANIFOLD_SOLID_BREP(") == len(g["printed"]) + len(g["bolts"])
         assert step_txt.rstrip().endswith("END-ISO-10303-21;")
+        for needle in ("PRODUCT(", "PRODUCT_DEFINITION_SHAPE(",
+                       "SHAPE_DEFINITION_REPRESENTATION(",
+                       "ADVANCED_BREP_SHAPE_REPRESENTATION(",
+                       "NEXT_ASSEMBLY_USAGE_OCCURRENCE(",
+                       "FACE_OUTER_BOUND(",
+                       "VECTOR('',#",
+                       "STYLED_ITEM(",
+                       "AUTOMOTIVE_DESIGN { 1 0 10303 214 3 1 1 }",
+                       "LENGTH_UNIT() NAMED_UNIT(*) SI_UNIT(.MILLI.,.METRE.)"):
+            assert needle in step_txt, needle
+        assert step_txt.count("SHAPE_DEFINITION_REPRESENTATION(") == nsol + 1
+        assert "SHAPE_REPRESENTATION_RELATIONSHIP(" in step_txt
     print(f"Prototype self-test OK: {g['size']} mm in a {BED[0]:.0f} mm bed, "
           f"{len(g['printed'])} printed shells, {len(g['bolts'])} reference bolt solids, "
           f"cycle {rec['weave']['cycle']}, min wrench spare "
@@ -774,9 +946,16 @@ def main():
     for i in range(1, 5):
         write_stl(outdir / f"ply{i}.stl", g["plies"][i])
     write_3mf(outdir / "joint_3mf.3mf", {i: g["plies"][i] for i in range(1, 5)})
-    nsol = StepWriter().write(outdir / "joint.step", g["printed"] + g["bolts"])
-    Path(a.out_md).write_text(markdown(rec), encoding="utf-8")
+    shells = g["printed"] + g["bolts"]
+    if ocp_step.available():
+        nsol = ocp_step.write_step(outdir / "joint.step", shells)
+        rec["step_backend"] = "OCCT STEP export; Fusion import verified on 2706.1.17"
+    else:
+        nsol = StepWriter().write(outdir / "joint.step", shells)
+        rec["step_backend"] = "stdlib STEP fallback; Fusion import NOT verified"
+        print("WARNING: OCCT not installed; joint.step may import as empty components in Fusion.")
     rec["step_solids"] = nsol
+    Path(a.out_md).write_text(markdown(rec), encoding="utf-8")
     Path(a.out_json).write_text(json.dumps(rec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Wrote four STL bodies, one 3MF, one STEP ({nsol} solids), "
           f"{a.out_md} and {a.out_json}.")
